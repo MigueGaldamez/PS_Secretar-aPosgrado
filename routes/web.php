@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
+
+Route::get('/', [App\Http\Controllers\PublicoController::class, 'inicio'])->name('inicio');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Universidad;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\UniversidadRequest;
 class UniversidadController extends Controller
 {
     /**
@@ -12,10 +12,11 @@ class UniversidadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        return Universidad::get();
+        $per_page=$request->per_page;
+        return Universidad::paginate($per_page);
     }
 
     /**
@@ -24,9 +25,9 @@ class UniversidadController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UniversidadRequest $request)
     {
-        //
+        
         $universidad = new Universidad();
         $universidad->create($request->all());
     }
@@ -50,7 +51,7 @@ class UniversidadController extends Controller
      * @param  \App\Models\Universidad  $universidad
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Universidad $universidad)
+    public function update(UniversidadRequest $request, Universidad $universidad)
     {
         //
         $universidad->update($request->all());
