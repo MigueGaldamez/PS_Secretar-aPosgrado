@@ -1,10 +1,14 @@
+ body{
+    background-color: #FFFFFF;
+}
 .colorGris{
     background-color: #52646E;
   
 }
 .imagenFondo{
-    background-image: url("https://cdn-s3.sappi.com/s3fs-public/techtile.png");
-    background-size:contain;
+    background-image: url("/img/PortadaFB-01.svg");
+    background-size:cover;
+    height: 450px;
 }
 .textoGris{
     color:#52646E;
@@ -179,16 +183,62 @@
 }
 
 .cyan {
-    border-top: 3px solid var(--cyan);
+    border-top: 7px solid var(--cyan);
 }
 .red {
-    border-top: 3px solid var(--red);
+    border-top: 7px solid var(--red);
 }
 .blue {
-    border-top: 3px solid var(--blue);
+    border-top: 7px solid var(--blue);
 }
 .orange {
-    border-top: 3px solid var(--orange);
+    border-top: 7px solid var(--orange);
+}
+/*C A B E C E R A*/
+.tituloSuperior{
+    font-weight: 300;
+    font-size: 36px;
+    color:#52646E;
+}
+.tituloInferior{
+   
+    font-size: 54px;
+    font-style: var(--weight3);
+    font-weight: 350;
+    color:#52646E;
+}
+
+.carousel .carousel-item img {
+    height: 450px;
+    object-fit: cover;
+}
+
+.historia{
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    padding-bottom: 0px;
+    padding-top: 10px;
+    border-top:  1px  solid #000000;
+    border-bottom: 1px  solid #000000;
+  
 }
 
     
+.textoSuavecito{
+    font-weight: 300;
+}
+.textoDuro{
+    font-weight: 400;
+}
+.textoDuro2{
+    font-weight: 350;
+}
+.imgBw {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+  }
+
+.fondoNegroT{
+    background-color: rgba(0, 0, 0, 0.4);
+}

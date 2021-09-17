@@ -3,19 +3,19 @@
 @section('content')
 
 <div class="container-fluid">        
-    <div class="row pt-4 pb-3 colorGris imagenFondo">
+    <div class="row pt-4 pb-3 colorGris imagenFondo" >
         <div class="col-9 mx-auto">
             <div class="row">
                 <div class="col-5 offset-1">     
-                    <ul class="list-unstyled mb-0 pt-3 text-white font-weight-light ">
+                    <ul class="list-unstyled mb-0 pt-3 text-white font-weight-light d-none">
                         <li class="lh-sm  fontInicio pt-3"><b>Estudia tu</b></li>
                         <li class="lh-sm  fontInicio"><b>Posgrado en la</b></li>
                         <li class="lh-sm  fontInicio"><b>UES</b></li>
                         <li class="lh-sm  paddingBotonInicio  pb-3">Pequeña descripcion.</li>
                     </ul>
-                    <button type="button" class="btn btn-danger mt-3 text-light text-start ms-4">Ver más</button>
+                    <button type="button" class="d-none btn btn-danger mt-3 text-light text-start ms-4">Ver más</button>
                 </div>
-                <div class="col offset-1">
+                <div class="col offset-1 d-none">
                     <img src="{{asset('img/quimicaRedondo.png')}}"  width="350">
                 </div>
              </div>
@@ -28,7 +28,7 @@
                     <div class=" h-100 shadow">
                         <div class="row">
                             <div class="btn-group">
-                                <a class="btn btn-light col p-3 button-container" href="">
+                                <a class="btn btn-light col p-3 button-container" href="{{route('oferta')}}">
                                     <div id="border"></div>
                                     <div class="row">
                                         <div class="col-2">
@@ -52,7 +52,7 @@
                                         </ul>
                                     </div>
                                 </a>
-                                <a class="btn btn-light col p-3 button-container" href="">
+                                <a class="btn btn-light col p-3 button-container" href="{{route('oferta')}}">
                                     <div id="border"></div>
                                     <div class="row">
                                         <div class="col-2">
@@ -121,7 +121,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-10 mt-4 mx-auto">
+        <div class="col-10 mt-4 mb-4 mx-auto">
             <h1 class="tituloSomos textoGris">Informacion de contacto</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
             magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

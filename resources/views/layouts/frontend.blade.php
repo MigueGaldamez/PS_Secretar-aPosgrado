@@ -58,15 +58,15 @@
                         <!-- Authentication Links -->
                        
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Inicio</a>
+                            <a class="nav-link text-uppercase text-light" href="{{ route('inicio') }}">Inicio</a>
                         </li>
-                        
+                       
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-uppercase text-light" href="{{ route('login') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle text-uppercase text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sobre Nosotros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
@@ -79,10 +79,10 @@
                             <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Investigaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Enlaces</a>
+                            <a class="nav-link text-uppercase text-light" href="{{ route('enlaces') }}">Enlaces</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Preguntas frecuentes</a>
+                            <a class="nav-link text-uppercase text-light" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
                         </li>
                     </ul>
                 </div>
