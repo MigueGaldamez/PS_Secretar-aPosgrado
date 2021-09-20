@@ -1,9 +1,9 @@
 @extends('layouts.frontend')
 
 @section('content')
-@include('publico.cabecera',['titulo' => 'Reseña Historica'])
+@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'De la Universidad de El Salvador'])
 
-<div class="colorGris">
+<div class="colorGris mt-2">
     <div class="container-fluid col-11" >
     {{--inicio carousel--}}
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >

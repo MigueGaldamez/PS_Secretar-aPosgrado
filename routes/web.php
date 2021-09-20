@@ -26,6 +26,8 @@ Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'
 Route::get('/enlaces', [App\Http\Controllers\PublicoController::class, 'enlaces'])->name('enlaces');
 
 Route::get('/preguntasFrecuentes', [App\Http\Controllers\PublicoController::class, 'preguntasFrecuentes'])->name('preguntasFrecuentes');
+Route::get('/noticias', [App\Http\Controllers\PublicoController::class, 'noticias'])->name('noticias');
+Route::get('/investigaciones', [App\Http\Controllers\PublicoController::class, 'investigaciones'])->name('investigaciones');
 
 Auth::routes();
 
