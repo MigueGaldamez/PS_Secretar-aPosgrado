@@ -60,7 +60,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-uppercase text-light" href="{{ route('inicio') }}">Inicio</a>
                         </li>
-                       
+                        <li class="nav-item">
+                            <a class="nav-link text-uppercase text-light" href="{{ route('inicio') }}">Oferta Academica</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-uppercase text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Sobre Nosotros
@@ -73,7 +75,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Noticias y Eventos</a>
+                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Noticias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Investigaciones</a>
