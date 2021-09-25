@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <universidad/>
-</div>
+    <div class="container">
+        <universidad/>
+    </div>
 
 @endsection

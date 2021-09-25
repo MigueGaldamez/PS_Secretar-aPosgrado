@@ -1,3 +1,17 @@
+:root {
+  --pink: hsl(0, 72%, 75%);
+  --red: hsl(0, 78%, 62%);
+  --cyan: hsl(180, 62%, 55%);
+  --orange: hsl(34, 97%, 64%);
+  --blue: hsl(212, 86%, 64%);
+  --varyDarkBlue: hsl(234, 12%, 34%);
+  --grayishBlue: hsl(229, 6%, 66%);
+  --veryLightGray: hsl(0, 0%, 98%);
+  --weight1: 200;
+  --weight2: 400;
+  --weight3: 600;
+}
+
  body{
     background-color: #FFFFFF;
 }
@@ -5,16 +19,27 @@
     background-color: #52646E;
   
 }
+.negativoBanner{
+  margin-top: -70px;
+}
+.cardImagenBanner{
+  
+}
+.imgBannerInicio{
+  width: 100%;
+  height: auto;
+}
 .imagenFondo{
-    background-image: url("/img/PortadaFB-01.svg");
+    /*background-image: url("/img/PortadaFB-01.svg");*/
     background-size:cover;
-    height: 450px;
+    width: 100%;
+    max-height:450px;
 }
 .textoGris{
     color:#52646E;
 }
 .colorRojo{
-    background-color: #aa0000;
+    background-color: #dc3545;
     /*  background-color: #B0221E;*/
     
 }
@@ -45,12 +70,23 @@
 /**/
 
   .button-container {
-    -webkit-animation: alternate;       
+    border: 0px;
+    /*border-top: 4px solid var(--cyan);*/
+    border-radius: 0%;
+  
+    color:#52646E;
+    box-shadow: rgba(144, 153, 153, 0.4) 5px 5px, 
+    rgba(144, 153, 153, 0.3) 10px 10px, 
+    rgba(144, 153, 153, 0.2) 15px 15px, 
+    rgba(144, 153, 153, 0.1) 20px 20px, 
+    rgba(144, 153, 153, 0.05) 25px 25px;
   }
   .button-container:hover {
+      
       background-color: #52646E;
       color:white !important;
       border-color: #52646E;
+      /*border-top: 4px solid #FFFFFF;*/
       transform: scale(1.02);
   }
 
@@ -172,18 +208,7 @@
 
   /*FIN EFECTO IMAGEN*/
 
-  :root {
-    --red: hsl(0, 78%, 62%);
-    --cyan: hsl(180, 62%, 55%);
-    --orange: hsl(34, 97%, 64%);
-    --blue: hsl(212, 86%, 64%);
-    --varyDarkBlue: hsl(234, 12%, 34%);
-    --grayishBlue: hsl(229, 6%, 66%);
-    --veryLightGray: hsl(0, 0%, 98%);
-    --weight1: 200;
-    --weight2: 400;
-    --weight3: 600;
-}
+
 
 .tituloSuavizado {
     font-weight: var(--weight1);
@@ -205,6 +230,9 @@
 
 .cyan {
     border-top: 7px solid var(--cyan);
+}
+.pink {
+  border-top: 7px solid var(--pink);
 }
 .red {
     border-top: 7px solid var(--red);
@@ -257,9 +285,31 @@
     font-weight: 400;
 }
 .textoDuro3{
-  font-weight: 400;
-  font-size: 20px;
+  font-weight: 350;
+  
 }
+.imagenIconoIni{
+  margin-top: -25px;
+  margin-left: -22px;
+}
+@media screen and (max-width: 600px) {
+  .textoDuro3 {
+    font-size: 15px;
+  }
+  .imagenIconoIni{
+    height: 35px;
+  }
+}
+/*G R A N D E */
+@media screen and (min-width: 601px) {
+  .textoDuro3 {
+    font-size: 20px;
+  }
+  .imagenIconoIni{
+    height: 70px;
+  }
+}
+
 .textoDuro2{
     font-weight: 350;
 }
@@ -638,4 +688,56 @@
   .subtituloHistoria{
     margin-top: 	-10px;
     font-weight: 300;
+  }
+
+  .elementoNav
+  { 
+    display:inline-block; 
+    margin:0;
+    text-transform:uppercase; 
+  }
+  .elementoNav:after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #FFFFFF;  
+    transform: scaleX(0);  
+    transition: transform 250ms ease-in-out;
+  }
+  .elementoNav:hover:after{  
+    transform: scaleX(1);
+  }
+  .activoNav{
+    display:inline-block; 
+    margin:0;
+    text-transform:uppercase; 
+  }
+  .activoNav::after{
+    border-bottom: solid 3px #dc3545;
+    transform: scaleX(1);     
+  }
+  .grisClaroFondo{
+    background-color: #e6e9ea;
+    border: 0px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    /*box-shadow: 10px -8px teal;*/
+  }
+
+  .divisor{  
+      border-top:4px solid #aa0000;
+      width: 40%;/* or bottom */
+      margin-top: -4px;
+      margin-bottom: 5px;
+
+      
+  }
+
+  .logosMarginMenos{
+    margin:-15px
+  }
+
+  .cardEquipo{
+    background-color: #e6e9ea;
+    border: 0px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    /*box-shadow: 10px -8px teal;*/
   }

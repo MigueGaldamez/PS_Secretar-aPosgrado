@@ -29,6 +29,13 @@ Route::get('/preguntasFrecuentes', [App\Http\Controllers\PublicoController::clas
 Route::get('/noticias', [App\Http\Controllers\PublicoController::class, 'noticias'])->name('noticias');
 Route::get('/investigaciones', [App\Http\Controllers\PublicoController::class, 'investigaciones'])->name('investigaciones');
 
+//N U E V A S
+Route::get('/organosGobierno', [App\Http\Controllers\PublicoController::class, 'organos'])->name('organos');
+Route::get('/educacionContinua', [App\Http\Controllers\PublicoController::class, 'educacionContinua'])->name('educacionContinua');
+Route::get('/educacionContinua/{id}', [App\Http\Controllers\PublicoController::class, 'educacionContinuaFacultad'])->name('eduacioncontinua.facultad');
+Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
+Route::get('/catalogo', [App\Http\Controllers\PublicoController::class, 'catalogo'])->name('catalogo');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

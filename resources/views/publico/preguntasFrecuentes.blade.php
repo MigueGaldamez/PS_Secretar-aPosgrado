@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.frontend',['subtitulo' => 'Preguntas Frecuentes'])
 
 @section('content')
 

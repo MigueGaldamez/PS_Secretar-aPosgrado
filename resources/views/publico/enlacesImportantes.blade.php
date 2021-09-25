@@ -1,4 +1,4 @@
-@extends('layouts.frontend')
+@extends('layouts.frontend',['subtitulo' => 'Enlaces'])
 
 @section('content')
 
@@ -42,10 +42,10 @@
             <div class=" callout callout-danger row">
                 <div class="col col-8 ">
                 
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
+                    <a href="" class="text-dark"><span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br></a>
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
                     ut labore et dolore magna aliqua. </span>
-                    <br><a href="" class="">Visitar</a>
+                   
                 </div>
                 <div class="col col-4">
                     <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">

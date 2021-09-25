@@ -1,7 +1,7 @@
-@extends('layouts.frontend')
+@extends('layouts.frontend',['subtitulo' => 'Reseña'])
 
 @section('content')
-@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'De la Universidad de El Salvador'])
+@include('publico.cabecera2',['titulo' => 'Reseña Historica','descripcion'=>''])
 
 <div class="colorGris mt-2">
     <div class="container-fluid col-11" >
@@ -52,7 +52,7 @@
          {{--inicio cards--}}
         <div class="row">
             <div class="col historia">
-                <h3 class="textoDuro  lh-sm "><b>Titulo Información</b></h3>
+                <h3 class="textoDuro  lh-sm "><b>Universidad de El Salvador</b></h3>
                 <h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>
                 <p class="textoSuavecito2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -60,7 +60,7 @@
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
              <div class="col historia">
-                <h3 class="textoDuro  lh-sm"><b>Titulo Información</b></h3>
+                <h3 class="textoDuro  lh-sm"><b>Secretaría de Posgrado</b></h3>
                 <h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>
                 <p class="textoSuavecito2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 

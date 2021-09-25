@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Secretaría Posgrado | {{$subtitulo}}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -31,6 +31,7 @@
             <div class="container margenes">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <div class="row">
+                       
                         <div class="col">
                             <img class="rounded float-start tamañoLogo" src="{{asset('img/logoRedondoBlanco.svg')}}">
                         </div>
@@ -40,6 +41,7 @@
                                 <li class="lh-sm"> Posgrado</li>
                             </ul>
                         </div>
+                        
 
                     </div>
                 </a>
@@ -57,34 +59,34 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                        
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('inicio') }}">Inicio</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('inicio') }}">Oferta Academica</a>
+                        <li class="nav-item ">
+                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-uppercase text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                 Sobre Nosotros
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
-                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Noticias</a>
+                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('noticias') ? 'activoNav' : '' }}" href="{{ route('noticias') }}">Noticias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('login') }}">Investigaciones</a>
+                            <a class="nav-link text-uppercase text-light elementoNav  {{ request()->routeIs('investigaciones') ? 'activoNav' : '' }}" href="{{ route('investigaciones') }}">Investigaciones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('enlaces') }}">Enlaces</a>
+                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
+                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
                         </li>
                     </ul>
                 </div>

@@ -27,4 +27,16 @@ class PublicoController extends Controller
     {
         return view('publico.enlacesImportantes');
     }
+    public function noticias()
+    {
+        return view('publico.noticias');
+    }
+    public function investigaciones()
+    {
+        return view('publico.investigaciones');
+    }
+    public function organos()
+    {
+        return view('publico.organos');
+    }
 }

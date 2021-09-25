@@ -1,9 +1,10 @@
-@extends('layouts.frontend')
+@extends('layouts.frontend',['subtitulo' => 'Inicio'])
 
 @section('content')
 
-<div class="container-fluid">        
-    <div class="row pt-4 pb-3 colorGris imagenFondo" >
+<div class="container-fluid cardImagenBanner mt-n4">       
+    <img src="{{asset('/img/PortadaFB-01.svg')}}" class="imgBannerInicio">
+    <div class="row pt-4 imagenFondo">
         <div class="col-9 mx-auto">
             <div class="row">
                 <div class="col-5 offset-1">     
@@ -20,59 +21,67 @@
                 </div>
              </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-9 mx-auto">
-            <div class="row text-center mt-n5">
-                <div class="col-sm pb-2">
-                    <div class=" h-100 shadow">
-                        <div class="row">
-                            <div class="btn-group">
-                                <a class="btn btn-light col p-3 button-container" href="{{route('oferta')}}">
-                                    <div id="border"></div>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-sm-12">
-                                            <img src="{{asset('img/internado.png')}}" width="60">
-                                        </div>
-                                        <ul class="list-unstyled mb-0 col-lg-10 col-sm-12">
-                                            <li class="lh-sm "><h3 class="textoGris text-uppercase textoDuro3"><b>  Oferta Academica.</b></h3></li>
-                                            <li class="lh-sm"> Pequeña descripción de la oferta academica.</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                                <a class="btn btn-light col p-3 button-container" href="">
-                                    <div id="border"></div>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-sm-12">
-                                            <img src="{{asset('img/internado.png')}}" width="60">
-                                        </div>
-                                        <ul class="list-unstyled mb-0 col-lg-10 col-sm-12 ">
-                                            <li class="lh-sm text-danger"><h3><b>  Oferta Academica.</b></h3></li>
-                                            <li class="lh-sm"> Pequeña descripción de la oferta academica.</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                                <a class="btn btn-light col p-3 button-container" href="{{route('oferta')}}">
-                                    <div id="border"></div>
-                                    <div class="row">
-                                        <div class="col-lg-2 col-sm-12">
-                                            <img src="{{asset('img/internado.png')}}" width="60">
-                                        </div>
-                                        <ul class="list-unstyled mb-0 col-lg-10 col-sm-12 ">
-                                            <li class="lh-sm text-danger"><h3><b>  Oferta Academica.</b></h3></li>
-                                            <li class="lh-sm"> Pequeña descripción de la oferta academica.</li>
-                                        </ul>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>     
-        </div>
-    </div>
-    
+    </div> 
 </div>
+<div class="container px-0 col-9">
+    <div class="row negativoBanner">          
+            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('oferta')}}">
+                <div class="card-body py-0 px-1">
+                    <div class="row">
+                         <div class="col-4">
+                             <img src="{{asset('img/iconos/book.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-8">
+                             <h4 class="text-start text-uppercase textoDuro3"><b>Oferta Academica</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a>
+            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('investigaciones')}}">
+                <div class="card-body py-0 px-0">
+                    <div class="row">
+                        <div class="col-2">
+                              <img src="{{asset('img/iconos/research.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-10">
+                             <h4 class="py-auto text-start text-uppercase textoDuro3 text"><b>Investigaciones</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a>
+            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('oferta')}}">
+                <div class="card-body py-0 px-1">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{asset('img/iconos/book.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-8">
+                             <h4 class="text-start text-uppercase textoDuro3"><b>Educacion Continua</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a>
+            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('oferta')}}">
+                <div class="card-body py-0 px-1">
+                    <div class="row">
+                        <div class="col-4">
+                             <img src="{{asset('img/iconos/book.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-8">
+                             <h4 class="text-start text-uppercase textoDuro3"><b>Tesis de Posgrados</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a>
+            
+                                 
+        
+        
+    </div>
+</div>
+<div class="row text-center">
+        
+    </div>
 <div class="container">
     <div class="row">
         <div class="box col-11 mt-4 mx-auto">
@@ -86,8 +95,8 @@
     </div>   
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12">
-            <div class="box box-down red">
-                <img class="imgMVV" src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+            <div class="box box-down pink">
+                <img class="imgMVV" src="{{asset('img/iconos/mision.png ')}}" alt="" height="80">
                 <h2>Mision</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
                 magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
@@ -109,7 +118,7 @@
         </div>
         <div class="col-lg-4 col-sm-12">
             <div class="box box-down red">
-             <img class="imgMVV" src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+             <img class="imgMVV"  src="{{asset('img/iconos/values.png ')}}" alt="" height="80">
                 <h2>Valores</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
                 magna aliqua. </p>
