@@ -40631,7 +40631,7 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "mb-3 col-sm-12" }, [
+                      _c("div", { staticClass: "mb-3 col-sm-12 " }, [
                         _c(
                           "label",
                           {
@@ -40726,7 +40726,7 @@ var render = function() {
                 _vm._v("Facultad de " + _vm._s(facultad.nombre))
               ]),
               _vm._v(" "),
-              _c("p", { staticClass: "card-text" }, [
+              _c("p", { staticClass: "card-text " }, [
                 _vm._v(_vm._s(facultad.descripcion))
               ]),
               _vm._v(" "),
@@ -40734,7 +40734,7 @@ var render = function() {
                 "div",
                 {
                   staticClass:
-                    "position-absolute bottom-0 start-50 translate-middle-x mb-1"
+                    "position-relative bottom-0 start-50 translate-middle-x mb-1 "
                 },
                 [
                   _c(

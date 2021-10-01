@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Facultades;
 
 class PublicoController extends Controller
 {
@@ -17,7 +18,8 @@ class PublicoController extends Controller
     }
     public function oferta()
     {
-        return view('publico.ofertaAcademica');
+        $facultades = Facultades::all();
+        return view('publico.ofertaAcademica',compact('facultades'));
     }
     public function preguntasFrecuentes()
     {
