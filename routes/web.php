@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [App\Http\Controllers\PublicoController::class, 'inicio'])->name('inicio');
 
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
+Route::get('/ofertaFacultad', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
 
 Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'])->name('reseña');
 

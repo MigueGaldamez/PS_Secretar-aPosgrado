@@ -85,7 +85,8 @@
         <div class="col col-12 col-lg-8 col-sm-12">
             <div class="row">
                 <div class="box col-11 mt-4 mx-auto">
-                    <h1 class="tituloSomos textoGris text-uppercase textoDuro">Quienes somos</h1>
+                    <h1 class="textoGris text-uppercase textoDuro">Quienes somos</h1>
+                    <div class="titulohr mb-4"></div>
                     <p>La Secretaría de Posgrado de la Universidad de El Salvador es una
                     dependencia administrativa de la <b>Vicerrectoría Académica</b>, cuya
                     finalidad es contribuir al fortalecimiento del sistema de posgrado y
@@ -163,8 +164,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-10 mt-4 mb-4 mx-auto ">
-                    <h1 class="tituloSomos textoGris text-uppercase textoDuro">Informacion de contacto</h1>
+                <div class="box col-10 mt-4 mb-4 mx-auto ">
+                    <h1 class="textoGris text-uppercase textoDuro">Informacion de contacto</h1>
+                      <div class="titulohr mb-4"></div>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
                     magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                     Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -173,7 +175,8 @@
             </div>   
         </div>
         <div class="col col-12 col-lg-4 col-sm-12">
-                <h3 class="text-center tituloSuperior text-uppercase bordeBajo textoDuro mt-4"><span>Noticias Relevantes</span></h3>
+                <h3 class="text-center tituloSuperior text-uppercase  textoDuro mt-4"><span>Noticias Relevantes</span></h3>
+                <div class="titulohr mb-2 mt-2"></div>
                 <div class=" calloutIL calloutIL-info row overflow-hidden">
                     <div class="col">
                         <a href="" class="text-dark">

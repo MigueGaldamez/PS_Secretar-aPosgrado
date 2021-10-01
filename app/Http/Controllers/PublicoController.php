@@ -19,6 +19,10 @@ class PublicoController extends Controller
     {
         return view('publico.ofertaAcademica');
     }
+    public function ofertaFacultad()
+    {
+        return view('publico.ofertaAcademicaFacultad');
+    }
     public function preguntasFrecuentes()
     {
         return view('publico.preguntasFrecuentes');
