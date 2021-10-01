@@ -1,0 +1,268 @@
+<template>
+    <div>
+        <!-- Modal -->
+        <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
+                        <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                        
+                            <div class="mb-3">
+                                <label for="formFile" class="form-label">Logo de la Secretaría de Posgrado</label>
+                                <input accept="image/*" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
+                                <img :src="imagen" class="img-thumbnail" alt="...">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Horario de atención</label>
+                                <textarea v-model="info.horarioAtencion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Información de contacto</label>
+                                <textarea v-model="info.correo" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Misión</label>
+                                <textarea v-model="info.mision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Visión</label>
+                                <textarea v-model="info.vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">¿Quiénes Somos?</label>
+                                <textarea v-model="info.quienesSomos" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            <div class="row ">
+                                <label for="exampleFormControlTextarea1" class="form-label">Valores </label>
+                                <div class="input-group offset-sm-3 col-sm-6 mb-3">
+                                    <button @click="saveValor();" class="btn  btn-success" type="button" id="button-addon1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                        </svg>
+                                    </button>
+                                    <input  v-model="info.valores.nombre" type="text" class="form-control" placeholder="Agrgear un Valor" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                </div>
+                            </div>
+
+                            <div class="row ">
+                                <div v-for="valor in info.valores" :key="valor.id" class="input-group mb-3 col-sm-4">
+                                    <button @click="eliminarValor(valor.id)" class="btn btn-danger" type="button" id="button-addon1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                        </svg>
+                                    </button>
+                                    <input v-model="valor.nombre" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" disabled aria-describedby="button-addon1">
+                                </div>
+                            </div>
+                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <dl class="row" v-for="info in infos" :key="info.id">
+            <dt class="col-sm-3">Logo Institucion</dt>
+                <dd class="col-sm-9"> <img :src="info.urlLogo" class="img-thumbnail" alt="..."></dd>
+            <dt class="col-sm-3">Horario de Atención</dt>
+            <dd class="col-sm-9">
+                {{info.horarioAtencion}}
+            </dd>
+            <dt class="col-sm-3">Contacto</dt>
+                <dd class="col-sm-9">{{info.correo}}</dd>
+            <dt class="col-sm-3">Misión</dt>
+            <dd class="col-sm-9">
+                <p>{{info.mision}}</p>
+            </dd>
+            <dt class="col-sm-3">Visión</dt>
+            <dd class="col-sm-9">
+                <p>{{info.vision}}</p>
+            </dd>
+            <dt class="col-sm-3">Valores</dt>
+
+            <dd class="col-sm-9">
+                <li v-for="valor in info.valores" :key="valor.id">{{valor.nombre}}</li>
+            </dd>
+            <dt class="col-sm-3">¿Quiénes Somos?</dt>
+            <dd class="col-sm-9">
+                <p>{{info.quienesSomos}}</p>
+            </dd>
+            <button @click="openModal(info);" class="btn btn-info">Editar Informacion</button>
+        </dl>
+    </div>
+</template>
+
+<script>
+export default {
+    data(){
+        return{
+            info: {
+                id:0,
+                urlLogo: null,
+                horarioAtencion:'',
+                correo:'',
+                mision:'',
+                vision:'',
+                quienesSomos:'',
+                valores:{
+                    id:0,
+                    nombre:'',
+                    informacion_id:0,
+                },
+            },
+            valor:
+            {
+                nombre:'',
+                informacion_id:0,
+            },
+            valores:[],
+            infos:[],
+            id:0,
+            modal:0,
+            titleModal:'',
+            imagenMiniatura:'',
+        }
+    },
+    methods: {
+        async list(){
+            try
+            {
+                const res = await axios.get('/dashboard/informacion');
+                //this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Cool'});  
+                this.infos = res.data;
+            }
+            catch(error)
+            {
+                if(error.response.data)
+                {
+                    this.errores = error.response.data.errors;
+                }
+            }
+        },
+        async getValores(informacion_id)
+        {
+            try
+            {
+                const res = await axios.get('/dashboard/get_valores/'+informacion_id);
+                this.info.valores = res.data;
+            }
+            catch(error)
+            {
+                if(error.response.data)
+                {
+                    this.errores = error.response.data.errors;
+                }
+            }
+        },
+        async saveValor()
+        {
+            try
+            {
+                let fields = new FormData();
+                fields.append("nombre", this.info.valores.nombre);
+                fields.append("informacion_id", this.id);
+                const res = await axios.post('/dashboard/valores', fields);
+                this.getValores(this.id);
+                this.list();
+            }
+            catch(error)
+            {
+                if(error.response.data)
+                {
+                    this.errores = error.response.data.errors;
+                }
+            }
+        },
+        async eliminarValor(id) 
+        {
+            console.log(id);
+            const  res = await axios.delete('/dashboard/valores/'+id);
+            this.getValores(this.id);
+            this.list();
+            
+        },
+        async save() {
+            try
+            {
+                let fields = new FormData();
+                for(let key in this.info)
+                {
+                    fields.append(key,this.info[key]);
+                }
+                //.then(response=>{console.log(response.data)})
+                const res = await axios.post('/dashboard/informacion/'+ this.id, fields); 
+                this.closeModal();
+                this.list();
+            }
+            catch(error)
+            {
+                if(error.response.data)
+                {
+                    this.errores = error.response.data.errors;
+                }
+            }
+
+        },
+        openModal(data={}) {
+        this.modal=1
+        this.id=data.id;
+        this.info.id=data.id;
+        this.titleModal = "Modificar información publica";
+        this.info.urlLogo= data.urlLogo;
+        this.info.horarioAtencion=data.horarioAtencion;
+        this.info.correo= data.correo;
+        this.info.mision= data.mision;
+        this.info.vision = data.vision
+        this.info.valores = data.valores;
+        this.info.quienesSomos = data.quienesSomos;
+        },
+        closeModal() {
+            this.modal=0
+        },
+        obtenerImagen(e)
+        {
+            this.info.urlLogo=e.target.files[0];
+            this.cargarImagen(this.info.urlLogo); 
+        },
+        cargarImagen(file)
+        {
+            let reader = new FileReader();
+            reader.onload = e=>
+            {
+                this.imagenMiniatura =e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    },
+    created() 
+    {
+        this.list();
+    },
+    computed:
+    {
+        imagen()
+        {
+            return this.imagenMiniatura;
+        },
+
+    }
+}
+</script>
+<style >
+.show
+{
+    display: list-item;
+    background: rgba(44,38,75,0.849);
+    opacity: 1;
+    
+
+}
+</style>
