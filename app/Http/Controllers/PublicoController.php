@@ -39,4 +39,8 @@ class PublicoController extends Controller
     {
         return view('publico.organos');
     }
+    public function noticia()
+    {
+        return view('publico.noticiaDetalle');
+    }
 }

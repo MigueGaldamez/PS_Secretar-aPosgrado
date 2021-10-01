@@ -1,5 +1,5 @@
 
-<div class="container mt-3">
+<div class="container mt-3 ">
     <div class="row ">
         <div class="col col-lg-8 col-sm-12">
             <ul class="list-unstyled mb-0">
@@ -11,5 +11,6 @@
         <div class="col col-lg-4 d-none d-sm-block">
             <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="100">
         </div>
+       
     </div>
 </div>

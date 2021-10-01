@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <img src="{{asset('img/enlaces/uno.jpg')}}"  alt="..." class="bannerLink">
+            <img src="{{asset('img/banners/IMG_1201.jpg')}}"  alt="..." class="bannerLink">
         </div>
     </div>
     <div class="row mt-4">
@@ -46,6 +46,32 @@
                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
                     ut labore et dolore magna aliqua. </span>
                    
+                </div>
+                <div class="col col-4">
+                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
+                  
+                </div>
+            </div>
+            <div class=" callout callout-danger row">
+                <div class="col col-8 ">
+                
+                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                    ut labore et dolore magna aliqua. </span>
+                    <br><a href="" class="">Visitar</a>
+                </div>
+                <div class="col col-4">
+                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
+                  
+                </div>
+            </div>
+            <div class=" callout callout-danger row">
+                <div class="col col-8 ">
+                
+                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
+                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                    ut labore et dolore magna aliqua. </span>
+                    <br><a href="" class="">Visitar</a>
                 </div>
                 <div class="col col-4">
                     <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">

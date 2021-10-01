@@ -39,7 +39,7 @@
     color:#52646E;
 }
 .colorRojo{
-    background-color: #dc3545;
+    background-color: #f70d28;
     /*  background-color: #B0221E;*/
     
 }
@@ -741,3 +741,225 @@
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     /*box-shadow: 10px -8px teal;*/
   }
+
+
+  /* C A R D S   DE   I N V E S T I G A C I O N E S*/
+  .float-layoutR {
+    padding: 5px 5px;
+    float: left;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  .card-containerR {
+    overflow: hidden;
+  }
+  
+  .cardR {
+    background-color: #e6e9ea;
+    padding: 20px;
+    border-radius: 0%;
+    color: black;
+    min-height: 100%; /*replace this it in width: 100%*/
+    width: 85%;
+    float: right;
+    border:0px;
+    border-right: 8px solid #007bff;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    
+  }
+  /**/
+  .card-imageR {
+    display: flex;
+    background-color: #e6e9ea;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+  /*-------------*/
+  
+  div.card-imageR img {
+    width: 15%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /* Telefonoso */
+  @media only screen and (max-width: 37.5em) {
+    div.card-imageR img {
+      width: 100%;
+      height: auto;
+    }
+    
+    /**/
+    .card-imageR {
+       flex-direction: column;
+    }
+    /*----------------------*/
+  
+    .cardR {
+      width: 100%;
+      margin-top: -4px;
+    }
+  }
+
+  
+  /* C A R D S   DE   I N V E S T I G A C I O N E S*/
+  /*LRFT*/
+  .float-layoutL {
+    padding: 5px 5px;
+    float: left;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin: 0;
+  }
+  
+  .card-containerL {
+    overflow: hidden;
+  }
+  
+  .cardL {
+    background-color: #e6e9ea;
+    padding: 20px;
+    border-radius: 0%;
+    color: black;
+    min-height: 100%; /*replace this it in width: 100%*/
+    width: 85%;
+    float: left;
+    border:0px;
+    border-left: 8px solid #ffc107;
+    box-shadow: rgba(0, 0,0.15, 0) 1.95px 1.95px 2.6px;
+    
+  }
+  /*a*/
+  .card-imageL {
+    display: flex;
+    background-color: #e6e9ea;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  /*-------------*/
+  
+  div.card-imageL img {
+    width: 15%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  /*Telefonos */
+  @media only screen and (max-width: 37.5em) {
+    div.card-imageL img {
+      width: 100%;
+      height: auto;
+    }
+    
+    /**/
+    .card-imageL {
+       flex-direction: column;
+    }
+    /*----------------------*/
+  
+    .cardL {
+      width: 100%;
+      margin-top: -4px;
+    }
+  }
+/*Noticias indez*/
+.imagenNoticiaIndex{
+  height: 100%;
+  margin: -12px;
+  margin-right: -22px;
+  left:0;
+}
+.bannerAdelante{
+  z-index: 1;
+  background-color: #007bff;
+}
+.imagenAtras{
+  z-index: -1;
+  background: #000;
+  overflow: hidden;
+  
+}
+/*TITULOS*/
+.titulohr{
+  background-color: rgb(196, 196, 196);
+  border: none;
+  display: block;
+  height: 2px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.titulohr:before {
+  background-color: #f70d28;
+  content: '';
+  display: block;
+  height: 5px;
+  left: 0;
+  position: absolute;
+  top: -2px;
+  width: 10%;
+  z-index: 1;
+}  
+
+.sinBordes{
+  border:0px;
+}
+.paddinNoticias{
+  padding: 0px;
+  padding-top: 2%;
+}
+
+.fullAlto{
+  height: 100%;
+}
+
+
+/*Aqui*/
+ .has-dropcap:first-letter {
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  float: left;
+  font-size: 6rem;
+  line-height: 0.65;
+  margin: 0.1em 0.1em 0.2em 0;
+}
+
+.dropcap {
+  font-family: "Source Sans Pro", Arial, Helvetica, sans-serif;
+  background: #303030;
+  color: #FDF9F2;
+  float: left;
+  font-size: 6rem;
+  line-height: 1;
+  margin: 0.1em 0.1em 0.2em 0;
+  padding: 0.1em;
+}
+.dropcap:before,
+.dropcap:after {
+  content: "";
+  display: block;
+}
+.dropcap:before {
+  margin-top: -0.2em;
+}
+.dropcap:after {
+  margin-bottom: -0.15em;
+}
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+.noticiaContenido{
+  font-size: 18px;
+}
+/*P A G I N A C I O N*/
+  

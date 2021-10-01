@@ -73,6 +73,7 @@
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                     .</p>
                     <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
+                    
                 </div>
             </div>
         </div>
@@ -103,5 +104,6 @@
         </div>
         
     </div>
+    
 </div>
 @endsection
