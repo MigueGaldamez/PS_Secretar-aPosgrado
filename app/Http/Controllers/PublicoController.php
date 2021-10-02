@@ -35,16 +35,13 @@ class PublicoController extends Controller
     {
         return view('publico.noticias');
     }
-    public function investigaciones()
-    {
+    public function investigaciones(){
         return view('publico.investigaciones');
     }
-    public function organos()
-    {
+    public function organos(){
         return view('publico.organos');
     }
-    public function noticia()
-    {
+    public function noticia(){
         return view('publico.noticiaDetalle');
     }
 }

@@ -30,6 +30,9 @@ Route::get('/preguntasFrecuentes', [App\Http\Controllers\PublicoController::clas
 Route::get('/noticias', [App\Http\Controllers\PublicoController::class, 'noticias'])->name('noticias');
 Route::get('/noticia', [App\Http\Controllers\PublicoController::class, 'noticia'])->name('noticia');
 
+Route::get('/diplomados', [App\Http\Controllers\PublicoController::class, 'diplomados'])->name('diplomados');
+
+
 Route::get('/investigaciones', [App\Http\Controllers\PublicoController::class, 'investigaciones'])->name('investigaciones');
 
 //N U E V A S
