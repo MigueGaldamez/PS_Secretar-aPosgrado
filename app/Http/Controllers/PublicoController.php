@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Facultades;
 
 class PublicoController extends Controller
 {
@@ -17,7 +18,8 @@ class PublicoController extends Controller
     }
     public function oferta()
     {
-        return view('publico.ofertaAcademica');
+        $facultades = Facultades::all();
+        return view('publico.ofertaAcademica',compact('facultades'));
     }
     public function ofertaFacultad()
     {
@@ -44,4 +46,12 @@ class PublicoController extends Controller
     public function noticia(){
         return view('publico.noticiaDetalle');
     }
+    public function diplomados(){
+        return view('publico.diplomados');
+    } 
+    public function tesisPosgrados(){
+        $facultades = Facultades::all();
+        return view('publico.tesisPosgrados',compact('facultades'));
+    }
+    
 }

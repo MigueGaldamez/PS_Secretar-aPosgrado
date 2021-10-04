@@ -28,51 +28,19 @@
 </div>
 <div class="container mt-4">
     <div class="row">
-        <div class="col-lg-4 col-sm-6 mb-4">
+        @foreach ($facultades as $item)
+        <div class="col col-lg-4 col-sm-6 mb-4">
             <div class="card text-white cardsFacuPad">
-                <img class="card-img" src="{{asset('img/facultades/una.jpg')}}" alt="Card image">
+                <img class="card-img" src="{{$item->urlImagen}}" alt="Card image">
                 <div class="card-img-overlay">
-                    <a href="{{route('ofertaFacultad')}}" class="text-light "><h5 class="card-title"><span class=" tituloCardFacu text-uppercase">Ciencias y Humanidades</span></h5></a>
-                  <button type="button" class="btn btn-danger text-white botonCardFacu">Ver mas</button>
+                    <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">{{$item->nombre}}</span></h5>
+                    <button type="button" class="btn btn-danger text-white botonCardFacu">Ver mas</button>
                 </div>
             </div>
-            <p class="textoFacu"><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </span></p>
-        </div>
-         <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card text-white cardsFacuPad">
-                <img class="card-img" src="{{asset('img/facultades/dos.jpg')}}" alt="Card image">
-                <div class="card-img-overlay">
-                    <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">Ciencias y Humanidades</span></h5>
-                  <button type="button" class="btn btn-danger text-white botonCardFacu">Ver mas</button>
-                </div>
-            </div>
-            <p class="textoFacu"><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </span></p>
-        </div>
-         <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card text-white cardsFacuPad">
-                <img class="card-img" src="{{asset('img/facultades/tres.jpg')}}" alt="Card image">
-                <div class="card-img-overlay">
-                    <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">Ciencias y Humanidades</span></h5>
-                  <button type="button" class="btn btn-danger text-white botonCardFacu">Ver mas</button>
-                </div>
-            </div>
-            <p class="textoFacu"><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </span></p>
-        </div>
-         <div class="col-lg-4 col-sm-6 mb-4">
-            <div class="card text-white cardsFacuPad">
-                <img class="card-img" src="{{asset('img/facultades/cuatro.jpg')}}" alt="Card image">
-                <div class="card-img-overlay">
-                    <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">Ciencias y Humanidades</span></h5>
-                  <button type="button" class="btn btn-danger text-white botonCardFacu">Ver mas</button>
-                </div>
-            </div>
-            <p class="textoFacu"><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </span></p>
+            <p class="textoFacu"><span >{{$item->descripcion}}</span></p>
         </div>
        
+        @endforeach
     </div>
 </div>
 <div class="colorGris text-center py-4 ">

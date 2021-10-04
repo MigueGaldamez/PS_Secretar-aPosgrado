@@ -8,6 +8,10 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import Vue from 'vue';
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+Vue.use(VueSweetalert2);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -20,7 +24,11 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-Vue.component('universidad', require('./components/Universidad.vue').default);
+Vue.component('informacion-component', require('./components/InformacionComponent.vue').default);
+Vue.component('facultades-component', require('./components/FacultadesComponent.vue').default);
+Vue.component('enlaces-component', require('./components/EnlacesComponent.vue').default);
+Vue.component('posgradoFacultad', require('./components/PosgradoFacultad.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
