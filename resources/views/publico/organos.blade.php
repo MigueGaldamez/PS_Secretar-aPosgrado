@@ -7,30 +7,27 @@
 <div class="colorGris mt-4 pb-1 pt-2">
     <h3 class="text-light text-center"><span class="textoSuavecito2">Administracion que rige a la Universidad de El Salvador</span></h3>
 </div>
-<div class="container">
-   
-        <div class=" callout callout-danger row">
+<div class="container"> 
+        <div class="row">
+           <div class=" callout callout-danger col row mx-4">
             <div class="col col-8 ">
             
-                <a href=""><span><b>AGU - Asamblea General Universitaria.</b></span></a>
+                <a href=""><span><b>Consejo Universitario.</b></span></a>
                 <br>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. </span>
+                <span>Texto de prueba</span>
                     
             </div>
-            <div class="col col-4 logosMarginMenos text-center">
-                <img class="" src="{{asset('img/iconos/agu.jpg')}}" alt="" height="100">
+            <div class="col col-4  logosMarginMenos">
+                 <img class="" src="{{asset('img/iconos/agu.jpg')}}" alt="" height="100">
                 
             </div>
         </div>
-         <div class="row">
         <div class=" callout callout-danger col row mx-4">
             <div class="col col-8 ">
             
                 <a href=""><span><b>Consejo Universitario.</b></span></a>
                 <br>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. </span>
+                <span>Texto de prueba</span>
                     
             </div>
             <div class="col col-4  logosMarginMenos">
@@ -43,8 +40,7 @@
             
                 <a href=""><span><b>Rectoria.</b></span></a>
                 <br>
-                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua. </span>
+               <span>Texto de prueba</span>
                     
             </div>
             <div class="col col-4  logosMarginMenos">

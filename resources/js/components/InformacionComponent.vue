@@ -260,7 +260,7 @@ export default {
 .show
 {
     display: list-item;
-    background: rgba(44,38,75,0.849);
+    
     opacity: 1;
     
 

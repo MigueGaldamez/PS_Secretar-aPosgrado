@@ -71,6 +71,7 @@ Route::apiResource('dashboard/tipo_programas_api', TipoProgramaController::class
                         //fin de tablas de opciones
 
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
+Route::get('/ofertaFacultad', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
 
 Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'])->name('reseña');
 
@@ -79,6 +80,9 @@ Route::get('/enlaces', [App\Http\Controllers\PublicoController::class, 'enlaces'
 Route::get('/preguntasFrecuentes', [App\Http\Controllers\PublicoController::class, 'preguntasFrecuentes'])->name('preguntasFrecuentes');
 Route::get('/noticias', [App\Http\Controllers\PublicoController::class, 'noticias'])->name('noticias');
 Route::get('/noticia', [App\Http\Controllers\PublicoController::class, 'noticia'])->name('noticia');
+
+Route::get('/diplomados', [App\Http\Controllers\PublicoController::class, 'diplomados'])->name('diplomados');
+
 
 Route::get('/investigaciones', [App\Http\Controllers\PublicoController::class, 'investigaciones'])->name('investigaciones');
 
@@ -98,3 +102,5 @@ Auth::routes();
 
 Route::apiResource('/universidads', UniversidadController::class);
 
+//T E S I S    P O S G R A D O S 
+Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');

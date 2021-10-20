@@ -205,6 +205,6 @@
 .mostrar{
     display:list-item;
     opacity: 1;
-    background: rgba(44,38,75,0.849);
+    
 }
 </style>

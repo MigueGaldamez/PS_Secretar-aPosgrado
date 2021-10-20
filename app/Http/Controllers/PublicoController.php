@@ -21,6 +21,10 @@ class PublicoController extends Controller
         $facultades = Facultades::all();
         return view('publico.ofertaAcademica',compact('facultades'));
     }
+    public function ofertaFacultad()
+    {
+        return view('publico.ofertaAcademicaFacultad');
+    }
     public function preguntasFrecuentes()
     {
         return view('publico.preguntasFrecuentes');
@@ -33,16 +37,21 @@ class PublicoController extends Controller
     {
         return view('publico.noticias');
     }
-    public function investigaciones()
-    {
+    public function investigaciones(){
         return view('publico.investigaciones');
     }
-    public function organos()
-    {
+    public function organos(){
         return view('publico.organos');
     }
-    public function noticia()
-    {
+    public function noticia(){
         return view('publico.noticiaDetalle');
     }
+    public function diplomados(){
+        return view('publico.diplomados');
+    } 
+    public function tesisPosgrados(){
+        $facultades = Facultades::all();
+        return view('publico.tesisPosgrados',compact('facultades'));
+    }
+    
 }

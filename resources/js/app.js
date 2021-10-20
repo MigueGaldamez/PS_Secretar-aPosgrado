@@ -32,6 +32,9 @@ Vue.component('tipo-duracions-component', require('./components/TipoDuracionsCom
 Vue.component('tipo-programas-component', require('./components/TipoProgramasComponent.vue').default);
 Vue.component('diplomados-component', require('./components/DiplomadosComponent.vue').default);
 Vue.component('posgrados-component', require('./components/PosgradosComponent.vue').default);
+Vue.component('posgradoFacultad', require('./components/PosgradoFacultad.vue').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

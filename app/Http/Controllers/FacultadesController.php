@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 
 class FacultadesController extends Controller
 {
+    
     public function index()
     {
         return Facultades::get();
