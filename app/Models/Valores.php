@@ -14,6 +14,6 @@ class Valores extends Model
     ];
     public function informacion()
     {
-        return $this->belongsTo(informacion::class);
+        return $this->belongsTo(Informacion::class);
     }
 }

@@ -27,7 +27,6 @@ class EnlaceController extends Controller
                 $enlace = new Enlace();
                 $enlace->urlImagen = $urlImagen;
                 $enlace->titulo = $request->titulo;
-                $enlace->descripcion = $request->descripcion;
                 $enlace->link = $request->link;
                 return $enlace->save();
             }
@@ -55,7 +54,6 @@ class EnlaceController extends Controller
                 $enlace = Enlace::find($request->id);
                 $enlace->urlImagen = $urlImagen;
                 $enlace->titulo= $request->titulo;
-                $enlace->descripcion = $request->descripcion;
                 $enlace->link = $request->link;
                 return $enlace->save();
             }
@@ -72,7 +70,6 @@ class EnlaceController extends Controller
             {
                 $enlace = Enlace::find($request->id);
                 $enlace->titulo = $request->titulo;
-                $enlace->descripcion = $request->descripcion;
                 $enlace->link = $request->link;
                 return $enlace->save();
             }

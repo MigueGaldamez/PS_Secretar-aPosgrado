@@ -12,7 +12,6 @@ class Enlace extends Model
     protected $fillable = [
         'urlImagen',
         'titulo',
-        'descripcion',
         'link',
     ];
 }
