@@ -6098,6 +6098,54 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -45390,7 +45438,7 @@ var staticRenderFns = [
             [
               _c("div", { staticClass: "col" }, [
                 _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h4", { staticClass: "text-dark" }, [
+                  _c("h5", { staticClass: "text-dark" }, [
                     _c("b", [
                       _vm._v(
                         "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
@@ -45431,7 +45479,253 @@ var staticRenderFns = [
             [
               _c("div", { staticClass: "col" }, [
                 _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h4", { staticClass: "text-dark" }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
                     _c("b", [
                       _vm._v(
                         "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."

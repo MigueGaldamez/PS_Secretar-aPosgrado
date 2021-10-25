@@ -23,7 +23,7 @@
                 <div class="card-containerR mb-4">
                        <div class=" callout-right callout-right-primary row calloutTesis">
                             <div class="col">                          
-                            <a href="" class="text-dark" ><h4 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h4></a>
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
                             <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
                             <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
                             <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
@@ -31,7 +31,55 @@
                         </div>
                          <div class=" callout-right callout-right-primary row calloutTesis">
                             <div class="col">                          
-                            <a href="" class="text-dark" ><h4 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h4></a>
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
+                            <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
+                            <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
+                            <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
+                            </div>     
+                        </div>
+                        <div class=" callout-right callout-right-primary row calloutTesis">
+                            <div class="col">                          
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
+                            <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
+                            <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
+                            <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
+                            </div>     
+                        </div>
+                         <div class=" callout-right callout-right-primary row calloutTesis">
+                            <div class="col">                          
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
+                            <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
+                            <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
+                            <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
+                            </div>     
+                        </div>
+                        <div class=" callout-right callout-right-primary row calloutTesis">
+                            <div class="col">                          
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
+                            <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
+                            <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
+                            <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
+                            </div>     
+                        </div>
+                         <div class=" callout-right callout-right-primary row calloutTesis">
+                            <div class="col">                          
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
+                            <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
+                            <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
+                            <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
+                            </div>     
+                        </div>
+                        <div class=" callout-right callout-right-primary row calloutTesis">
+                            <div class="col">                          
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
+                            <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
+                            <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
+                            <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
+                            </div>     
+                        </div>
+                         <div class=" callout-right callout-right-primary row calloutTesis">
+                            <div class="col">                          
+                            <a href="" class="text-dark" ><h5 class="text-dark"><b>Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán.</b></h5></a>
                             <span class="text-uppercase">MAESTRÍA EN AGRICULTURA SOSTENIBLE. </span><br>
                             <span class="card-text lh-sm"><small >Autor:<b>Amaya, Oscar Antonio</b> </small></span><br>
                             <span class="card-text lh-sm"><small >Publicado:<b>Martes 31 de agosto de 2021</b> </small></span>  
