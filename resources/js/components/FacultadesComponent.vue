@@ -30,6 +30,22 @@
                                 <label for="exampleFormControlTextarea1" class="form-label">Descripcion pequeña</label>
                                 <textarea v-model="facultad.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
+                            <div class="mb-3 col-sm-6" >
+                                <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
+                                <input v-model="facultad.telefonoPosgrado" class="form-control" type="text" placeholder="telefono" aria-label="Telefono">
+                            </div>
+                            <div class="mb-3 col-sm-6" >
+                                <label for="exampleFormControlTextarea1" class="form-label">Extension telefono</label>
+                                <input v-model="facultad.extPosgrado" class="form-control" type="text" placeholder="Extensiones" aria-label="Extension">
+                            </div>
+                            <div class="mb-3 col-sm-6" >
+                                <label for="exampleFormControlTextarea1" class="form-label">Correo Posgrado</label>
+                                <input v-model="facultad.correoPosgrado" class="form-control" type="email" placeholder="Nombre" aria-label="Correo">
+                            </div>
+                             <div class="mb-3 col-sm-6" >
+                                <label for="exampleColorInput" class="form-label">Color Facultad</label>
+                                <input type="color" class="form-control form-control-color" id="exampleColorInput" v-model="facultad.color" title="Choose your color">
+                            </div>
                         </div>
                         <button @click="save();" type="button" class="btn btn-success">Guardar</button>
                     </form>                 
@@ -47,6 +63,9 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Facultad de {{facultad.nombre}}</h5>
                         <p class="card-text ">{{facultad.descripcion}}</p>
+                        <p v-bind:style="{color: facultad.color } "> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-palette-fill" viewBox="0 0 16 16">
+                            <path d="M12.433 10.07C14.133 10.585 16 11.15 16 8a8 8 0 1 0-8 8c1.996 0 1.826-1.504 1.649-3.08-.124-1.101-.252-2.237.351-2.92.465-.527 1.42-.237 2.433.07zM8 5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm4.5 3a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm.5 6.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg></p>
                     <div class="position-relative bottom-0 start-50 translate-middle-x mb-1 ">
                         <button type="button"  @click="update=true; openModal(facultad);" class="btn btn-info">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
@@ -77,6 +96,10 @@ export default {
                 id:0,
                 urlImagen: null,
                 nombre: '',
+                telefonoPosgrado: '',
+                extPosgrado: '',
+                correoPosgrado: '',
+                color: '',
                 descripcion: '',
             },
             update:true,
@@ -121,8 +144,6 @@ export default {
                     }
                     //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/facultad_api/'+this.id, fields).then(response=>{console.log(response.data)})
-                    this.imagenMiniatura = '';
-                    this.facultad.urlImagen = '';
                 }
                 catch(error)
                 {
@@ -145,17 +166,13 @@ export default {
                         
                     }
                     //.then(response=>{console.log(response.data)})
-                    const res = await axios.post('/dashboard/facultad_api', fields);
-                    this.imagenMiniatura = '';
-                    this.facultad.urlImagen = '';
+                    const res = await axios.post('/dashboard/facultad_api', fields).then(response=>{console.log(response.data)});
                 }
                 catch(error)
                 {
                     if(error.response.data)
                     {
-                        
                         this.errores = error.response.data.errors;
-
                     }
                 }
             }
@@ -169,9 +186,12 @@ export default {
                 this.titleModal = "Modificar Facultad";
                 this.id=data.id;
                 this.facultad.id = data.id;
-                //this.facultad.id=data.id;
                 this.facultad.urlImagen = data.urlImagen;
                 this.facultad.nombre = data.nombre;
+                this.facultad.telefonoPosgrado= data.telefonoPosgrado,
+                this.facultad.extPosgrado= data.extPosgrado,
+                this.facultad.correoPosgrado= data.correoPosgrado,
+                this.facultad.color= data.color,
                 this.facultad.descripcion = data.descripcion;
             }
             else
@@ -180,6 +200,10 @@ export default {
                 this.titleModal = "Agregar Facultad";
                 this.facultad.urlImagen = '';
                 this.facultad.nombre = '';
+                this.facultad.telefonoPosgrado= '',
+                this.facultad.extPosgrado= '',
+                this.facultad.correoPosgrado= '',
+                this.facultad.color= '',
                 this.facultad.descripcion = '';
             }
         },
@@ -221,4 +245,5 @@ export default {
     display: list-item;
     opacity: 1;
 }
+
 </style>

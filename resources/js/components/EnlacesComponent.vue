@@ -27,10 +27,6 @@
                                 <input v-model="enlace.titulo" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
                             </div>
                             <div class="mb-3 col-sm-12">
-                                <label for="exampleFormControlTextarea1" class="form-label">Descripcion pequeña</label>
-                                <textarea v-model="enlace.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="mb-3 col-sm-12">
                                 <label for="exampleFormControlTextarea1" class="form-label">Enlace</label>
                                 <textarea v-model="enlace.link" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
@@ -50,7 +46,7 @@
                     <img :src="enlace.urlImagen" class="card-img-top h-50" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Titulo: {{enlace.titulo}}</h5>
-                        <p class="card-text">{{enlace.descripcion}}</p>
+                        
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><a target="_blank" :href="enlace.link" class="card-link">Ir al enlace:</a></li>
@@ -81,7 +77,6 @@ export default {
                 id:0,
                 urlImagen: null,
                 titulo: '',
-                descripcion: '',
                 link: '',
             },
             update:true,
@@ -126,8 +121,6 @@ export default {
                     }
                     //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/enlaces_api/'+this.id, fields).then(response=>{console.log(response.data)})
-                    this.imagenMiniatura = '';
-                    this.enlace.urlImagen = '';
                 }
                 catch(error)
                 {
@@ -151,8 +144,6 @@ export default {
                     }
                     //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/enlaces_api', fields);
-                    this.imagenMiniatura = '';
-                    this.enlace.urlImagen = '';
                 }
                 catch(error)
                 {
@@ -177,7 +168,6 @@ export default {
                 //this.facultad.id=data.id;
                 this.enlace.urlImagen = data.urlImagen;
                 this.enlace.titulo = data.titulo;
-                this.enlace.descripcion = data.descripcion;
                 this.enlace.link = data.link;
             }
             else
@@ -186,7 +176,6 @@ export default {
                 this.titleModal = "Agregar Enlace";
                 this.enlace.urlImagen = '';
                 this.enlace.titulo ='';
-                this.enlace.descripcion = '';
                 this.enlace.link = '';
             }
         },
@@ -218,7 +207,6 @@ export default {
         {
             return this.imagenMiniatura;
         },
-
     }
 }
 </script>

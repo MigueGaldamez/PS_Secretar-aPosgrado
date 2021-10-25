@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiplomadoController;
 use App\Http\Controllers\UniversidadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +11,10 @@ use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\ValoresController;
 use App\Http\Controllers\FacultadesController;
 use App\Http\Controllers\EnlaceController;
-
+use App\Http\Controllers\ModalidadesController;
+use App\Http\Controllers\PosgradoController;
+use App\Http\Controllers\TipoDuracionController;
+use App\Http\Controllers\TipoProgramaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +51,24 @@ Route::view('dashboard/facultades', 'facultades.index')->name('Facultades');
 Route::view('dashboard/enlaces', 'enlaces.index')->name('Enlaces');
 Route::apiResource('dashboard/enlaces_api', EnlaceController::class)->except(['update','show']);
 Route::post('dashboard/enlaces_api/{enlaces_api}', [EnlaceController::class,'update']);
+//Diplomados
+Route::view('dashboard/diplomados', 'diplomados.index')->name('Diplomados');
+Route::apiResource('dashboard/diplomados_api', DiplomadoController::class)->except(['show']);
+//posgrados
+Route::view('dashboard/posgrados', 'posgrados.index')->name('Posgrados');
+Route::apiResource('dashboard/posgrados_api', PosgradoController::class)->except(['show','update']);
+Route::post('dashboard/posgrados_api/{posgrados_api}', [PosgradoController::class,'update']);
+                        //mantenimientos de tablas opciones
+//modalidad
+Route::view('dashboard/modalidades', 'modalidades.index')->name('Modalidades');
+Route::apiResource('dashboard/modalidades_api', ModalidadesController::class)->except(['show']);
+//tipo duracion
+Route::view('dashboard/tipo_duracions', 'tipoDuracion.index')->name('TipoDuracions');
+Route::apiResource('dashboard/tipo_duracions_api', TipoDuracionController::class)->except(['show']);
+//tipo programa
+Route::view('dashboard/tipo_programas', 'tipoPrograma.index')->name('TipoProgramas');
+Route::apiResource('dashboard/tipo_programas_api', TipoProgramaController::class)->except(['show']);
+                        //fin de tablas de opciones
 
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
 Route::get('/ofertaFacultad', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');

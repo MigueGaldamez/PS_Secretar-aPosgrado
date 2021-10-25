@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEnlacesTable extends Migration
+class CreateModalidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateEnlacesTable extends Migration
      */
     public function up()
     {
-        Schema::create('enlaces', function (Blueprint $table) {
+        Schema::create('modalidades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('urlImagen');
-            $table->string('titulo');
-            $table->tinyText('link')->nullable($value = false);
+            $table->string('nombre')->nullable($value=false);
+            $table->enum('color', ['Azul', 'Verde','Rojo', 'Amarillo','Gris'])->nullable($value = false);
+            
         });
     }
 
@@ -28,6 +28,6 @@ class CreateEnlacesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enlaces');
+        Schema::dropIfExists('modalidades');
     }
 }
