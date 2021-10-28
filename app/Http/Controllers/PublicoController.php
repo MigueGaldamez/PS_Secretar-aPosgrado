@@ -49,9 +49,12 @@ class PublicoController extends Controller
     public function diplomados(){
         return view('publico.diplomados');
     } 
+    public function galeria(){
+        return view('publico.galeria');
+    } 
     public function tesisPosgrados(){
         $facultades = Facultades::all();
-        return view('publico.tesisPosgrados',compact('facultades'));
+        return view('publico.tesisPosgrados');
     }
     
 }
