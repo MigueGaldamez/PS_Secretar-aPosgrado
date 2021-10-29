@@ -4,7 +4,7 @@
 
 @include('publico.cabecera',['titulo' => 'Investigaciones','descripcion'=>''])
 
-<div class="container">
+<div class="container mb-4">
     <div class="row">
         <div class="col">
             <img src="{{asset('img/enlaces/uno.jpg')}}"  alt="..." class="bannerLink">
@@ -32,6 +32,12 @@
             {{--Fin buscar--}}
         </div>
     </div>
+</div>
+
+    <opciones-Facultades>
+    </opciones-Facultades>
+  
+<div class="container">  
     <div class="row my-4">
         <div class="card-containerR mb-4">
             <div class="float-layoutR">

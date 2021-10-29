@@ -24,8 +24,8 @@
     </div> 
 </div>
 <div class="container px-0 col-9">
-    <div class="row negativoBanner">          
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('oferta')}}">
+    <div class="row negativoBanner ">          
+            <a class="col col-lg-3 col-md-6 col-sm-12 col-12 btn card button-container h-100" href="{{route('oferta')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                          <div class="col-4">
@@ -37,19 +37,20 @@
                     </div>         
                 </div>
             </a>
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('investigaciones')}}">
-                <div class="card-body py-0 px-0">
+     
+             <a class="col col-lg-3 col-md-6 col-sm-12 col-12 btn card button-container h-100" href="{{route('oferta')}}">
+                <div class="card-body py-0 px-1">
                     <div class="row">
-                        <div class="col-2">
-                              <img src="{{asset('img/iconos/research.png')}}" class="imagenIconoIni">
+                        <div class="col-4">
+                            <img src="{{asset('img/iconos/research.png')}}" class="imagenIconoIni">
                         </div>
-                        <div class="col-10">
-                             <h4 class="py-auto text-start text-uppercase textoDuro3 text"><b>Investigaciones</b></h4>
+                        <div class="col-8">
+                             <h4 class="text-start text-uppercase textoDuro3"><b>Investigaciones</b></h4>
                         </div>
                     </div>         
                 </div>
             </a>
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('oferta')}}">
+            <a class="col col-lg-3 col-md-6 col-sm-12 col-12 btn card button-container h-100" href="{{route('oferta')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                         <div class="col-4">
@@ -61,7 +62,7 @@
                     </div>         
                 </div>
             </a>
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container" href="{{route('oferta')}}">
+            <a class="col col-lg-3 col-md-6 col-sm-12 col-12 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                         <div class="col-4">

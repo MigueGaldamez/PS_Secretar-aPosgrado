@@ -7177,192 +7177,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradoFacultad.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      facultad: {
-        id: 0,
-        urlImagen: null,
-        nombre: '',
-        descripcion: ''
-      },
-      facultades: [],
-      id: 0,
-      imagenMiniatura: '',
-      mostrar: false
-    };
-  },
-  methods: {
-    list: function list() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/dashboard/facultad_api');
-
-              case 3:
-                res = _context.sent;
-                _this.facultades = res.data;
-                _context.next = 10;
-                break;
-
-              case 7:
-                _context.prev = 7;
-                _context.t0 = _context["catch"](0);
-
-                if (_context.t0.response.data) {
-                  _this.errores = _context.t0.response.data.errors;
-                }
-
-              case 10:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 7]]);
-      }))();
-    },
-    mostrarFacultad: function mostrarFacultad() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.id = data.id;
-      this.facultad.nombre = data.nombre;
-    }
-  },
-  created: function created() {
-    this.list();
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradosComponent.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradosComponent.vue?vue&type=script&lang=js& ***!
@@ -7829,6 +7643,352 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     imagen: function imagen() {
       return this.imagenMiniatura;
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      facultad: {
+        id: 0,
+        urlImagen: null,
+        nombre: '',
+        descripcion: ''
+      },
+      posgrado: {
+        id: 0,
+        nombre: ''
+      },
+      facultades: [],
+      id: 0,
+      imagenMiniatura: '',
+      mostrar: false
+    };
+  },
+  methods: {
+    list: function list() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.get('/dashboard/facultad_api');
+
+              case 3:
+                res = _context.sent;
+                _this.facultades = res.data;
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.response.data) {
+                  _this.errores = _context.t0.response.data.errors;
+                }
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    mostrarFacultad: function mostrarFacultad() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.id = data.id;
+      this.facultad.nombre = data.nombre;
+    }
+  },
+  created: function created() {
+    this.list();
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      facultad: {
+        id: 0,
+        urlImagen: null,
+        nombre: '',
+        descripcion: ''
+      },
+      posgrado: {
+        id: 0,
+        nombre: ''
+      },
+      facultades: [],
+      id: 0,
+      imagenMiniatura: '',
+      mostrar: false
+    };
+  },
+  methods: {
+    list: function list() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.get('/dashboard/facultad_api');
+
+              case 3:
+                res = _context.sent;
+                _this.facultades = res.data;
+                _context.next = 10;
+                break;
+
+              case 7:
+                _context.prev = 7;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.response.data) {
+                  _this.errores = _context.t0.response.data.errors;
+                }
+
+              case 10:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 7]]);
+      }))();
+    },
+    mostrarFacultad: function mostrarFacultad() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.id = data.id;
+      this.posgrado.nombre = data.nombre;
+    }
+  },
+  created: function created() {
+    this.list();
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
   }
 });
 
@@ -8552,7 +8712,8 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.component('example-component', __webpac
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('informacion-component', __webpack_require__(/*! ./components/InformacionComponent.vue */ "./resources/js/components/InformacionComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('facultades-component', __webpack_require__(/*! ./components/FacultadesComponent.vue */ "./resources/js/components/FacultadesComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('enlaces-component', __webpack_require__(/*! ./components/EnlacesComponent.vue */ "./resources/js/components/EnlacesComponent.vue").default);
-vue__WEBPACK_IMPORTED_MODULE_2__.default.component('posgradoFacultad', __webpack_require__(/*! ./components/PosgradoFacultad.vue */ "./resources/js/components/PosgradoFacultad.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component('posgradoFacultad', __webpack_require__(/*! ./components/Publico/PosgradoFacultad.vue */ "./resources/js/components/Publico/PosgradoFacultad.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component('opcionesFacultades', __webpack_require__(/*! ./components/Publico/OpcionesFacultades.vue */ "./resources/js/components/Publico/OpcionesFacultades.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('modalidades-component', __webpack_require__(/*! ./components/ModalidadesComponent.vue */ "./resources/js/components/ModalidadesComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('tipo-duracions-component', __webpack_require__(/*! ./components/TipoDuracionsComponent.vue */ "./resources/js/components/TipoDuracionsComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('tipo-programas-component', __webpack_require__(/*! ./components/TipoProgramasComponent.vue */ "./resources/js/components/TipoProgramasComponent.vue").default);
@@ -46436,45 +46597,6 @@ component.options.__file = "resources/js/components/ModalidadesComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/PosgradoFacultad.vue":
-/*!******************************************************!*\
-  !*** ./resources/js/components/PosgradoFacultad.vue ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _PosgradoFacultad_vue_vue_type_template_id_3ad07ea0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=template&id=3ad07ea0& */ "./resources/js/components/PosgradoFacultad.vue?vue&type=template&id=3ad07ea0&");
-/* harmony import */ var _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./resources/js/components/PosgradoFacultad.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _PosgradoFacultad_vue_vue_type_template_id_3ad07ea0___WEBPACK_IMPORTED_MODULE_0__.render,
-  _PosgradoFacultad_vue_vue_type_template_id_3ad07ea0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/PosgradoFacultad.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/PosgradosComponent.vue":
 /*!********************************************************!*\
   !*** ./resources/js/components/PosgradosComponent.vue ***!
@@ -46512,6 +46634,84 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/PosgradosComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Publico/OpcionesFacultades.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Publico/OpcionesFacultades.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OpcionesFacultades.vue?vue&type=template&id=6b84a58e& */ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&");
+/* harmony import */ var _OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OpcionesFacultades.vue?vue&type=script&lang=js& */ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Publico/OpcionesFacultades.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/Publico/PosgradoFacultad.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Publico/PosgradoFacultad.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=template&id=f92b05ce& */ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&");
+/* harmony import */ var _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/Publico/PosgradoFacultad.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -46694,22 +46894,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/PosgradoFacultad.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/components/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradoFacultad.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
 /***/ "./resources/js/components/PosgradosComponent.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************!*\
   !*** ./resources/js/components/PosgradosComponent.vue?vue&type=script&lang=js& ***!
@@ -46723,6 +46907,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradosComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradosComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradosComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OpcionesFacultades.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -46964,23 +47180,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/PosgradoFacultad.vue?vue&type=template&id=3ad07ea0&":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/components/PosgradoFacultad.vue?vue&type=template&id=3ad07ea0& ***!
-  \*************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_3ad07ea0___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_3ad07ea0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_3ad07ea0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=template&id=3ad07ea0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradoFacultad.vue?vue&type=template&id=3ad07ea0&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/PosgradosComponent.vue?vue&type=template&id=34cd6c7c&":
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/PosgradosComponent.vue?vue&type=template&id=34cd6c7c& ***!
@@ -46994,6 +47193,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradosComponent_vue_vue_type_template_id_34cd6c7c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradosComponent_vue_vue_type_template_id_34cd6c7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradosComponent.vue?vue&type=template&id=34cd6c7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradosComponent.vue?vue&type=template&id=34cd6c7c&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e& ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OpcionesFacultades.vue?vue&type=template&id=6b84a58e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=template&id=f92b05ce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&");
 
 
 /***/ }),
@@ -49696,434 +49929,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradoFacultad.vue?vue&type=template&id=3ad07ea0&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradoFacultad.vue?vue&type=template&id=3ad07ea0& ***!
-  \****************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row  mt-4" },
-        _vm._l(_vm.facultades, function(facultad) {
-          return _c(
-            "div",
-            { key: facultad.id, staticClass: "col col-lg-3 col-sm-6 py-1" },
-            [
-              _c(
-                "div",
-                {
-                  staticClass: "card",
-                  on: {
-                    click: function($event) {
-                      _vm.mostrar = true
-                      _vm.mostrarFacultad(facultad)
-                    }
-                  }
-                },
-                [
-                  _c("div", { staticClass: "card-body" }, [
-                    _c("h5", { staticClass: "card-title" }, [
-                      _vm._v(_vm._s(facultad.nombre))
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "titulohr mb-4" })
-                  ])
-                ]
-              )
-            ]
-          )
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _vm.mostrar
-      ? _c("div", [
-          _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
-            _c("h3", { staticClass: "text-light text-center" }, [
-              _c("span", { staticClass: "textoSuavecito" }, [
-                _vm._v("Tesis de Posgrados de la "),
-                _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(0)
-        ])
-      : _c("div", { staticClass: "mb-4" }, [_vm._m(1)])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "card-containerR mb-4" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
-      _c("h3", { staticClass: "text-light text-center" }, [
-        _c("span", { staticClass: "textoSuavecito" }, [
-          _vm._v("No ha seleccionado ninguna Facultad")
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradosComponent.vue?vue&type=template&id=34cd6c7c&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/PosgradosComponent.vue?vue&type=template&id=34cd6c7c& ***!
@@ -50820,6 +50625,616 @@ var render = function() {
   )
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "text-center" }, [
+    _c("div", { staticClass: "mx-auto", attrs: { id: "wrapper-fac" } }, [
+      _c("div", { attrs: { id: "carousel-fac" } }, [
+        _c(
+          "div",
+          { attrs: { id: "content-fac" } },
+          [
+            _vm._l(_vm.facultades, function(facultad) {
+              return _c(
+                "div",
+                {
+                  key: facultad.id,
+                  staticClass: "item-fac card-body",
+                  on: {
+                    click: function($event) {
+                      _vm.mostrar = true
+                      _vm.mostrarFacultad(facultad)
+                    }
+                  }
+                },
+                [
+                  _c("h4", { staticClass: "textoSuavecito" }, [
+                    _vm._v(" " + _vm._s(facultad.nombre))
+                  ])
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.facultades, function(facultad) {
+              return _c(
+                "div",
+                { key: facultad.id, staticClass: "item-fac card-body" },
+                [
+                  _c("h4", { staticClass: "textoSuavecito" }, [
+                    _vm._v(" " + _vm._s(facultad.nombre))
+                  ])
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.facultades, function(facultad) {
+              return _c(
+                "div",
+                { key: facultad.id, staticClass: "item-fac card-body" },
+                [
+                  _c("h4", { staticClass: "textoSuavecito" }, [
+                    _vm._v(" " + _vm._s(facultad.nombre))
+                  ])
+                ]
+              )
+            }),
+            _vm._v(" "),
+            _vm._l(_vm.facultades, function(facultad) {
+              return _c(
+                "div",
+                { key: facultad.id, staticClass: "item-fac card-body" },
+                [
+                  _c("h4", { staticClass: "textoSuavecito" }, [
+                    _vm._v(" " + _vm._s(facultad.nombre))
+                  ])
+                ]
+              )
+            })
+          ],
+          2
+        )
+      ]),
+      _vm._v(" "),
+      _c("button", { attrs: { id: "prev-fac" } }, [
+        _c(
+          "svg",
+          {
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "24",
+              height: "24",
+              viewBox: "0 0 24 24"
+            }
+          },
+          [
+            _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+            _vm._v(" "),
+            _c("path", {
+              attrs: {
+                d: "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
+              }
+            })
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("button", { attrs: { id: "next-fac" } }, [
+        _c(
+          "svg",
+          {
+            attrs: {
+              xmlns: "http://www.w3.org/2000/svg",
+              width: "24",
+              height: "24",
+              viewBox: "0 0 24 24"
+            }
+          },
+          [
+            _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+            _vm._v(" "),
+            _c("path", {
+              attrs: {
+                d: "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+              }
+            })
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "colorGris mt-4 py-2" }, [
+      _c("h3", { staticClass: "textoSuavecito text-light" }, [
+        _vm._v("Investigaciones en curso de " + _vm._s(_vm.facultad.nombre))
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row  mt-4" }, [
+        _c(
+          "div",
+          { staticClass: "accordion", attrs: { id: "accordionExample" } },
+          _vm._l(_vm.facultades, function(facultad) {
+            return _c(
+              "div",
+              { key: facultad.id, staticClass: "accordion-item nolist" },
+              [
+                _c("h2", { staticClass: "accordion-header" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn accordion-boton",
+                      attrs: {
+                        type: "button",
+                        "data-bs-toggle": "collapse",
+                        "data-bs-target": "#coll-" + facultad.id,
+                        "aria-expanded": "false",
+                        "aria-controls": "coll-" + facultad.id
+                      }
+                    },
+                    [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "accordion-collapse collapse show",
+                    attrs: {
+                      id: "coll-" + facultad.id,
+                      "aria-labelledby": "headingOne",
+                      "data-bs-parent": "#accordionExample"
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "accordion-body row" },
+                      _vm._l(facultad.posgrados, function(posgrado) {
+                        return _c(
+                          "div",
+                          { key: posgrado.id, staticClass: "col col-6" },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-link",
+                                on: {
+                                  click: function($event) {
+                                    _vm.mostrar = true
+                                    _vm.mostrarFacultad(posgrado)
+                                  }
+                                }
+                              },
+                              [_vm._v(_vm._s(posgrado.nombre))]
+                            )
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm.mostrar
+      ? _c("div", [
+          _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
+            _c("h3", { staticClass: "text-light text-center" }, [
+              _c("span", { staticClass: "textoSuavecito" }, [
+                _vm._v("Tesis de Posgrados de la "),
+                _c("b", [_vm._v(_vm._s(_vm.posgrado.nombre))])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      : _c("div", { staticClass: "mb-4" }, [_vm._m(1)])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "card-containerR mb-4" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                " callout-right callout-right-primary row calloutTesis"
+            },
+            [
+              _c("div", { staticClass: "col" }, [
+                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
+                  _c("h5", { staticClass: "text-dark" }, [
+                    _c("b", [
+                      _vm._v(
+                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
+                      )
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-uppercase" }, [
+                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Autor:"),
+                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
+                  ])
+                ]),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text lh-sm" }, [
+                  _c("small", [
+                    _vm._v("Publicado:"),
+                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+                  ])
+                ])
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
+      _c("h3", { staticClass: "text-light text-center" }, [
+        _c("span", { staticClass: "textoSuavecito" }, [
+          _vm._v("No ha seleccionado ninguna Facultad")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

@@ -92,6 +92,7 @@ Route::get('/educacionContinua', [App\Http\Controllers\PublicoController::class,
 Route::get('/educacionContinua/{id}', [App\Http\Controllers\PublicoController::class, 'educacionContinuaFacultad'])->name('eduacioncontinua.facultad');
 Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
 Route::get('/catalogo', [App\Http\Controllers\PublicoController::class, 'catalogo'])->name('catalogo');
+Route::get('/galeria', [App\Http\Controllers\PublicoController::class, 'galeria'])->name('galeria');
 
 Auth::routes();
 
