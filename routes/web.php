@@ -11,21 +11,16 @@ use App\Http\Controllers\InformacionController;
 use App\Http\Controllers\ValoresController;
 use App\Http\Controllers\FacultadesController;
 use App\Http\Controllers\EnlaceController;
+use App\Http\Controllers\EquipoTrabajoController;
 use App\Http\Controllers\ModalidadesController;
 use App\Http\Controllers\PosgradoController;
 use App\Http\Controllers\TipoDuracionController;
 use App\Http\Controllers\TipoProgramaController;
+use App\Http\Controllers\ReseniaHistoricaController;
+use App\Http\Controllers\NoticiaController;
+use App\Models\EquipoTrabajo;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 /*
             [Ruta en el navegador]          [Controlador,               metodo]     [nombre]
@@ -68,7 +63,16 @@ Route::apiResource('dashboard/tipo_duracions_api', TipoDuracionController::class
 //tipo programa
 Route::view('dashboard/tipo_programas', 'tipoPrograma.index')->name('TipoProgramas');
 Route::apiResource('dashboard/tipo_programas_api', TipoProgramaController::class)->except(['show']);
-                        //fin de tablas de opciones
+//Equipo trabajo
+Route::view('dashboard/equipo_trabajo', 'equipoTrabajo.index')->name('EquipoTrabajo');
+Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class);
+//Resenias Historicas
+Route::view('dashboard/resenia_historica', 'reseniaHistorica.index')->name('ReseniaHistorica');
+Route::apiResource('dashboard/reseniaHistorica', ReseniaHistoricaController::class);
+//Noticias
+Route::view('dashboard/noticias', 'noticias.index')->name('NoticiasGestion');
+Route::apiResource('dashboard/noticia', NoticiaController::class);
+//fin de tablas de opciones
 
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
 Route::get('/ofertaFacultad', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
