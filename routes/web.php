@@ -18,6 +18,7 @@ use App\Http\Controllers\TipoDuracionController;
 use App\Http\Controllers\TipoProgramaController;
 use App\Http\Controllers\ReseniaHistoricaController;
 use App\Http\Controllers\NoticiaController;
+use App\Http\Controllers\TesiController;
 use App\Models\EquipoTrabajo;
 
 
@@ -53,6 +54,9 @@ Route::apiResource('dashboard/diplomados_api', DiplomadoController::class)->exce
 Route::view('dashboard/posgrados', 'posgrados.index')->name('Posgrados');
 Route::apiResource('dashboard/posgrados_api', PosgradoController::class)->except(['show','update']);
 Route::post('dashboard/posgrados_api/{posgrados_api}', [PosgradoController::class,'update']);
+//tesis
+Route::view('dashboard/tesis', 'tesis.index')->name('Tesis');
+Route::apiResource('dashboard/tesis_api', TesiController::class)->except(['show']);
                         //mantenimientos de tablas opciones
 //modalidad
 Route::view('dashboard/modalidades', 'modalidades.index')->name('Modalidades');
@@ -63,6 +67,7 @@ Route::apiResource('dashboard/tipo_duracions_api', TipoDuracionController::class
 //tipo programa
 Route::view('dashboard/tipo_programas', 'tipoPrograma.index')->name('TipoProgramas');
 Route::apiResource('dashboard/tipo_programas_api', TipoProgramaController::class)->except(['show']);
+                        //FIN mantenimientos de tablas opciones
 //Equipo trabajo
 Route::view('dashboard/equipo_trabajo', 'equipoTrabajo.index')->name('EquipoTrabajo');
 Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class);
