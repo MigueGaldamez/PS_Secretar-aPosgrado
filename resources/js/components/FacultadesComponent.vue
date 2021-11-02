@@ -17,7 +17,7 @@
                         <div class="row">
                             <div class="mb-3 col-sm-6">
                                 <label for="formFile" class="form-label">Logo de la Facultad</label>
-                                <input accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
                             </div>
                             <div class="mb-3 col-sm-6">
                                 <img :src="imagen" class="img-thumbnail" alt="...">
@@ -208,6 +208,8 @@ export default {
             }
         },
         closeModal() {
+            this.$refs.urlImg.value=null;
+            this.imagenMiniatura='';
             this.modal=0
         },
         obtenerImagen(e)
