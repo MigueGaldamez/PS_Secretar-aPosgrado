@@ -5,8 +5,8 @@
 @include('publico.cabecera',['titulo' => 'Diplomados','descripcion'=>'de la Universidad de El Salvador'])
 
 <div class="bg-dark text-center py-4 mt-4">
-    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Titulo Información</h1>
-    <h5 class="text-light textoSuavecito">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </h5>
+    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Programas de Educación Continua UES</h1>
+    <h5 class="text-light textoSuavecito">Descripcion de la funcion de esta pagina y como usarla. </h5>
 </div>
 <div class="container mt-4 mb-4">
     
@@ -71,7 +71,7 @@
                 <tr>
                 
                 <td>Curso de Posgrado en Farmacovigilancia</td>
-                <td>Thornton</td>
+                <td>300 horas</td>
                  <td><span class="badge bg-warning text-dark">Semipresencial</span></td>
                 </tr>
                 <tr>

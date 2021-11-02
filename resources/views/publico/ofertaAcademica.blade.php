@@ -14,7 +14,7 @@
                 <button type="button" class=" btn btn-danger mt-1 text-light text-start ms-4">Ver más</button>
             </div>
             <div class="col-4 offset-2 ">
-                <img src="{{asset('img/quimicaRedondo.png')}}"  class="img-fluid" max-width="300">
+                <img src="{{asset('img/capauno.png')}}"  class="img-fluid" max-width="300">
             </div>
         </div>
     </div>

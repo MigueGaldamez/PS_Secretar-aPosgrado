@@ -5,15 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" href="{{asset('img/favico/favicon.ico')}}">
     <title>Secretaría Posgrado | {{$subtitulo}}</title>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
+      
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+ <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.css'>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+ 
+     <!-- Scripts -->
+     
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.8.4/swiper-bundle.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+     <script src="{{ asset('js/mainFront.js') }}" defer></script>
+    
 </head>
 <body>
     <div id="app">
@@ -55,58 +65,53 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>       
-            
-                
-               
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{--Nav de hamburguesa--}}
+                <div class="collapse navbar-collapse  nolist " id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                       
                     </ul>
                     @if(request()->routeIs('inicio'))
-                    <ul class="navbar-nav mx-auto">
                         <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                       
-                        <li class="nav-item ">
-                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                Sobre Nosotros
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
-                                <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('noticias') ? 'activoNav' : '' }}" href="{{ route('noticias') }}">Noticias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light elementoNav  {{ request()->routeIs('investigaciones') ? 'activoNav' : '' }}" href="{{ route('investigaciones') }}">Investigaciones</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
-                        </li>
-                    </ul>
-                    </ul>
+                            <!-- Authentication Links -->
+                        
+                            <li class="nav-item  nolist">
+                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                    Sobre Nosotros
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
+                                    <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('noticias') ? 'activoNav' : '' }}" href="{{ route('noticias') }}">Noticias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase text-light elementoNav  {{ request()->routeIs('investigaciones') ? 'activoNav' : '' }}" href="{{ route('investigaciones') }}">Investigaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
+                            </li>
+                        </ul>
                     @endif   
                     <!-- Right Side Of Navbar -->
                      @if(!request()->routeIs('inicio'))
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                        
-                        <li class="nav-item ">
+                        <li class="nav-item  nolist">
                             <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
                         </li>
                         <li class="nav-item ">
@@ -120,7 +125,7 @@
                                 <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
                                 <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
+                                <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -138,6 +143,7 @@
                     </ul>
                     @endif  
                 </div>
+               
             </div>
         </nav>
 

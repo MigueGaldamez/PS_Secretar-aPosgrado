@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" href="{{asset('img/favico/favicon.ico')}}">
+    <title>Secretaria Posgrado | {{@$titulo}}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
       <script src="{{ asset('js/mainBack.js') }}" defer></script>
@@ -49,6 +50,22 @@
                         Enlaces
                         </a>
                     </li>
+                     <li>
+                        <a href="{{route('EquipoTrabajo')}}" class="nav-link text-white {{ request()->routeIs('EquipoTrabajo') ? 'active' : '' }}" >
+                       Equipo de Trabajo
+                        </a>
+                    </li>
+                      <li>
+                        <a href="{{route('ReseniaHistorica')}}" class="nav-link text-white {{ request()->routeIs('ReseniaHistorica') ? 'active' : '' }}" >
+                       Reseña Historica
+                        </a>
+                    </li>
+                       <li>
+                        <a href="{{route('NoticiasGestion')}}" class="nav-link text-white {{ request()->routeIs('NoticiasGestion') ? 'active' : '' }}" >
+                         Noticias Gestión
+                        </a>
+                    </li>
+                   
                 </ul>
 
                   <hr>

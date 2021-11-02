@@ -25,7 +25,7 @@
 <div class="container mt-3 colorSuave">
     
     <div class="accordion" id="accordionExample">
-        <div class="accordion-item">
+        <div class="accordion-item nolist">
             <h2 class="accordion-header">
                 <button class="btn accordion-boton collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     <b>¿Primera pregunta?</b>
@@ -37,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item nolist">
             <h2 class="accordion-header" id="headingTwo">
             <button class="btn accordion-boton collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                <b>¿Segunda pregunta?</b>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="accordion-item">
+        <div class="accordion-item nolist">
             <h2 class="accordion-header" id="headingThree">
             <button class="btn accordion-boton collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <b>¿Tercera pregunta?</b>

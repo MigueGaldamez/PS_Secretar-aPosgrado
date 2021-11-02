@@ -12,7 +12,7 @@ class FacultadesController extends Controller
     
     public function index()
     {
-        return Facultades::get();
+        return Facultades::with('posgrados')->get();
     }
     public function store(Request $request)
     {

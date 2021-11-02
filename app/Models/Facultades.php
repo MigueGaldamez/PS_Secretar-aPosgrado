@@ -10,6 +10,7 @@ class Facultades extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $primaryKey = 'id';
     protected $fillable = [
         'urlImagen',
         'nombre',
@@ -19,12 +20,13 @@ class Facultades extends Model
         'color',
         'descripcion',
     ];
+    
     public function diplomados()
     {
-        return $this->hasMany(Diplomado::class);
+        return $this->hasMany(Diplomado::class,'facultad_id','id');
     }
     public function posgrados()
     {
-        return $this->hasMany(Posgrado::class);
+        return $this->hasMany(Posgrado::class,'facultad_id','id');
     }
 }
