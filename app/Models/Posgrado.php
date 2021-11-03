@@ -27,4 +27,8 @@ class Posgrado extends Model
     {
         return $this->belongsTo(TipoPrograma::class);
     }
+    public function tesis()
+    {
+        return $this->hasMany(Tesi::class);
+    }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.frontend',['subtitulo' => 'Reseña'])
 
 @section('content')
-@include('publico.cabecera2',['titulo' => 'Reseña Historica','descripcion'=>''])
+@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'y la Universidad de El Salvador'])
 
 <div class="colorGris mt-2">
     <div class="container-fluid col-11" >
@@ -48,7 +48,8 @@
    
     </div>
 </div>
-<div class="container col-12 mt-4 mb-4">
+
+  <div class="container col-12 mt-4 mb-4">
          {{--inicio cards--}}
         <div class="row">
             <div class="col historia">
@@ -60,12 +61,7 @@
                     Por decreto de la Asamblea Legislativa la UES, se creó el 16 de febrero
                     de 1841; más tarde en <b>1843</b> inició sus actividades impartiendo
                     matemáticas puras, lógica, moral, metafísica y física general.
-                    En 1880, por resolución del Poder Ejecutivo se subdividió en
-                    Facultades, algunas de las cuales desaparecieron tiempo después y
-                    otras nuevas fueron creadas.
-                    En mayo de 1937, por solicitud de las autoridades universitarias, el
-                    Gobierno de la República formaliza la compraventa de 20 manzanas
-                    de terreno de la finca San Carlos, ubicada al norte de la ciudad de San
+                  
 
                    </p>
             </div>
@@ -82,55 +78,31 @@
         
 </div>
 {{--INICIO--}}
+<div class="parallax my-4" style="background-image: linear-gradient(black, black),url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Escuela_de_Filosof%C3%ADa%2C_Facultad_de_Ciencias_y_Humanidades_%28UES%29.jpg/1200px-Escuela_de_Filosof%C3%ADa%2C_Facultad_de_Ciencias_y_Humanidades_%28UES%29.jpg'); background-blend-mode: saturation;">
 <div class="fechas mb-4 mt-4"> 
-        
+    
    <div class="entries">
-  <div class="entry box box-down red bg-dark text-light">
-    <div class="title text-light">1843</div>
-    <div class="body text-light">
-      <p> inició sus actividades impartiendo
-                    matemáticas puras, lógica, moral, metafísica y física general.</p>
-    </div>
-  </div>
-  <div class="entry box box-down red card">
-    <div class="title big">2012</div>
-    <div class="body">
-      <p>Quo nobis cumque dolor iure voluptatem voluptatem alias soluta.</p>
-    </div>
-  </div>
-  <div class="entry card">
-    <div class="title big">2013</div>
-    <div class="body">
-      <p>Rerum sit libero possimus amet excepturi. Exercitationem enim dolores sunt praesentium dolorum praesentium.</p>
-    </div>
-  </div>
-  <div class="entry card">
-    <div class="title">2014</div>
-    <div class="body">
-      <p>Voluptatibus veniam ea reprehenderit atque. Reiciendis non laborum adipisci ipsa pariatur omnis. Sed ipsam repudiandae velit. Omnis libero nostrum aperiam nemo dolor ea eos eius. Esse a non itaque quidem.</p>
-    </div>
-  </div>
-  <div class="entry card">
-    <div class="title">2015</div>
-    <div class="body">
-      <p>VAdipisci totam omnis cum et suscipit excepturi et excepturi. Inventore sequi sit ut aliquid. Modi aut dolores dignissimos.</p>
-      <p>Delectus facere officia consequuntur molestias deserunt illo. Placeat laudantium beatae natus excepturi ab nihil voluptates.</p>
-    </div>
-  </div>
-  <div class="entry card">
-    <div class="title big">2016</div>
-    <div class="body">
-      <p>Impedit dolorem commodi explicabo fugit aut alias voluptatem. Magnam earum rerum quae dicta quibusdam aliquam ut.</p>
-    </div>
-  </div>
-  <div class="entry card">
-    <div class="title">2017</div>
-    <div class="body">
-      <p>Qui facere eos aut suscipit doloremque quos...</p>
-    </div>
+  @foreach ($resenias as $fecha)
+        @if ($fecha->importancia==1)
+          <div class="entry box box-down red bg-dark text-light">
+            <div class="title text-light">{{$fecha->anio}}</div>
+            <div class="body text-light">
+              <p> {{$fecha->descripcion}}.</p>
+            </div>
+          </div>
+        
+        @elseif ($fecha->importancia==2)
+            
+          <div class="entry box box-down red card">
+            <div class="title big">{{$fecha->anio}}</div>
+            <div class="body">
+               <p> {{$fecha->descripcion}}.</p>
+            </div>
+          </div>
+        @endif
+  @endforeach
   </div>
 </div>
-    
 </div>
 
 {{--FIN--}}

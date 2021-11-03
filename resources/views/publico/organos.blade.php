@@ -8,8 +8,8 @@
     <h3 class="text-light text-center"><span class="textoSuavecito2">Administracion que rige a la Universidad de El Salvador</span></h3>
 </div>
 <div class="container"> 
-        <div class="row">
-           <div class=" callout callout-danger col row mx-4">
+        <div class="row my-3 my-sm-3 my-lg-1 my-md-1">
+           <div class=" callout callout-danger col col-lg-auto col-md-auto col-sm-11 col-11 row mx-4 my-1  my-md-3  my-lg-4">
             <div class="col col-8 ">
             
                 <a href=""><span><b>Consejo Universitario.</b></span></a>
@@ -22,7 +22,7 @@
                 
             </div>
         </div>
-        <div class=" callout callout-danger col row mx-4">
+           <div class=" callout callout-danger col col-lg-auto col-md-auto col-sm-11 col-11 row mx-4 my-1  my-md-3  my-lg-4">
             <div class="col col-8 ">
             
                 <a href=""><span><b>Consejo Universitario.</b></span></a>
@@ -35,7 +35,8 @@
                 
             </div>
         </div>
-        <div class=" callout callout-danger col row mx-4">
+       
+         <div class=" callout callout-danger col col-lg-auto col-md-auto col-sm-11 col-11 row mx-4 my-1 my-md-3  my-lg-4">
             <div class="col col-8 ">
             
                 <a href=""><span><b>Rectoria.</b></span></a>
@@ -50,56 +51,54 @@
         </div>
     </div>
     <h2 class="textoGris"><span class="textoSuavecito2">Nuestro Equipo de Trabajo</span></h2>
-    <div class="row mb-4">
-        <div class="col col-lg-3">
-            <img class="img-fluid" src="{{asset('img/organos/IMG_6691.jpg')}}" alt="">
-        </div>
-        <div class="col col-lg-9">
-            <div class="card cardEquipo">
-                <div class="card-body px-4">
-                    <h3 class="card-title textoGris">Mcp. Evelin Patricia Gutiérrez Castro</h3>
-                    <div class="divisor"></div>
-                    <h6>Coordinadora Secretaría de Posgrado</h6>
-                    
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-                    consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    .</p>
-                    <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
-                    
+      <div class="titulohr mb-4"></div>
+    @php
+        $contador = 1;
+    @endphp
+    @foreach ($equipoTrabajo as $miembro)
+        
+        @if ($contador%2 ==0)
+             <div class="row mb-4"> 
+                <div class="col col-lg-9 col-12 col-md-9">
+                    <div class="card cardEquipo">
+                        <div class="card-body px-4">
+                            <h3 class="card-title textoGris">{{$miembro->nombre}}</h3>
+                            <div class="divisor"></div>
+                            <h6>{{$miembro->cargo}}</h6>
+                            
+                            <p class="card-text">{{$miembro->descripcion}}</p>
+                            <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-lg-3 col-12 col-md-3">
+                    <img class="img-fluid" src="{{asset('img/organos/IMG_6691.jpg')}}" alt="">
+                </div>
+                
+            </div>
+        @else
+            <div class="row mb-4">
+                <div class="col col-lg-3 col-md-3 col-12">
+                    <img class="img-fluid" src="{{asset('img/organos/IMG_6691.jpg')}}" alt="">
+                </div>
+                <div class="col col-lg-9 col-md-9 col-12">
+                    <div class="card cardEquipo">
+                        <div class="card-body px-4">
+                           <h3 class="card-title textoGris">{{$miembro->nombre}}</h3>
+                            <div class="divisor"></div>
+                           <h6>{{$miembro->cargo}}</h6>
+                            
+                            <p class="card-text">{{$miembro->descripcion}}</p>
+                            <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-    </div>
-     <div class="row mb-4">
-        
-        <div class="col col-lg-9">
-            <div class="card cardEquipo">
-                <div class="card-body px-4">
-                    <h3 class="card-title textoGris">Mcp. Evelin Patricia Gutiérrez Castro</h3>
-                    <div class="divisor"></div>
-                    <h6>Coordinadora Secretaría de Posgrado</h6>
-                    
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
-                    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
-                    consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                    .</p>
-                    <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
-                </div>
-            </div>
-        </div>
-        <div class="col col-lg-3">
-            <img class="img-fluid" src="{{asset('img/organos/IMG_6691.jpg')}}" alt="">
-        </div>
-        
-    </div>
-    
+        @endif
+        @php
+            $contador++;
+        @endphp
+    @endforeach
 </div>
 @endsection
