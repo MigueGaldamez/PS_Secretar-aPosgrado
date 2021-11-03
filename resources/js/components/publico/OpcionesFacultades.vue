@@ -8,19 +8,6 @@
                    <h4 class="textoSuavecito"> {{facultad.nombre}}</h4>
                 
                 </div>
-                <div class="item-fac card-body" v-for="facultad in facultades" :key="facultad.id">
-                   <h4 class="textoSuavecito"> {{facultad.nombre}}</h4>
-                
-                </div>
-                 <div class="item-fac card-body" v-for="facultad in facultades" :key="facultad.id">
-                   <h4 class="textoSuavecito"> {{facultad.nombre}}</h4>
-                
-                </div>
-                 <div class="item-fac card-body" v-for="facultad in facultades" :key="facultad.id">
-                   <h4 class="textoSuavecito"> {{facultad.nombre}}</h4>
-                
-                </div>
-               
             </div>
         </div>
         <button id="prev-fac">

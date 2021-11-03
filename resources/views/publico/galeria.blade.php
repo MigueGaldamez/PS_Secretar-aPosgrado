@@ -80,9 +80,62 @@
                 <img src="https://source.unsplash.com/1000x806">
                 <span>Effect</span>
             </div>
+        </div>
+<div class="py-2 colorGris mb-4">
+    <h1 class="textoSuavecito text-center text-light"><span >Mas fotos</span></h1>
+</div>
+<div class=" col-12 pt-20">
+    <div class="slides mx-auto">
+        <div class="slide">
+          <div class="bg">
+          <img src="https://static.elmundo.sv/wp-content/uploads/2019/06/Polideportivo-UES.jpg" alt="">
+      </div>
+          <div class="layer">
+            <h1>polideportivo.</h1>
+            <p>Un bonito lugar para hacer ejercicio.</p>
+          </div>
+        </div>
+        <div class="slide">
+        <div class="bg">
+          <img src="https://biblioteca.ues.edu.sv/wp-content/uploads/sites/19/2020/07/Entrada_de_la_Biblioteca_Central_de_la_Universidad_de_El_Salvador.jpg" alt="">
+        </div>
+          <div class="layer">
+            <h1>Biblioteca.</h1>
+            <p>Un gran lugar para descurbrir nuevas perspectivas.</p>
+          </div>
+      </div>
+        <div class="slide">
+          <div class="bg">
+            <img src="https://lh3.googleusercontent.com/p/AF1QipOeDpZo9MrOpYKw8wlb7RJPRbSV6FezTaoFGyQ=s1600-w400" alt="">
+        </div>
+          <div class="layer">
+            <h1>Teatro UES.</h1>
+            <p>vitae dignissim turpis. Suspendisse vitae ornare urna. Ut sollicitudin sem ut arcu pulvinar dictum. Pellentesque mattis finibus ultricies.</p>
+          </div>
+      </div>
+        <div class="slide">
+          <div class="bg">
+            <img src="https://eluniversitario.ues.edu.sv/wp-content/uploads/sites/11/2020/11/foto-ING-1024x683.jpg" alt="">
+          </div>
+            <div class="layer">
+              <h1>Areas verdes.</h1>
+              <p>vitae dignissim turpis. Suspendisse vitae ornare urna. Ut sollicitudin sem ut arcu pulvinar dictum. Pellentesque mattis finibus ultricies.</p>
             </div>
-
-
-
+        </div>
+          <div class="slide">
+            <div class="bg">
+            <img src="http://www.diariotrv.com/asset/thumbnail,1280,720,center,center//media/diariotrv/images/2017/12/23/Universidad-El-Salvador.jpg" alt="">
+            </div>
+            <div class="layer">
+              <h1>Entrada</h1>
+              <p>vitae dignissim turpis. Suspendisse vitae ornare urna. Ut sollicitudin sem ut arcu pulvinar dictum. Pellentesque mattis finibus ultricies.vitae dignissim turpis. Suspendisse vitae ornare urna. Ut sollicitudin sem ut arcu pulvinar dictum. Pellentesque mattis finibus ultricies
+            </div>
+        </div>
+    </div>
+</div>
+<div class="py-2 colorGris my-4">
+    <h1 class="textoSuavecito text-center text-light"><span >Mas Contenidos</span></h1>
+    <h6 class="textoDuro text-center text-light"><span >Mas Conteidos</span></h6>
+</div>
 {{--FIN--}}
 @endsection

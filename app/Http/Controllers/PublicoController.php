@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\EquipoTrabajo;
 use Illuminate\Http\Request;
 use App\Models\Facultades;
+use App\Models\ReseniaHistorica;
 
 class PublicoController extends Controller
 {
@@ -14,7 +16,8 @@ class PublicoController extends Controller
     }
     public function reseña()
     {
-        return view('publico.reseñaHistorica');
+        $resenias = ReseniaHistorica::all();
+        return view('publico.reseñaHistorica',compact('resenias'));
     }
     public function oferta()
     {
@@ -41,7 +44,8 @@ class PublicoController extends Controller
         return view('publico.investigaciones');
     }
     public function organos(){
-        return view('publico.organos');
+        $equipoTrabajo = EquipoTrabajo::all();
+        return view('publico.organos',compact('equipoTrabajo'));
     }
     public function noticia(){
         return view('publico.noticiaDetalle');

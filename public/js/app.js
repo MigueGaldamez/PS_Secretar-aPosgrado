@@ -8744,19 +8744,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -54413,65 +54400,27 @@ var render = function() {
         _c(
           "div",
           { attrs: { id: "content-fac" } },
-          [
-            _vm._l(_vm.facultades, function(facultad) {
-              return _c(
-                "div",
-                {
-                  key: facultad.id,
-                  staticClass: "item-fac card-body",
-                  on: {
-                    click: function($event) {
-                      _vm.mostrar = true
-                      _vm.mostrarFacultad(facultad)
-                    }
+          _vm._l(_vm.facultades, function(facultad) {
+            return _c(
+              "div",
+              {
+                key: facultad.id,
+                staticClass: "item-fac card-body",
+                on: {
+                  click: function($event) {
+                    _vm.mostrar = true
+                    _vm.mostrarFacultad(facultad)
                   }
-                },
-                [
-                  _c("h4", { staticClass: "textoSuavecito" }, [
-                    _vm._v(" " + _vm._s(facultad.nombre))
-                  ])
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.facultades, function(facultad) {
-              return _c(
-                "div",
-                { key: facultad.id, staticClass: "item-fac card-body" },
-                [
-                  _c("h4", { staticClass: "textoSuavecito" }, [
-                    _vm._v(" " + _vm._s(facultad.nombre))
-                  ])
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.facultades, function(facultad) {
-              return _c(
-                "div",
-                { key: facultad.id, staticClass: "item-fac card-body" },
-                [
-                  _c("h4", { staticClass: "textoSuavecito" }, [
-                    _vm._v(" " + _vm._s(facultad.nombre))
-                  ])
-                ]
-              )
-            }),
-            _vm._v(" "),
-            _vm._l(_vm.facultades, function(facultad) {
-              return _c(
-                "div",
-                { key: facultad.id, staticClass: "item-fac card-body" },
-                [
-                  _c("h4", { staticClass: "textoSuavecito" }, [
-                    _vm._v(" " + _vm._s(facultad.nombre))
-                  ])
-                ]
-              )
-            })
-          ],
-          2
+                }
+              },
+              [
+                _c("h4", { staticClass: "textoSuavecito" }, [
+                  _vm._v(" " + _vm._s(facultad.nombre))
+                ])
+              ]
+            )
+          }),
+          0
         )
       ]),
       _vm._v(" "),
