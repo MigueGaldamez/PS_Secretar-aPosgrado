@@ -115,7 +115,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="box box-down pink">
-                        <img class="imgMVV" src="{{asset('img/iconos/mision.png ')}}" alt="" height="80">
+                        <img class="imgMVV" src="{{asset('img/iconos/mision.png ')}}" alt="" height="90">
                         <h2>Mision</h2>
                         <p>Somos un Sistema de Posgrado de carácter público comprometido con
                         la formación de especialistas y la generación de conocimientos
@@ -126,7 +126,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="box box-down cyan">
-                    <img class="imgMVV" src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+                    <img class="imgMVV" src="{{asset('img/iconos/vision.png ')}}" alt="" height="90">
                         <h2>Vision</h2>
                         <p>Ser el Sistema Rector de los Posgrados, promotor de la excelencia e
                         innovación académica continua, alta calidad científica, tecnológica y
@@ -140,7 +140,7 @@
                   
                         <h2>Valores</h2>
                         <p>Valores Institucionales y Estratégicos</p>  
-                        <img class="imgMVV"  src="{{asset('img/iconos/values.png ')}}" alt="" height="80">
+                        <img class="imgMVV"  src="{{asset('img/iconos/valores.png ')}}" alt="" height="90">
                         <div class="row">
                             <div class="col">
                                 <ul>
