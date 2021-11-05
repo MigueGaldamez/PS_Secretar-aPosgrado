@@ -5,9 +5,10 @@
     <div class="container">
         <div class="row  mt-4">
             <div class="accordion" id="accordionExample">
-                <div  class="accordion-item nolist"  v-for="facultad in facultades" :key="facultad.id">       
+                <div class="row">
+                <div  class="accordion-item nolist col-6"  v-for="facultad in facultades" :key="facultad.id">       
                  
-                    <h2 class="accordion-header">
+                    <h2 class="accordion-header mx-n2">
                         <button class="btn accordion-boton" type="button" data-bs-toggle="collapse" :data-bs-target="'#coll-'+facultad.id" aria-expanded="false" :aria-controls="'coll-'+facultad.id">
                             <b>{{facultad.nombre}}</b>
                         </button>
@@ -20,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-
+</div>
             </div>
         </div>
         

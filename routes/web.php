@@ -80,7 +80,7 @@ Route::apiResource('dashboard/noticia', NoticiaController::class);
 //fin de tablas de opciones
 
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
-Route::get('/ofertaFacultad', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
+Route::get('/ofertaFacultad/{id}', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
 
 Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'])->name('reseña');
 
