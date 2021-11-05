@@ -120,7 +120,7 @@
                             <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
+                            <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta','ofertaFacultad') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">

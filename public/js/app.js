@@ -8946,6 +8946,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -54507,71 +54508,80 @@ var render = function() {
         _c(
           "div",
           { staticClass: "accordion", attrs: { id: "accordionExample" } },
-          _vm._l(_vm.facultades, function(facultad) {
-            return _c(
+          [
+            _c(
               "div",
-              { key: facultad.id, staticClass: "accordion-item nolist" },
-              [
-                _c("h2", { staticClass: "accordion-header" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn accordion-boton",
-                      attrs: {
-                        type: "button",
-                        "data-bs-toggle": "collapse",
-                        "data-bs-target": "#coll-" + facultad.id,
-                        "aria-expanded": "false",
-                        "aria-controls": "coll-" + facultad.id
-                      }
-                    },
-                    [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
-                  )
-                ]),
-                _vm._v(" "),
-                _c(
+              { staticClass: "row" },
+              _vm._l(_vm.facultades, function(facultad) {
+                return _c(
                   "div",
                   {
-                    staticClass: "accordion-collapse collapse show",
-                    attrs: {
-                      id: "coll-" + facultad.id,
-                      "aria-labelledby": "headingOne",
-                      "data-bs-parent": "#accordionExample"
-                    }
+                    key: facultad.id,
+                    staticClass: "accordion-item nolist col-6"
                   },
                   [
+                    _c("h2", { staticClass: "accordion-header mx-n2" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn accordion-boton",
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "collapse",
+                            "data-bs-target": "#coll-" + facultad.id,
+                            "aria-expanded": "false",
+                            "aria-controls": "coll-" + facultad.id
+                          }
+                        },
+                        [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
+                      )
+                    ]),
+                    _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "accordion-body row" },
-                      _vm._l(facultad.posgrados, function(posgrado) {
-                        return _c(
+                      {
+                        staticClass: "accordion-collapse collapse show",
+                        attrs: {
+                          id: "coll-" + facultad.id,
+                          "aria-labelledby": "headingOne",
+                          "data-bs-parent": "#accordionExample"
+                        }
+                      },
+                      [
+                        _c(
                           "div",
-                          { key: posgrado.id, staticClass: "col col-6" },
-                          [
-                            _c(
-                              "a",
-                              {
-                                staticClass: "btn btn-link",
-                                on: {
-                                  click: function($event) {
-                                    _vm.mostrar = true
-                                    _vm.mostrarFacultad(posgrado)
-                                  }
-                                }
-                              },
-                              [_vm._v(_vm._s(posgrado.nombre))]
+                          { staticClass: "accordion-body row" },
+                          _vm._l(facultad.posgrados, function(posgrado) {
+                            return _c(
+                              "div",
+                              { key: posgrado.id, staticClass: "col col-6" },
+                              [
+                                _c(
+                                  "a",
+                                  {
+                                    staticClass: "btn btn-link",
+                                    on: {
+                                      click: function($event) {
+                                        _vm.mostrar = true
+                                        _vm.mostrarFacultad(posgrado)
+                                      }
+                                    }
+                                  },
+                                  [_vm._v(_vm._s(posgrado.nombre))]
+                                )
+                              ]
                             )
-                          ]
+                          }),
+                          0
                         )
-                      }),
-                      0
+                      ]
                     )
                   ]
                 )
-              ]
+              }),
+              0
             )
-          }),
-          0
+          ]
         )
       ])
     ]),
