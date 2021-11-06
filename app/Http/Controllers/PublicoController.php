@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\EquipoTrabajo;
 use Illuminate\Http\Request;
 use App\Models\Facultades;
+use App\Models\Posgrado;
 use App\Models\ReseniaHistorica;
-
 class PublicoController extends Controller
 {
     //
@@ -27,6 +27,7 @@ class PublicoController extends Controller
     public function ofertaFacultad($id)
     {
         $facultad = Facultades::findorFail($id);
+        //$posgrados = Posgrado::where()
         return view('publico.ofertaAcademicaFacultad',compact('facultad'));
     }
     public function preguntasFrecuentes()
@@ -52,7 +53,8 @@ class PublicoController extends Controller
         return view('publico.noticiaDetalle');
     }
     public function diplomados(){
-        return view('publico.diplomados');
+        $facultades = Facultades::all();
+        return view('publico.diplomados',compact('facultades'));
     } 
     public function galeria(){
         return view('publico.galeria');
