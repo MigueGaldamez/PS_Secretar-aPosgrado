@@ -8944,9 +8944,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -8965,6 +8962,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       imagenMiniatura: '',
       mostrar: false
     };
+  },
+  computed: {
+    facsGroups: function facsGroups() {
+      return Array.from(Array(Math.ceil(2)).keys());
+    }
   },
   methods: {
     list: function list() {
@@ -54504,86 +54506,97 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row  mt-4" }, [
-        _c(
-          "div",
-          { staticClass: "accordion", attrs: { id: "accordionExample" } },
-          [
+      _c(
+        "div",
+        { staticClass: "row mt-4" },
+        _vm._l(_vm.facsGroups, function(group, i) {
+          return _c("div", { key: group.id, staticClass: "col col-6" }, [
             _c(
               "div",
-              { staticClass: "row" },
-              _vm._l(_vm.facultades, function(facultad) {
-                return _c(
-                  "div",
-                  {
-                    key: facultad.id,
-                    staticClass: "accordion-item nolist col-6"
-                  },
-                  [
-                    _c("h2", { staticClass: "accordion-header mx-n2" }, [
+              { staticClass: "accordion", attrs: { id: "accordion" + i } },
+              _vm._l(
+                _vm.facultades.slice(
+                  i * (_vm.facultades.length / 2),
+                  (i + 1) * (_vm.facultades.length / 2)
+                ),
+                function(facultad) {
+                  return _c(
+                    "div",
+                    { key: facultad.id, staticClass: "accordion-item nolist" },
+                    [
                       _c(
-                        "button",
+                        "h2",
                         {
-                          staticClass: "btn accordion-boton",
+                          staticClass: "accordion-header",
+                          attrs: { id: "id_" + facultad.id }
+                        },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn accordion-boton",
+                              attrs: {
+                                type: "button",
+                                "data-bs-toggle": "collapse",
+                                "data-bs-target": "#coll-" + facultad.id,
+                                "aria-expanded": "false",
+                                "aria-controls": "coll-" + facultad.id
+                              }
+                            },
+                            [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "accordion-collapse collapse",
                           attrs: {
-                            type: "button",
-                            "data-bs-toggle": "collapse",
-                            "data-bs-target": "#coll-" + facultad.id,
-                            "aria-expanded": "false",
-                            "aria-controls": "coll-" + facultad.id
+                            id: "coll-" + facultad.id,
+                            "aria-labelledby": "id_" + facultad.id,
+                            "data-bs-parent": "#accordion" + i
                           }
                         },
-                        [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
-                      )
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      {
-                        staticClass: "accordion-collapse collapse show",
-                        attrs: {
-                          id: "coll-" + facultad.id,
-                          "aria-labelledby": "headingOne",
-                          "data-bs-parent": "#accordionExample"
-                        }
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "accordion-body row" },
-                          _vm._l(facultad.posgrados, function(posgrado) {
-                            return _c(
-                              "div",
-                              { key: posgrado.id, staticClass: "col col-6" },
-                              [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass: "btn btn-link",
-                                    on: {
-                                      click: function($event) {
-                                        _vm.mostrar = true
-                                        _vm.mostrarFacultad(posgrado)
+                        [
+                          _c(
+                            "div",
+                            { staticClass: "accordion-body row " },
+                            _vm._l(facultad.posgrados, function(posgrado) {
+                              return _c(
+                                "div",
+                                { key: posgrado.id, staticClass: "col col-12" },
+                                [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass: "btn btn-link text-dark",
+                                      on: {
+                                        click: function($event) {
+                                          _vm.mostrar = true
+                                          _vm.mostrarFacultad(posgrado)
+                                        }
                                       }
-                                    }
-                                  },
-                                  [_vm._v(_vm._s(posgrado.nombre))]
-                                )
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ]
-                    )
-                  ]
-                )
-              }),
+                                    },
+                                    [_vm._v(_vm._s(posgrado.nombre))]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                }
+              ),
               0
             )
-          ]
-        )
-      ])
+          ])
+        }),
+        0
+      )
     ]),
     _vm._v(" "),
     _vm.mostrar

@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('publico.cabecera',['titulo' => 'Órganos de gobierno','descripcion'=>''])
+@include('publico.cabecera',['titulo' => 'Tesis Posgrados','descripcion'=>'De las 12 facultades de la Universidad'])
 
 <div class="colorGris mt-4 pb-1 pt-2">
     <h3 class="text-light text-center"><span class="textoSuavecito2">Consultar  Tesis por Posgrados</span></h3>
