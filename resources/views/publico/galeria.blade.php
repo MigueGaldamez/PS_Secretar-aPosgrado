@@ -13,28 +13,28 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                     <!-- Slides -->
-                        <div class="swiper-slide" style="background-image:url('https://i0.wp.com/bloquepopularjuvenil.org/wp-content/uploads/2020/01/Minerva-UES.jpg?fit=627%2C360');">
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/IxS50uG.jpg');">
                             <span class="title">Responsive vertical thumbnail gallery</span>
                             <span class="description">Scale screen to see effect</span>
                             <img class="img-fluid" src="" alt="">
                         </div>
-                        <div class="swiper-slide" style="background-image:url('https://diariolahuella.com/wp-content/uploads/2020/08/ues.jpg');">
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/x2fjApo.jpg');">
                             <div class="title">Slide 2</div>
                             <div class="description">Lorem ipsum dolor sit amet</div>
                         </div>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/fttCfgV.jpg');">
                             <div class="title">Slide 3</div>
                             <div class="description">Lorem ipsum dolor sit amet</div>
                         </div>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/h5hwwYr.jpg');">
                             <div class="title">Slide 4</div>
                             <div class="description">Lorem ipsum dolor sit amet</div>
                         </div>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide"  style="background-image:url('https://i.imgur.com/Vw7ZC19.jpg');">
                             <div class="title">Slide 5</div>
                             <div class="description">Lorem ipsum dolor sit amet</div>
                         </div>
-                        <div class="swiper-slide">
+                        <div class="swiper-slide"  style="background-image:url('https://i.imgur.com/HQRu90g.jpg');">
                             <div class="title">Slide 6</div>
                             <div class="description">Lorem ipsum dolor sit amet</div>
                         </div>
@@ -48,12 +48,12 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                     <!-- Slides -->
-                        <div class="swiper-slide" style="background-image:url('https://i0.wp.com/bloquepopularjuvenil.org/wp-content/uploads/2020/01/Minerva-UES.jpg?fit=627%2C360');">Slide 1</div>
-                        <div class="swiper-slide" style="background-image:url('https://diariolahuella.com/wp-content/uploads/2020/08/ues.jpg');"><div class="title">Slide 2</div></div>
-                        <div class="swiper-slide" >Slide 3</div>
-                        <div class="swiper-slide">Slide 4</div>
-                        <div class="swiper-slide">Slide 5</div>
-                        <div class="swiper-slide">Slide 6</div>
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/IxS50uG.jpg');">Slide 1</div>
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/x2fjApo.jpg');"><div class="title">Slide 2</div></div>
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/fttCfgV.jpg');">Slide 3</div>
+                        <div class="swiper-slide"  style="background-image:url('https://i.imgur.com/h5hwwYr.jpg');">Slide 4</div>
+                        <div class="swiper-slide"  style="background-image:url('https://i.imgur.com/Vw7ZC19.jpg');">Slide 5</div>
+                        <div class="swiper-slide" style="background-image:url('https://i.imgur.com/HQRu90g.jpg');">Slide 6</div>
                     </div>
                 </div>
             </div>
@@ -65,19 +65,19 @@
 
         <div class="container-ima my-4">
             <div class="box-ima">
-                <img src="https://i0.wp.com/bloquepopularjuvenil.org/wp-content/uploads/2020/01/Minerva-UES.jpg?fit=627%2C360">
+                <img src="https://i.imgur.com/HmSJ2GO.jpg">
                 <span>Minerva</span>
             </div>
             <div class="box-ima">
-                <img src="https://diariolahuella.com/wp-content/uploads/2020/08/ues.jpg">
+                <img src="https://i.imgur.com/5W3KocA.jpg">
                 <span>Secretaria de posgrado</span>
             </div>
             <div class="box-ima">
-                <img src="https://source.unsplash.com/1000x804">
+                <img src="https://i.imgur.com/vIj22aL.jpg">
                 <span>Hover</span>
             </div>
             <div class="box-ima">
-                <img src="https://source.unsplash.com/1000x806">
+                <img src="https://i.imgur.com/O41cfPU.jpg">
                 <span>Effect</span>
             </div>
         </div>
@@ -97,7 +97,7 @@
         </div>
         <div class="slide">
         <div class="bg">
-          <img src="https://biblioteca.ues.edu.sv/wp-content/uploads/sites/19/2020/07/Entrada_de_la_Biblioteca_Central_de_la_Universidad_de_El_Salvador.jpg" alt="">
+          <img src="https://i.imgur.com/T4grsq4.jpg" alt="">
         </div>
           <div class="layer">
             <h1>Biblioteca.</h1>
@@ -106,7 +106,7 @@
       </div>
         <div class="slide">
           <div class="bg">
-            <img src="https://lh3.googleusercontent.com/p/AF1QipOeDpZo9MrOpYKw8wlb7RJPRbSV6FezTaoFGyQ=s1600-w400" alt="">
+            <img src="https://i.imgur.com/CXKiddh.jpg" alt="">
         </div>
           <div class="layer">
             <h1>Teatro UES.</h1>
@@ -115,7 +115,7 @@
       </div>
         <div class="slide">
           <div class="bg">
-            <img src="https://eluniversitario.ues.edu.sv/wp-content/uploads/sites/11/2020/11/foto-ING-1024x683.jpg" alt="">
+            <img src="https://i.imgur.com/J6i4Y1H.jpg" alt="">
           </div>
             <div class="layer">
               <h1>Areas verdes.</h1>
