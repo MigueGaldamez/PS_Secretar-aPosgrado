@@ -20,7 +20,19 @@ class ModalidadesController extends Controller
             $modalidad = new Modalidades();
             $modalidad->nombre = $request->nombre;
             $modalidad->color = $request->color;
+            if($request->color == 'Azul'){
+                $modalidad->clase = "bg-primary";
+            }elseif($request->color == 'Verde'){
+                $modalidad->clase = "bg-success";
+            }elseif($request->color == 'Rojo'){
+                $modalidad->clase = "bg-danger";
+            }elseif($request->color == 'Amarillo'){
+                $modalidad->clase = "bg-warning text-dark";
+            }elseif($request->color == 'Gris'){
+                $modalidad->clase = "bg-secondary";
+            }
             $modalidad->save();
+        
         }
         catch (\Exception $e) 
         {
@@ -33,7 +45,21 @@ class ModalidadesController extends Controller
     {
         try
         {
-            $modalidades_api->update($request->all());
+            $modalidad = $modalidades_api;
+            $modalidad->nombre = $request->nombre;
+            $modalidad->color = $request->color;
+            if($request->color == 'Azul'){
+                $modalidad->clase = "bg-primary";
+            }elseif($request->color == 'Verde'){
+                $modalidad->clase = "bg-success";
+            }elseif($request->color == 'Rojo'){
+                $modalidad->clase = "bg-danger";
+            }elseif($request->color == 'Amarillo'){
+                $modalidad->clase = "bg-warning text-dark";
+            }elseif($request->color == 'Gris'){
+                $modalidad->clase = "bg-secondary";
+            }
+            $modalidad->save();
             return "Guardado";
         }
         catch (\Exception $e) 

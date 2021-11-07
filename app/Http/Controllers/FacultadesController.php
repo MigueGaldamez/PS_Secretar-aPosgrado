@@ -26,10 +26,12 @@ class FacultadesController extends Controller
                 $facultad = new Facultades();
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
+                $facultad->contactoDiplomado = $request->contactoDiplomado;
                 $facultad->telefonoPosgrado = $request->telefonoPosgrado;
                 $facultad->extPosgrado = $request->extPosgrado;
                 $facultad->correoPosgrado = $request->correoPosgrado;
                 $facultad->color = $request->color;
+                $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
                 return $facultad->save();
             }
@@ -38,7 +40,6 @@ class FacultadesController extends Controller
 
                 return $e->getMessage();
             }
-
         }
         else
         {
@@ -57,10 +58,12 @@ class FacultadesController extends Controller
                 $facultad = Facultades::find($request->id);
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
+                $facultad->contactoDiplomado = $request->contactoDiplomado;
                 $facultad->telefonoPosgrado = $request->telefonoPosgrado;
                 $facultad->extPosgrado = $request->extPosgrado;
                 $facultad->correoPosgrado = $request->correoPosgrado;
                 $facultad->color = $request->color;
+                $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
                 return $facultad->save();
             }
@@ -77,10 +80,12 @@ class FacultadesController extends Controller
             {
                 $facultad = Facultades::find($request->id);
                 $facultad->nombre = $request->nombre;
+                $facultad->contactoDiplomado = $request->contactoDiplomado;
                 $facultad->telefonoPosgrado = $request->telefonoPosgrado;
                 $facultad->extPosgrado = $request->extPosgrado;
                 $facultad->correoPosgrado = $request->correoPosgrado;
                 $facultad->color = $request->color;
+                $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
                 return $facultad->save();
             }

@@ -11,6 +11,11 @@
 <div class="container mt-4 mb-4">    
     <div class="accordion" id="accordionExample">        
         @foreach ($facultades as $facultad)
+        
+        @if (!$facultad->diplomados->isEmpty(9))
+           
+     
+        
         <div>
             <h2>
                 <a class="text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#facultad-{{$facultad->id}}" aria-expanded="false" aria-controls="collapseOne">
@@ -22,7 +27,7 @@
                 <div class="accordion-body">            
                 <p>Numero de contacto: +(503) <b>{{$facultad->telefonoPosgrado}}</b></p>  
                      <table class="table table-striped  table-borderless text-center">
-                        <thead class=" tableGris">
+                        <thead class="tableGris">
                             <tr>
                             
                             <th scope="col">Nombre Diplomado</th>
@@ -31,27 +36,30 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>                           
-                                <td>Curso de Cariología contemporánea y biomateriales de última generación</td>
-                                <td>1 mes</td>
-                                <td><span class="badge bg-primary">Presencial</span></td>
-                                </tr>
-                                <tr>
-                                
-                                <td>Curso de Posgrado en Farmacovigilancia</td>
-                                <td>300 horas</td>
-                                <td><span class="badge bg-warning text-dark">Semipresencial</span></td>
-                                </tr>
-                                <tr>
-                                <td>Jacob</td>
-                                <td>200 horas</td>
-                                <td><span class="badge bg-danger">En linea</span></td>
+                            
+                            @foreach ($facultad->diplomados as $diplomado)
+                            <tr>    
+                                <td>{{$diplomado->nombre}}</td>
+                                <td>
+                                    @if(!$diplomado->duracion==0)
+                                        {{$diplomado->duracion}} {{$diplomado->tipo_duracion->nombre}}                  
+                                    @else
+                                        {{$diplomado->tipo_duracion->nombre}}
+                                    @endif
+                                </td>
+                                <td>                                 
+                                    <span class="badge badge-pill {{$diplomado->modalidad->clase}}">{{$diplomado->modalidad->nombre}}</span>
+                                </td>
                             </tr>
+                            @endforeach
+                            
+                           
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+           @endif
         @endforeach
     </div>
 </div>

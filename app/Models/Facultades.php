@@ -14,10 +14,12 @@ class Facultades extends Model
     protected $fillable = [
         'urlImagen',
         'nombre',
+        'contactoDiplomado',
         'telefonoPosgrado',
         'extPosgrado',
         'correoPosgrado',
         'color',
+        'multidis', 
         'descripcion',
     ];
     

@@ -18,7 +18,7 @@ class CreatePosgradosTable extends Migration
             $table->string('urlImagen');
             $table->unsignedBigInteger('facultad_id')->unsigned();
             $table->string('nombre',200);
-            $table->tinyText('descripcion');
+            $table->mediumText('descripcion',1000);
             $table->string('titulo',100);
             $table->unsignedBigInteger('tipo_programa_id')->unsigned();
             $table->boolean('ofertado');

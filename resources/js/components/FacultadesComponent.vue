@@ -23,29 +23,48 @@
                                 <img :src="imagen" class="img-thumbnail" alt="...">
                             </div>
                             <div class="mb-3 col-sm-12" >
-                                <label for="exampleFormControlTextarea1" class="form-label">Nombre de la Facultad</label>
+                                <label  class="form-label">Nombre de la Facultad</label>
                                 <input v-model="facultad.nombre" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
                             </div>
+                            <div class="mb-3 col-sm-12" >
+                                <label  class="form-label">Informacion de contacto de Diplomado</label>
+                                <textarea v-on:keyup="contadorCharC"   v-model="facultad.contactoDiplomado" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <div id="passwordHelpBlock" class="form-text">
+                                    {{charFaltantesC}}/120 | Puedes separar email, telefono con una ",". 
+                                </div>
+                            </div>
                             <div class="mb-3 col-sm-12 ">
-                                <label for="exampleFormControlTextarea1" class="form-label">Descripcion pequeña</label>
-                                <textarea v-model="facultad.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label  class="form-label">Descripcion pequeña</label>
+                                <textarea v-on:keyup="contadorCharD" v-model="facultad.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <div id="passwordHelpBlock" class="form-text">
+                                   {{charFaltantesD}}/255
+                                </div>
+                            </div>
+                            <div class="mb-3 col-sm-12 border rounded-3 p-3">
+                                <div class="row">
+                                    <h4>Informacion de contacto de Posgrados. </h4>
+                                    <div class="mb-3 col-sm-4 " >
+                                        <label  class="form-label">Telefono</label>
+                                        <input v-model="facultad.telefonoPosgrado" class="form-control" type="text" placeholder="telefono" aria-label="Telefono">
+                                    </div>
+                                    <div class="mb-3 col-sm-4" >
+                                        <label  class="form-label">Extension telefono</label>
+                                        <input v-model="facultad.extPosgrado" class="form-control" type="text" placeholder="Extensiones" aria-label="Extension">
+                                    </div>
+                                    <div class="mb-3 col-sm-4" >
+                                        <label  class="form-label">Correo Posgrado</label>
+                                        <input v-model="facultad.correoPosgrado" class="form-control" type="email" placeholder="Nombre" aria-label="Correo">
+                                    </div>
+                                </div>
                             </div>
                             <div class="mb-3 col-sm-6" >
-                                <label for="exampleFormControlTextarea1" class="form-label">Telefono</label>
-                                <input v-model="facultad.telefonoPosgrado" class="form-control" type="text" placeholder="telefono" aria-label="Telefono">
-                            </div>
-                            <div class="mb-3 col-sm-6" >
-                                <label for="exampleFormControlTextarea1" class="form-label">Extension telefono</label>
-                                <input v-model="facultad.extPosgrado" class="form-control" type="text" placeholder="Extensiones" aria-label="Extension">
-                            </div>
-                            <div class="mb-3 col-sm-6" >
-                                <label for="exampleFormControlTextarea1" class="form-label">Correo Posgrado</label>
-                                <input v-model="facultad.correoPosgrado" class="form-control" type="email" placeholder="Nombre" aria-label="Correo">
-                            </div>
-                             <div class="mb-3 col-sm-6" >
-                                <label for="exampleColorInput" class="form-label">Color Facultad</label>
+                                <label class="form-label">Color Facultad</label>
                                 <input type="color" class="form-control form-control-color" id="exampleColorInput" v-model="facultad.color" title="Choose your color">
                             </div>
+                            <div class="mb-3 col-sm-6">
+                                <input class="form-check-input" v-model="facultad.multidis" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
+                                <label class="form-check-label"  for="flexSwitchCheckDefault">Multi-Disciplinaria</label>
+                            </div> 
                         </div>
                         <button @click="save();" type="button" class="btn btn-success">Guardar</button>
                     </form>                 
@@ -96,12 +115,19 @@ export default {
                 id:0,
                 urlImagen: null,
                 nombre: '',
+                contactoDiplomado: '',
                 telefonoPosgrado: '',
                 extPosgrado: '',
                 correoPosgrado: '',
-                color: '',
+                color: '#CCCCCC',
+                multidis: 0,
                 descripcion: '',
             },
+            //objetos para el contador de caracteres
+            charMaxC:120,//Maximo para contacto de diplomado
+            charFaltantesC:120, //Faltante para contacto de diplomado
+            charMaxD:255,//Maximo para la descripcion
+            charFaltantesD:255,//faltante para la descripcion
             update:true,
             modal:0,
             titleModal:'',
@@ -143,7 +169,17 @@ export default {
                         
                     }
                     //.then(response=>{console.log(response.data)})
-                    const res = await axios.post('/dashboard/facultad_api/'+this.id, fields).then(response=>{console.log(response.data)})
+                    const res = await axios.post('/dashboard/facultad_api/'+this.id, fields)
+                    .then(response=>{
+                    if(response.data==1)
+                    {
+                        this.$swal({title: 'Exitoso',text: 'Actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                    }
+                    else
+                    {
+                        this.$swal({title: 'Error!',text: console.log(response.data) ,icon: 'error',confirmButtonText: 'Ok'});
+                    }
+                    });
                 }
                 catch(error)
                 {
@@ -166,7 +202,17 @@ export default {
                         
                     }
                     //.then(response=>{console.log(response.data)})
-                    const res = await axios.post('/dashboard/facultad_api', fields).then(response=>{console.log(response.data)});
+                    const res = await axios.post('/dashboard/facultad_api', fields)
+                    .then(response=>{
+                    if(response.data==1)
+                    {
+                        this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                    }
+                    else
+                    {
+                        this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                    }
+                    });
                 }
                 catch(error)
                 {
@@ -188,11 +234,15 @@ export default {
                 this.facultad.id = data.id;
                 this.facultad.urlImagen = data.urlImagen;
                 this.facultad.nombre = data.nombre;
+                this.facultad.contactoDiplomado = data.contactoDiplomado;
                 this.facultad.telefonoPosgrado= data.telefonoPosgrado,
                 this.facultad.extPosgrado= data.extPosgrado,
                 this.facultad.correoPosgrado= data.correoPosgrado,
                 this.facultad.color= data.color,
+                this.facultad.multidis = data.multidis;
                 this.facultad.descripcion = data.descripcion;
+                this.charFaltantesC = 120 - data.contactoDiplomado.length;
+                this.charFaltantesD = 255 - data.descripcion.length;
             }
             else
             {
@@ -200,17 +250,31 @@ export default {
                 this.titleModal = "Agregar Facultad";
                 this.facultad.urlImagen = '';
                 this.facultad.nombre = '';
+                this.facultad.contactoDiplomado='';
                 this.facultad.telefonoPosgrado= '',
                 this.facultad.extPosgrado= '',
                 this.facultad.correoPosgrado= '',
-                this.facultad.color= '',
+                this.facultad.color= '#CCCCCC',
+                this.facultad.multidis = 0;
                 this.facultad.descripcion = '';
+                this.charFaltantesC = 120;
+                this.charFaltantesD = 255;
             }
         },
         closeModal() {
             this.$refs.urlImg.value=null;
             this.imagenMiniatura='';
             this.modal=0
+        },
+        contadorCharD: function()//contador para la descripcion
+        {
+            this.charFaltantesD = this.charMaxD - this.facultad.descripcion.length;
+            
+        },
+        contadorCharC: function()//contador para la descripcion
+        {
+            this.charFaltantesC = this.charMaxC - this.facultad.contactoDiplomado.length;
+            
         },
         obtenerImagen(e)
         {
@@ -225,7 +289,8 @@ export default {
                 this.imagenMiniatura =e.target.result;
             }
             reader.readAsDataURL(file);
-        }
+        },
+
     },
     created() 
     {
@@ -237,6 +302,7 @@ export default {
         {
             return this.imagenMiniatura;
         },
+
 
     }
 }
