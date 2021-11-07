@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    $('#sidebar').toggleClass('active');
-  });
+  $('#sidebar').toggleClass('active');
+});

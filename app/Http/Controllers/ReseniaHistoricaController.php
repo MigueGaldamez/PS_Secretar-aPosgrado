@@ -15,7 +15,7 @@ class ReseniaHistoricaController extends Controller
     public function index(Request $request)
     {
         //
-        return ReseniaHistorica::paginate($request->perpage);
+        return ReseniaHistorica::paginate($request->per_page);
     }
 
     /**
