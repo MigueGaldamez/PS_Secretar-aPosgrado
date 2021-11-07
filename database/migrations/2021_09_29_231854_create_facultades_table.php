@@ -17,10 +17,12 @@ class CreateFacultadesTable extends Migration
             $table->bigIncrements('id');
             $table->string('urlImagen')->nullable($value = false);
             $table->string('nombre',60)->nullable($value = false);
+            $table->tinyText('contactoDiplomado',150)->nullable($value = false);
             $table->char('telefonoPosgrado',8)->nullable($value = false);
             $table->string('extPosgrado',20)->nullable($value = true);
             $table->string('correoPosgrado',40)->nullable($value = false);
             $table->char('color',7)->nullable($value = false);
+            $table->boolean('multidis');
             $table->tinyText('descripcion')->nullable($value = false);
             $table->timestamps();
         });
