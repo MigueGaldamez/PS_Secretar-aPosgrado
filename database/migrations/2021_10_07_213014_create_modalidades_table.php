@@ -17,7 +17,7 @@ class CreateModalidadesTable extends Migration
             $table->bigIncrements('id');
             $table->string('nombre')->nullable($value=false);
             $table->enum('color', ['Azul', 'Verde','Rojo', 'Amarillo','Gris'])->nullable($value = false);
-            
+            $table->string('clase')->nullable($value=false);;
         });
     }
 

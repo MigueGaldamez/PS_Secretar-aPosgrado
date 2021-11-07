@@ -14,6 +14,7 @@ class Modalidades extends Model
     protected $fillable = [
         'nombre',
         'color',
+        'clase',
     ];
     public function diplomados()
     {
