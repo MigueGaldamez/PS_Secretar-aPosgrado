@@ -15,13 +15,11 @@ class CreateFacultadesTable extends Migration
     {
         Schema::create('facultades', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('urlImagen')->nullable($value = false);
-            $table->string('nombre',60)->nullable($value = false);
-            $table->tinyText('contactoDiplomado',150)->nullable($value = false);
-            $table->char('telefonoPosgrado',8)->nullable($value = false);
-            $table->string('extPosgrado',20)->nullable($value = true);
-            $table->string('correoPosgrado',40)->nullable($value = false);
-            $table->char('color',7)->nullable($value = false);
+            $table->string('urlImagen');
+            $table->string('nombre',60);
+            $table->tinyText('contactoDiplomado',150);
+            $table->tinyText('contactoPosgrado',150);
+            $table->char('color',7);
             $table->boolean('multidis');
             $table->tinyText('descripcion')->nullable($value = false);
             $table->timestamps();
