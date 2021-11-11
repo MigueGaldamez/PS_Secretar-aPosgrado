@@ -31,6 +31,36 @@ if(next && prev && content){
 }
 
 
+  const carousel2 = document.getElementById("carousel-facTes"),
+  content2 = document.getElementById("content-facTes"),
+  next2 = document.getElementById("next-facTes"),
+  prev2 = document.getElementById("prev-facTes");
+if(next2 && prev2 && content2){
+  next2.addEventListener("click", e => {
+    carousel2.scrollBy(width2 + gap, 0);
+    if (carousel2.scrollWidth !== 0) {
+      prev2.style.display = "flex";
+    }
+    if (content2.scrollWidth - width2 - gap <= carousel2.scrollLeft + width2) {
+      next2.style.display = "none";
+    }
+  });
+  prev2.addEventListener("click", e => {
+    carousel2.scrollBy(-(width2 + gap), 0);
+    if (carousel2.scrollLeft - width2 - gap <= 0) {
+      prev2.style.display = "none";
+    }
+    if (!content2.scrollWidth - width2 - gap <= carousel2.scrollLeft + width2) {
+      next2.style.display = "flex";
+    }
+  });
+  
+  let width2 = carousel2.offsetWidth;
+  window.addEventListener("resize", e => (width2 = carousel2.offsetWidth));
+  
+}
+
+
 $(function() {
   var galleryThumbs = new Swiper(".gallery-thumbs", {
     centeredSlides: true,
