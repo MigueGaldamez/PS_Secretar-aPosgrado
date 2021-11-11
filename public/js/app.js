@@ -8964,73 +8964,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      facultad: {
-        id: 0,
-        urlImagen: null,
-        nombre: '',
-        descripcion: ''
-      },
-      posgrado: {
-        id: 0,
-        nombre: ''
-      },
+      facultad: [],
+      posgrado: [],
       facultades: [],
       id: 0,
       imagenMiniatura: '',
@@ -9054,7 +8992,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.get('/dashboard/facultad_api');
+                return axios.get('/facultades/conTesis');
 
               case 3:
                 res = _context.sent;
@@ -9078,10 +9016,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 7]]);
       }))();
     },
-    mostrarFacultad: function mostrarFacultad() {
+    mostrarPosgrado: function mostrarPosgrado() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.id = data.id;
-      this.posgrado.nombre = data.nombre;
+      this.posgrado = data;
+    },
+    mostrarFacultad: function mostrarFacultad() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.facultad = data;
     }
   },
   created: function created() {
@@ -54680,7 +54622,9 @@ var render = function() {
                           _c(
                             "div",
                             { staticClass: "accordion-body row " },
-                            _vm._l(facultad.posgrados, function(posgrado) {
+                            _vm._l(facultad.posgrados_con_tesis, function(
+                              posgrado
+                            ) {
                               return _c(
                                 "div",
                                 { key: posgrado.id, staticClass: "col col-12" },
@@ -54692,7 +54636,8 @@ var render = function() {
                                       on: {
                                         click: function($event) {
                                           _vm.mostrar = true
-                                          _vm.mostrarFacultad(posgrado)
+                                          _vm.mostrarPosgrado(posgrado)
+                                          _vm.mostrarFacultad(facultad)
                                         }
                                       }
                                     },
@@ -54728,350 +54673,71 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "container" }, [
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.posgrado.tesis, function(tesis) {
+                return _c(
+                  "div",
+                  { key: tesis.id, staticClass: "card-containerR mb-1" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          " callout-right callout-right-primary row calloutTesis",
+                        style:
+                          "border-right: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("div", { staticClass: "col" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: tesis.link }
+                            },
+                            [
+                              _c("h5", { staticClass: "text-dark" }, [
+                                _c("b", [_vm._v(_vm._s(tesis.titulo))])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text-uppercase" }, [
+                            _vm._v(_vm._s(_vm.posgrado.nombre))
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "card-text lh-sm" }, [
+                            _c("small", [
+                              _vm._v("Autor: "),
+                              _c("b", [_vm._v(_vm._s(tesis.autor))])
+                            ])
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "card-text lh-sm" }, [
+                            _c("small", [
+                              _vm._v("Año de publicacion: "),
+                              _c("b", [_vm._v(_vm._s(tesis.publicado))])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
         ])
-      : _c("div", { staticClass: "mb-4" }, [_vm._m(1)])
+      : _c("div", { staticClass: "mb-4" }, [_vm._m(0)])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "card-containerR mb-4" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          )
-        ])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

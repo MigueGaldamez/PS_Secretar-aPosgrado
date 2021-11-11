@@ -29,4 +29,9 @@ class Facultades extends Model
     {
         return $this->hasMany(Posgrado::class,'facultad_id','id');
     }
+    public function posgradosConTesis()
+    {
+        $tesis = Tesi::where('estado','=',0)->pluck('posgrado_id');
+        return $this->hasMany(Posgrado::class,'facultad_id','id')->whereIn('id',$tesis);
+    }
 }

@@ -20,6 +20,7 @@ class CreateTesisTable extends Migration
             $table->string('titulo');
             $table->string('autor');
             $table->string('link');
+            $table->unsignedBigInteger('estado')->unsigned();
             $table->foreign('posgrado_id')->references('id')->on('posgrados');
         });
     }

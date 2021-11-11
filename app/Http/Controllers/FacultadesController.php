@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Facultades;
+use App\Models\Posgrado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-
+use App\Models\Tesi;
 class FacultadesController extends Controller
 {
     
@@ -93,5 +94,12 @@ class FacultadesController extends Controller
     public function destroy(Facultades $facultades)
     {
         //
+    }
+    public function facultadesConTesis(){
+        $tesis = Tesi::where('estado','=',0)->pluck('posgrado_id');
+        $posgrados = Posgrado::whereIn('id',$tesis)->pluck('facultad_id');
+        $facultades = Facultades::with('posgradosConTesis')->whereIn('id',$posgrados)->get();
+        return $facultades;
+        
     }
 }
