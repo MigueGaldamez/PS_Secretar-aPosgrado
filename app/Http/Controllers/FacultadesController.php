@@ -22,8 +22,8 @@ class FacultadesController extends Controller
             {
                 $fileImagen=$request->file('urlImagen')->store('public/facultad');
                 $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
                 $facultad = new Facultades();
+                $urlImagen =  $url;
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
@@ -31,6 +31,7 @@ class FacultadesController extends Controller
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
+                
                 return $facultad->save();
             }
             catch (\Exception $e) 
@@ -41,7 +42,16 @@ class FacultadesController extends Controller
         }
         else
         {
-            return "error";
+            try
+            {
+                return "No has elejido un archivo.";
+            }
+            catch (\Exception $e) 
+            {
+
+                return $e->getMessage();
+            }
+            
         }   
     }
     public function update(Request $request, Facultades $facultad)
@@ -51,9 +61,11 @@ class FacultadesController extends Controller
             try
             {
                 $fileImagen=$request->file('urlImagen')->store('public/facultad');
-                $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
+                $url= Storage::url($fileImagen);
+                $urlImagen =  $url;
                 $facultad = Facultades::find($request->id);
+                $oldUrlImagen = explode('/',$facultad->urlImagen);
+                Storage::delete('public/facultad/'.$oldUrlImagen[3]);
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
@@ -61,6 +73,7 @@ class FacultadesController extends Controller
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
+                
                 return $facultad->save();
             }
             catch (\Exception $e) 

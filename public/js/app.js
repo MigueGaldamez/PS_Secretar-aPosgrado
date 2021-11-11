@@ -6699,7 +6699,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: console.log(response.data),
+                      text: response.data,
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6741,13 +6741,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       icon: 'success',
                       confirmButtonText: 'Ok'
                     });
+
+                    console.log(response.data);
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: 'Ha ocurrrido algo...',
+                      text: "error",
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
+
+                    console.log(response.data);
                   }
                 });
 

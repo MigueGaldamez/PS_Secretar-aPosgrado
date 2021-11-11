@@ -22,7 +22,6 @@ class CreateFacultadesTable extends Migration
             $table->char('color',7);
             $table->boolean('multidis');
             $table->tinyText('descripcion')->nullable($value = false);
-            $table->timestamps();
         });
     }
 

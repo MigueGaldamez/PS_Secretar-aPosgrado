@@ -167,7 +167,7 @@ export default {
                     }
                     else
                     {
-                        this.$swal({title: 'Error!',text: console.log(response.data) ,icon: 'error',confirmButtonText: 'Ok'});
+                        this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
                     }
                     });
                 }
@@ -195,10 +195,12 @@ export default {
                     if(response.data==1)
                     {
                         this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        console.log(response.data);
                     }
                     else
                     {
-                        this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                        this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
+                        console.log(response.data);
                     }
                     });
                 }
