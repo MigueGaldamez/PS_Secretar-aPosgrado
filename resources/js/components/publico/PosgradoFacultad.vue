@@ -1,10 +1,58 @@
 <template>
 <div>
+      <div id="wrapper-facTes" class="mx-auto mt-4">
+            <div id="carousel-facTes">
+                <div id="content-facTes">               
+                    <div class="item-facTes col col-12 col-md-6" v-for="(group, i) in facsGroups" :key="group.id">
+                        <div class="accordion" :id="'accordion'+i">
+                            <div  class="accordion-item nolist" v-for="facultad in facultades.slice(i * (facultades.length/4), (i + 1) * (facultades.length/4))" :key="facultad.id">
+                                <h2 class="accordion-header" :id="'id_'+facultad.id">
+                                    <button class="btn accordion-boton" type="button" data-bs-toggle="collapse" :data-bs-target="'#coll-'+facultad.id" aria-expanded="false" :aria-controls="'coll-'+facultad.id">
+                                        <b>{{facultad.nombre}}</b>
+                                    </button>
+                                </h2>
+                                <div :id="'coll-'+facultad.id" class="accordion-collapse collapse" :aria-labelledby="'id_'+facultad.id" :data-bs-parent="'#accordion'+i">
+                                    <div class="accordion-body row ">
+                                        <div class="col col-12" v-for="posgrado in facultad.posgrados_con_tesis" :key="posgrado.id">
+                                            <a class="btn btn-link text-dark" @click="mostrar=true; mostrarPosgrado(posgrado); mostrarFacultad(facultad);">{{posgrado.nombre}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button id="prev-facTes">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                >
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+                </svg>
+            </button>
+            <button id="next-facTes">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                >
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+                </svg>
+            </button>
+        </div>
+        <!--
    <div class="container">
        <div class="row mt-4">
-            <div class="col col-6" v-for="(group, i) in facsGroups" :key="group.id">
+            <div class="col col-3" v-for="(group, i) in facsGroups" :key="group.id">
                  <div class="accordion" :id="'accordion'+i">
-                    <div  class="accordion-item nolist" v-for="facultad in facultades.slice(i * (facultades.length/2), (i + 1) * (facultades.length/2))" :key="facultad.id">
+                    <div  class="accordion-item nolist" v-for="facultad in facultades.slice(i * (facultades.length/4), (i + 1) * (facultades.length/4))" :key="facultad.id">
                         <h2 class="accordion-header" :id="'id_'+facultad.id">
                             <button class="btn accordion-boton" type="button" data-bs-toggle="collapse" :data-bs-target="'#coll-'+facultad.id" aria-expanded="false" :aria-controls="'coll-'+facultad.id">
                                 <b>{{facultad.nombre}}</b>
@@ -21,11 +69,11 @@
                 </div>
             </div>
         </div>
-   </div>
+   </div>-->
  
  
     <div v-if="mostrar">
-        <div class="colorGris mt-4 pb-1 pt-2">
+        <div class="colorGris mt-4 pb-1 pt-2"  :style="'background-color: '+facultad.color+';'">
                 <h3 class="text-light text-center"><span class="textoSuavecito">Tesis de Posgrados de la <b>{{posgrado.nombre}}</b></span></h3>
         </div>
         <div class="container">
@@ -69,7 +117,7 @@
         },
         computed: {
             facsGroups () {
-                return Array.from(Array(Math.ceil(2)).keys())
+                return Array.from(Array(Math.ceil(4)).keys())
             }
         },
         methods: {

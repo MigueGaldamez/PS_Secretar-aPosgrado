@@ -115,3 +115,4 @@ Route::apiResource('/universidads', UniversidadController::class);
 //T E S I S    P O S G R A D O S 
 Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
 Route::get('/facultades/conTesis', [FacultadesController::class, 'facultadesConTesis'])->name('fac.con.tesis');
+Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv'])->name('fac.con.inv');

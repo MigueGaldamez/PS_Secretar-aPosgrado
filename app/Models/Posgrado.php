@@ -18,7 +18,7 @@ class Posgrado extends Model
         'tipo_programa_id',
         'ofertado',
     ];
-    protected $with = ['facultad','tipo_programa','tesis'];
+    protected $with = ['facultad','tipo_programa','tesis','inv'];
     public function facultad()
     {
         return $this->belongsTo(Facultades::class);
@@ -29,6 +29,10 @@ class Posgrado extends Model
     }
     public function tesis()
     {
-        return $this->hasMany(Tesi::class)->where('estado','=',0);
+        return $this->hasMany(Tesi::class)->where('estado','=',1);
+    }
+    public function inv()
+    {
+        return $this->hasMany(Tesi::class)->where('estado','=',1);
     }
 }
