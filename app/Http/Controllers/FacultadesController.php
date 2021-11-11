@@ -27,9 +27,7 @@ class FacultadesController extends Controller
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
-                $facultad->telefonoPosgrado = $request->telefonoPosgrado;
-                $facultad->extPosgrado = $request->extPosgrado;
-                $facultad->correoPosgrado = $request->correoPosgrado;
+                $facultad->contactoPosgrado = $request->contactoPosgrado;
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
@@ -59,9 +57,7 @@ class FacultadesController extends Controller
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
-                $facultad->telefonoPosgrado = $request->telefonoPosgrado;
-                $facultad->extPosgrado = $request->extPosgrado;
-                $facultad->correoPosgrado = $request->correoPosgrado;
+                $facultad->contactoPosgrado = $request->contactoPosgrado;
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
@@ -81,9 +77,7 @@ class FacultadesController extends Controller
                 $facultad = Facultades::find($request->id);
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
-                $facultad->telefonoPosgrado = $request->telefonoPosgrado;
-                $facultad->extPosgrado = $request->extPosgrado;
-                $facultad->correoPosgrado = $request->correoPosgrado;
+                $facultad->contactoPosgrado = $request->contactoPosgrado;
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;

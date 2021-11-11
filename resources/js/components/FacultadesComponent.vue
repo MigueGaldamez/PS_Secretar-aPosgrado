@@ -26,6 +26,13 @@
                                 <label  class="form-label">Nombre de la Facultad</label>
                                 <input v-model="facultad.nombre" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
                             </div>
+                            <div class="mb-3 col-sm-12 ">
+                                <label  class="form-label">Descripcion pequeña</label>
+                                <textarea v-on:keyup="contadorCharD" v-model="facultad.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <div id="passwordHelpBlock" class="form-text">
+                                {{charFaltantesD}}/255
+                                </div>
+                            </div>
                             <div class="mb-3 col-sm-12" >
                                 <label  class="form-label">Informacion de contacto de Diplomado</label>
                                 <textarea v-on:keyup="contadorCharC"   v-model="facultad.contactoDiplomado" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
@@ -33,28 +40,11 @@
                                     {{charFaltantesC}}/120 | Puedes separar email, telefono con una ",". 
                                 </div>
                             </div>
-                            <div class="mb-3 col-sm-12 ">
-                                <label  class="form-label">Descripcion pequeña</label>
-                                <textarea v-on:keyup="contadorCharD" v-model="facultad.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <div class="mb-3 col-sm-12" >
+                                <label  class="form-label">Informacion de contacto de Posgrados</label>
+                                <textarea v-on:keyup="contadorCharP"   v-model="facultad.contactoPosgrado" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 <div id="passwordHelpBlock" class="form-text">
-                                   {{charFaltantesD}}/255
-                                </div>
-                            </div>
-                            <div class="mb-3 col-sm-12 border rounded-3 p-3">
-                                <div class="row">
-                                    <h4>Informacion de contacto de Posgrados. </h4>
-                                    <div class="mb-3 col-sm-4 " >
-                                        <label  class="form-label">Telefono</label>
-                                        <input v-model="facultad.telefonoPosgrado" class="form-control" type="text" placeholder="telefono" aria-label="Telefono">
-                                    </div>
-                                    <div class="mb-3 col-sm-4" >
-                                        <label  class="form-label">Extension telefono</label>
-                                        <input v-model="facultad.extPosgrado" class="form-control" type="text" placeholder="Extensiones" aria-label="Extension">
-                                    </div>
-                                    <div class="mb-3 col-sm-4" >
-                                        <label  class="form-label">Correo Posgrado</label>
-                                        <input v-model="facultad.correoPosgrado" class="form-control" type="email" placeholder="Nombre" aria-label="Correo">
-                                    </div>
+                                    {{charFaltantesP}}/120 | Puedes separar email, telefono con una ",". 
                                 </div>
                             </div>
                             <div class="mb-3 col-sm-6" >
@@ -116,9 +106,7 @@ export default {
                 urlImagen: null,
                 nombre: '',
                 contactoDiplomado: '',
-                telefonoPosgrado: '',
-                extPosgrado: '',
-                correoPosgrado: '',
+                contactoPosgrado: '',
                 color: '#CCCCCC',
                 multidis: 0,
                 descripcion: '',
@@ -128,6 +116,8 @@ export default {
             charFaltantesC:120, //Faltante para contacto de diplomado
             charMaxD:255,//Maximo para la descripcion
             charFaltantesD:255,//faltante para la descripcion
+            charMaxP:120,//Maximo para contacto posgrado
+            charFaltantesP:120,//faltante contacto posgrado
             update:true,
             modal:0,
             titleModal:'',
@@ -185,9 +175,7 @@ export default {
                 {
                     if(error.response.data)
                     {
-                        
                         this.errores = error.response.data.errors;
-
                     }
                 }
             }
@@ -235,14 +223,13 @@ export default {
                 this.facultad.urlImagen = data.urlImagen;
                 this.facultad.nombre = data.nombre;
                 this.facultad.contactoDiplomado = data.contactoDiplomado;
-                this.facultad.telefonoPosgrado= data.telefonoPosgrado,
-                this.facultad.extPosgrado= data.extPosgrado,
-                this.facultad.correoPosgrado= data.correoPosgrado,
+                this.facultad.contactoPosgrado = data.contactoPosgrado;
                 this.facultad.color= data.color,
                 this.facultad.multidis = data.multidis;
                 this.facultad.descripcion = data.descripcion;
-                this.charFaltantesC = 120 - data.contactoDiplomado.length;
-                this.charFaltantesD = 255 - data.descripcion.length;
+                this.charFaltantesC = 120 -  (encodeURI(data.contactoDiplomado).split(/%..|./).length - 1);
+                this.charFaltantesD = 255 - (encodeURI(data.descripcion).split(/%..|./).length - 1);
+                this.charFaltantesP = 120 - (encodeURI(data.contactoPosgrado).split(/%..|./).length - 1);
             }
             else
             {
@@ -251,14 +238,13 @@ export default {
                 this.facultad.urlImagen = '';
                 this.facultad.nombre = '';
                 this.facultad.contactoDiplomado='';
-                this.facultad.telefonoPosgrado= '',
-                this.facultad.extPosgrado= '',
-                this.facultad.correoPosgrado= '',
+                this.facultad.contactoPosgrado = '';
                 this.facultad.color= '#CCCCCC',
                 this.facultad.multidis = 0;
                 this.facultad.descripcion = '';
                 this.charFaltantesC = 120;
                 this.charFaltantesD = 255;
+                this.charFaltantesP = 120;
             }
         },
         closeModal() {
@@ -268,12 +254,16 @@ export default {
         },
         contadorCharD: function()//contador para la descripcion
         {
-            this.charFaltantesD = this.charMaxD - this.facultad.descripcion.length;
+            this.charFaltantesD = this.charMaxD - (encodeURI(this.facultad.descripcion).split(/%..|./).length - 1);
+        },
+        contadorCharC: function()//contador para el ontacto diplomados
+        {
+            this.charFaltantesC = this.charMaxC - (encodeURI(this.facultad.contactoDiplomado).split(/%..|./).length - 1);
             
         },
-        contadorCharC: function()//contador para la descripcion
+        contadorCharP: function()//contador para el contacto posgrado
         {
-            this.charFaltantesC = this.charMaxC - this.facultad.contactoDiplomado.length;
+            this.charFaltantesP = this.charMaxP -  (encodeURI(this.facultad.contactoPosgrado).split(/%..|./).length - 1);
             
         },
         obtenerImagen(e)

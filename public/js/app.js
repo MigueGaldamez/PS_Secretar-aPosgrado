@@ -6569,16 +6569,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6587,9 +6577,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         urlImagen: null,
         nombre: '',
         contactoDiplomado: '',
-        telefonoPosgrado: '',
-        extPosgrado: '',
-        correoPosgrado: '',
+        contactoPosgrado: '',
         color: '#CCCCCC',
         multidis: 0,
         descripcion: ''
@@ -6603,6 +6591,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       //Maximo para la descripcion
       charFaltantesD: 255,
       //faltante para la descripcion
+      charMaxP: 120,
+      //Maximo para contacto posgrado
+      charFaltantesP: 120,
+      //faltante contacto posgrado
       update: true,
       modal: 0,
       titleModal: '',
@@ -6796,20 +6788,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         this.facultad.urlImagen = data.urlImagen;
         this.facultad.nombre = data.nombre;
         this.facultad.contactoDiplomado = data.contactoDiplomado;
-        this.facultad.telefonoPosgrado = data.telefonoPosgrado, this.facultad.extPosgrado = data.extPosgrado, this.facultad.correoPosgrado = data.correoPosgrado, this.facultad.color = data.color, this.facultad.multidis = data.multidis;
+        this.facultad.contactoPosgrado = data.contactoPosgrado;
+        this.facultad.color = data.color, this.facultad.multidis = data.multidis;
         this.facultad.descripcion = data.descripcion;
-        this.charFaltantesC = 120 - data.contactoDiplomado.length;
-        this.charFaltantesD = 255 - data.descripcion.length;
+        this.charFaltantesC = 120 - (encodeURI(data.contactoDiplomado).split(/%..|./).length - 1);
+        this.charFaltantesD = 255 - (encodeURI(data.descripcion).split(/%..|./).length - 1);
+        this.charFaltantesP = 120 - (encodeURI(data.contactoPosgrado).split(/%..|./).length - 1);
       } else {
         this.id = 0;
         this.titleModal = "Agregar Facultad";
         this.facultad.urlImagen = '';
         this.facultad.nombre = '';
         this.facultad.contactoDiplomado = '';
-        this.facultad.telefonoPosgrado = '', this.facultad.extPosgrado = '', this.facultad.correoPosgrado = '', this.facultad.color = '#CCCCCC', this.facultad.multidis = 0;
+        this.facultad.contactoPosgrado = '';
+        this.facultad.color = '#CCCCCC', this.facultad.multidis = 0;
         this.facultad.descripcion = '';
         this.charFaltantesC = 120;
         this.charFaltantesD = 255;
+        this.charFaltantesP = 120;
       }
     },
     closeModal: function closeModal() {
@@ -6819,11 +6815,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     contadorCharD: function contadorCharD() //contador para la descripcion
     {
-      this.charFaltantesD = this.charMaxD - this.facultad.descripcion.length;
+      this.charFaltantesD = this.charMaxD - (encodeURI(this.facultad.descripcion).split(/%..|./).length - 1);
     },
-    contadorCharC: function contadorCharC() //contador para la descripcion
+    contadorCharC: function contadorCharC() //contador para el ontacto diplomados
     {
-      this.charFaltantesC = this.charMaxC - this.facultad.contactoDiplomado.length;
+      this.charFaltantesC = this.charMaxC - (encodeURI(this.facultad.contactoDiplomado).split(/%..|./).length - 1);
+    },
+    contadorCharP: function contadorCharP() //contador para el contacto posgrado
+    {
+      this.charFaltantesP = this.charMaxP - (encodeURI(this.facultad.contactoPosgrado).split(/%..|./).length - 1);
     },
     obtenerImagen: function obtenerImagen(e) {
       this.facultad.urlImagen = e.target.files[0];
@@ -51008,6 +51008,57 @@ var render = function() {
                         })
                       ]),
                       _vm._v(" "),
+                      _c("div", { staticClass: "mb-3 col-sm-12 " }, [
+                        _c("label", { staticClass: "form-label" }, [
+                          _vm._v("Descripcion pequeña")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.facultad.descripcion,
+                              expression: "facultad.descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            id: "exampleFormControlTextarea1",
+                            rows: "3"
+                          },
+                          domProps: { value: _vm.facultad.descripcion },
+                          on: {
+                            keyup: _vm.contadorCharD,
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.facultad,
+                                "descripcion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "form-text",
+                            attrs: { id: "passwordHelpBlock" }
+                          },
+                          [
+                            _vm._v(
+                              "\r\n                                " +
+                                _vm._s(_vm.charFaltantesD) +
+                                "/255\r\n                                "
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "mb-3 col-sm-12" }, [
                         _c("label", { staticClass: "form-label" }, [
                           _vm._v("Informacion de contacto de Diplomado")
@@ -51059,9 +51110,9 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "mb-3 col-sm-12 " }, [
+                      _c("div", { staticClass: "mb-3 col-sm-12" }, [
                         _c("label", { staticClass: "form-label" }, [
-                          _vm._v("Descripcion pequeña")
+                          _vm._v("Informacion de contacto de Posgrados")
                         ]),
                         _vm._v(" "),
                         _c("textarea", {
@@ -51069,8 +51120,8 @@ var render = function() {
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.facultad.descripcion,
-                              expression: "facultad.descripcion"
+                              value: _vm.facultad.contactoPosgrado,
+                              expression: "facultad.contactoPosgrado"
                             }
                           ],
                           staticClass: "form-control",
@@ -51078,16 +51129,16 @@ var render = function() {
                             id: "exampleFormControlTextarea1",
                             rows: "3"
                           },
-                          domProps: { value: _vm.facultad.descripcion },
+                          domProps: { value: _vm.facultad.contactoPosgrado },
                           on: {
-                            keyup: _vm.contadorCharD,
+                            keyup: _vm.contadorCharP,
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
                               _vm.$set(
                                 _vm.facultad,
-                                "descripcion",
+                                "contactoPosgrado",
                                 $event.target.value
                               )
                             }
@@ -51102,137 +51153,13 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                   " +
-                                _vm._s(_vm.charFaltantesD) +
-                                "/255\r\n                                "
+                              "\r\n                                    " +
+                                _vm._s(_vm.charFaltantesP) +
+                                '/120 | Puedes separar email, telefono con una ",". \r\n                                '
                             )
                           ]
                         )
                       ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "mb-3 col-sm-12 border rounded-3 p-3" },
-                        [
-                          _c("div", { staticClass: "row" }, [
-                            _c("h4", [
-                              _vm._v("Informacion de contacto de Posgrados. ")
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mb-3 col-sm-4 " }, [
-                              _c("label", { staticClass: "form-label" }, [
-                                _vm._v("Telefono")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.facultad.telefonoPosgrado,
-                                    expression: "facultad.telefonoPosgrado"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "telefono",
-                                  "aria-label": "Telefono"
-                                },
-                                domProps: {
-                                  value: _vm.facultad.telefonoPosgrado
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.facultad,
-                                      "telefonoPosgrado",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mb-3 col-sm-4" }, [
-                              _c("label", { staticClass: "form-label" }, [
-                                _vm._v("Extension telefono")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.facultad.extPosgrado,
-                                    expression: "facultad.extPosgrado"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Extensiones",
-                                  "aria-label": "Extension"
-                                },
-                                domProps: { value: _vm.facultad.extPosgrado },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.facultad,
-                                      "extPosgrado",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mb-3 col-sm-4" }, [
-                              _c("label", { staticClass: "form-label" }, [
-                                _vm._v("Correo Posgrado")
-                              ]),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.facultad.correoPosgrado,
-                                    expression: "facultad.correoPosgrado"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "email",
-                                  placeholder: "Nombre",
-                                  "aria-label": "Correo"
-                                },
-                                domProps: {
-                                  value: _vm.facultad.correoPosgrado
-                                },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.facultad,
-                                      "correoPosgrado",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ])
-                          ])
-                        ]
-                      ),
                       _vm._v(" "),
                       _c("div", { staticClass: "mb-3 col-sm-6" }, [
                         _c("label", { staticClass: "form-label" }, [
