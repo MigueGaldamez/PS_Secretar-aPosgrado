@@ -15,10 +15,10 @@ class CreateEquipoTrabajosTable extends Migration
     {
         Schema::create('equipoTrabajos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('urlImagen');
             $table->string('nombre');
             $table->string('cargo');
             $table->longText('descripcion');
-            $table->timestamps();
         });
     }
 

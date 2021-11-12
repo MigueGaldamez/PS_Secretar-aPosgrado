@@ -15,25 +15,35 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="my-4">
-                                    <label for="nombre">Nombre Especialidad</label>
-                                    <input v-model="equipoTrabajo.nombre" type="text" class="form-control" placeholder="Nombre Miembro" id="nombre">
-                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
-                                </div>
-                                <div class="my-4">
-                                    <label for="descripcion">Cargo Miembro</label>
-                                    <input v-model="equipoTrabajo.cargo" type="text" class="form-control" placeholder="Cargo" id="cargo">
-                                    <span class="text-danger" v-if="errores.cargo">{{errores.cargo[0]}}</span>
-                                </div>
-                                <div class="my-4">
-                                    <label for="descripcion">Descripción Miembro</label>
-                                    <textarea v-model="equipoTrabajo.descripcion" type="text" class="form-control" placeholder="Descripcion" id="descripcion"></textarea>
-                                    <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
-                                </div>
+                                <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                                    <div class="mb-3 col-sm-6">
+                                        <label for="formFile" class="form-label">Logo de la Facultad</label>
+                                        <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    </div>
+                                    <div class="mb-3 col-sm-6">
+                                        <img :src="imagen" class="img-thumbnail" alt="...">
+                                    </div>
+                                    <div class="my-4">
+                                        <label for="nombre">Nombre Especialidad</label>
+                                        <input v-model="equipoTrabajo.nombre" type="text" class="form-control" placeholder="Nombre Miembro" id="nombre">
+                                        <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
+                                    </div>
+                                    <div class="my-4">
+                                        <label for="descripcion">Cargo Miembro</label>
+                                        <input v-model="equipoTrabajo.cargo" type="text" class="form-control" placeholder="Cargo" id="cargo">
+                                        <span class="text-danger" v-if="errores.cargo">{{errores.cargo[0]}}</span>
+                                    </div>
+                                    <div class="my-4">
+                                        <label for="descripcion">Descripción Miembro</label>
+                                        <textarea v-model="equipoTrabajo.descripcion" type="text" class="form-control" placeholder="Descripcion" id="descripcion"></textarea>
+                                        <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
+                                    </div>
+                                    <button type="button"  @click="guardar();" class="btn btn-primary"  >Guardar Cambios</button>
+                                </form> 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                <button type="button"  @click="guardar();" class="btn btn-primary"  data-bs-dismiss="modal">Guardar Cambios</button>
+                                
                             </div>
                             </div>
                         </div>
@@ -56,7 +66,7 @@
         <table class="table table-striped table-sm table-hover text-center">
             <thead class="table-dark"> 
                 <tr>
-                    
+                    <th scope="col">Imagen</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Cargo</th>
                     <th scope="col">Descripcion</th>                            
@@ -65,7 +75,7 @@
             </thead>
             <tbody>
                 <tr v-for="equi in equipoTrabajos.data" :key="equi.id">
-                    
+                    <td><img :src="equi.urlImagen"  class="img-thumbnail" alt="..."></td>
                     <td>{{equi.nombre}}</td>
                     <td>{{equi.cargo}}</td>
                     <td>{{equi.descripcion}}</td>
@@ -125,19 +135,20 @@
 <script>
     
     export default {
-         components: {
+        components: {
 
         },
         data(){
             return{
                 equipoTrabajo:{
+                    urlImagen: null,
                     id:'',
                     nombre:'',
                     cargo:'',
                     descripcion:'',
-                  
                 },
                 id:0,
+                imagenMiniatura:'',
                 modificar:true,
                 modal:0,
                 equipoTrabajos:[],
@@ -175,7 +186,7 @@
                 this.paginas=arrayN;    
             },
             async eliminar(id){
-                const res = await axios.delete('/dashboard/equipoTrabajo/'+id);
+                const res = await axios.delete('/dashboard/equipoTrabajo/'+id).then(response=>{console.log(response.data)});
                 this.cerrarModal();
                 this.listar();
 
@@ -183,14 +194,26 @@
             async guardar(){
                 try{
 
-                    if(this.modificar){
-                        const res = await axios.put('/dashboard/equipoTrabajo/'+this.id,this.equipoTrabajo);  
-                        console.log(this.equipoTrabajo); 
+                    if(this.modificar)
+                    {
+                        let fields = new FormData();
+                        for(let key in this.equipoTrabajo)
+                        {
+                            fields.append(key,this.equipoTrabajo[key]);
+                        }
+                        const res = await axios.post('/dashboard/equipoTrabajo/'+this.id,fields);  
+                        //console.log(this.equipoTrabajo); 
                         console.log('modifica');      
                     }
-                    else{
-                        const res = await axios.post('/dashboard/equipoTrabajo/',this.equipoTrabajo);
-                         console.log('guarda');    
+                    else
+                    {
+                        let fields = new FormData();
+                        for(let key in this.equipoTrabajo)
+                        {
+                            fields.append(key,this.equipoTrabajo[key]);
+                        }
+                        const res = await axios.post('/dashboard/equipoTrabajo',fields);
+
                     }  
                     this.cerrarModal();
                     this.listar();      
@@ -215,7 +238,8 @@
                 else{
                     this.id=0;
                     this.equipoTrabajo.id = 0;
-                    this.tituloModal='Agregar Miembro'
+                    this.urlImagen = null;
+                    this.tituloModal='Agregar Miembro';
                     this.equipoTrabajo.nombre='';
                     this.equipoTrabajo.descripcion='';
                     this.equipoTrabajo.cargo='';   
@@ -225,12 +249,33 @@
                 this.modal=0;
                 this.errores={};
             },
+            obtenerImagen(e)
+            {
+                this.equipoTrabajo.urlImagen=e.target.files[0];
+                this.cargarImagen(this.equipoTrabajo.urlImagen); 
+            },
+            cargarImagen(file)
+            {
+                let reader = new FileReader();
+                reader.onload = e=>
+                {
+                    this.imagenMiniatura =e.target.result;
+                }
+                reader.readAsDataURL(file);
+            },
         },
         mounted() {
             console.log('Component mounted.')
         },
         created(){
             this.listar();
+        },
+        computed:
+        {
+            imagen()
+            {
+                return this.imagenMiniatura;
+            },
         }
     }
 </script>

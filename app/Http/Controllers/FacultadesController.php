@@ -36,22 +36,12 @@ class FacultadesController extends Controller
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
         }
         else
         {
-            try
-            {
-                return "No has elejido un archivo.";
-            }
-            catch (\Exception $e) 
-            {
-
-                return $e->getMessage();
-            }
-            
+            return "No has elejido un archivo.";
         }   
     }
     public function update(Request $request, Facultades $facultad)
@@ -78,10 +68,8 @@ class FacultadesController extends Controller
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
-
         }
         else
         {
@@ -98,7 +86,6 @@ class FacultadesController extends Controller
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
         }  

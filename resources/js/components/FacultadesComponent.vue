@@ -294,8 +294,6 @@ export default {
         {
             return this.imagenMiniatura;
         },
-
-
     }
 }
 </script>
