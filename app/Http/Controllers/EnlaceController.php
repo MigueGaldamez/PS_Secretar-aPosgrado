@@ -22,8 +22,7 @@ class EnlaceController extends Controller
             try
             {
                 $fileImagen=$request->file('urlImagen')->store('public/enlace');
-                $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
+                $urlImagen = Storage::url($fileImagen);
                 $enlace = new Enlace();
                 $enlace->urlImagen = $urlImagen;
                 $enlace->titulo = $request->titulo;
@@ -49,9 +48,10 @@ class EnlaceController extends Controller
             try
             {
                 $fileImagen=$request->file('urlImagen')->store('public/enlace');
-                $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
+                $urlImagen = Storage::url($fileImagen);
                 $enlace = Enlace::find($request->id);
+                $oldUrlImagen = explode('/',$enlace->urlImagen);
+                Storage::delete('public/enlace/'.$oldUrlImagen[3]);
                 $enlace->urlImagen = $urlImagen;
                 $enlace->titulo= $request->titulo;
                 $enlace->link = $request->link;

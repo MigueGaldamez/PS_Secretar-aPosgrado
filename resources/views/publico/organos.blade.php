@@ -73,14 +73,14 @@
                     </div>
                 </div>
                 <div class="col col-lg-3 col-12 col-md-3">
-                    <img class="img-fluid" src="{{asset('img/organos/IMG_6691.jpg')}}" alt="">
+                    <img class="img-fluid" src="{{$miembro->urlImagen}}" alt="">
                 </div>
                 
             </div>
         @else
             <div class="row mb-4">
                 <div class="col col-lg-3 col-md-3 col-12">
-                    <img class="img-fluid" src="{{asset('img/organos/IMG_6691.jpg')}}" alt="">
+                    <img class="img-fluid" src="{{$miembro->urlImagen}}" alt="">
                 </div>
                 <div class="col col-lg-9 col-md-9 col-12">
                     <div class="card cardEquipo">

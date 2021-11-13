@@ -69,8 +69,10 @@ Route::view('dashboard/tipo_programas', 'tipoPrograma.index')->name('TipoProgram
 Route::apiResource('dashboard/tipo_programas_api', TipoProgramaController::class)->except(['show']);
                         //FIN mantenimientos de tablas opciones
 //Equipo trabajo
+
 Route::view('dashboard/equipo_trabajo', 'equipoTrabajo.index')->name('EquipoTrabajo');
-Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class);
+Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class)->except(['update','show']);;
+Route::post('dashboard/equipoTrabajo/{equipoTrabajo}', [EquipoTrabajoController::class,'update']);
 //Resenias Historicas
 Route::view('dashboard/resenia_historica', 'reseniaHistorica.index')->name('ReseniaHistorica');
 Route::apiResource('dashboard/reseniaHistorica', ReseniaHistoricaController::class);
@@ -116,3 +118,5 @@ Route::apiResource('/universidads', UniversidadController::class);
 Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
 Route::get('/facultades/conTesis', [FacultadesController::class, 'facultadesConTesis'])->name('fac.con.tesis');
 Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv'])->name('fac.con.inv');
+Route::get('/facultades/fac', [FacultadesController::class, 'facultadesF'])->name('fac.fac');
+Route::get('/facultades/sed', [FacultadesController::class, 'facultadesS'])->name('fac.sed');

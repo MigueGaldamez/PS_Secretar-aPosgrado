@@ -15,6 +15,14 @@ class FacultadesController extends Controller
     {
         return Facultades::with('posgrados')->get();
     }
+    public function facultadesS()
+    {
+        return Facultades::with('posgrados')->where('multidis','=',1)->get();
+    }
+    public function facultadesF()
+    {
+        return Facultades::with('posgrados')->where('multidis','=',0)->get();
+    }
     public function store(Request $request)
     {
         if($request->hasFile('urlImagen'))
@@ -23,8 +31,8 @@ class FacultadesController extends Controller
             {
                 $fileImagen=$request->file('urlImagen')->store('public/facultad');
                 $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
                 $facultad = new Facultades();
+                $urlImagen =  $url;
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
@@ -32,17 +40,17 @@ class FacultadesController extends Controller
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
+                
                 return $facultad->save();
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
         }
         else
         {
-            return "error";
+            return "No has elejido un archivo.";
         }   
     }
     public function update(Request $request, Facultades $facultad)
@@ -52,9 +60,11 @@ class FacultadesController extends Controller
             try
             {
                 $fileImagen=$request->file('urlImagen')->store('public/facultad');
-                $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
+                $url= Storage::url($fileImagen);
+                $urlImagen =  $url;
                 $facultad = Facultades::find($request->id);
+                $oldUrlImagen = explode('/',$facultad->urlImagen);
+                Storage::delete('public/facultad/'.$oldUrlImagen[3]);
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
@@ -62,14 +72,13 @@ class FacultadesController extends Controller
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
+                
                 return $facultad->save();
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
-
         }
         else
         {
@@ -86,7 +95,6 @@ class FacultadesController extends Controller
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
         }  
