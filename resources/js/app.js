@@ -37,6 +37,7 @@ Vue.component('diplomados-component', require('./components/DiplomadosComponent.
 Vue.component('posgrados-component', require('./components/PosgradosComponent.vue').default);
 Vue.component('tesis-component', require('./components/TesisComponent.vue').default);
 Vue.component('equipo-trabajo-component', require('./components/EquipoTrabajoComponent.vue').default);
+Vue.component('galery-component', require('./components/GaleryComponent.vue').default);
 Vue.component('historico-component', require('./components/HistoricoComponent.vue').default);
 Vue.component('noticias-component', require('./components/NoticiasComponent.vue').default);
 

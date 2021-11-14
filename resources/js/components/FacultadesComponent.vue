@@ -195,12 +195,10 @@ export default {
                     if(response.data==1)
                     {
                         this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
-                        console.log(response.data);
                     }
                     else
                     {
                         this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
-                        console.log(response.data);
                     }
                     });
                 }
