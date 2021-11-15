@@ -26,98 +26,57 @@
                     </div>
                 </div>
                 {{--Fin buscar--}}
-            <div class=" callout callout-danger row">
-                <div class="col col-12 col-lg-8 ">
+            
+            @foreach ($enlaces as $enlace)
+                <div class=" callout callout-danger row">
+                    <div class="col col-12 col-lg-8 ">
+                    
+                        <a href="{{$enlace->link}}"><span><b>{{$enlace->titulo}}</b></span><br></a>
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
+                        ut labore et dolore magna aliqua. </span>
+                        <br><a href="{{$enlace->link}}" class="">Visitar</a>
+                    </div>
+                    <div class="col col-12 col-lg-4 my-n3">
+                        <img src="{{$enlace->urlImagen}}" alt="" height="150" class="pe-0">
+                    
+                    </div>
+                </div>
+            @endforeach
                 
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. </span>
-                     <br><a href="" class="">Visitar</a>
-                </div>
-                <div class="col col-12 col-lg-4">
-                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
-                   
-                </div>
-            </div>
-            <div class=" callout callout-danger row">
-                <div class="col col-12 col-lg-8 ">
-                
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. </span>
-                     <br><a href="" class="">Visitar</a>
-                </div>
-                <div class="col col-12 col-lg-4">
-                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
-                   
-                </div>
-            </div>
-            <div class=" callout callout-danger row">
-                <div class="col col-12 col-lg-8 ">
-                
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. </span>
-                     <br><a href="" class="">Visitar</a>
-                </div>
-                <div class="col col-12 col-lg-4">
-                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
-                   
-                </div>
-            </div>
-            <div class=" callout callout-danger row">
-                <div class="col col-12 col-lg-8 ">
-                
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. </span>
-                     <br><a href="" class="">Visitar</a>
-                </div>
-                <div class="col col-12 col-lg-4">
-                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
-                   
-                </div>
-            </div>
-            <div class=" callout callout-danger row">
-                <div class="col col-12 col-lg-8 ">
-                
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span><br>
-                    <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt 
-                    ut labore et dolore magna aliqua. </span>
-                     <br><a href="" class="">Visitar</a>
-                </div>
-                <div class="col col-12 col-lg-4">
-                    <img src="{{asset('img/LogoSECRETARIADEPOSGRADO-02.svg')}}" alt="" height="70">
-                   
-                </div>
-            </div>
+        
+         
+           
         </div>
         <div class="col col-lg-4 col-12">
             <h1 class="text-center tituloSuperior text-uppercase bordeBajo"><span>Enlaces mas visitados</span></h1>
-             <div class=" calloutIL calloutIL-info row">
-                <div class="col">
+            @php
+                $contador=0;
+            @endphp
+            
+            @foreach ($enlacesMas as $enlace)
                 
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span>
-                   
-                    <br><a href="" class="">Visitar</a>
-                </div>
-               
-            </div>
-            <div class=" calloutIR calloutIR-info row">
-                <div class="col">
-                
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span>
-                   
-                    <br><a href="" class="">Visitar</a>
-                </div>
-               
-            </div>
-              <div class=" calloutIL calloutIL-info row">
-                <div class="col">  
-                    <span><b>Enlace a las interfaces del proyecto del sitio web de la Secretaria de posgrado.</b></span>           
-                    <br><a href="" class="">Visitar</a>
-                </div>              
-            </div>
+                @if ($contador%2==0)
+                     <div class=" calloutIL calloutIL-info row">
+                        <div class="col">
+                            <span><b>{{$enlace->titulo}}</b></span>
+                            <br><a href="{{$enlace->link}}" class="">Visitar</a>
+                        </div>
+                    
+                    </div>
+                    
+                @elseif ($contador%2!=0)
+                    <div class=" calloutIR calloutIR-info row">
+                        <div class="col">
+                            <span><b>{{$enlace->titulo}}</b></span>
+                            <br><a href="{{$enlace->link}}" class="">Visitar</a>
+                        </div>
+                    
+                    </div>
+                @endif
+                @php
+                    $contador++;
+                @endphp
+            @endforeach
         </div>
     </div>
 </div>

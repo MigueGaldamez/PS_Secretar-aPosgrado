@@ -9,6 +9,13 @@ INSERT INTO `equipotrabajos` (`id`, `nombre`, `cargo`, `descripcion`, `created_a
 (3, 'Sandra Hernández', 'Asistente Administrativo', 'Sandra Hernández, Asistente Administrativo de la Secretaría de\nPosgrado', '2021-11-02 07:11:50', '2021-11-02 07:11:50');
 COMMIT;
 */
+INSERT INTO `enlaces` (`id`, `urlImagen`, `titulo`, `link`) VALUES
+(1, '/storage/enlace/7sR80VKxoWZ3Gc4JlLT9XS0ksEeL8EL0t7lSYoA9.png', 'Secretaría de Investigaciones Científicas de la Universidad de El Salvador', 'https://sic.ues.edu.sv/'),
+(2, '/storage/enlace/VluYBvogyyXm9DXKR3KeZYwVhM34XmnQ79K356Wn.png', 'Secretaría de Asuntos Académicos de la Universidad de El Salvador', 'https://academica.ues.edu.sv/'),
+(3, '/storage/enlace/tmVhzq1PqcsjfqYAQsftDg30CJ2yPgkQod5XPSgf.jpg', 'Secretaría de Proyección Social de la Universidad de El Salvador', 'http://proyeccionsocial.ues.edu.sv/index.php/proyeccion-social'),
+(4, '/storage/enlace/DVyqR5BFXYODWtR0R1KdrEUjS8EA4ySKqiOoLou6.png', 'Secretaría de Relaciones Nacionales e Internacionales de la Universidad de El Salvador', 'https://www.facebook.com/srniues/');
+COMMIT;
+
 INSERT INTO `equipotrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES
 (1, '/storage/equipo/evelin.jpg', 'Evelin Patricia Gutiérrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias Políticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de Posgrados de la Universidad de El Salvador con el objetivo de unificar\\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.'),
 (2, '/storage/equipo/nancy.jpg', 'Nancy Orellana', 'Área de comunicaciones', 'Licenciada en Periodismo, Nancy Orellana, asignada para en el área de Comunicaciones de la Secretaría de Posgrados'),
