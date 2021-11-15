@@ -65,5 +65,7 @@ class PublicoController extends Controller
         $facultades = Facultades::all();
         return view('publico.tesisPosgrados');
     }
-    
+    public function catalogoC(){
+        return view('publico.catalogo');
+    }
 }
