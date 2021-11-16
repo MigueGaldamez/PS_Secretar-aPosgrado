@@ -91,50 +91,32 @@
     <div class="row p-4">
         <div class="col col-12 col-lg-8 col-sm-12">
             <div class="row">
-                <div class="box col-11 mt-4 mx-auto">
+                <div class="box col-11 mt-4 mx-auto  bg-griscito">
                     <h1 class="textoGris text-uppercase textoDuro">Quienes somos</h1>
                     <div class="titulohr mb-4"></div>
-                    <p>La Secretaría de Posgrado de la Universidad de El Salvador es una
-                    dependencia administrativa de la <b>Vicerrectoría Académica</b>, cuya
-                    finalidad es contribuir al fortalecimiento del sistema de posgrado y
-                    atender las necesidades de formación y educación avanzada en la
-                    UES.
-                    Se responsabiliza, además, de coordinar actividades académicas y
-                    administrativas del Sistema de Estudios de Posgrado (SEP); del mismo
-                    modo, la Secretaría instrumentaliza y ejecuta políticas de posgrado,
-                    está obligada a promover y encaminar los Programas de Posgrado
-                    hacia la excelencia académica siendo fiel a su misión con el
-                    compromiso de formar especialistas con conocimiento científico,
-                    tecnológico y humanístico para contribuir al desarrollo integral de la
-                    sociedad.</p>
+                    <p>{{$informacion->quienesSomos}}</p>
                 </div>
                 
             </div>   
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="box box-down pink">
+                <div class="col-lg-6 col-md-6 col-sm-12 ">
+                    <div class="box box-down pink  bg-griscito">
                         <img class="imgMVV" src="{{asset('img/iconos/mision.png ')}}" alt="" height="90">
                         <h2>Mision</h2>
-                        <p>Somos un Sistema de Posgrado de carácter público comprometido con
-                        la formación de especialistas y la generación de conocimientos
-                        científico, tecnológico y humanístico para contribuir con pertinencia al
-                        desarrollo integral de la sociedad.</p>
+                        <p>{{$informacion->mision}}</p>
                         
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12">
-                    <div class="box box-down cyan">
+                <div class="col-lg-6 col-md-6 col-sm-12 ">
+                    <div class="box box-down cyan  bg-griscito">
                     <img class="imgMVV" src="{{asset('img/iconos/vision.png ')}}" alt="" height="90">
                         <h2>Vision</h2>
-                        <p>Ser el Sistema Rector de los Posgrados, promotor de la excelencia e
-                        innovación académica continua, alta calidad científica, tecnológica y
-                        humanística, comprometida con la sociedad salvadoreña y
-                        centroamericana.</p>
+                        <p>{{$informacion->vision}}</p>
                     
                     </div>
                 </div>
                 <div class="col-lg-12 col-sm-12">
-                    <div class="box box-down red">
+                    <div class="box box-down red  bg-griscito">
                   
                         <h2>Valores</h2>
                         <p>Valores Institucionales y Estratégicos</p>  
@@ -171,12 +153,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="box col-10 mt-4 mb-4 mx-auto ">
+                <div class="box col-10 mt-4 mb-4 mx-auto  bg-griscito">
                     <h1 class="textoGris text-uppercase textoDuro">Informacion de contacto</h1>
                       <div class="titulohr mb-4"></div>
                         <p> CORREO: Secretaria.posgrado@ues.edu.sv</p>
-                        <p>FACEBOOK:@PosgradosUES</p>
-                        <p>INSTAGRAM: @posgradosues</p>
+                        <p>FACEBOOK: <a href="">@PosgradosUES</a></p>
+                        <p>INSTAGRAM:  <a href=""> @posgradosues </a></p>
                 </div>
             </div>   
         </div>
@@ -184,7 +166,7 @@
         <div class="col col-12 col-lg-4 col-sm-12">
                 <h3 class="text-center tituloSuperior text-uppercase  textoDuro mt-4"><span>Noticias Relevantes</span></h3>
                 <div class="titulohr mb-2 mt-2"></div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden">
+                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
                     <div class="col">
                         <a href="" class="text-dark">
                         <span><b>UES: 179 años promoviendo el arte y la cultura.</b></span>
@@ -197,7 +179,7 @@
                     </div>
                 
                 </div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden">
+                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
                     <div class="col">
                         <a href="" class="text-dark">
                         <span><b>Exponen raíces de la desigualdad en las sociedades actuales de Latinoamérica.</b></span>
@@ -210,7 +192,7 @@
                     </div>
                 
                 </div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden">
+                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
                     <div class="col">
                         <a href="" class="text-dark">
                         <span><b>Convocan a todos los profesores de la UES a publicar libros de texto e investigaciones.</b></span>
@@ -223,7 +205,22 @@
                     </div>
                 
                 </div>
-                
+                  
+                      <div class="row">
+                        <div class="box col-11 mt-4 mx-auto  bg-griscito">
+                            <h1 class="textoGris text-uppercase textoDuro">Acreditación</h1>
+                            <div class="titulohr mb-4"></div>
+                            <p>Universidad de El Salvador, única institución pública de educación superior de la República de El Salvador con reconocimiento en la excelencia académica.</p>
+                             <img class="img-fluid mt-1 mb-3" src="{{asset('img/acreditacion/ranking.png')}}" alt="">
+                            <p>
+                            Acreditada por en 2019 por el Instituto de Alto Consejo de la Evaluación de la Investigación de la Educación Superior (Hcéres-Francia)
+                            </p>
+                            <div class="text-center">
+                            <img class="mx-auto" src="{{asset('img/acreditacion/hceres.png')}}" alt="" height="150px">
+                           </div>
+                        </div>
+                        
+                    </div>   
         </div>
     </div>
 </div>
