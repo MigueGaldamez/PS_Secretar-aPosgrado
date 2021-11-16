@@ -9,13 +9,15 @@
 </div>
 <div class="container"> 
     <div class="row my-3 my-sm-3 my-lg-1 my-md-1">
-       
+        <iframe height="550px" width="100%" src="{{URL::to('/')}}/catalogos/index.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" >
+        </iframe>
         
     </div>
-    <h2 class="textoGris"><span class="textoSuavecito2">Razones para estudiar un Posgrado</span></h2>
-    <div class="titulohr mb-4"></div>
+    
     <div class="row my-3 my-sm-3 my-lg-1 my-md-1 text-center">
-       
+     
+        <h2 class="textoGris mt-5"><span class="textoSuavecito2">Razones para estudiar un Posgrado</span></h2>
+        <div class="titulohr mb-4"></div>
         <div class="col">
             1
         </div>
