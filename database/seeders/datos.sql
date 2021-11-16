@@ -17,7 +17,7 @@ INSERT INTO `enlaces` (`id`, `urlImagen`, `titulo`, `link`) VALUES
 (4, '/storage/enlace/DVyqR5BFXYODWtR0R1KdrEUjS8EA4ySKqiOoLou6.png', 'Secretaría de Relaciones Nacionales e Internacionales de la Universidad de El Salvador', 'https://www.facebook.com/srniues/');
 COMMIT;
 
-INSERT INTO `equipotrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES
+INSERT INTO `equipoTrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES
 (1, '/storage/equipo/evelin.jpg', 'Evelin Patricia Gutiérrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias Políticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de Posgrados de la Universidad de El Salvador con el objetivo de unificar\\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.'),
 (2, '/storage/equipo/nancy.jpg', 'Nancy Orellana', 'Área de comunicaciones', 'Licenciada en Periodismo, Nancy Orellana, asignada para en el área de Comunicaciones de la Secretaría de Posgrados'),
 (3, '/storage/equipo/sandra.jpg', 'Sandra Hernández', 'Asistente Administrativo', 'Sandra Hernández, Asistente Administrativo de la Secretaría de Posgrado.');
