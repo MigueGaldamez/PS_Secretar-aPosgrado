@@ -1711,3 +1711,10 @@
      fill: #DA4567;
   }
 }
+
+.contenedorRazones .razon:not(:last-child){
+    border-right: #6c757d solid 2px;
+}
+.bg-griscito{
+  background-color: rgb(238, 238, 238);
+}

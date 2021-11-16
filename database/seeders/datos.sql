@@ -10,6 +10,10 @@ INSERT INTO `equipotrabajos` (`id`, `nombre`, `cargo`, `descripcion`, `created_a
 (3, 'Sandra Hernández', 'Asistente Administrativo', 'Sandra Hernández, Asistente Administrativo de la Secretaría de\nPosgrado', '2021-11-02 07:11:50', '2021-11-02 07:11:50');
 COMMIT;
 */
+INSERT INTO `informacions` (`id`, `urlLogo`, `quienesSomos`, `mision`, `vision`, `correo`, `horarioAtencion`, `created_at`, `updated_at`) VALUES
+(1, '-', 'La Secretaría de Posgrado de la Universidad de El Salvador es una dependencia administrativa de la Vicerrectoría Académica, cuya finalidad es contribuir al fortalecimiento del sistema de posgrado y atender las necesidades de formación y educación avanzada en la UES. Se responsabiliza, además, de coordinar actividades académicas y administrativas del Sistema de Estudios de Posgrado (SEP); del mismo modo, la Secretaría instrumentaliza y ejecuta políticas de posgrado, está obligada a promover y encaminar los Programas de Posgrado hacia la excelencia académica siendo fiel a su misión con el compromiso de formar especialistas con conocimiento científico, tecnológico y humanístico para contribuir al desarrollo integral de la sociedad.', 'Somos un Sistema de Posgrado de carácter público comprometido con la formación de especialistas y la generación de conocimientos científico, tecnológico y humanístico para contribuir con pertinencia al desarrollo integral de la sociedad.', 'Ser el Sistema Rector de los Posgrados, promotor de la excelencia e innovación académica continua, alta calidad científica, tecnológica y humanística, comprometida con la sociedad salvadoreña y centroamericana.', 'Secretaria.posgrado@ues.edu.sv', '-', '2021-11-07 04:56:27', '2021-11-07 04:56:27');
+COMMIT;
+
 INSERT INTO `enlaces` (`id`, `urlImagen`, `titulo`, `link`) VALUES
 (1, '/storage/enlace/7sR80VKxoWZ3Gc4JlLT9XS0ksEeL8EL0t7lSYoA9.png', 'Secretaría de Investigaciones Científicas de la Universidad de El Salvador', 'https://sic.ues.edu.sv/'),
 (2, '/storage/enlace/VluYBvogyyXm9DXKR3KeZYwVhM34XmnQ79K356Wn.png', 'Secretaría de Asuntos Académicos de la Universidad de El Salvador', 'https://academica.ues.edu.sv/'),
