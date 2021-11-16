@@ -76,7 +76,7 @@
                 </div>
             </div>
         </div>
-         <div class="col-lg-4 mt-4 offset-1">
+         <div class="col-lg-4 mt-4 offset-lg-1">
 
             <h2 class="text-dark mb-0 ps-0   ">Más Recientes</h2>   
             <div class="titulohr mb-4"></div>

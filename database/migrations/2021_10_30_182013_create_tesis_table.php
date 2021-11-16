@@ -17,7 +17,7 @@ class CreateTesisTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('posgrado_id')->unsigned();
             $table->year('publicado');
-            $table->string('titulo');
+            $table->mediumText('titulo');
             $table->string('autor');
             $table->string('link');
             $table->unsignedBigInteger('estado')->unsigned();

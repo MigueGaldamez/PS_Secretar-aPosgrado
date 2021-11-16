@@ -21,8 +21,10 @@ class PublicoController extends Controller
     }
     public function oferta()
     {
-        $facultades = Facultades::all();
-        return view('publico.ofertaAcademica',compact('facultades'));
+        $facultadesF = Facultades::with('posgrados')->where('multidis','=',0)->get();
+        $facultadesS = Facultades::with('posgrados')->where('multidis','=',1)->get();
+        //$facultades = Facultades::all();
+        return view('publico.ofertaAcademica',compact('facultadesF','facultadesS'));
     }
     public function ofertaFacultad($id)
     {

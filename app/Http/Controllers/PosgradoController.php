@@ -20,8 +20,7 @@ class PosgradoController extends Controller
             try
             {
                 $fileImagen=$request->file('urlImagen')->store('public/posgrados');
-                $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
+                $urlImagen = Storage::url($fileImagen);
                 $posgrado = new Posgrado();
                 $posgrado->urlImagen = $urlImagen;
                 $posgrado->facultad_id = $request->facultad;
@@ -52,9 +51,10 @@ class PosgradoController extends Controller
             try
             {
                 $fileImagen=$request->file('urlImagen')->store('public/posgrados');
-                $url = Storage::url($fileImagen);
-                $urlImagen=asset($url);
+                $urlImagen = Storage::url($fileImagen);
                 $posgrados_api = Posgrado::find($request->id);
+                $oldUrlImagen = explode('/',$posgrados_api->urlImagen);
+                Storage::delete('public/posgrados/'.$oldUrlImagen[3]);
                 $posgrados_api->urlImagen = $urlImagen;
                 $posgrados_api->facultad_id = $request->facultad;
                 $posgrados_api->nombre = $request->nombre;

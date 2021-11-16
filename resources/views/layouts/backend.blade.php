@@ -9,14 +9,13 @@
     <title>Secretaria Posgrado | {{@$titulo}}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-      <script src="{{ asset('js/mainBack.js') }}" defer></script>
+    <script src="{{ asset('js/mainBack.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
-  
+    <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app" class="wrapper">
@@ -96,10 +95,9 @@
                     
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                      <a class="navbar-brand" href="{{ url('/') }}">
+                        <a class="navbar-brand" href="{{ url('/') }}">
                             Secretaría de Pogrado UES
                         </a>
-                       
                     </ul>
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
@@ -116,7 +114,6 @@
                                 </li>
                             @endif
                             @else
-                           
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -124,7 +121,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                    document.getElementById('logout-form').submit();">
                                         {{ __('Cerrar Sesión') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -138,19 +135,14 @@
             </div>
         </nav>
         <div class="my-4">
-        @yield('content');
+        @yield('content')
         </div>
         </main>
 
         </div>
         </div>
-     
-         
-            
-            
-        
 
-       
+
     </div>
    </body>
 </html>
