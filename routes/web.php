@@ -19,6 +19,7 @@ use App\Http\Controllers\TipoProgramaController;
 use App\Http\Controllers\ReseniaHistoricaController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\TesiController;
+use App\Http\Controllers\PublicoController;
 use App\Models\EquipoTrabajo;
 
 
@@ -120,3 +121,4 @@ Route::get('/facultades/conTesis', [FacultadesController::class, 'facultadesConT
 Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv'])->name('fac.con.inv');
 Route::get('/facultades/fac', [FacultadesController::class, 'facultadesF'])->name('fac.fac');
 Route::get('/facultades/sed', [FacultadesController::class, 'facultadesS'])->name('fac.sed');
+Route::get('/catalogo', [PublicoController::class, 'catalogoC'])->name('catalogoC');
