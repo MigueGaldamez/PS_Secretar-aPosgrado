@@ -1,0 +1,267 @@
+<template>
+<div>
+    <!-- Button trigger modal -->
+    <button @click="update=false; openModal();" type="button" class="btn btn-primary"  >
+    Nuevo +
+    </button>
+    <!-- Modal -->
+    <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
+                    <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="mb-3 col-sm-6">
+                                <label for="formFile" class="form-label">Imagen</label>
+                                <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                            </div>
+                            <div class="mb-3 col-sm-6">
+                                <img :src="imagen" class="img-thumbnail" alt="...">
+                            </div>
+                            <div class="mb-3 col-sm-12" >
+                                <label  class="form-label">Título</label>
+                                <input v-model="galery.titulo" class="form-control" type="text" placeholder="Título" aria-label="Titulo de la imagen">
+                            </div>
+                            <div class="mb-3 col-sm-12" >
+                                <label  class="form-label">Subtítulo</label>
+                                <input v-model="galery.subtitulo" class="form-control" type="text" placeholder="Subtítulo" aria-label="Subtitulo de la imagen">
+                            </div>
+                        </div>
+                        <button @click="save();" type="button" class="btn btn-success">Guardar</button>
+                    </form>                 
+                </div>
+                <div class="modal-footer">
+                    <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-3" v-for="galery in galeries" :key="galery.id">
+            <div class="card p-2 h-100" >
+                <img :src="galery.urlImagen" class="card-img-top h-50" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{galery.titulo}}</h5>
+                        <p class="card-text ">{{galery.subtitulo}}</p>
+                    <div class="position-relative bottom-0 start-50 translate-middle-x mb-1 ">
+                        <button type="button"  @click="update=true; openModal(galery);" class="btn btn-info">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                            </svg>
+                        </button>
+                        <button type="button" @click="update=true; eliminarM(galery.id);"  class="btn btn-danger">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+<script>
+export default {
+    data(){
+        return{
+            galery:
+            {
+                id:0,
+                urlImagen: null,
+                titulo: '',
+                subtitulo: '',
+            },
+            update:true,
+            modal:0,
+            titleModal:'',
+            galeries:[],
+            id:0,
+            imagenMiniatura:'',
+        }
+    },
+    methods: {
+        async list()
+        {
+            try
+            {
+                const res = await axios.get('/dashboard/galery_api');
+                this.galeries = res.data;
+            }
+            catch(error)
+            {
+                if(error.response.data)
+                {
+                    this.errores = error.response.data.errors;
+                }
+            }
+        },
+        eliminarM(id)
+        {
+            const confirmacion = false;
+            this.$swal({
+                title: '¿Estás seguro?',
+                text: "No hay vuelta atras si lo borras",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, ¡Bórralo!',
+                cancelButtonText: 'Cancelar',
+                focusCancel: true
+            }).then((result)=>
+            {
+                if(result.isConfirmed)
+                {
+                    this.eliminar(id);
+                }
+                else if(result.isDismissed)
+                {
+                    console.log("Cancelar");
+                }
+            });
+        },
+        async eliminar(id) 
+        {
+            try
+            {   
+                const res = await axios.delete('/dashboard/galery_api/'+id);
+            }
+            catch(error)
+            {
+                if(error.response.data)
+                {
+                    this.errores = error.response.data.errors;
+                    console.log(this.errores);
+                }
+            }
+            this.list();
+        },
+        async save() {
+            if(this.update)
+            {
+                try
+                {
+                    let fields = new FormData();
+                    for(let key in this.galery)
+                    {
+                        fields.append(key,this.galery[key]);
+                    }
+                    //.then(response=>{console.log(response.data)})
+                    const res = await axios.post('/dashboard/galery_api/'+this.id, fields)
+                    .then(response=>{
+                    if(response.data==1)
+                    {
+                        this.$swal({title: 'Exitoso',text: 'Actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                    }
+                    else
+                    {
+                        this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                    }
+                    });
+                }
+                catch(error)
+                {
+                    if(error.response.data)
+                    {
+                        this.errores = error.response.data.errors;
+                    }
+                }
+            }
+            else
+            {
+                try
+                {
+                    let fields = new FormData();
+                    for(let key in this.galery)
+                    {
+                        fields.append(key,this.galery[key]);
+                    }
+                    //.then(response=>{console.log(response.data)})
+                    const res = await axios.post('/dashboard/galery_api', fields)
+                    .then(response=>{
+                    if(response.data==1)
+                    {
+                        this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                    }
+                    else
+                    {
+                        this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
+                    }
+                    });
+                }
+                catch(error)
+                {
+                    if(error.response.data)
+                    {
+                        this.errores = error.response.data.errors;
+                    }
+                }
+            }
+            this.closeModal();
+            this.list();
+        },
+        openModal(data={}) {
+            this.modal=1
+            if (this.update)
+            {
+                this.titleModal = "Modificar Imagend de galería";
+                this.id=data.id;
+                this.galery.id = data.id;
+                this.galery.urlImagen = data.urlImagen;
+                this.galery.titulo = data.titulo;
+                this.galery.subtitulo = data.subtitulo;
+            }
+            else
+            {
+                this.id=0;
+                this.titleModal = "Agregar una Imagen a la galería";
+                this.galery.urlImagen = null;
+                this.galery.titulo = '';
+                this.galery.subtitulo = '';
+            }
+        },
+        closeModal() {
+            this.$refs.urlImg.value=null;
+            this.imagenMiniatura='';
+            this.modal=0
+        },
+        obtenerImagen(e)
+        {
+            this.galery.urlImagen=e.target.files[0];
+            this.cargarImagen(this.galery.urlImagen); 
+        },
+        cargarImagen(file)
+        {
+            let reader = new FileReader();
+            reader.onload = e=>
+            {
+                this.imagenMiniatura =e.target.result;
+            }
+            reader.readAsDataURL(file);
+        },
+    },
+    created() 
+    {
+        this.list();
+    },
+    computed:
+    {
+        imagen()
+        {
+            return this.imagenMiniatura;
+        },
+    }
+}
+</script>
+<style>
+.show
+{
+    display: list-item;
+    opacity: 1;
+}
+</style>
