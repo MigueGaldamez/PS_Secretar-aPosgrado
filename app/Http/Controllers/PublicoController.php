@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Enlace;
 use App\Models\EquipoTrabajo;
 use Illuminate\Http\Request;
 use App\Models\Facultades;
@@ -21,8 +22,10 @@ class PublicoController extends Controller
     }
     public function oferta()
     {
-        $facultades = Facultades::all();
-        return view('publico.ofertaAcademica',compact('facultades'));
+        $facultadesF = Facultades::with('posgrados')->where('multidis','=',0)->get();
+        $facultadesS = Facultades::with('posgrados')->where('multidis','=',1)->get();
+        //$facultades = Facultades::all();
+        return view('publico.ofertaAcademica',compact('facultadesF','facultadesS'));
     }
     public function ofertaFacultad($id)
     {
@@ -36,7 +39,9 @@ class PublicoController extends Controller
     }
     public function enlaces()
     {
-        return view('publico.enlacesImportantes');
+        $enlacesMas = Enlace::skip(0)->take(5)->get();
+        $enlaces = Enlace::all();
+        return view('publico.enlacesImportantes',compact('enlaces','enlacesMas'));
     }
     public function noticias()
     {
@@ -63,5 +68,7 @@ class PublicoController extends Controller
         $facultades = Facultades::all();
         return view('publico.tesisPosgrados');
     }
-    
+    public function catalogoC(){
+        return view('publico.catalogo');
+    }
 }

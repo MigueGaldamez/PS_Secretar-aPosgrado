@@ -94,3 +94,8 @@ Route::get('/catalogo', [App\Http\Controllers\PublicoController::class, 'catalog
 Route::get('/galeria', [App\Http\Controllers\PublicoController::class, 'galeria'])->name('galeria');
 Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
 Auth::routes();
+Route::get('/facultades/conTesis', [FacultadesController::class, 'facultadesConTesis'])->name('fac.con.tesis');
+Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv'])->name('fac.con.inv');
+Route::get('/facultades/fac', [FacultadesController::class, 'facultadesF'])->name('fac.fac');
+Route::get('/facultades/sed', [FacultadesController::class, 'facultadesS'])->name('fac.sed');
+Route::get('/catalogo', [PublicoController::class, 'catalogoC'])->name('catalogoC');

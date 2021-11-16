@@ -9228,15 +9228,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      facultad: {
-        id: 0,
-        urlImagen: null,
-        nombre: '',
-        descripcion: ''
-      },
+      facultad: {},
       posgrado: {
         id: 0,
         nombre: ''
@@ -9259,7 +9302,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.get('/dashboard/facultad_api');
+                return axios.get('/facultades/conInv');
 
               case 3:
                 res = _context.sent;
@@ -9286,7 +9329,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     mostrarFacultad: function mostrarFacultad() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.id = data.id;
-      this.facultad.nombre = data.nombre;
+      this.facultad = data;
     }
   },
   created: function created() {
@@ -9422,25 +9465,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      facultad: {
-        id: 0,
-        urlImagen: null,
-        nombre: '',
-        descripcion: ''
-      },
-      posgrado: {
-        id: 0,
-        nombre: ''
-      },
+      facultad: [],
+      posgrado: [],
       facultades: [],
       id: 0,
       imagenMiniatura: '',
@@ -9449,7 +9478,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     facsGroups: function facsGroups() {
-      return Array.from(Array(Math.ceil(2)).keys());
+      return Array.from(Array(Math.ceil(4)).keys());
     }
   },
   methods: {
@@ -9464,7 +9493,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.prev = 0;
                 _context.next = 3;
-                return axios.get('/dashboard/facultad_api');
+                return axios.get('/facultades/conTesis');
 
               case 3:
                 res = _context.sent;
@@ -9488,10 +9517,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 7]]);
       }))();
     },
-    mostrarFacultad: function mostrarFacultad() {
+    mostrarPosgrado: function mostrarPosgrado() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.id = data.id;
-      this.posgrado.nombre = data.nombre;
+      this.posgrado = data;
+    },
+    mostrarFacultad: function mostrarFacultad() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.facultad = data;
     }
   },
   created: function created() {
@@ -55469,91 +55502,228 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-center" }, [
-    _c("div", { staticClass: "mx-auto", attrs: { id: "wrapper-fac" } }, [
-      _c("div", { attrs: { id: "carousel-fac" } }, [
-        _c(
-          "div",
-          { attrs: { id: "content-fac" } },
-          _vm._l(_vm.facultades, function(facultad) {
-            return _c(
+  return _c(
+    "div",
+    [
+      _c("div", { staticClass: "text-center" }, [
+        _c("div", { staticClass: "mx-auto", attrs: { id: "wrapper-fac" } }, [
+          _c("div", { attrs: { id: "carousel-fac" } }, [
+            _c(
               "div",
+              { attrs: { id: "content-fac" } },
+              _vm._l(_vm.facultades, function(facultad) {
+                return _c(
+                  "div",
+                  {
+                    key: facultad.id,
+                    staticClass: "item-fac card-body",
+                    on: {
+                      click: function($event) {
+                        _vm.mostrar = true
+                        _vm.mostrarFacultad(facultad)
+                      }
+                    }
+                  },
+                  [
+                    _c("h4", { staticClass: "textoSuavecito" }, [
+                      _vm._v(" " + _vm._s(facultad.nombre))
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ]),
+          _vm._v(" "),
+          _c("button", { attrs: { id: "prev-fac" } }, [
+            _c(
+              "svg",
               {
-                key: facultad.id,
-                staticClass: "item-fac card-body",
-                on: {
-                  click: function($event) {
-                    _vm.mostrar = true
-                    _vm.mostrarFacultad(facultad)
-                  }
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24"
                 }
               },
               [
-                _c("h4", { staticClass: "textoSuavecito" }, [
-                  _vm._v(" " + _vm._s(facultad.nombre))
-                ])
+                _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
+                  }
+                })
               ]
             )
+          ]),
+          _vm._v(" "),
+          _c("button", { attrs: { id: "next-fac" } }, [
+            _c(
+              "svg",
+              {
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24"
+                }
+              },
+              [
+                _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+                  }
+                })
+              ]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "colorGris mt-4 py-2",
+            style: "background-color: " + _vm.facultad.color + ";"
+          },
+          [
+            _c("h3", { staticClass: "textoSuavecito text-light" }, [
+              _vm._v(
+                "Investigaciones en curso de " + _vm._s(_vm.facultad.nombre)
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.facultad.posgrados_con_inv, function(pos) {
+        return _c(
+          "div",
+          { key: pos.id, staticClass: "container" },
+          _vm._l(pos.inv, function(inv, index) {
+            return _c("div", { key: inv.id, staticClass: "row my-4" }, [
+              index % 2 == 0
+                ? _c("div", { staticClass: "card-containerR" }, [
+                    _c("div", { staticClass: "float-layoutR" }, [
+                      _c("div", { staticClass: "card-imageR" }, [
+                        _c("img", { attrs: { src: "" } }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "cardR",
+                            style:
+                              "border-right: 10px solid " +
+                              _vm.facultad.color +
+                              ";"
+                          },
+                          [
+                            _c("h4", [_c("b", [_vm._v(_vm._s(inv.titulo))])]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \r\n                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(0, true)
+                          ]
+                        )
+                      ])
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              index % 2 != 0
+                ? _c("div", { staticClass: "card-containerL" }, [
+                    _c("div", { staticClass: "float-layoutL" }, [
+                      _c("div", { staticClass: "card-imageL" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass: "cardL",
+                            style:
+                              "border-left: 10px solid " +
+                              _vm.facultad.color +
+                              ";"
+                          },
+                          [
+                            _c("h4", [_c("b", [_vm._v(_vm._s(inv.titulo))])]),
+                            _vm._v(" "),
+                            _c("p", [
+                              _vm._v(
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \r\n                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _vm._m(1, true)
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("img", { attrs: { src: "" } })
+                      ])
+                    ])
+                  ])
+                : _vm._e()
+            ])
           }),
           0
         )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("a", { attrs: { href: "" } }, [
+          _c("p", { staticClass: "card-text" }, [
+            _c("small", { staticClass: "text-muted" }, [_vm._v("Descargar ")])
+          ])
+        ])
       ]),
       _vm._v(" "),
-      _c("button", { attrs: { id: "prev-fac" } }, [
-        _c(
-          "svg",
-          {
-            attrs: {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "24",
-              height: "24",
-              viewBox: "0 0 24 24"
-            }
-          },
-          [
-            _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
-            _vm._v(" "),
-            _c("path", {
-              attrs: {
-                d: "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
-              }
-            })
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("button", { attrs: { id: "next-fac" } }, [
-        _c(
-          "svg",
-          {
-            attrs: {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "24",
-              height: "24",
-              viewBox: "0 0 24 24"
-            }
-          },
-          [
-            _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
-            _vm._v(" "),
-            _c("path", {
-              attrs: {
-                d: "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
-              }
-            })
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "colorGris mt-4 py-2" }, [
-      _c("h3", { staticClass: "textoSuavecito text-light" }, [
-        _vm._v("Investigaciones en curso de " + _vm._s(_vm.facultad.nombre))
+      _c("div", { staticClass: "col" }, [
+        _c("p", { staticClass: "card-text text-end" }, [
+          _c("small", [
+            _vm._v("Publicado:"),
+            _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+          ])
+        ])
       ])
     ])
-  ])
-}
-var staticRenderFns = []
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _c("p", { staticClass: "card-text" }, [
+          _c("small", { staticClass: "text-muted" }, [_vm._v("Descargar ")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("p", { staticClass: "card-text text-end" }, [
+          _c("small", [
+            _vm._v("Publicado:"),
+            _c("b", [_vm._v("Martes 31 de agosto de 2021")])
+          ])
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -55577,455 +55747,255 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        { staticClass: "row mt-4" },
-        _vm._l(_vm.facsGroups, function(group, i) {
-          return _c("div", { key: group.id, staticClass: "col col-6" }, [
-            _c(
-              "div",
-              { staticClass: "accordion", attrs: { id: "accordion" + i } },
-              _vm._l(
-                _vm.facultades.slice(
-                  i * (_vm.facultades.length / 2),
-                  (i + 1) * (_vm.facultades.length / 2)
-                ),
-                function(facultad) {
-                  return _c(
+    _c(
+      "div",
+      { staticClass: "mx-auto mt-4", attrs: { id: "wrapper-facTes" } },
+      [
+        _c("div", { attrs: { id: "carousel-facTes" } }, [
+          _c(
+            "div",
+            { attrs: { id: "content-facTes" } },
+            _vm._l(_vm.facsGroups, function(group, i) {
+              return _c(
+                "div",
+                {
+                  key: group.id,
+                  staticClass: "item-facTes col col-12 col-md-6"
+                },
+                [
+                  _c(
                     "div",
-                    { key: facultad.id, staticClass: "accordion-item nolist" },
-                    [
-                      _c(
-                        "h2",
-                        {
-                          staticClass: "accordion-header",
-                          attrs: { id: "id_" + facultad.id }
-                        },
-                        [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn accordion-boton",
-                              attrs: {
-                                type: "button",
-                                "data-bs-toggle": "collapse",
-                                "data-bs-target": "#coll-" + facultad.id,
-                                "aria-expanded": "false",
-                                "aria-controls": "coll-" + facultad.id
-                              }
-                            },
-                            [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
-                          )
-                        ]
+                    {
+                      staticClass: "accordion",
+                      attrs: { id: "accordion" + i }
+                    },
+                    _vm._l(
+                      _vm.facultades.slice(
+                        i * (_vm.facultades.length / 4),
+                        (i + 1) * (_vm.facultades.length / 4)
                       ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "accordion-collapse collapse",
-                          attrs: {
-                            id: "coll-" + facultad.id,
-                            "aria-labelledby": "id_" + facultad.id,
-                            "data-bs-parent": "#accordion" + i
-                          }
-                        },
-                        [
-                          _c(
-                            "div",
-                            { staticClass: "accordion-body row " },
-                            _vm._l(facultad.posgrados, function(posgrado) {
-                              return _c(
-                                "div",
-                                { key: posgrado.id, staticClass: "col col-12" },
-                                [
-                                  _c(
-                                    "a",
-                                    {
-                                      staticClass: "btn btn-link text-dark",
-                                      on: {
-                                        click: function($event) {
-                                          _vm.mostrar = true
-                                          _vm.mostrarFacultad(posgrado)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v(_vm._s(posgrado.nombre))]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        ]
-                      )
-                    ]
+                      function(facultad) {
+                        return _c(
+                          "div",
+                          {
+                            key: facultad.id,
+                            staticClass: "accordion-item nolist"
+                          },
+                          [
+                            _c(
+                              "h2",
+                              {
+                                staticClass: "accordion-header",
+                                attrs: { id: "id_" + facultad.id }
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn accordion-boton",
+                                    attrs: {
+                                      type: "button",
+                                      "data-bs-toggle": "collapse",
+                                      "data-bs-target": "#coll-" + facultad.id,
+                                      "aria-expanded": "false",
+                                      "aria-controls": "coll-" + facultad.id
+                                    }
+                                  },
+                                  [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "accordion-collapse collapse",
+                                attrs: {
+                                  id: "coll-" + facultad.id,
+                                  "aria-labelledby": "id_" + facultad.id,
+                                  "data-bs-parent": "#accordion" + i
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "accordion-body row " },
+                                  _vm._l(facultad.posgrados_con_tesis, function(
+                                    posgrado
+                                  ) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        key: posgrado.id,
+                                        staticClass: "col col-12"
+                                      },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-link text-dark",
+                                            on: {
+                                              click: function($event) {
+                                                _vm.mostrar = true
+                                                _vm.mostrarPosgrado(posgrado)
+                                                _vm.mostrarFacultad(facultad)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(posgrado.nombre))]
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }
+                    ),
+                    0
                   )
+                ]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("button", { attrs: { id: "prev-facTes" } }, [
+          _c(
+            "svg",
+            {
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24"
+              }
+            },
+            [
+              _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d: "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
                 }
-              ),
-              0
-            )
-          ])
-        }),
-        0
-      )
-    ]),
-    _vm._v(" "),
-    _vm.mostrar
-      ? _c("div", [
-          _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
-            _c("h3", { staticClass: "text-light text-center" }, [
-              _c("span", { staticClass: "textoSuavecito" }, [
-                _vm._v("Tesis de Posgrados de la "),
-                _c("b", [_vm._v(_vm._s(_vm.posgrado.nombre))])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(0)
-        ])
-      : _c("div", { staticClass: "mb-4" }, [_vm._m(1)])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "card-containerR mb-4" }, [
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
+              })
             ]
-          ),
-          _vm._v(" "),
+          )
+        ]),
+        _vm._v(" "),
+        _c("button", { attrs: { id: "next-facTes" } }, [
           _c(
-            "div",
+            "svg",
             {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24"
+              }
             },
             [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass:
-                " callout-right callout-right-primary row calloutTesis"
-            },
-            [
-              _c("div", { staticClass: "col" }, [
-                _c("a", { staticClass: "text-dark", attrs: { href: "" } }, [
-                  _c("h5", { staticClass: "text-dark" }, [
-                    _c("b", [
-                      _vm._v(
-                        "Medios de vida sostenible y potencial agroecoturístico del complejo Santa Rita-Zanjón El Chino, San Francisco Menéndez, Ahuachapán."
-                      )
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("span", { staticClass: "text-uppercase" }, [
-                  _vm._v("MAESTRÍA EN AGRICULTURA SOSTENIBLE. ")
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Autor:"),
-                    _c("b", [_vm._v("Amaya, Oscar Antonio")])
-                  ])
-                ]),
-                _c("br"),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text lh-sm" }, [
-                  _c("small", [
-                    _vm._v("Publicado:"),
-                    _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-                  ])
-                ])
-              ])
+              _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d: "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+                }
+              })
             ]
           )
         ])
-      ])
-    ])
-  },
+      ]
+    ),
+    _vm._v(" "),
+    _vm.mostrar
+      ? _c("div", [
+          _c(
+            "div",
+            {
+              staticClass: "colorGris mt-4 pb-1 pt-2",
+              style: "background-color: " + _vm.facultad.color + ";"
+            },
+            [
+              _c("h3", { staticClass: "text-light text-center" }, [
+                _c("span", { staticClass: "textoSuavecito" }, [
+                  _vm._v("Tesis de Posgrados de la "),
+                  _c("b", [_vm._v(_vm._s(_vm.posgrado.nombre))])
+                ])
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.posgrado.tesis, function(tesis) {
+                return _c(
+                  "div",
+                  { key: tesis.id, staticClass: "card-containerR mb-1" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          " callout-right callout-right-primary row calloutTesis",
+                        style:
+                          "border-right: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("div", { staticClass: "col" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: tesis.link }
+                            },
+                            [
+                              _c("h5", { staticClass: "text-dark" }, [
+                                _c("b", [_vm._v(_vm._s(tesis.titulo))])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text-uppercase" }, [
+                            _vm._v(_vm._s(_vm.posgrado.nombre))
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "card-text lh-sm" }, [
+                            _c("small", [
+                              _vm._v("Autor: "),
+                              _c("b", [_vm._v(_vm._s(tesis.autor))])
+                            ])
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "card-text lh-sm" }, [
+                            _c("small", [
+                              _vm._v("Año de publicacion: "),
+                              _c("b", [_vm._v(_vm._s(tesis.publicado))])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "mb-4" }, [_vm._m(0)])
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
