@@ -68,7 +68,7 @@
                             <h6>{{$miembro->cargo}}</h6>
                             
                             <p class="card-text">{{$miembro->descripcion}}</p>
-                            <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
+                            {{--<p class="card-text"><small class="text-muted">Numero de contacto: </small></p>--}}
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                            <h6>{{$miembro->cargo}}</h6>
                             
                             <p class="card-text">{{$miembro->descripcion}}</p>
-                            <p class="card-text"><small class="text-muted">Numero de contacto: </small></p>
+                            {{--<p class="card-text"><small class="text-muted">Numero de contacto: </small></p>--}}
                             
                         </div>
                     </div>

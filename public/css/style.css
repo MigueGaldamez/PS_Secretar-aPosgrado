@@ -720,7 +720,12 @@
 
 
   .bordeBajo{
-      border-bottom: 4px solid #dc3545;
+    line-height: 1;
+   
+    bottom: 0;
+    text-decoration: underline;
+    text-decoration-color: #dc3545;
+    /*border-bottom: 4px solid #dc3545;*/
   }
 
   /*Edits a los acordiones*/
@@ -1717,4 +1722,143 @@
 }
 .bg-griscito{
   background-color: rgb(238, 238, 238);
+}
+
+/*T O O L T I P*/
+.wrapper-tol {
+ 
+  width:auto;
+  height: auto;
+  position: relative;
+}
+.wrapper-tol .btn {
+  
+  color: #FFFFFF;
+  font-weight: 100;
+  z-index: 3;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.05);
+  -webkit-animation: stretch-animation 0.5s ease-out forwards;
+          animation: stretch-animation 0.5s ease-out forwards;
+}
+
+.wrapper-tol .tooltip {
+  background-color: #aa0000;
+  width:auto;
+  height: 50px;
+  border-radius: 70px;
+  position: absolute;
+  background:#52646E;
+  color:#FFFFFF;
+  z-index: 2;
+  padding: 0 15px;
+  box-shadow: 0 10px 30px rgba(65, 72, 86, 0.5);
+  opacity: 0;
+  top: -13px;
+  left:12vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transition: opacity 0.15s ease-in, top 0.15s ease-in, width 0.15s ease-in;
+}
+
+.wrapper-tol .tooltip::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: #52646E;
+  border-radius: 3px;
+  position: absolute;
+  left: 0;
+  margin-left: -5px;
+  transform: rotate(45deg);
+  z-index: 0;
+}
+
+.wrapper-tol input {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  position: absolute;
+  z-index: 5;
+  opacity: 0;
+}
+
+.wrapper-tol input:checked ~ .btn {
+  -webkit-animation:stretch-animation  0.5s ease-out forwards;
+          animation:stretch-animation 0.5s ease-out forwards;
+}
+.wrapper-tol input:checked ~ .tooltip {
+  top: -13px;
+  left:12vw;
+  width: auto;
+  height: 50px;
+  -webkit-animation: stretch-animation 1s ease-out forwards 0.15s;
+          animation: stretch-animation 1s ease-out forwards 0.15s;
+  opacity: 1;
+}
+
+@-webkit-keyframes pang-animation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes pang-animation {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes stretch-animation {
+  0% {
+    transform: scale(1, 1);
+  }
+  10% {
+    transform: scale(1.1, 0.9);
+  }
+  30% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.05, 0.95);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+@keyframes stretch-animation {
+  0% {
+    transform: scale(1, 1);
+  }
+  10% {
+    transform: scale(1.1, 0.9);
+  }
+  30% {
+    transform: scale(0.9, 1.1);
+  }
+  50% {
+    transform: scale(1.05, 0.95);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
 }
