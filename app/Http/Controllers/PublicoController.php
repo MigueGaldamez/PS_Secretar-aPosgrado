@@ -6,6 +6,7 @@ use App\Models\Enlace;
 use App\Models\EquipoTrabajo;
 use Illuminate\Http\Request;
 use App\Models\Facultades;
+use App\Models\Informacion;
 use App\Models\Posgrado;
 use App\Models\ReseniaHistorica;
 class PublicoController extends Controller
@@ -13,7 +14,8 @@ class PublicoController extends Controller
     //
     public function inicio()
     {
-        return view('publico.index');
+        $informacion = Informacion::first();
+        return view('publico.index',compact('informacion'));
     }
     public function reseña()
     {
