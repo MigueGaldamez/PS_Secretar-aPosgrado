@@ -5436,6 +5436,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5448,6 +5449,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         modalidad: null,
         ofertado: null
       },
+      cargando: false,
       selected: "Seleccione una opcion",
       textOfertado: '',
       errors: [],
@@ -5771,8 +5773,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.listarSelects();
-    this.list();
+    this.cargando = true;
+
+    try {
+      this.listarSelects();
+      this.list();
+      this.cargando = false;
+    } catch (error) {
+      console.log(error);
+      this.cargando = false;
+    }
   }
 });
 
@@ -9653,6 +9663,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -9664,6 +9683,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         autor: '',
         link: ''
       },
+      cargando: false,
       errors: [],
       errores: {},
       id: 0,
@@ -9691,23 +9711,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 res = _context.sent;
                 _this.tesis = res.data;
-                _context.next = 10;
+                _this.cargando = false;
+                _context.next = 11;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 8:
+                _context.prev = 8;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 8]]);
       }))();
     },
     listarSelects: function listarSelects() {
@@ -9943,8 +9964,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.listarSelects();
-    this.list();
+    this.cargando = true;
+
+    try {
+      this.listarSelects();
+      this.list();
+    } catch (error) {
+      console.log(error);
+      this.cargando = false;
+    }
   },
   computed: {}
 });
@@ -50224,6 +50252,8 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "col-xm-12 col-sm-8 offset-sm-2" }, [
+      _vm.cargando ? _c("p", [_vm._v("Cargando...")]) : _vm._e(),
+      _vm._v(" "),
       _c(
         "table",
         {
@@ -56389,7 +56419,17 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xm-12 col-sm-9" }, [
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Loading...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-12" }, [
       _c(
         "table",
         {
@@ -56397,7 +56437,7 @@ var render = function() {
             "table table-striped table-bordered border-danger bg-white"
         },
         [
-          _vm._m(0),
+          _vm._m(1),
           _vm._v(" "),
           _c(
             "tbody",
@@ -56510,6 +56550,27 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
