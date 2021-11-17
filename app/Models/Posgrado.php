@@ -21,7 +21,7 @@ class Posgrado extends Model
     protected $with = ['facultad','tipo_programa','tesis','inv'];
     public function facultad()
     {
-        return $this->belongsTo(Facultades::class);
+        return $this->belongsTo(Facultades::class,'facultad_id','id');
     }
     public function tipo_programa()
     {
