@@ -14,11 +14,11 @@
     @foreach ($facultad->posgrados as $posgrado)
         <div class="card sinBordes mb-4 ">
             <div class="row">
-                <div class="col col-lg-4 col-sm-12 col-12">
+                <div class="col col-lg-3 col-sm-12 col-12">
                
-                    <img  src="{{$posgrado->imagen}}" class="img-thumbnail" alt="">
+                    <img  src="{{$posgrado->urlImagen}}" class="img-fluid" alt="">
                 </div>
-                <div class="col col-lg-8 col-sm-12 col-12 ">
+                <div class="col col-lg-9 col-sm-12 col-12 ">
                     <div class="card-block px-4">
                     
                         
