@@ -65,6 +65,7 @@
         </div>
         <!--Fin del modal -->
         <div class="col-xm-12 col-sm-8 offset-sm-2">
+            <p v-if="cargando">Cargando...</p>
             <table class="table table-striped table-bordered border-danger bg-white">
                 <thead class="text-center">
                     <tr>
@@ -126,6 +127,7 @@
                     modalidad:null,
                     ofertado:null,
                 },
+                cargando:  false,
                 selected: "Seleccione una opcion",
                 textOfertado: '',
                 errors: [],
@@ -360,8 +362,18 @@
 
         created()
         {
-            this.listarSelects();
-            this.list();
+            this.cargando = true;
+            try 
+            {
+                this.listarSelects();
+                this.list();
+                this.cargando = false
+            } 
+            catch (error) 
+            {
+                console.log(error)
+                this.cargando = false
+            }
         },
     }
 </script>

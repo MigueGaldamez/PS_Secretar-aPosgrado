@@ -54,7 +54,15 @@
             </div>
         </div>
         <!--Fin del modal -->
-        <div class="col-xm-12 col-sm-9">
+        <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
+            <strong>Loading...</strong>
+            <div class="">
+                <div class="spinner-grow text-danger" role="status"></div>
+                <div class="spinner-grow text-warning" role="status"></div>
+                <div class="spinner-grow text-info" role="status"></div>
+            </div>
+        </div>
+        <div class="col-xm-12 col-sm-12">
             <table class="table table-striped table-bordered border-danger bg-white">
                 <thead class="text-center">
                     <tr>
@@ -68,6 +76,7 @@
                     </tr>
                 </thead>
                 <tbody class="text-center">
+ 
                     <tr v-for="tesi in tesis" :key="tesi.id">
                         <th >{{tesi.id}}</th>
                         <td>{{tesi.posgrado.nombre}}</td>
@@ -110,6 +119,7 @@
                     autor:'',
                     link:'',
                 },
+                cargando: false,
                 errors: [],
                 errores:{},
                 id:0,
@@ -128,6 +138,7 @@
                 {
                     const res = await axios.get('/dashboard/tesis_api');
                     this.tesis = res.data;
+                    this.cargando = false;
                 }
                 catch(error)
                 {
@@ -292,8 +303,19 @@
         },
         created()
         {
-            this.listarSelects();
-            this.list();
+            this.cargando = true;
+            try 
+            {
+                this.listarSelects();
+                this.list();
+                
+                
+            } 
+            catch (error) 
+            {
+                console.log(error)
+                this.cargando = false
+            }
         },
         computed:
         {
