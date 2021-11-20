@@ -9286,19 +9286,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       facultad: {},
-      posgrado: {
-        id: 0,
-        nombre: ''
-      },
+      posgrado: {},
+      current: 1,
+      pageSize: 5,
       facultades: [],
       id: 0,
       imagenMiniatura: '',
-      mostrar: false
+      mostrar: false,
+      pagination: {
+        page: 1,
+        per_page: 5
+      }
     };
+  },
+  computed: {
+    indexStart: function indexStart() {
+      return (this.current - 1) * this.pageSize;
+    },
+    indexEnd: function indexEnd() {
+      return this.indexStart + this.pageSize;
+    },
+    paginated: function paginated() {
+      return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+    },
+    paginas: function paginas() {
+      return Array.from(Array(Math.ceil(this.posgrado.inv.length / this.pageSize)).keys());
+    }
   },
   methods: {
     list: function list() {
@@ -9317,29 +9354,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 res = _context.sent;
                 _this.facultades = res.data;
-                _context.next = 10;
+
+                _this.mostrarFacultad(_this.facultades[0]);
+
+                _this.mostrarPosgrado(_this.facultades[0].posgrados_con_inv[0]);
+
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     mostrarFacultad: function mostrarFacultad() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.id = data.id;
       this.facultad = data;
+      this.current = 1;
+    },
+    mostrarPosgrado: function mostrarPosgrado() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.posgrado = data;
     }
   },
   created: function created() {
@@ -9463,23 +9510,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       facultad: [],
       posgrado: [],
+      current: 1,
+      pageSize: 5,
       facultades: [],
       id: 0,
       imagenMiniatura: '',
@@ -9489,6 +9526,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   computed: {
     facsGroups: function facsGroups() {
       return Array.from(Array(Math.ceil(4)).keys());
+    },
+    indexStart: function indexStart() {
+      return (this.current - 1) * this.pageSize;
+    },
+    indexEnd: function indexEnd() {
+      return this.indexStart + this.pageSize;
+    },
+    paginated: function paginated() {
+      return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
+    },
+    paginas: function paginas() {
+      return Array.from(Array(Math.ceil(this.posgrado.tesis.length / this.pageSize)).keys());
     }
   },
   methods: {
@@ -9531,6 +9580,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       this.id = data.id;
       this.posgrado = data;
+      this.current = 1;
     },
     mostrarFacultad: function mostrarFacultad() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -15833,7 +15883,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15857,7 +15907,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15881,7 +15931,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15929,7 +15979,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    \n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    \r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15953,7 +16003,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -15977,7 +16027,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -16025,7 +16075,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -16049,7 +16099,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -51550,7 +51600,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("\n    Nuevo +\n    ")]
+      [_vm._v("\r\n    Nuevo +\r\n    ")]
     ),
     _vm._v(" "),
     _c(
@@ -55532,226 +55582,418 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("div", { staticClass: "text-center" }, [
-        _c("div", { staticClass: "mx-auto", attrs: { id: "wrapper-fac" } }, [
-          _c("div", { attrs: { id: "carousel-fac" } }, [
-            _c(
-              "div",
-              { attrs: { id: "content-fac" } },
-              _vm._l(_vm.facultades, function(facultad) {
-                return _c(
-                  "div",
-                  {
-                    key: facultad.id,
-                    staticClass: "item-fac card-body",
-                    on: {
-                      click: function($event) {
-                        _vm.mostrar = true
-                        _vm.mostrarFacultad(facultad)
-                      }
-                    }
-                  },
-                  [
-                    _c("h4", { staticClass: "textoSuavecito" }, [
-                      _vm._v(" " + _vm._s(facultad.nombre))
-                    ])
-                  ]
-                )
-              }),
-              0
-            )
-          ]),
-          _vm._v(" "),
-          _c("button", { attrs: { id: "prev-fac" } }, [
-            _c(
-              "svg",
-              {
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "24",
-                  height: "24",
-                  viewBox: "0 0 24 24"
-                }
-              },
-              [
-                _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
-                  }
-                })
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("button", { attrs: { id: "next-fac" } }, [
-            _c(
-              "svg",
-              {
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "24",
-                  height: "24",
-                  viewBox: "0 0 24 24"
-                }
-              },
-              [
-                _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
-                  }
-                })
-              ]
-            )
-          ])
-        ]),
-        _vm._v(" "),
+  return _c("div", [
+    _c("div", { staticClass: "text-center" }, [
+      _c("div", { staticClass: "container text-center my-3" }, [
         _c(
           "div",
-          {
-            staticClass: "colorGris mt-4 py-2",
-            style: "background-color: " + _vm.facultad.color + ";"
-          },
+          { staticClass: "row mx-auto my-auto justify-content-center" },
           [
-            _c("h3", { staticClass: "textoSuavecito text-light" }, [
-              _vm._v(
-                "Investigaciones en curso de " + _vm._s(_vm.facultad.nombre)
-              )
-            ])
+            _c(
+              "div",
+              {
+                staticClass: "carousel slide recipeCarousel",
+                attrs: {
+                  id: "informacionPosgrado",
+                  "data-bs-interval": "false"
+                }
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass: "carousel-inner siOv",
+                    attrs: { role: "listbox" }
+                  },
+                  _vm._l(_vm.facultades, function(facultad) {
+                    return _c(
+                      "div",
+                      { key: facultad.id, staticClass: "carousel-item active" },
+                      [
+                        _c("div", { staticClass: "col-md-3 col-6 carou" }, [
+                          _c(
+                            "div",
+                            {
+                              staticClass: "cardOv primary-navigation",
+                              attrs: { role: "navigation" }
+                            },
+                            [
+                              _c("ul", [
+                                _c("li", [
+                                  _c("a", { attrs: { href: "#" } }, [
+                                    _vm._v(_vm._s(facultad.nombre))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "ul",
+                                    { staticClass: "dropdown" },
+                                    _vm._l(facultad.posgrados_con_inv, function(
+                                      pos
+                                    ) {
+                                      return _c("li", { key: pos.id }, [
+                                        _c(
+                                          "a",
+                                          {
+                                            attrs: {
+                                              href: "#informacionPosgrado"
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                _vm.mostrarPosgrado(pos)
+                                                _vm.mostrarFacultad(facultad)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(pos.nombre))]
+                                        )
+                                      ])
+                                    }),
+                                    0
+                                  )
+                                ])
+                              ])
+                            ]
+                          )
+                        ])
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _vm._m(0),
+                _vm._v(" "),
+                _vm._m(1)
+              ]
+            )
           ]
         )
       ]),
       _vm._v(" "),
-      _vm._l(_vm.facultad.posgrados_con_inv, function(pos) {
-        return _c(
-          "div",
-          { key: pos.id, staticClass: "container" },
-          _vm._l(pos.inv, function(inv, index) {
-            return _c("div", { key: inv.id, staticClass: "row my-4" }, [
-              index % 2 == 0
-                ? _c("div", { staticClass: "card-containerR" }, [
-                    _c("div", { staticClass: "float-layoutR" }, [
-                      _c("div", { staticClass: "card-imageR" }, [
-                        _c("img", { attrs: { src: "" } }),
+      _c(
+        "div",
+        {
+          staticClass: "colorGris mt-4 py-2",
+          style: "background-color: " + _vm.facultad.color + ";",
+          attrs: { id: "titulo" }
+        },
+        [
+          _c("h3", { staticClass: "textoSuavecito text-light" }, [
+            _vm._v("Investigaciones en curso de " + _vm._s(_vm.posgrado.nombre))
+          ]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "textoSuavecito text-light" }, [
+            _vm._v("Facultad: " + _vm._s(_vm.facultad.nombre))
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: " pagination" },
+              [
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == 1 },
+                    on: {
+                      click: function($event) {
+                        _vm.current = 1
+                      }
+                    }
+                  },
+                  [_vm._m(2)]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == 1 },
+                    on: {
+                      click: function($event) {
+                        _vm.current--
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v("<")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.paginas, function(n) {
+                  return _c(
+                    "li",
+                    {
+                      key: n,
+                      staticClass: "page__numbers page-item",
+                      class: { active: _vm.current == n + 1 },
+                      on: {
+                        click: function($event) {
+                          _vm.current = n + 1
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page__link",
+                          attrs: { href: "#informacionPosgrado" }
+                        },
+                        [_vm._v(_vm._s(n + 1))]
+                      )
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == _vm.paginas.length },
+                    on: {
+                      click: function($event) {
+                        _vm.current++
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v(">")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == _vm.paginas.length },
+                    on: {
+                      click: function($event) {
+                        _vm.current = _vm.paginas.length
+                      }
+                    }
+                  },
+                  [_vm._m(3)]
+                )
+              ],
+              2
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.paginated, function(inv, index) {
+          return _c("div", { key: inv.id, staticClass: "row my-4" }, [
+            index % 2 == 0
+              ? _c("div", { staticClass: "card-containerR" }, [
+                  _c("div", { staticClass: "float-layoutR" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "cardR",
+                        style:
+                          "border-right: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("h5", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: "" + inv.link }
+                            },
+                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "cardR",
-                            style:
-                              "border-right: 10px solid " +
-                              _vm.facultad.color +
-                              ";"
-                          },
-                          [
-                            _c("h4", [_c("b", [_vm._v(_vm._s(inv.titulo))])]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \r\n                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(0, true)
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              index % 2 != 0
-                ? _c("div", { staticClass: "card-containerL" }, [
-                    _c("div", { staticClass: "float-layoutL" }, [
-                      _c("div", { staticClass: "card-imageL" }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass: "cardL",
-                            style:
-                              "border-left: 10px solid " +
-                              _vm.facultad.color +
-                              ";"
-                          },
-                          [
-                            _c("h4", [_c("b", [_vm._v(_vm._s(inv.titulo))])]),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, \r\n                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. "
-                              )
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(1, true)
-                          ]
-                        ),
+                        _c("small", [
+                          _vm._v("Autor: "),
+                          _c("b", [_vm._v(_vm._s(inv.autor))])
+                        ]),
+                        _c("br"),
                         _vm._v(" "),
-                        _c("img", { attrs: { src: "" } })
-                      ])
-                    ])
+                        _c("small", [
+                          _vm._v("Facultad: "),
+                          _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col" }, [
+                            _c("p", { staticClass: "card-text" }, [
+                              _c("small", { staticClass: "text-muted" }, [
+                                _c("a", { attrs: { href: "" + inv.link } }, [
+                                  _vm._v("Descargar")
+                                ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col" }, [
+                            _c("p", { staticClass: "card-text text-end" }, [
+                              _c("small", [
+                                _vm._v("Año de publicación: "),
+                                _c("b", [_vm._v(_vm._s(inv.publicado))])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
                   ])
-                : _vm._e()
-            ])
-          }),
-          0
-        )
-      })
-    ],
-    2
-  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            index % 2 != 0
+              ? _c("div", { staticClass: "card-containerL" }, [
+                  _c("div", { staticClass: "float-layoutL" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "cardL",
+                        style:
+                          "border-left: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("h5", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: "" + inv.link }
+                            },
+                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v("Autor: "),
+                          _c("b", [_vm._v(_vm._s(inv.autor))])
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v("Facultad: "),
+                          _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col" }, [
+                            _c("p", { staticClass: "card-text" }, [
+                              _c("small", { staticClass: "text-muted" }, [
+                                _c("a", { attrs: { href: "" + inv.link } }, [
+                                  _vm._v("Descargar")
+                                ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col" }, [
+                            _c("p", { staticClass: "card-text text-end" }, [
+                              _c("small", [
+                                _vm._v("Año de publicación: "),
+                                _c("b", [_vm._v(_vm._s(inv.publicado))])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ])
+        })
+      ],
+      2
+    )
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("a", { attrs: { href: "" } }, [
-          _c("p", { staticClass: "card-text" }, [
-            _c("small", { staticClass: "text-muted" }, [_vm._v("Descargar ")])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c("p", { staticClass: "card-text text-end" }, [
-          _c("small", [
-            _vm._v("Publicado:"),
-            _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-          ])
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev izquiInv",
+        attrs: {
+          href: "#informacionPosgrado",
+          role: "button",
+          "data-bs-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon bg-dark",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _c("p", { staticClass: "card-text" }, [
-          _c("small", { staticClass: "text-muted" }, [_vm._v("Descargar ")])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c("p", { staticClass: "card-text text-end" }, [
-          _c("small", [
-            _vm._v("Publicado:"),
-            _c("b", [_vm._v("Martes 31 de agosto de 2021")])
-          ])
-        ])
-      ])
-    ])
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next derecInv",
+        attrs: {
+          href: "#informacionPosgrado",
+          role: "button",
+          "data-bs-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon bg-dark",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("«")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("»")])]
+    )
   }
 ]
 render._withStripped = true
@@ -55944,7 +56186,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _vm.mostrar
-      ? _c("div", [
+      ? _c("div", { attrs: { id: "informacionPosgrado" } }, [
           _c(
             "div",
             {
@@ -55962,10 +56204,125 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
+              _c("nav", [
+                _c(
+                  "ul",
+                  { staticClass: " pagination" },
+                  [
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: { deactivado: _vm.current == 1 },
+                        on: {
+                          click: function($event) {
+                            _vm.current = 1
+                          }
+                        }
+                      },
+                      [_vm._m(0)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: { deactivado: _vm.current == 1 },
+                        on: {
+                          click: function($event) {
+                            _vm.current--
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "page__link",
+                            attrs: { href: "#informacionPosgrado" }
+                          },
+                          [_vm._v("<")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.paginas, function(n) {
+                      return _c(
+                        "li",
+                        {
+                          key: n,
+                          staticClass: "page__numbers page-item",
+                          class: { active: _vm.current == n + 1 },
+                          on: {
+                            click: function($event) {
+                              _vm.current = n + 1
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "page__link",
+                              attrs: { href: "#informacionPosgrado" }
+                            },
+                            [_vm._v(_vm._s(n + 1))]
+                          )
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: {
+                          deactivado: _vm.current == _vm.paginas.length
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.current++
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "page__link",
+                            attrs: { href: "#informacionPosgrado" }
+                          },
+                          [_vm._v(">")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: {
+                          deactivado: _vm.current == _vm.paginas.length
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.current = _vm.paginas.length
+                          }
+                        }
+                      },
+                      [_vm._m(1)]
+                    )
+                  ],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
             _c(
               "div",
               { staticClass: "row" },
-              _vm._l(_vm.posgrado.tesis, function(tesis) {
+              _vm._l(_vm.paginated, function(tesis) {
                 return _c(
                   "div",
                   { key: tesis.id, staticClass: "card-containerR mb-1" },
@@ -56022,10 +56379,30 @@ var render = function() {
             )
           ])
         ])
-      : _c("div", { staticClass: "mb-4" }, [_vm._m(0)])
+      : _c("div", { staticClass: "mb-4" }, [_vm._m(2)])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("«")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("»")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

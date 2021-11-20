@@ -10,6 +10,7 @@ if(next && prev && content){
     carousel.scrollBy(width + gap, 0);
     if (carousel.scrollWidth !== 0) {
       prev.style.display = "flex";
+    
     }
     if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
       next.style.display = "none";
@@ -141,3 +142,33 @@ $(function() {
     .addTo(controller)
 
 });
+
+/**/ 
+let items = document.querySelectorAll('#informacionPosgrado.carousel .carousel-item')
+
+items.forEach((el) => {
+  
+    let minPerSlide = 4
+    let next = el.nextElementSibling
+    let size = $(window).width(); 
+    if(size<768){
+        minPerSlide = 2
+    }
+    for (var i=1; i<minPerSlide; i++) {
+        if (!next) {
+            // wrap carousel by using first child
+            if(items.length>=5){
+            next = items[0]
+            }
+        }
+       
+        if(next!=null){
+          let cloneChild = next.cloneNode(true)
+          el.appendChild(cloneChild.children[0])
+          next = next.nextElementSibling
+        }
+        
+    }
+   
+})
+
