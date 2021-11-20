@@ -2,6 +2,7 @@
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 /*
 INSERT INTO `equipotrabajos` (`id`, `nombre`, `cargo`, `descripcion`, `created_at`, `updated_at`) VALUES
 (1, 'Evelin Patricia Gutierrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias\nPolíticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de\nPosgrados de la Universidad de El Salvador con el objetivo de unificar\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.', '2021-11-02 07:07:15', '2021-11-02 07:11:13'),
@@ -20,13 +21,13 @@ INSERT INTO `enlaces` (`id`, `urlImagen`, `titulo`, `link`) VALUES
 (4, '/storage/enlace/DVyqR5BFXYODWtR0R1KdrEUjS8EA4ySKqiOoLou6.png', 'Secretaría de Relaciones Nacionales e Internacionales de la Universidad de El Salvador', 'https://www.facebook.com/srniues/');
 COMMIT;
 
-INSERT INTO `equipotrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES
+INSERT INTO `equipoTrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES
 (1, '/storage/equipo/evelin.jpg', 'Evelin Patricia Gutiérrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias Políticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de Posgrados de la Universidad de El Salvador con el objetivo de unificar\\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.'),
 (2, '/storage/equipo/nancy.jpg', 'Nancy Orellana', 'Área de comunicaciones', 'Licenciada en Periodismo, Nancy Orellana, asignada para en el área de Comunicaciones de la Secretaría de Posgrados'),
 (3, '/storage/equipo/sandra.jpg', 'Sandra Hernández', 'Asistente Administrativo', 'Sandra Hernández, Asistente Administrativo de la Secretaría de Posgrado.');
 COMMIT;
 
-INSERT INTO `reseniahistoricas` (`id`, `anio`, `importancia`, `descripcion`, `created_at`, `updated_at`) VALUES
+INSERT INTO `reseniaHistoricas` (`id`, `anio`, `importancia`, `descripcion`, `created_at`, `updated_at`) VALUES
 (1, 1841, 1, 'Por decreto de la Asamblea Legislativa, la Universidad de El Salvador se crea el 16 de febrero, siendo la primera universidad en el territorio nacional además de ser la única Universidad pública hasta la actualidad.', NULL, NULL),
 (2, 1843, 2, 'Inicia sus actividades impartiendo matemáticas puras, lógica,\r\nmoral, metafísica y física general.', NULL, NULL),
 (3, 1880, 2, 'por resolución del Poder Ejecutivo se subdividió en Facultades, algunas de las cuales desaparecieron tiempo después y otras nuevas fueron creadas.', NULL, NULL),

@@ -33,6 +33,6 @@ class Posgrado extends Model
     }
     public function inv()
     {
-        return $this->hasMany(Tesi::class)->where('estado','=',1);
+        return $this->hasMany(Tesi::class)->where('estado','=',0);
     }
 }

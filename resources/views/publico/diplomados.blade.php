@@ -12,10 +12,7 @@
     <div class="accordion" id="accordionExample">        
         @foreach ($facultades as $facultad)
         
-        @if (!$facultad->diplomados->isEmpty(9))
-           
-     
-        
+        @if (!$facultad->diplomados->isEmpty())   
         <div>
             <h2>
                 <a class="text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#facultad-{{$facultad->id}}" aria-expanded="false" aria-controls="collapseOne">
@@ -24,8 +21,8 @@
                 </a>
             </h2>
             <div id="facultad-{{$facultad->id}}" class="accordion-collapse collapse nolist" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                <div class="accordion-body">            
-                <p>Numero de contacto: +(503) <b>{{$facultad->telefonoPosgrado}}</b></p>  
+                <div class="accordion-body pt-0 mt-0">            
+                <p class="mt-0"><b>Contacto: </b>{{$facultad->contactoDiplomado}}</p>  
                      <table class="table table-striped  table-borderless text-center">
                         <thead class="tableGris">
                             <tr>
