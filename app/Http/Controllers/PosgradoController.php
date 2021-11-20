@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\File;
 
 class PosgradoController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        $per_page=$request->per_page;
         return Posgrado::get();
     }
     public function store(Request $request)

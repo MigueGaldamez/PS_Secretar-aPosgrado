@@ -67,16 +67,39 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-3 md-3">
+                {{posgrados.from}} - {{posgrados.to }} total: {{posgrados.total}}
+            </div>
+            <div class="col-3 md-3">
+                
+                <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="list();">
+                <option selected>Elementos por pagina</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                </select>
+            </div>
+        </div>
         <!--Fin del modal -->
-        <div v-for="posgrado in posgrados" :key="posgrado.id" class=" col-sm-6">
-            <div class="card mb-3" >
+        <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
+            <strong>Loading...</strong>
+            <div class="">
+                <div class="spinner-grow text-danger" role="status"></div>
+                <div class="spinner-grow text-warning" role="status"></div>
+                <div class="spinner-grow text-info" role="status"></div>
+            </div>
+        </div>
+        <div v-for="posgrado in posgrados" :key="posgrado.id" class=" col-sm-6 mb-3">
+            <div class="card  h-100" >
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-sm-4 rounded mx-auto d-block text-center">
                         <img :src="posgrado.urlImagen" class="img-fluid rounded-start" alt="">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-sm-8">
                         <div class="card-body">
-                            <h5 class="card-title">{{posgrado.tipo_programa.nombre}}: {{posgrado.nombre}}</h5>
+                            <h5 class="card-title">{{posgrado.tipo_programa.nombre}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{posgrado.nombre}}</h6>
                             <p class="card-text"> Ofertado: 
                                 <svg v-if="posgrado.ofertado == 1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
                                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
@@ -86,7 +109,6 @@
                                 </svg>
                             </p>
                             <p class="card-text">Titulo: {{posgrado.titulo}}</p>
-                            <p class="card-text">{{posgrado.descripcion}}</p>
                             <p class="card-text"><small class="text-muted">{{posgrado.facultad.nombre}}</small></p>
                             <div class="position-relative bottom-0 start-50 translate-middle-x mb-1 ">
                                 <button type="button"  @click="update=true; openModal(posgrado);" class="btn btn-info">
@@ -105,11 +127,25 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+        
+        <div class="col-6 md-6 text-center">
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page=1, list();" href="#"><span>&laquo;</span></a></li>
+                    <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page--, list();" href="#">&#60;</a></li>
+                    <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}"><a class="page-link" @click="pagination.page=n, list();" href="#">{{n}}</a></li>
+                    <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" ><a class="page-link" @click="pagination.page++, list();" href="#">&#62;</a></li>
+                    <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" ><a class="page-link" @click="pagination.page=posgrados.last_page, list();" href="#" ><span >&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
     </div>
 </template>
 <script>
 export default 
-{
+    {
         data()
         {
             return{
@@ -124,6 +160,7 @@ export default
                     tipo_programa: null,
                     ofertado: 0,
                 },
+                cargando: false,
                 textOfertado: '',
                 errors: [],
                 errores:{},
@@ -135,6 +172,11 @@ export default
                 facultades: [],
                 tipo_programas: [],
                 imagenMiniatura:'',
+                pagination:{
+                    page:1,
+                    per_page:4,
+                },
+                paginas:[],
             }
         },
         methods:
@@ -143,8 +185,10 @@ export default
             {
                 try
                 {
-                    const res = await axios.get('/dashboard/posgrados_api');
+                    const res = await axios.get('/dashboard/posgrados_api/',{params:this.pagination,});
                     this.posgrados = res.data;
+                    this.cargando = false;
+                    this.listarPaginas();
                 }
                 catch(error)
                 {
@@ -153,6 +197,26 @@ export default
                         this.errores = error.response.data.errors;
                     }
                 }
+            },
+            listarPaginas()
+            {
+                const n = 2;
+                let arrayN=[];
+                let ini = this.pagination.page - 2;
+                if(ini<1)
+                {
+                    ini=1;
+                }
+                let fin = this.pagination.page + 2;
+                if(fin>this.posgrados.last_page)
+                {
+                    fin=this.posgrados.last_page;
+                }
+                for(let i=ini; i<=fin; i++)
+                {
+                    arrayN.push(i);
+                }
+                this.paginas=arrayN;    
             },
             async listarSelects()
             {
@@ -347,8 +411,17 @@ export default
         },
         created()
         {
-            this.listarSelects();
-            this.list();
+            this.cargando = true;
+            try 
+            {
+                this.listarSelects();
+                this.list();
+            } 
+            catch (error) 
+            {
+                console.log(error)
+                this.cargando = false
+            }
         },
         computed:
         {
