@@ -24,7 +24,6 @@ Route::get('/', [PublicoController::class, 'inicio'])->name('inicio');
 Route::middleware('auth')->group(function () 
 {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-    //Route::apiResource('/universidads', UniversidadController::class);
     //Informacion de la secretaria
     Route::apiResource('dashboard/informacion', InformacionController::class)->except(['create', 'store', 'update', 'destroy']);
     Route::post('dashboard/informacion/{informacion}', [InformacionController::class,'update']);
@@ -36,20 +35,25 @@ Route::middleware('auth')->group(function ()
     Route::apiResource('dashboard/facultad_api', FacultadesController::class)->except(['update', 'destroy','show']);
     Route::post('dashboard/facultad_api/{facultad}', [FacultadesController::class,'update']);
     Route::view('dashboard/facultades', 'facultades.index')->name('Facultades');
+    Route::get('dashboard/facultades_list', [FacultadesController::class,'list']);//listBox
     //enlaces
     Route::view('dashboard/enlaces', 'enlaces.index')->name('Enlaces');
     Route::apiResource('dashboard/enlaces_api', EnlaceController::class)->except(['update','show']);
     Route::post('dashboard/enlaces_api/{enlaces_api}', [EnlaceController::class,'update']);
+    Route::get('dashboard/enlaces_list', [EnlaceController::class,'list']);//listBox
     //Diplomados
     Route::view('dashboard/diplomados', 'diplomados.index')->name('Diplomados');
     Route::apiResource('dashboard/diplomados_api', DiplomadoController::class)->except(['show']);
+    Route::get('dashboard/diplomados_list', [DiplomadoController::class,'list']);//listBox
     //posgrados
     Route::view('dashboard/posgrados', 'posgrados.index')->name('Posgrados');
     Route::apiResource('dashboard/posgrados_api', PosgradoController::class)->except(['show','update']);
     Route::post('dashboard/posgrados_api/{posgrados_api}', [PosgradoController::class,'update']);
+    Route::get('dashboard/posgrados_list', [PosgradoController::class,'list']);//listBox
     //tesis
     Route::view('dashboard/tesis', 'tesis.index')->name('Tesis');
     Route::apiResource('dashboard/tesis_api', TesiController::class)->except(['show']);
+    Route::get('dashboard/tesis_list', [ TesiController::class,'list']);//listBox
     //Galery
     Route::view('dashboard/galery', 'galery.index')->name('Galery');
     Route::apiResource('dashboard/galery_api', GaleryController::class)->except(['show','update']);

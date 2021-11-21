@@ -31,7 +31,7 @@ class ModalidadesController extends Controller
             }elseif($request->color == 'Gris'){
                 $modalidad->clase = "bg-secondary";
             }
-            $modalidad->save();
+            return $modalidad->save();
         
         }
         catch (\Exception $e) 
@@ -59,8 +59,7 @@ class ModalidadesController extends Controller
             }elseif($request->color == 'Gris'){
                 $modalidad->clase = "bg-secondary";
             }
-            $modalidad->save();
-            return "Guardado";
+            return $modalidad->save();
         }
         catch (\Exception $e) 
         {
@@ -73,7 +72,7 @@ class ModalidadesController extends Controller
     {
         try
         {
-            $modalidades_api->delete();
+            return $modalidades_api->delete();
         }
         catch (\Exception $e) 
         {

@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Diplomado;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class DiplomadoController extends Controller
 {
-    public function index()
+    public function list()
     {
         return Diplomado::get();
+    }
+    public function index(Request $request)
+    {
+        $per_page= $request->per_page;
+        return Diplomado::paginate($per_page);
     }
     public function store(Request $request)
     {
@@ -26,7 +32,6 @@ class DiplomadoController extends Controller
         }
         catch (\Exception $e) 
         {
-
             return $e->getMessage();
         }
     }
@@ -44,7 +49,6 @@ class DiplomadoController extends Controller
         }
         catch (\Exception $e) 
         {
-
             return $e->getMessage();
         }
     }

@@ -5437,6 +5437,65 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5461,7 +5520,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       diplomados: [],
       facultades: [],
       tipo_duracions: [],
-      modalidades: []
+      modalidades: [],
+      pagination: {
+        page: 1,
+        per_page: 8
+      },
+      paginas: []
     };
   },
   methods: {
@@ -5475,30 +5539,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/dashboard/diplomados_api');
+                _this.cargando = true;
+                _context.next = 4;
+                return axios.get('/dashboard/diplomados_api/', {
+                  params: _this.pagination
+                });
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.diplomados = res.data;
-                _context.next = 10;
+
+                _this.listarPaginas();
+
+                _this.cargando = false;
+                _context.next = 13;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 10]]);
       }))();
+    },
+    listarPaginas: function listarPaginas() {
+      var n = 2;
+      var arrayN = [];
+      var ini = this.pagination.page - 2;
+
+      if (ini < 1) {
+        ini = 1;
+      }
+
+      var fin = this.pagination.page + 2;
+
+      if (fin > this.diplomados.last_page) {
+        fin = this.diplomados.last_page;
+      }
+
+      for (var i = ini; i <= fin; i++) {
+        arrayN.push(i);
+      }
+
+      this.paginas = arrayN;
     },
     listarSelects: function listarSelects() {
       var _this2 = this;
@@ -5510,7 +5602,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get('/dashboard/facultad_api');
+                return axios.get('/dashboard/facultades_list');
 
               case 2:
                 resF = _context2.sent;
@@ -5569,7 +5661,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios["delete"]('/dashboard/diplomados_api/' + id);
+                return axios["delete"]('/dashboard/diplomados_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context3.sent;
@@ -5718,7 +5826,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (_context4.t1.response.data) {
                   _this5.errores = _context4.t1.response.data.errors;
-                  console.log(_this5.errores);
                 }
 
               case 25:
@@ -5773,12 +5880,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.cargando = true;
-
     try {
       this.listarSelects();
       this.list();
-      this.cargando = false;
     } catch (error) {
       console.log(error);
       this.cargando = false;
@@ -5877,6 +5981,70 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5886,12 +6054,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         titulo: '',
         link: ''
       },
+      cargando: false,
       update: true,
       modal: 0,
       titleModal: '',
       enlaces: [],
       id: 0,
-      imagenMiniatura: ''
+      imagenMiniatura: '',
+      pagination: {
+        page: 1,
+        per_page: 4
+      },
+      paginas: []
     };
   },
   methods: {
@@ -5905,33 +6079,83 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/dashboard/enlaces_api');
+                _this.cargando = true;
+                _context.next = 4;
+                return axios.get('/dashboard/enlaces_api', {
+                  params: _this.pagination
+                });
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.enlaces = res.data;
-                _context.next = 10;
+
+                _this.listarPaginas();
+
+                _this.cargando = false;
+                _context.next = 13;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
-    eliminar: function eliminar(id) {
+    listarPaginas: function listarPaginas() {
+      var n = 2;
+      var arrayN = [];
+      var ini = this.pagination.page - 2;
+
+      if (ini < 1) {
+        ini = 1;
+      }
+
+      var fin = this.pagination.page + 2;
+
+      if (fin > this.enlaces.last_page) {
+        fin = this.enlaces.last_page;
+      }
+
+      for (var i = ini; i <= fin; i++) {
+        arrayN.push(i);
+      }
+
+      this.paginas = arrayN;
+    },
+    eliminarM: function eliminarM(id) {
       var _this2 = this;
+
+      var confirmacion = false;
+      this.$swal({
+        title: '¿Estás seguro?',
+        text: "No hay vuelta atras si lo borras",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, ¡Bórralo!',
+        cancelButtonText: 'Cancelar',
+        focusCancel: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.eliminar(id);
+        } else if (result.isDismissed) {
+          console.log("Cancelar");
+        }
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var res;
@@ -5940,12 +6164,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios["delete"]('/dashboard/enlaces_api/' + id);
+                return axios["delete"]('/dashboard/enlaces_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 2:
                 res = _context2.sent;
 
-                _this2.list();
+                _this3.list();
 
               case 4:
               case "end":
@@ -5956,7 +6196,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     save: function save() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var fields, key, res, _fields, _key, _res;
@@ -5965,7 +6205,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (!_this3.update) {
+                if (!_this4.update) {
                   _context3.next = 14;
                   break;
                 }
@@ -5973,14 +6213,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.prev = 1;
                 fields = new FormData();
 
-                for (key in _this3.enlace) {
-                  fields.append(key, _this3.enlace[key]);
+                for (key in _this4.enlace) {
+                  fields.append(key, _this4.enlace[key]);
                 } //.then(response=>{console.log(response.data)})
 
 
                 _context3.next = 6;
-                return axios.post('/dashboard/enlaces_api/' + _this3.id, fields).then(function (response) {
-                  console.log(response.data);
+                return axios.post('/dashboard/enlaces_api/' + _this4.id, fields).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Actualizado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
                 });
 
               case 6:
@@ -5993,7 +6247,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.t0 = _context3["catch"](1);
 
                 if (_context3.t0.response.data) {
-                  _this3.errores = _context3.t0.response.data.errors;
+                  _this4.errores = _context3.t0.response.data.errors;
                 }
 
               case 12:
@@ -6004,13 +6258,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.prev = 14;
                 _fields = new FormData();
 
-                for (_key in _this3.enlace) {
-                  _fields.append(_key, _this3.enlace[_key]);
+                for (_key in _this4.enlace) {
+                  _fields.append(_key, _this4.enlace[_key]);
                 } //.then(response=>{console.log(response.data)})
 
 
                 _context3.next = 19;
-                return axios.post('/dashboard/enlaces_api', _fields);
+                return axios.post('/dashboard/enlaces_api', _fields).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 19:
                 _res = _context3.sent;
@@ -6022,13 +6292,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.t1 = _context3["catch"](14);
 
                 if (_context3.t1.response.data) {
-                  _this3.errores = _context3.t1.response.data.errors;
+                  _this4.errores = _context3.t1.response.data.errors;
                 }
 
               case 25:
-                _this3.closeModal();
+                _this4.closeModal();
 
-                _this3.list();
+                _this4.list();
 
               case 27:
               case "end":
@@ -6068,12 +6338,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.cargarImagen(this.enlace.urlImagen);
     },
     cargarImagen: function cargarImagen(file) {
-      var _this4 = this;
+      var _this5 = this;
 
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        _this4.imagenMiniatura = e.target.result;
+        _this5.imagenMiniatura = e.target.result;
       };
 
       reader.readAsDataURL(file);
@@ -6244,8 +6514,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {},
   data: function data() {
     return {
       equipoTrabajo: {
@@ -6255,6 +6531,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         cargo: '',
         descripcion: ''
       },
+      cargando: false,
       id: 0,
       imagenMiniatura: '',
       modificar: true,
@@ -6264,7 +6541,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       errores: {},
       pagination: {
         page: 1,
-        per_page: 5
+        per_page: 1
       },
       paginas: []
     };
@@ -6279,18 +6556,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.cargando = true;
+                _context.next = 3;
                 return axios.get('/dashboard/equipoTrabajo/', {
                   params: _this.pagination
                 });
 
-              case 2:
+              case 3:
                 res = _context.sent;
                 _this.equipoTrabajos = res.data;
 
                 _this.listarPaginas();
 
-              case 5:
+                _this.cargando = false;
+
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -6319,8 +6599,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.paginas = arrayN;
     },
-    eliminar: function eliminar(id) {
+    eliminarM: function eliminarM(id) {
       var _this2 = this;
+
+      var confirmacion = false;
+      this.$swal({
+        title: '¿Estás seguro?',
+        text: "No hay vuelta atras si lo borras",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, ¡Bórralo!',
+        cancelButtonText: 'Cancelar',
+        focusCancel: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.eliminar(id);
+        } else if (result.isDismissed) {
+          console.log("Cancelar");
+        }
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var res;
@@ -6328,28 +6630,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                _context2.prev = 0;
+                _context2.next = 3;
                 return axios["delete"]('/dashboard/equipoTrabajo/' + id).then(function (response) {
-                  console.log(response.data);
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
                 });
 
-              case 2:
+              case 3:
                 res = _context2.sent;
+                _context2.next = 9;
+                break;
 
-                _this2.cerrarModal();
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
 
-                _this2.listar();
+                if (_context2.t0.response.data) {
+                  _this3.errores = _context2.t0.response.data.errors;
+                  console.log(_this3.errores);
+                }
 
-              case 5:
+              case 9:
+                _this3.listar();
+
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[0, 6]]);
       }))();
     },
     guardar: function guardar() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var fields, key, res, _fields, _key, _res;
@@ -6360,66 +6687,97 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
 
-                if (!_this3.modificar) {
-                  _context3.next = 10;
+                if (!_this4.modificar) {
+                  _context3.next = 9;
                   break;
                 }
 
                 fields = new FormData();
 
-                for (key in _this3.equipoTrabajo) {
-                  fields.append(key, _this3.equipoTrabajo[key]);
+                for (key in _this4.equipoTrabajo) {
+                  fields.append(key, _this4.equipoTrabajo[key]);
                 }
 
                 _context3.next = 6;
-                return axios.post('/dashboard/equipoTrabajo/' + _this3.id, fields);
+                return axios.post('/dashboard/equipoTrabajo/' + _this4.id, fields).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Actualizado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 6:
                 res = _context3.sent;
-                //console.log(this.equipoTrabajo); 
-                console.log('modifica');
-                _context3.next = 15;
+                _context3.next = 14;
                 break;
 
-              case 10:
+              case 9:
                 _fields = new FormData();
 
-                for (_key in _this3.equipoTrabajo) {
-                  _fields.append(_key, _this3.equipoTrabajo[_key]);
+                for (_key in _this4.equipoTrabajo) {
+                  _fields.append(_key, _this4.equipoTrabajo[_key]);
                 }
 
-                _context3.next = 14;
-                return axios.post('/dashboard/equipoTrabajo', _fields);
+                _context3.next = 13;
+                return axios.post('/dashboard/equipoTrabajo', _fields).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
-              case 14:
+              case 13:
                 _res = _context3.sent;
 
-              case 15:
-                _this3.cerrarModal();
+              case 14:
+                _this4.cerrarModal();
 
-                _this3.listar();
+                _this4.listar();
 
-                _context3.next = 22;
+                _context3.next = 21;
                 break;
 
-              case 19:
-                _context3.prev = 19;
+              case 18:
+                _context3.prev = 18;
                 _context3.t0 = _context3["catch"](0);
 
                 if (_context3.t0.response.data) {
-                  _this3.errores = _context3.t0.response.data.errors;
+                  _this4.errores = _context3.t0.response.data.errors;
                 }
 
-              case 22:
+              case 21:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 19]]);
+        }, _callee3, null, [[0, 18]]);
       }))();
     },
     abrirModal: function abrirModal() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.modal = 1;
 
       if (this.modificar) {
         this.tituloModal = "Modificar miembro";
@@ -6447,19 +6805,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.cargarImagen(this.equipoTrabajo.urlImagen);
     },
     cargarImagen: function cargarImagen(file) {
-      var _this4 = this;
+      var _this5 = this;
 
       var reader = new FileReader();
 
       reader.onload = function (e) {
-        _this4.imagenMiniatura = e.target.result;
+        _this5.imagenMiniatura = e.target.result;
       };
 
       reader.readAsDataURL(file);
     }
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   },
   created: function created() {
     this.listar();
@@ -6625,6 +6980,67 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6656,7 +7072,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       titleModal: '',
       facultades: [],
       id: 0,
-      imagenMiniatura: ''
+      imagenMiniatura: '',
+      cargando: false,
+      pagination: {
+        page: 1,
+        per_page: 4
+      },
+      paginas: []
     };
   },
   methods: {
@@ -6670,30 +7092,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/dashboard/facultad_api');
+                _this.cargando = true;
+                _context.next = 4;
+                return axios.get('/dashboard/facultad_api', {
+                  params: _this.pagination
+                });
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.facultades = res.data;
-                _context.next = 10;
+
+                _this.listarPaginas();
+
+                _this.cargando = false;
+                _context.next = 13;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 10]]);
       }))();
+    },
+    listarPaginas: function listarPaginas() {
+      var n = 2;
+      var arrayN = [];
+      var ini = this.pagination.page - 2;
+
+      if (ini < 1) {
+        ini = 1;
+      }
+
+      var fin = this.pagination.page + 2;
+
+      if (fin > this.facultades.last_page) {
+        fin = this.facultades.last_page;
+      }
+
+      for (var i = ini; i <= fin; i++) {
+        arrayN.push(i);
+      }
+
+      this.paginas = arrayN;
     },
     eliminar: function eliminar(id) {
       var _this2 = this;
@@ -7428,8 +7878,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  components: {},
   data: function data() {
     return {
       reseniaHistorica: {
@@ -7438,6 +7899,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         importancia: '',
         descripcion: ''
       },
+      cargando: false,
       id: 0,
       modificar: true,
       modal: 0,
@@ -7461,18 +7923,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.cargando = true;
+                _context.next = 3;
                 return axios.get('/dashboard/reseniaHistorica/', {
                   params: _this.pagination
                 });
 
-              case 2:
+              case 3:
                 res = _context.sent;
                 _this.reseniaHistoricas = res.data;
 
                 _this.listarPaginas();
 
-              case 5:
+                _this.cargando = false;
+
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -7501,8 +7966,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.paginas = arrayN;
     },
-    eliminar: function eliminar(id) {
+    eliminarM: function eliminarM(id) {
       var _this2 = this;
+
+      var confirmacion = false;
+      this.$swal({
+        title: '¿Estás seguro?',
+        text: "No hay vuelta atras si lo borras",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, ¡Bórralo!',
+        cancelButtonText: 'Cancelar',
+        focusCancel: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.eliminar(id);
+        } else if (result.isDismissed) {
+          console.log("Cancelar");
+        }
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var res;
@@ -7510,26 +7997,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios["delete"]('/dashboard/reseniaHistorica/' + id);
+                _context2.prev = 0;
+                _context2.next = 3;
+                return axios["delete"]('/dashboard/reseniaHistorica/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
-              case 2:
+              case 3:
                 res = _context2.sent;
+                _context2.next = 9;
+                break;
 
-                _this2.cerrarModal();
+              case 6:
+                _context2.prev = 6;
+                _context2.t0 = _context2["catch"](0);
 
-                _this2.listar();
+                if (_context2.t0.response.data) {
+                  _this3.errores = _context2.t0.response.data.errors;
+                  console.log(_this3.errores);
+                }
 
-              case 5:
+              case 9:
+                _this3.list();
+
+              case 10:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[0, 6]]);
       }))();
     },
     guardar: function guardar() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var res, _res;
@@ -7540,13 +8054,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
 
-                if (!_this3.modificar) {
+                if (!_this4.modificar) {
                   _context3.next = 7;
                   break;
                 }
 
                 _context3.next = 4;
-                return axios.put('/dashboard/reseniaHistorica/' + _this3.id, _this3.reseniaHistorica);
+                return axios.put('/dashboard/reseniaHistorica/' + _this4.id, _this4.reseniaHistorica).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Actualizado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 4:
                 res = _context3.sent;
@@ -7555,15 +8085,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 7:
                 _context3.next = 9;
-                return axios.post('/dashboard/reseniaHistorica/', _this3.reseniaHistorica);
+                return axios.post('/dashboard/reseniaHistorica/', _this4.reseniaHistorica).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 9:
                 _res = _context3.sent;
 
               case 10:
-                _this3.cerrarModal();
+                _this4.cerrarModal();
 
-                _this3.listar();
+                _this4.listar();
 
                 _context3.next = 17;
                 break;
@@ -7573,7 +8119,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.t0 = _context3["catch"](0);
 
                 if (_context3.t0.response.data) {
-                  _this3.errores = _context3.t0.response.data.errors;
+                  _this4.errores = _context3.t0.response.data.errors;
                 }
 
               case 17:
@@ -7586,6 +8132,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     abrirModal: function abrirModal() {
       var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.modal = 1;
 
       if (this.modificar) {
         this.id = data.id;
@@ -7734,8 +8281,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -7781,7 +8326,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 res = _context.sent;
-                //this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Cool'});  
                 _this.infos = res.data;
                 _context.next = 10;
                 break;
@@ -7925,7 +8469,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
                 _context5.next = 5;
-                return axios.post('/dashboard/informacion/' + _this5.id, fields);
+                return axios.post('/dashboard/informacion/' + _this5.id, fields).then(function (response) {
+                  if (response.data == 1) {
+                    _this5.$swal({
+                      title: 'Exitoso',
+                      text: 'Actualizado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this5.$swal({
+                      title: 'Error!',
+                      text: 'Do you want to continue',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 5:
                 res = _context5.sent;
@@ -8108,6 +8668,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -8116,6 +8686,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         nombre: '',
         color: ''
       },
+      cargando: false,
       errors: [],
       errores: {},
       id: 0,
@@ -8153,33 +8724,57 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                _this.cargando = true;
+                _context.next = 4;
                 return axios.get('/dashboard/modalidades_api');
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.modalidades = res.data;
-                _context.next = 10;
+                _this.cargando = false;
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
-    eliminar: function eliminar(id) {
+    eliminarM: function eliminarM(id) {
       var _this2 = this;
+
+      var confirmacion = false;
+      this.$swal({
+        title: '¿Estás seguro?',
+        text: "No hay vuelta atras si lo borras",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, ¡Bórralo!',
+        cancelButtonText: 'Cancelar',
+        focusCancel: true
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          _this2.eliminar(id);
+        } else if (result.isDismissed) {
+          console.log("Cancelar");
+        }
+      });
+    },
+    eliminar: function eliminar(id) {
+      var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var res;
@@ -8189,7 +8784,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios["delete"]('/dashboard/modalidades_api/' + id);
+                return axios["delete"]('/dashboard/modalidades_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context2.sent;
@@ -8201,12 +8812,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.t0 = _context2["catch"](0);
 
                 if (_context2.t0.response.data) {
-                  _this2.errores = _context2.t0.response.data.errors;
-                  console.log(_this2.errores); //this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Cool'});  
+                  _this3.errores = _context2.t0.response.data.errors;
+                  console.log(_this3.errores);
                 }
 
               case 9:
-                _this2.list();
+                _this3.list();
 
               case 10:
               case "end":
@@ -8217,7 +8828,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     save: function save() {
-      var _this3 = this;
+      var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var fields, key, res, _fields, _key, _res;
@@ -8226,7 +8837,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (!_this3.update) {
+                if (!_this4.update) {
                   _context3.next = 14;
                   break;
                 }
@@ -8234,22 +8845,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.prev = 1;
                 fields = new FormData();
 
-                for (key in _this3.modalidad) {
-                  fields.append(key, _this3.modalidad[key]);
+                for (key in _this4.modalidad) {
+                  fields.append(key, _this4.modalidad[key]);
                 } //.then(response=>{console.log(response.data)})
 
 
                 _context3.next = 6;
-                return axios.put('/dashboard/modalidades_api/' + _this3.id, _this3.modalidad).then(function (response) {
-                  if (response.data == "Guardado") {
-                    _this3.$swal({
+                return axios.put('/dashboard/modalidades_api/' + _this4.id, _this4.modalidad).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
                       title: 'Exitoso',
                       text: 'Actualizado con éxito',
                       icon: 'success',
                       confirmButtonText: 'Ok'
                     });
                   } else {
-                    _this3.$swal({
+                    _this4.$swal({
                       title: 'Error!',
                       text: 'Do you want to continue',
                       icon: 'error',
@@ -8268,8 +8879,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.t0 = _context3["catch"](1);
 
                 if (_context3.t0.response.data) {
-                  _this3.errores = _context3.t0.response.data.errors;
-                  console.log(_this3.errores);
+                  _this4.errores = _context3.t0.response.data.errors;
+                  console.log(_this4.errores);
                 }
 
               case 12:
@@ -8280,14 +8891,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.prev = 14;
                 _fields = new FormData();
 
-                for (_key in _this3.modalidad) {
-                  _fields.append(_key, _this3.modalidad[_key]);
+                for (_key in _this4.modalidad) {
+                  _fields.append(_key, _this4.modalidad[_key]);
                 } //.then(response=>{console.log(response.data)})
 
 
                 _context3.next = 19;
                 return axios.post('/dashboard/modalidades_api', _fields).then(function (response) {
-                  console.log(response.data);
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
                 });
 
               case 19:
@@ -8300,14 +8925,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context3.t1 = _context3["catch"](14);
 
                 if (_context3.t1.response.data) {
-                  _this3.errores = _context3.t1.response.data.errors;
-                  console.log(_this3.errores);
+                  _this4.errores = _context3.t1.response.data.errors;
+                  console.log(_this4.errores);
                 }
 
               case 25:
-                _this3.closeModal();
+                _this4.closeModal();
 
-                _this3.list();
+                _this4.list();
 
               case 27:
               case "end":
@@ -8869,6 +9494,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -8912,35 +9559,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                _this.cargando = true;
+                _context.next = 4;
                 return axios.get('/dashboard/posgrados_api/', {
                   params: _this.pagination
                 });
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.posgrados = res.data;
-                _this.cargando = false;
 
                 _this.listarPaginas();
 
-                _context.next = 12;
+                _this.cargando = false;
+                _context.next = 13;
                 break;
 
-              case 9:
-                _context.prev = 9;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 12:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 9]]);
+        }, _callee, null, [[0, 10]]);
       }))();
     },
     listarPaginas: function listarPaginas() {
@@ -8974,7 +9622,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get('/dashboard/facultad_api');
+                return axios.get('/dashboard/facultades_list');
 
               case 2:
                 resF = _context2.sent;
@@ -9027,7 +9675,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios["delete"]('/dashboard/posgrados_api/' + id);
+                return axios["delete"]('/dashboard/posgrados_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context3.sent;
@@ -9235,11 +9899,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.cargando = true;
-
     try {
-      this.listarSelects();
       this.list();
+      this.listarSelects();
     } catch (error) {
       console.log(error);
       this.cargando = false;
@@ -9798,6 +10460,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -9817,7 +10531,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       modal: 0,
       titleModal: '',
       posgrados: [],
-      tesis: []
+      tesis: [],
+      pagination: {
+        page: 1,
+        per_page: 8
+      },
+      paginas: []
     };
   },
   methods: {
@@ -9831,31 +10550,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/dashboard/tesis_api');
+                _this.cargando = true;
+                _context.next = 4;
+                return axios.get('/dashboard/tesis_api', {
+                  params: _this.pagination
+                });
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.tesis = res.data;
+
+                _this.listarPaginas();
+
                 _this.cargando = false;
-                _context.next = 11;
+                _context.next = 13;
                 break;
 
-              case 8:
-                _context.prev = 8;
+              case 10:
+                _context.prev = 10;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 11:
+              case 13:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 8]]);
+        }, _callee, null, [[0, 10]]);
       }))();
+    },
+    listarPaginas: function listarPaginas() {
+      var n = 2;
+      var arrayN = [];
+      var ini = this.pagination.page - 2;
+
+      if (ini < 1) {
+        ini = 1;
+      }
+
+      var fin = this.pagination.page + 2;
+
+      if (fin > this.tesis.last_page) {
+        fin = this.tesis.last_page;
+      }
+
+      for (var i = ini; i <= fin; i++) {
+        arrayN.push(i);
+      }
+
+      this.paginas = arrayN;
     },
     listarSelects: function listarSelects() {
       var _this2 = this;
@@ -9867,7 +10613,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.get('/dashboard/posgrados_api');
+                return axios.get('/dashboard/posgrados_list');
 
               case 2:
                 resP = _context2.sent;
@@ -9914,7 +10660,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios["delete"]('/dashboard/tesis_api/' + id);
+                return axios["delete"]('/dashboard/tesis_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context3.sent;
@@ -10090,8 +10852,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   created: function created() {
-    this.cargando = true;
-
     try {
       this.listarSelects();
       this.list();
@@ -10195,6 +10955,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -10202,6 +10972,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         id: 0,
         nombre: ''
       },
+      cargando: false,
       errors: [],
       errores: {},
       id: 0,
@@ -10222,29 +10993,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                _this.cargando = true;
+                _context.next = 4;
                 return axios.get('/dashboard/tipo_duracions_api');
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.tipoDuracions = res.data;
-                _context.next = 10;
+                _this.cargando = false;
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     eliminarM: function eliminarM(id) {
@@ -10280,7 +11053,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios["delete"]('/dashboard/tipo_duracions_api/' + id);
+                return axios["delete"]('/dashboard/tipo_duracions_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context2.sent;
@@ -10332,7 +11121,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.next = 6;
                 return axios.put('/dashboard/tipo_duracions_api/' + _this4.id, _this4.tipoDuracion).then(function (response) {
-                  if (response.data == "Guardado") {
+                  if (response.data == 1) {
                     _this4.$swal({
                       title: 'Exitoso',
                       text: 'Actualizado con éxito',
@@ -10378,7 +11167,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.next = 19;
                 return axios.post('/dashboard/tipo_duracions_api', _fields).then(function (response) {
-                  console.log(response.data);
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
                 });
 
               case 19:
@@ -10433,9 +11236,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     closeModal: function closeModal() {
       this.modal = 0;
     }
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   },
   created: function created() {
     this.list();
@@ -10535,6 +11335,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -10542,6 +11352,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         id: 0,
         nombre: ''
       },
+      cargando: false,
       errors: [],
       errores: {},
       id: 0,
@@ -10562,29 +11373,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.prev = 0;
-                _context.next = 3;
+                _this.cargando = true;
+                _context.next = 4;
                 return axios.get('/dashboard/tipo_programas_api');
 
-              case 3:
+              case 4:
                 res = _context.sent;
                 _this.tipoProgramas = res.data;
-                _context.next = 10;
+                _this.cargando = false;
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     eliminarM: function eliminarM(id) {
@@ -10620,7 +11433,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.prev = 0;
                 _context2.next = 3;
-                return axios["delete"]('/dashboard/tipo_programas_api/' + id);
+                return axios["delete"]('/dashboard/tipo_programas_api/' + id).then(function (response) {
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Eliminado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context2.sent;
@@ -10672,7 +11501,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.next = 6;
                 return axios.put('/dashboard/tipo_programas_api/' + _this4.id, _this4.tipoPrograma).then(function (response) {
-                  if (response.data == "Guardado") {
+                  if (response.data == 1) {
                     _this4.$swal({
                       title: 'Exitoso',
                       text: 'Actualizado con éxito',
@@ -10718,7 +11547,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _context3.next = 19;
                 return axios.post('/dashboard/tipo_programas_api', _fields).then(function (response) {
-                  console.log(response.data);
+                  if (response.data == 1) {
+                    _this4.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this4.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
                 });
 
               case 19:
@@ -10773,9 +11616,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     closeModal: function closeModal() {
       this.modal = 0;
     }
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   },
   created: function created() {
     this.list();
@@ -49892,53 +50732,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-xm-12" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success ",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              _vm.update = false
-              _vm.openModal()
-            }
-          }
-        },
-        [
-          _vm._v("\n            Nuevo\n            "),
-          _c(
-            "svg",
-            {
-              staticClass: "bi bi-plus-circle",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "16",
-                height: "16",
-                fill: "currentColor",
-                viewBox: "0 0 16 16"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                }
-              })
-            ]
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       {
@@ -49984,18 +50777,18 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "mb-3 col-sm-6 offset-sm-3" }, [
                         _c(
@@ -50337,8 +51130,10 @@ var render = function() {
                           [_vm._v(_vm._s(_vm.textOfertado))]
                         )
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -50351,206 +51146,544 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xm-12 col-sm-8 offset-sm-2" }, [
-      _vm.cargando ? _c("p", [_vm._v("Cargando...")]) : _vm._e(),
-      _vm._v(" "),
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12" }, [
       _c(
-        "table",
+        "button",
         {
-          staticClass:
-            "table table-striped table-bordered border-danger bg-white"
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.update = false
+              _vm.openModal()
+            }
+          }
         },
         [
-          _vm._m(0),
-          _vm._v(" "),
+          _vm._v("\n            Nuevo\n            "),
           _c(
-            "tbody",
-            { staticClass: "text-center" },
-            _vm._l(_vm.diplomados, function(diplomado) {
-              return _c("tr", { key: diplomado.id }, [
-                _c("td", [_vm._v(_vm._s(diplomado.facultad.nombre))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(diplomado.nombre))]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(
-                    _vm._s(diplomado.duracion) +
-                      " | " +
-                      _vm._s(diplomado.tipo_duracion.nombre) +
-                      " "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "span",
-                    {
-                      class: [
-                        "badge",
-                        _vm.badgeColor(diplomado.modalidad.color)
-                      ]
-                    },
-                    [_vm._v(_vm._s(diplomado.modalidad.nombre))]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  diplomado.ofertado == 1
-                    ? _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-check-circle-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "green",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
-                            }
-                          })
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  diplomado.ofertado == 0
-                    ? _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-x-circle-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "red",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
-                            }
-                          })
-                        ]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.openModal(diplomado)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-pencil-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-danger btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.eliminarM(diplomado.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-trash-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            }),
-            0
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
           )
         ]
       )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-1 mb-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "border rounded" }, [
+          _c(
+            "label",
+            { staticClass: "form-label", attrs: { for: "customRange3" } },
+            [
+              _vm._v(
+                " " +
+                  _vm._s(_vm.diplomados.from) +
+                  " - " +
+                  _vm._s(_vm.diplomados.to) +
+                  " total: " +
+                  _vm._s(_vm.diplomados.total)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.pagination.per_page,
+                expression: "pagination.per_page"
+              }
+            ],
+            staticClass: "form-range",
+            attrs: {
+              type: "range",
+              "data-bs-toggle": "popover",
+              "data-bs-placement": "top",
+              "data-bs-content": "Top popover",
+              min: "1",
+              max: _vm.diplomados.total,
+              step: "4",
+              id: "customRange3"
+            },
+            domProps: { value: _vm.pagination.per_page },
+            on: {
+              change: function($event) {
+                return _vm.list()
+              },
+              __r: function($event) {
+                return _vm.$set(_vm.pagination, "per_page", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: " badge bg-secondary" }, [
+            _vm._v(_vm._s(_vm.pagination.per_page))
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-12" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-striped table-bordered border-primary " },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              { staticClass: "text-center" },
+              _vm._l(_vm.diplomados.data, function(diplomado) {
+                return _c("tr", { key: diplomado.id }, [
+                  _c("td", [_vm._v(_vm._s(diplomado.facultad.nombre))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(diplomado.nombre))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      _vm._s(diplomado.duracion) +
+                        " | " +
+                        _vm._s(diplomado.tipo_duracion.nombre) +
+                        " "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "span",
+                      {
+                        class: [
+                          "badge",
+                          _vm.badgeColor(diplomado.modalidad.color)
+                        ]
+                      },
+                      [_vm._v(_vm._s(diplomado.modalidad.nombre))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    diplomado.ofertado == 1
+                      ? _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-check-circle-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "green",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"
+                              }
+                            })
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    diplomado.ofertado == 0
+                      ? _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-x-circle-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "red",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+                              }
+                            })
+                          ]
+                        )
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.openModal(diplomado)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-pencil-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.eliminarM(diplomado.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4 text-center" }, [
+        _c("nav", [
+          _c(
+            "ul",
+            { staticClass: "pagination" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = 1), _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-backward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page--, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-left-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.paginas, function(n) {
+                return _c(
+                  "li",
+                  {
+                    key: n,
+                    staticClass: "page-item",
+                    class: { active: _vm.pagination.page == n }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            ;(_vm.pagination.page = n), _vm.list()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(n) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.diplomados.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page++, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-right-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.diplomados.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = _vm.diplomados.last_page),
+                            _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-forward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ],
+            2
+          )
+        ])
+      ])
     ])
   ])
 }
@@ -50559,7 +51692,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-center" }, [
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "text-center table-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Facultad")]),
         _vm._v(" "),
@@ -50599,21 +51753,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            _vm.update = false
-            _vm.openModal()
-          }
-        }
-      },
-      [_vm._v("\nNuevo +\n")]
-    ),
-    _vm._v(" "),
     _c(
       "div",
       {
@@ -50659,19 +51798,19 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    attrs: { enctype: "multipart/form-data" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  attrs: { enctype: "multipart/form-data" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "mb-3 col-sm-6" }, [
                         _c(
@@ -50778,8 +51917,10 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -50792,38 +51933,149 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.update = false
+              _vm.openModal()
+            }
+          }
+        },
+        [
+          _vm._v("\n            Nuevo\n            "),
+          _c(
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-1 mb-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "border rounded" }, [
+          _c(
+            "label",
+            { staticClass: "form-label", attrs: { for: "customRange3" } },
+            [
+              _vm._v(
+                " " +
+                  _vm._s(_vm.enlaces.from) +
+                  " - " +
+                  _vm._s(_vm.enlaces.to) +
+                  " total: " +
+                  _vm._s(_vm.enlaces.total)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.pagination.per_page,
+                expression: "pagination.per_page"
+              }
+            ],
+            staticClass: "form-range",
+            attrs: {
+              type: "range",
+              "data-bs-toggle": "popover",
+              "data-bs-placement": "top",
+              "data-bs-content": "Top popover",
+              min: "1",
+              max: _vm.enlaces.total,
+              step: "2",
+              id: "customRange3"
+            },
+            domProps: { value: _vm.pagination.per_page },
+            on: {
+              change: function($event) {
+                return _vm.list()
+              },
+              __r: function($event) {
+                return _vm.$set(_vm.pagination, "per_page", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: " badge bg-secondary" }, [
+            _vm._v(_vm._s(_vm.pagination.per_page))
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _c(
       "div",
       { staticClass: "row" },
-      _vm._l(_vm.enlaces, function(enlace) {
+      _vm._l(_vm.enlaces.data, function(enlace) {
         return _c("div", { key: enlace.id, staticClass: "col-sm-3" }, [
-          _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card h-100" }, [
             _c("img", {
               staticClass: "card-img-top h-50",
               attrs: { src: enlace.urlImagen, alt: "..." }
@@ -50894,7 +52146,7 @@ var render = function() {
                   on: {
                     click: function($event) {
                       _vm.update = true
-                      _vm.eliminar(enlace.id)
+                      _vm.eliminarM(enlace.id)
                     }
                   }
                 },
@@ -50927,10 +52179,262 @@ var render = function() {
         ])
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4 text-center" }, [
+        _c("nav", [
+          _c(
+            "ul",
+            { staticClass: "pagination" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = 1), _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-backward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page--, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-left-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.paginas, function(n) {
+                return _c(
+                  "li",
+                  {
+                    key: n,
+                    staticClass: "page-item",
+                    class: { active: _vm.pagination.page == n }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            ;(_vm.pagination.page = n), _vm.list()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(n) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.enlaces.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page++, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-right-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.enlaces.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = _vm.enlaces.last_page),
+                            _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-forward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ],
+            2
+          )
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -50953,530 +52457,510 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-3 md-3" }, [
+  return _c(
+    "div",
+    { staticClass: "row" },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          class: { show: _vm.modal },
+          attrs: {
+            id: "nuevo-Modal",
+            tabindex: "-1",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "exampleModalLabel" }
+                    },
+                    [_vm._v(_vm._s(_vm.tituloModal))]
+                  ),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "btn-close",
+                    attrs: {
+                      type: "button",
+                      "data-bs-dismiss": "modal",
+                      "aria-label": "Close"
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.cerrarModal()
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c(
+                  "form",
+                  {
+                    attrs: { enctype: "multipart/form-data" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.save.apply(null, arguments)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticClass: "mb-3 col-sm-6" }, [
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-label",
+                            attrs: { for: "formFile" }
+                          },
+                          [_vm._v("Logo de la Facultad")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          ref: "urlImg",
+                          staticClass: "form-control",
+                          attrs: {
+                            accept: "image/*",
+                            type: "file",
+                            name: "urlImagen"
+                          },
+                          on: { change: _vm.obtenerImagen }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3 col-sm-6" }, [
+                        _c("img", {
+                          staticClass: "img-thumbnail",
+                          attrs: { src: _vm.imagen, alt: "..." }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "my-4" }, [
+                        _c("label", { attrs: { for: "nombre" } }, [
+                          _vm._v("Nombre Especialidad")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.equipoTrabajo.nombre,
+                              expression: "equipoTrabajo.nombre"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Nombre Miembro",
+                            id: "nombre"
+                          },
+                          domProps: { value: _vm.equipoTrabajo.nombre },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.equipoTrabajo,
+                                "nombre",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errores.nombre
+                          ? _c("span", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errores.nombre[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "my-4" }, [
+                        _c("label", { attrs: { for: "descripcion" } }, [
+                          _vm._v("Cargo Miembro")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.equipoTrabajo.cargo,
+                              expression: "equipoTrabajo.cargo"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Cargo",
+                            id: "cargo"
+                          },
+                          domProps: { value: _vm.equipoTrabajo.cargo },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.equipoTrabajo,
+                                "cargo",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errores.cargo
+                          ? _c("span", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errores.cargo[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "my-4" }, [
+                        _c("label", { attrs: { for: "descripcion" } }, [
+                          _vm._v("Descripción Miembro")
+                        ]),
+                        _vm._v(" "),
+                        _c("textarea", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.equipoTrabajo.descripcion,
+                              expression: "equipoTrabajo.descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            placeholder: "Descripcion",
+                            id: "descripcion"
+                          },
+                          domProps: { value: _vm.equipoTrabajo.descripcion },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.equipoTrabajo,
+                                "descripcion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.errores.descripcion
+                          ? _c("span", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errores.descripcion[0]))
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.guardar()
+                            }
+                          }
+                        },
+                        [_vm._v("Guardar Cambios")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-bs-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.cerrarModal()
+                            }
+                          }
+                        },
+                        [_vm._v("Cerrar")]
+                      )
+                    ])
+                  ]
+                )
+              ])
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _vm.cargando
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "d-flex align-items-center justify-content-center m-3"
+            },
+            [
+              _c("strong", [_vm._v("Cargando Datos...")]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-sm-12" }, [
         _c(
           "button",
           {
-            staticClass: "btn btn-primary",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#nuevo-Modal"
-            },
+            staticClass: "btn btn-success ",
+            attrs: { type: "button" },
             on: {
               click: function($event) {
-                _vm.modificar = false
+                _vm.update = false
                 _vm.abrirModal()
               }
             }
           },
-          [_vm._v("\n                Nuevo\n            ")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticClass: "modal fade",
-            attrs: {
-              id: "nuevo-Modal",
-              tabindex: "-1",
-              "aria-labelledby": "exampleModalLabel",
-              "aria-hidden": "true"
-            }
-          },
           [
+            _vm._v("\n            Nuevo\n            "),
             _c(
-              "div",
-              { staticClass: "modal-dialog", attrs: { role: "document" } },
+              "svg",
+              {
+                staticClass: "bi bi-plus-circle",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "16",
+                  height: "16",
+                  fill: "currentColor",
+                  viewBox: "0 0 16 16"
+                }
+              },
               [
-                _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c(
-                      "h5",
-                      {
-                        staticClass: "modal-title",
-                        attrs: { id: "exampleModalLabel" }
-                      },
-                      [_vm._v(_vm._s(_vm.tituloModal))]
-                    ),
-                    _vm._v(" "),
-                    _c("button", {
-                      staticClass: "btn-close",
-                      attrs: {
-                        type: "button",
-                        "data-bs-dismiss": "modal",
-                        "aria-label": "Close"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c(
-                      "form",
-                      {
-                        attrs: { enctype: "multipart/form-data" },
-                        on: {
-                          submit: function($event) {
-                            $event.preventDefault()
-                            return _vm.save.apply(null, arguments)
-                          }
-                        }
-                      },
-                      [
-                        _c("div", { staticClass: "mb-3 col-sm-6" }, [
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "formFile" }
-                            },
-                            [_vm._v("Logo de la Facultad")]
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            ref: "urlImg",
-                            staticClass: "form-control",
-                            attrs: {
-                              accept: "image/*",
-                              type: "file",
-                              name: "urlImagen"
-                            },
-                            on: { change: _vm.obtenerImagen }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "mb-3 col-sm-6" }, [
-                          _c("img", {
-                            staticClass: "img-thumbnail",
-                            attrs: { src: _vm.imagen, alt: "..." }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "my-4" }, [
-                          _c("label", { attrs: { for: "nombre" } }, [
-                            _vm._v("Nombre Especialidad")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.equipoTrabajo.nombre,
-                                expression: "equipoTrabajo.nombre"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Nombre Miembro",
-                              id: "nombre"
-                            },
-                            domProps: { value: _vm.equipoTrabajo.nombre },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.equipoTrabajo,
-                                  "nombre",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errores.nombre
-                            ? _c("span", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errores.nombre[0]))
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "my-4" }, [
-                          _c("label", { attrs: { for: "descripcion" } }, [
-                            _vm._v("Cargo Miembro")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.equipoTrabajo.cargo,
-                                expression: "equipoTrabajo.cargo"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Cargo",
-                              id: "cargo"
-                            },
-                            domProps: { value: _vm.equipoTrabajo.cargo },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.equipoTrabajo,
-                                  "cargo",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errores.cargo
-                            ? _c("span", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errores.cargo[0]))
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "my-4" }, [
-                          _c("label", { attrs: { for: "descripcion" } }, [
-                            _vm._v("Descripción Miembro")
-                          ]),
-                          _vm._v(" "),
-                          _c("textarea", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.equipoTrabajo.descripcion,
-                                expression: "equipoTrabajo.descripcion"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Descripcion",
-                              id: "descripcion"
-                            },
-                            domProps: { value: _vm.equipoTrabajo.descripcion },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(
-                                  _vm.equipoTrabajo,
-                                  "descripcion",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errores.descripcion
-                            ? _c("span", { staticClass: "text-danger" }, [
-                                _vm._v(_vm._s(_vm.errores.descripcion[0]))
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-primary",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                return _vm.guardar()
-                              }
-                            }
-                          },
-                          [_vm._v("Guardar Cambios")]
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0)
-                ])
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  }
+                })
               ]
             )
           ]
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-3 md-3" }, [
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.equipoTrabajos.from) +
-            " - " +
-            _vm._s(_vm.equipoTrabajos.to) +
-            " total: " +
-            _vm._s(_vm.equipoTrabajos.total) +
-            "\n        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-3 md-3" }, [
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.pagination.per_page,
-                expression: "pagination.per_page"
-              }
-            ],
-            staticClass: " form-control form-select form-select-sm",
-            on: {
-              change: [
-                function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
+      _c("div", { staticClass: "row mt-1 mb-1" }, [
+        _c("div", { staticClass: "col-sm-4" }, [
+          _c("div", { staticClass: "border rounded" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "customRange3" } },
+              [
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.equipoTrabajos.from) +
+                    " - " +
+                    _vm._s(_vm.equipoTrabajos.to) +
+                    " total: " +
+                    _vm._s(_vm.equipoTrabajos.total)
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pagination.per_page,
+                  expression: "pagination.per_page"
+                }
+              ],
+              staticClass: "form-range",
+              attrs: {
+                type: "range",
+                "data-bs-toggle": "popover",
+                "data-bs-placement": "top",
+                "data-bs-content": "Top popover",
+                min: "1",
+                max: _vm.equipoTrabajos.total,
+                step: "1",
+                id: "customRange3"
+              },
+              domProps: { value: _vm.pagination.per_page },
+              on: {
+                change: function($event) {
+                  return _vm.listar()
+                },
+                __r: function($event) {
+                  return _vm.$set(
                     _vm.pagination,
                     "per_page",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    $event.target.value
                   )
-                },
-                function($event) {
-                  return _vm.listar()
                 }
-              ]
-            }
-          },
-          [
-            _c("option", { attrs: { selected: "" } }, [
-              _vm._v("Elementos por pagina")
-            ]),
+              }
+            }),
             _vm._v(" "),
-            _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "15" } }, [_vm._v("15")])
-          ]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table table-striped table-sm table-hover text-center" },
-      [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.equipoTrabajos.data, function(equi) {
-            return _c("tr", { key: equi.id }, [
-              _c("td", [
-                _c("img", {
-                  staticClass: "img-thumbnail",
-                  attrs: { src: equi.urlImagen, alt: "..." }
-                })
-              ]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(equi.nombre))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(equi.cargo))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(equi.descripcion))]),
-              _vm._v(" "),
-              _c("td", { staticClass: "text-center " }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-warning btn-sm",
-                    attrs: {
-                      type: "button",
-                      "data-bs-toggle": "modal",
-                      "data-bs-target": "#nuevo-Modal"
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.modificar = true
-                        _vm.abrirModal(equi)
-                      }
-                    }
-                  },
-                  [_vm._v("\n                    Editar\n                    ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger btn-sm text-light",
-                    attrs: {
-                      type: "button",
-                      "data-bs-toggle": "modal",
-                      "data-bs-target": "#eliminarModal_" + equi.id
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Eliminar\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
+            _c("span", { staticClass: " badge bg-secondary" }, [
+              _vm._v(_vm._s(_vm.pagination.per_page))
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.equipoTrabajos.data, function(equi) {
+        return _c("div", { key: equi.id, staticClass: " col-sm-6 mb-3" }, [
+          _c("div", { staticClass: "card  h-100" }, [
+            _c("div", { staticClass: "row g-0" }, [
               _c(
                 "div",
-                {
-                  staticClass: "modal fade",
-                  attrs: {
-                    id: "eliminarModal_" + equi.id,
-                    tabindex: "-1",
-                    "aria-labelledby": "eliminarModalLabel_" + equi.id,
-                    "aria-hidden": "true"
-                  }
-                },
+                { staticClass: "col-sm-4 rounded mx-auto d-block text-center" },
                 [
-                  _c("div", { staticClass: "modal-dialog" }, [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _c("div", { staticClass: "modal-header" }, [
-                        _c(
-                          "h5",
-                          {
-                            staticClass: "modal-title",
-                            attrs: { id: "eliminarModalLabel_" + equi.id }
-                          },
-                          [
-                            _vm._v(
-                              "Seguro que due desea eliminar este registro?"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("button", {
-                          staticClass: "btn-close",
-                          attrs: {
-                            type: "button",
-                            "data-bs-dismiss": "modal",
-                            "aria-label": "Close"
+                  _c("img", {
+                    staticClass: "img-fluid rounded-start",
+                    attrs: { src: equi.urlImagen, alt: "" }
+                  })
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-sm-8" }, [
+                _c("div", { staticClass: "card-body" }, [
+                  _c("h5", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(equi.nombre))
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", { staticClass: "card-subtitle mb-2 text-muted" }, [
+                    _vm._v(_vm._s(equi.cargo))
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(equi.descripcion))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "position-relative bottom-0 start-50 translate-middle-x mb-1 "
+                    },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.modificar = true
+                              _vm.abrirModal(equi)
+                            }
                           }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _vm._v(
-                          "\n                            Seguro que desea eliminar el registro "
-                        ),
-                        _c("b", [_vm._v(_vm._s(equi.nombre))])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-footer" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-secondary",
-                            attrs: {
-                              type: "button",
-                              "data-bs-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("Cancelar")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            attrs: {
-                              type: "button",
-                              "data-bs-dismiss": "modal"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.eliminar(equi.id)
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "bi bi-pencil-fill",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "16",
+                                height: "16",
+                                fill: "currentColor",
+                                viewBox: "0 0 16 16"
                               }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.eliminarM(equi.id)
                             }
-                          },
-                          [_vm._v("Si, Eliminar")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              )
+                          }
+                        },
+                        [
+                          _c(
+                            "svg",
+                            {
+                              staticClass: "bi bi-trash-fill",
+                              attrs: {
+                                xmlns: "http://www.w3.org/2000/svg",
+                                width: "16",
+                                height: "16",
+                                fill: "currentColor",
+                                viewBox: "0 0 16 16"
+                              }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ])
+              ])
             ])
-          }),
-          0
-        )
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6 md-6 text-center" }, [
-        _c("nav", [
-          _c(
-            "ul",
-            { staticClass: "pagination" },
-            [
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: _vm.pagination.page == 1 }
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          ;(_vm.pagination.page = 1), _vm.listar()
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("«")])]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: { disabled: _vm.pagination.page == 1 }
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.pagination.page--, _vm.listar()
-                        }
-                      }
-                    },
-                    [_vm._v("<")]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.paginas, function(n) {
-                return _c(
+          ])
+        ])
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-sm-4 text-center" }, [
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: "pagination" },
+              [
+                _c(
                   "li",
                   {
-                    key: n,
                     staticClass: "page-item",
-                    class: { active: _vm.pagination.page == n }
+                    class: { disabled: _vm.pagination.page == 1 }
                   },
                   [
                     _c(
@@ -51486,110 +52970,241 @@ var render = function() {
                         attrs: { href: "#" },
                         on: {
                           click: function($event) {
-                            ;(_vm.pagination.page = n), _vm.listar()
+                            ;(_vm.pagination.page = 1), _vm.listar()
                           }
                         }
                       },
-                      [_vm._v(_vm._s(n))]
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-skip-backward-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page-item",
+                    class: { disabled: _vm.pagination.page == 1 }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.pagination.page--, _vm.listar()
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-caret-left-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.paginas, function(n) {
+                  return _c(
+                    "li",
+                    {
+                      key: n,
+                      staticClass: "page-item",
+                      class: { active: _vm.pagination.page == n }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page-link",
+                          attrs: { href: "#" },
+                          on: {
+                            click: function($event) {
+                              ;(_vm.pagination.page = n), _vm.listar()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(n) +
+                              "\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page-item",
+                    class: {
+                      disabled:
+                        _vm.pagination.page == _vm.equipoTrabajos.last_page
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            _vm.pagination.page++, _vm.listar()
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-caret-right-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page-item",
+                    class: {
+                      disabled:
+                        _vm.pagination.page == _vm.equipoTrabajos.last_page
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            ;(_vm.pagination.page =
+                              _vm.equipoTrabajos.last_page),
+                              _vm.listar()
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-skip-forward-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
                     )
                   ]
                 )
-              }),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: {
-                    disabled:
-                      _vm.pagination.page == _vm.equipoTrabajos.last_page
-                  }
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          _vm.pagination.page++, _vm.listar()
-                        }
-                      }
-                    },
-                    [_vm._v(">")]
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  staticClass: "page-item",
-                  class: {
-                    disabled:
-                      _vm.pagination.page == _vm.equipoTrabajos.last_page
-                  }
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "page-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          ;(_vm.pagination.page = _vm.equipoTrabajos.last_page),
-                            _vm.listar()
-                        }
-                      }
-                    },
-                    [_c("span", [_vm._v("»")])]
-                  )
-                ]
-              )
-            ],
-            2
-          )
+              ],
+              2
+            )
+          ])
         ])
       ])
-    ])
-  ])
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-secondary",
-          attrs: { type: "button", "data-bs-dismiss": "modal" }
-        },
-        [_vm._v("Cerrar")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-dark" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Imagen")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Cargo")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Descripcion")]),
-        _vm._v(" "),
-        _c("th", { staticClass: "text-center", attrs: { scope: "col" } }, [
-          _vm._v("Acciones")
-        ])
-      ])
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
     ])
   }
 ]
@@ -51665,21 +53280,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c(
-      "button",
-      {
-        staticClass: "btn btn-primary",
-        attrs: { type: "button" },
-        on: {
-          click: function($event) {
-            _vm.update = false
-            _vm.openModal()
-          }
-        }
-      },
-      [_vm._v("\r\n    Nuevo +\r\n    ")]
-    ),
-    _vm._v(" "),
-    _c(
       "div",
       {
         staticClass: "modal fade",
@@ -51724,19 +53324,19 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    attrs: { enctype: "multipart/form-data" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  attrs: { enctype: "multipart/form-data" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "mb-3 col-sm-6" }, [
                         _c(
@@ -51846,9 +53446,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                " +
+                              "\n                                " +
                                 _vm._s(_vm.charFaltantesD) +
-                                "/255\r\n                                "
+                                "/255\n                                "
                             )
                           ]
                         )
@@ -51897,9 +53497,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                    " +
+                              "\n                                    " +
                                 _vm._s(_vm.charFaltantesC) +
-                                '/120 | Puedes separar email, telefono con una ",". \r\n                                '
+                                '/120 | Puedes separar email, telefono con una ",". \n                                '
                             )
                           ]
                         )
@@ -51948,9 +53548,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                    " +
+                              "\n                                    " +
                                 _vm._s(_vm.charFaltantesP) +
-                                '/120 | Puedes separar email, telefono con una ",". \r\n                                '
+                                '/120 | Puedes separar email, telefono con una ",". \n                                '
                             )
                           ]
                         )
@@ -52055,8 +53655,10 @@ var render = function() {
                           [_vm._v("Multi-Disciplinaria")]
                         )
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -52069,38 +53671,149 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.update = false
+              _vm.openModal()
+            }
+          }
+        },
+        [
+          _vm._v("\n            Nuevo\n            "),
+          _c(
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-1 mb-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "border rounded" }, [
+          _c(
+            "label",
+            { staticClass: "form-label", attrs: { for: "customRange3" } },
+            [
+              _vm._v(
+                " " +
+                  _vm._s(_vm.facultades.from) +
+                  " - " +
+                  _vm._s(_vm.facultades.to) +
+                  " total: " +
+                  _vm._s(_vm.facultades.total)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.pagination.per_page,
+                expression: "pagination.per_page"
+              }
+            ],
+            staticClass: "form-range",
+            attrs: {
+              type: "range",
+              "data-bs-toggle": "popover",
+              "data-bs-placement": "top",
+              "data-bs-content": "Top popover",
+              min: "1",
+              max: _vm.facultades.total,
+              step: "2",
+              id: "customRange3"
+            },
+            domProps: { value: _vm.pagination.per_page },
+            on: {
+              change: function($event) {
+                return _vm.list()
+              },
+              __r: function($event) {
+                return _vm.$set(_vm.pagination, "per_page", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: " badge bg-secondary" }, [
+            _vm._v(_vm._s(_vm.pagination.per_page))
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
     _c(
       "div",
-      { staticClass: "row" },
-      _vm._l(_vm.facultades, function(facultad) {
+      { staticClass: "row mt-1 mb-1" },
+      _vm._l(_vm.facultades.data, function(facultad) {
         return _c("div", { key: facultad.id, staticClass: "col-sm-3" }, [
-          _c("div", { staticClass: "card p-2 h-100" }, [
+          _c("div", { staticClass: "card p-2 h-100  mb-1 " }, [
             _c("img", {
               staticClass: "card-img-top h-50",
               attrs: { src: facultad.urlImagen, alt: "..." }
@@ -52220,10 +53933,262 @@ var render = function() {
         ])
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4 text-center" }, [
+        _c("nav", [
+          _c(
+            "ul",
+            { staticClass: "pagination" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = 1), _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-backward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page--, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-left-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.paginas, function(n) {
+                return _c(
+                  "li",
+                  {
+                    key: n,
+                    staticClass: "page-item",
+                    class: { active: _vm.pagination.page == n }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            ;(_vm.pagination.page = n), _vm.list()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(n) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.facultades.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page++, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-right-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.facultades.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = _vm.facultades.last_page),
+                            _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-forward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ],
+            2
+          )
+        ])
+      ])
+    ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -52594,65 +54559,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-3 md-3" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-primary",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#nuevo-Modal"
-            },
-            on: {
-              click: function($event) {
-                _vm.modificar = false
-                _vm.abrirModal()
-              }
-            }
-          },
-          [_vm._v("\n                Nuevo registro Historico\n            ")]
-        ),
-        _vm._v(" "),
+  return _c("div", { staticClass: "row" }, [
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        class: { show: _vm.modal },
+        attrs: {
+          id: "nuevo-Modal",
+          tabindex: "-1",
+          "aria-labelledby": "exampleModalLabel",
+          "aria-hidden": "true"
+        }
+      },
+      [
         _c(
           "div",
-          {
-            staticClass: "modal fade",
-            attrs: {
-              id: "nuevo-Modal",
-              tabindex: "-1",
-              "aria-labelledby": "exampleModalLabel",
-              "aria-hidden": "true"
-            }
-          },
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
           [
-            _c(
-              "div",
-              { staticClass: "modal-dialog", attrs: { role: "document" } },
-              [
-                _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header" }, [
-                    _c(
-                      "h5",
-                      {
-                        staticClass: "modal-title",
-                        attrs: { id: "exampleModalLabel" }
-                      },
-                      [_vm._v(_vm._s(_vm.tituloModal))]
-                    ),
-                    _vm._v(" "),
-                    _c("button", {
-                      staticClass: "btn-close",
-                      attrs: {
-                        type: "button",
-                        "data-bs-dismiss": "modal",
-                        "aria-label": "Close"
-                      }
-                    })
-                  ]),
-                  _vm._v(" "),
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title",
+                    attrs: { id: "exampleModalLabel" }
+                  },
+                  [_vm._v(_vm._s(_vm.tituloModal))]
+                ),
+                _vm._v(" "),
+                _c("button", {
+                  staticClass: "btn-close",
+                  attrs: {
+                    type: "button",
+                    "data-bs-dismiss": "modal",
+                    "aria-label": "Close"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.cerrarModal()
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
+                    }
+                  }
+                },
+                [
                   _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "my-4" }, [
                       _c("label", { attrs: { for: "anio" } }, [
@@ -52813,7 +54774,12 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" }
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.cerrarModal()
+                          }
+                        }
                       },
                       [_vm._v("Cerrar")]
                     ),
@@ -52832,29 +54798,90 @@ var render = function() {
                       [_vm._v("Guardar Cambios")]
                     )
                   ])
-                ])
-              ]
-            )
+                ]
+              )
+            ])
           ]
         )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-3 md-3" }, [
-        _vm._v(
-          "\n            " +
-            _vm._s(_vm.reseniaHistoricas.from) +
-            " - " +
-            _vm._s(_vm.reseniaHistoricas.to) +
-            " total: " +
-            _vm._s(_vm.reseniaHistoricas.total) +
-            "\n        "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-3 md-3" }, [
-        _c(
-          "select",
+      ]
+    ),
+    _vm._v(" "),
+    _vm.cargando
+      ? _c(
+          "div",
           {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.modificar = false
+              _vm.abrirModal()
+            }
+          }
+        },
+        [
+          _vm._v("\n            Nuevo\n            "),
+          _c(
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
+          )
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-1 mb-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "border rounded" }, [
+          _c(
+            "label",
+            { staticClass: "form-label", attrs: { for: "customRange3" } },
+            [
+              _vm._v(
+                " " +
+                  _vm._s(_vm.reseniaHistoricas.from) +
+                  " - " +
+                  _vm._s(_vm.reseniaHistoricas.to) +
+                  " total: " +
+                  _vm._s(_vm.reseniaHistoricas.total)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("input", {
             directives: [
               {
                 name: "model",
@@ -52863,206 +54890,157 @@ var render = function() {
                 expression: "pagination.per_page"
               }
             ],
-            staticClass: " form-control form-select form-select-sm",
+            staticClass: "form-range",
+            attrs: {
+              type: "range",
+              "data-bs-toggle": "popover",
+              "data-bs-placement": "top",
+              "data-bs-content": "Top popover",
+              min: "1",
+              max: _vm.reseniaHistoricas.total,
+              step: "4",
+              id: "customRange3"
+            },
+            domProps: { value: _vm.pagination.per_page },
             on: {
-              change: [
-                function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.pagination,
-                    "per_page",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                },
-                function($event) {
-                  return _vm.listar()
-                }
-              ]
+              change: function($event) {
+                return _vm.listar()
+              },
+              __r: function($event) {
+                return _vm.$set(_vm.pagination, "per_page", $event.target.value)
+              }
             }
-          },
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: " badge bg-secondary" }, [
+            _vm._v(_vm._s(_vm.pagination.per_page))
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-12" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-striped table-bordered border-primary " },
           [
-            _c("option", { attrs: { selected: "" } }, [
-              _vm._v("Elementos por pagina")
-            ]),
+            _vm._m(1),
             _vm._v(" "),
-            _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "15" } }, [_vm._v("15")])
+            _c(
+              "tbody",
+              _vm._l(_vm.reseniaHistoricas.data, function(rese) {
+                return _c("tr", { key: rese.id }, [
+                  _c("td", [_vm._v(_vm._s(rese.anio))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    rese.importancia == 3
+                      ? _c("span", { staticClass: "badge bg-secondary" }, [
+                          _vm._v("No muy importante")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    rese.importancia == 2
+                      ? _c("span", { staticClass: "badge bg-info" }, [
+                          _vm._v("Importante")
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    rese.importancia == 1
+                      ? _c("span", { staticClass: "badge bg-success" }, [
+                          _vm._v("Muy Importante")
+                        ])
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(rese.descripcion))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.modificar = true
+                            _vm.abrirModal(rese)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-pencil-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.eliminarM(rese.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
           ]
         )
       ])
     ]),
     _vm._v(" "),
-    _c("br"),
-    _vm._v(" "),
-    _c(
-      "table",
-      { staticClass: "table table-striped table-sm table-hover text-center" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.reseniaHistoricas.data, function(rese) {
-            return _c("tr", { key: rese.id }, [
-              _c("td", [_vm._v(_vm._s(rese.anio))]),
-              _vm._v(" "),
-              _c("td", [
-                rese.importancia == 3
-                  ? _c("span", { staticClass: "badge bg-secondary" }, [
-                      _vm._v("No muy importante")
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                rese.importancia == 2
-                  ? _c("span", { staticClass: "badge bg-info" }, [
-                      _vm._v("Importante")
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                rese.importancia == 1
-                  ? _c("span", { staticClass: "badge bg-success" }, [
-                      _vm._v("Muy Importante")
-                    ])
-                  : _vm._e()
-              ]),
-              _c("td", [_vm._v(_vm._s(rese.descripcion))]),
-              _vm._v(" "),
-              _c("td", { staticClass: "text-center " }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-warning btn-sm",
-                    attrs: {
-                      type: "button",
-                      "data-bs-toggle": "modal",
-                      "data-bs-target": "#nuevo-Modal"
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.modificar = true
-                        _vm.abrirModal(rese)
-                      }
-                    }
-                  },
-                  [_vm._v("\n                    Editar\n                    ")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger btn-sm text-light",
-                    attrs: {
-                      type: "button",
-                      "data-bs-toggle": "modal",
-                      "data-bs-target": "#eliminarModal_" + rese.id
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                        Eliminar\n                    "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal fade",
-                  attrs: {
-                    id: "eliminarModal_" + rese.id,
-                    tabindex: "-1",
-                    "aria-labelledby": "eliminarModalLabel_" + rese.id,
-                    "aria-hidden": "true"
-                  }
-                },
-                [
-                  _c("div", { staticClass: "modal-dialog" }, [
-                    _c("div", { staticClass: "modal-content" }, [
-                      _c("div", { staticClass: "modal-header" }, [
-                        _c(
-                          "h5",
-                          {
-                            staticClass: "modal-title",
-                            attrs: { id: "eliminarModalLabel_" + rese.id }
-                          },
-                          [
-                            _vm._v(
-                              "Seguro que due desea eliminar este registro?"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("button", {
-                          staticClass: "btn-close",
-                          attrs: {
-                            type: "button",
-                            "data-bs-dismiss": "modal",
-                            "aria-label": "Close"
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-body" }, [
-                        _vm._v(
-                          "\n                            Seguro que desea eliminar el registro "
-                        ),
-                        _c("b", [_vm._v(_vm._s(rese.anio))])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "modal-footer" }, [
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-secondary",
-                            attrs: {
-                              type: "button",
-                              "data-bs-dismiss": "modal"
-                            }
-                          },
-                          [_vm._v("Cancelar")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-danger",
-                            attrs: {
-                              type: "button",
-                              "data-bs-dismiss": "modal"
-                            },
-                            on: {
-                              click: function($event) {
-                                return _vm.eliminar(rese.id)
-                              }
-                            }
-                          },
-                          [_vm._v("Si, Eliminar")]
-                        )
-                      ])
-                    ])
-                  ])
-                ]
-              )
-            ])
-          }),
-          0
-        )
-      ]
-    ),
-    _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-6 md-6 text-center" }, [
+      _c("div", { staticClass: "col-sm-4 text-center" }, [
         _c("nav", [
           _c(
             "ul",
@@ -53086,7 +55064,29 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("span", [_vm._v("«")])]
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-backward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
                   )
                 ]
               ),
@@ -53109,7 +55109,29 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("<")]
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-left-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
                   )
                 ]
               ),
@@ -53134,7 +55156,13 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(_vm._s(n))]
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(n) +
+                            "\n                        "
+                        )
+                      ]
                     )
                   ]
                 )
@@ -53161,7 +55189,29 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v(">")]
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-right-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
                   )
                 ]
               ),
@@ -53189,7 +55239,29 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("span", [_vm._v("»")])]
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-forward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
                   )
                 ]
               )
@@ -53206,7 +55278,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "table-dark" }, [
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "text-center table-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Año")]),
         _vm._v(" "),
@@ -53291,19 +55384,19 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c(
-                    "form",
-                    {
-                      attrs: { enctype: "multipart/form-data" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.save.apply(null, arguments)
-                        }
+                _c(
+                  "form",
+                  {
+                    attrs: { enctype: "multipart/form-data" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.save.apply(null, arguments)
                       }
-                    },
-                    [
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
                       _c("div", { staticClass: "mb-3" }, [
                         _c(
                           "label",
@@ -53697,6 +55790,22 @@ var render = function() {
                           )
                         }),
                         0
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-bs-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.closeModal()
+                            }
+                          }
+                        },
+                        [_vm._v("Close")]
                       ),
                       _vm._v(" "),
                       _c(
@@ -53712,25 +55821,9 @@ var render = function() {
                         },
                         [_vm._v("Guardar")]
                       )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
-                      on: {
-                        click: function($event) {
-                          return _vm.closeModal()
-                        }
-                      }
-                    },
-                    [_vm._v("Close")]
-                  )
-                ])
+                    ])
+                  ]
+                )
               ])
             ]
           )
@@ -53833,53 +55926,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-xm-12" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success ",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              _vm.update = false
-              _vm.openModal()
-            }
-          }
-        },
-        [
-          _vm._v("\n            Nuevo\n            "),
-          _c(
-            "svg",
-            {
-              staticClass: "bi bi-plus-circle",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "16",
-                height: "16",
-                fill: "currentColor",
-                viewBox: "0 0 16 16"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                }
-              })
-            ]
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       {
@@ -53925,18 +55971,18 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _vm._m(0),
                       _vm._v(" "),
@@ -54053,8 +56099,10 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -54067,140 +56115,194 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xm-12 col-sm-6 offset-sm-3" }, [
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(1)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12" }, [
       _c(
-        "table",
+        "button",
         {
-          staticClass:
-            "table table-striped table-bordered border-danger bg-white"
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.update = false
+              _vm.openModal()
+            }
+          }
         },
         [
-          _vm._m(1),
-          _vm._v(" "),
+          _vm._v("\n            Nuevo\n            "),
           _c(
-            "tbody",
-            { staticClass: "text-center" },
-            _vm._l(_vm.modalidades, function(modalidad) {
-              return _c("tr", { key: modalidad.id }, [
-                _c("th", [_vm._v(_vm._s(modalidad.id))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "span",
-                    { class: ["badge", _vm.badgeColor(modalidad.color)] },
-                    [_vm._v(_vm._s(modalidad.nombre))]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.openModal(modalidad)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-pencil-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-danger btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.eliminar(modalidad.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-trash-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            }),
-            0
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
           )
         ]
       )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-6 offset-sm-3" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-striped table-bordered border-primary" },
+          [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              { staticClass: "text-center" },
+              _vm._l(_vm.modalidades, function(modalidad) {
+                return _c("tr", { key: modalidad.id }, [
+                  _c("th", [_vm._v(_vm._s(modalidad.id))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "span",
+                      { class: ["badge", _vm.badgeColor(modalidad.color)] },
+                      [_vm._v(_vm._s(modalidad.nombre))]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.openModal(modalidad)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-pencil-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.eliminarM(modalidad.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -54227,7 +56329,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-center" }, [
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "text-center table-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
         _vm._v(" "),
@@ -54959,53 +57082,6 @@ var render = function() {
     "div",
     { staticClass: "row" },
     [
-      _c("div", { staticClass: "col-xm-12" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success ",
-            attrs: { type: "button" },
-            on: {
-              click: function($event) {
-                _vm.update = false
-                _vm.openModal()
-              }
-            }
-          },
-          [
-            _vm._v("\n            Nuevo\n            "),
-            _c(
-              "svg",
-              {
-                staticClass: "bi bi-plus-circle",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "16",
-                  height: "16",
-                  fill: "currentColor",
-                  viewBox: "0 0 16 16"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                  }
-                })
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c(
         "div",
         {
@@ -55051,19 +57127,19 @@ var render = function() {
                   })
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "modal-body" }, [
-                  _c(
-                    "form",
-                    {
-                      attrs: { enctype: "multipart/form-data" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.save.apply(null, arguments)
-                        }
+                _c(
+                  "form",
+                  {
+                    attrs: { enctype: "multipart/form-data" },
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.save.apply(null, arguments)
                       }
-                    },
-                    [
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "modal-body" }, [
                       _c("div", { staticClass: "row" }, [
                         _c("div", { staticClass: "mb-3 col-sm-6" }, [
                           _c(
@@ -55418,8 +57494,10 @@ var render = function() {
                             [_vm._v(_vm._s(_vm.textOfertado))]
                           )
                         ])
-                      ]),
-                      _vm._v(" "),
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
                       _c(
                         "button",
                         {
@@ -55432,95 +57510,29 @@ var render = function() {
                           }
                         },
                         [_vm._v("Guardar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button", "data-bs-dismiss": "modal" },
+                          on: {
+                            click: function($event) {
+                              return _vm.closeModal()
+                            }
+                          }
+                        },
+                        [_vm._v("Close")]
                       )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-secondary",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
-                      on: {
-                        click: function($event) {
-                          return _vm.closeModal()
-                        }
-                      }
-                    },
-                    [_vm._v("Close")]
-                  )
-                ])
+                    ])
+                  ]
+                )
               ])
             ]
           )
         ]
       ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-3 md-3" }, [
-          _vm._v(
-            "\n            " +
-              _vm._s(_vm.posgrados.from) +
-              " - " +
-              _vm._s(_vm.posgrados.to) +
-              " total: " +
-              _vm._s(_vm.posgrados.total) +
-              "\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 md-3" }, [
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pagination.per_page,
-                  expression: "pagination.per_page"
-                }
-              ],
-              staticClass: " form-control form-select form-select-sm",
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.pagination,
-                      "per_page",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
-                  function($event) {
-                    return _vm.list()
-                  }
-                ]
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "" } }, [
-                _vm._v("Elementos por pagina")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "15" } }, [_vm._v("15")])
-            ]
-          )
-        ])
-      ]),
       _vm._v(" "),
       _vm.cargando
         ? _c(
@@ -55529,11 +57541,122 @@ var render = function() {
               staticClass:
                 "d-flex align-items-center justify-content-center m-3"
             },
-            [_c("strong", [_vm._v("Loading...")]), _vm._v(" "), _vm._m(0)]
+            [
+              _c("strong", [_vm._v("Cargando Datos...")]),
+              _vm._v(" "),
+              _vm._m(0)
+            ]
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm._l(_vm.posgrados, function(posgrado) {
+      _c("div", { staticClass: "col-sm-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success ",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.update = false
+                _vm.openModal()
+              }
+            }
+          },
+          [
+            _vm._v("\n            Nuevo\n            "),
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-plus-circle",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "16",
+                  height: "16",
+                  fill: "currentColor",
+                  viewBox: "0 0 16 16"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  }
+                })
+              ]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-1 mb-1" }, [
+        _c("div", { staticClass: "col-sm-4" }, [
+          _c("div", { staticClass: "border rounded" }, [
+            _c(
+              "label",
+              { staticClass: "form-label", attrs: { for: "customRange3" } },
+              [
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.posgrados.from) +
+                    " - " +
+                    _vm._s(_vm.posgrados.to) +
+                    " total: " +
+                    _vm._s(_vm.posgrados.total)
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pagination.per_page,
+                  expression: "pagination.per_page"
+                }
+              ],
+              staticClass: "form-range",
+              attrs: {
+                type: "range",
+                "data-bs-toggle": "popover",
+                "data-bs-placement": "top",
+                "data-bs-content": "Top popover",
+                min: "1",
+                max: _vm.posgrados.total,
+                step: "3",
+                id: "customRange3"
+              },
+              domProps: { value: _vm.pagination.per_page },
+              on: {
+                change: function($event) {
+                  return _vm.list()
+                },
+                __r: function($event) {
+                  return _vm.$set(
+                    _vm.pagination,
+                    "per_page",
+                    $event.target.value
+                  )
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c("span", { staticClass: " badge bg-secondary" }, [
+              _vm._v(_vm._s(_vm.pagination.per_page))
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.posgrados.data, function(posgrado) {
         return _c("div", { key: posgrado.id, staticClass: " col-sm-6 mb-3" }, [
           _c("div", { staticClass: "card  h-100" }, [
             _c("div", { staticClass: "row g-0" }, [
@@ -55708,7 +57831,7 @@ var render = function() {
       }),
       _vm._v(" "),
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6 md-6 text-center" }, [
+        _c("div", { staticClass: "col-sm-4 text-center" }, [
           _c("nav", [
             _c(
               "ul",
@@ -55732,7 +57855,29 @@ var render = function() {
                           }
                         }
                       },
-                      [_c("span", [_vm._v("«")])]
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-skip-backward-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
                     )
                   ]
                 ),
@@ -55755,7 +57900,29 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("<")]
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-caret-left-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
                     )
                   ]
                 ),
@@ -55780,7 +57947,13 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v(_vm._s(n))]
+                        [
+                          _vm._v(
+                            "\n                            " +
+                              _vm._s(n) +
+                              "\n                        "
+                          )
+                        ]
                       )
                     ]
                   )
@@ -55806,7 +57979,29 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v(">")]
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-caret-right-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
                     )
                   ]
                 ),
@@ -55832,7 +58027,29 @@ var render = function() {
                           }
                         }
                       },
-                      [_c("span", [_vm._v("»")])]
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-skip-forward-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
                     )
                   ]
                 )
@@ -56748,53 +58965,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-xm-12" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success ",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              _vm.update = false
-              _vm.openModal()
-            }
-          }
-        },
-        [
-          _vm._v("\n            Nuevo\n            "),
-          _c(
-            "svg",
-            {
-              staticClass: "bi bi-plus-circle",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "16",
-                height: "16",
-                fill: "currentColor",
-                viewBox: "0 0 16 16"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                }
-              })
-            ]
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       {
@@ -56840,19 +59010,19 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    attrs: { enctype: "multipart/form-data" },
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  attrs: { enctype: "multipart/form-data" },
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "mb-3 col-sm-6 " }, [
                         _c(
@@ -57065,8 +59235,10 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -57079,26 +59251,24 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
@@ -57111,127 +59281,459 @@ var render = function() {
           {
             staticClass: "d-flex align-items-center justify-content-center m-3"
           },
-          [_c("strong", [_vm._v("Loading...")]), _vm._v(" "), _vm._m(0)]
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
         )
       : _vm._e(),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xm-12 col-sm-12" }, [
+    _c("div", { staticClass: "col-xm-12" }, [
       _c(
-        "table",
+        "button",
         {
-          staticClass:
-            "table table-striped table-bordered border-danger bg-white"
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.update = false
+              _vm.openModal()
+            }
+          }
         },
         [
-          _vm._m(1),
-          _vm._v(" "),
+          _vm._v("\n            Nuevo\n            "),
           _c(
-            "tbody",
-            { staticClass: "text-center" },
-            _vm._l(_vm.tesis, function(tesi) {
-              return _c("tr", { key: tesi.id }, [
-                _c("th", [_vm._v(_vm._s(tesi.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(tesi.posgrado.nombre))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(tesi.publicado))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(tesi.titulo))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(tesi.autor))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "a",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { href: tesi.link, role: "button" }
-                    },
-                    [_vm._v("Link")]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.openModal(tesi)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-pencil-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-danger btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.eliminarM(tesi.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-trash-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            }),
-            0
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
           )
         ]
       )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row mt-1 mb-1" }, [
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c("div", { staticClass: "border rounded" }, [
+          _c(
+            "label",
+            { staticClass: "form-label", attrs: { for: "customRange3" } },
+            [
+              _vm._v(
+                " " +
+                  _vm._s(_vm.tesis.from) +
+                  " - " +
+                  _vm._s(_vm.tesis.to) +
+                  " total: " +
+                  _vm._s(_vm.tesis.total)
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.pagination.per_page,
+                expression: "pagination.per_page"
+              }
+            ],
+            staticClass: "form-range",
+            attrs: {
+              type: "range",
+              "data-bs-toggle": "popover",
+              "data-bs-placement": "top",
+              "data-bs-content": "Top popover",
+              min: "1",
+              max: _vm.tesis.total,
+              step: "10",
+              id: "customRange3"
+            },
+            domProps: { value: _vm.pagination.per_page },
+            on: {
+              change: function($event) {
+                return _vm.list()
+              },
+              __r: function($event) {
+                return _vm.$set(_vm.pagination, "per_page", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: " badge bg-secondary" }, [
+            _vm._v(_vm._s(_vm.pagination.per_page))
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-12" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-striped table-bordered border-primary " },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              { staticClass: "text-center" },
+              _vm._l(_vm.tesis.data, function(tesi) {
+                return _c("tr", { key: tesi.id }, [
+                  _c("th", [_vm._v(_vm._s(tesi.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(tesi.posgrado.nombre))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(tesi.publicado))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(tesi.titulo))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(tesi.autor))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { href: tesi.link, role: "button" }
+                      },
+                      [_vm._v("Link")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.openModal(tesi)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-pencil-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.eliminarM(tesi.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-sm-4 text-center" }, [
+        _c("nav", [
+          _c(
+            "ul",
+            { staticClass: "pagination" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = 1), _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-backward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: { disabled: _vm.pagination.page == 1 }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page--, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-left-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.paginas, function(n) {
+                return _c(
+                  "li",
+                  {
+                    key: n,
+                    staticClass: "page-item",
+                    class: { active: _vm.pagination.page == n }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            ;(_vm.pagination.page = n), _vm.list()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(n) +
+                            "\n                        "
+                        )
+                      ]
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.tesis.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          _vm.pagination.page++, _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-caret-right-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page-item",
+                  class: {
+                    disabled: _vm.pagination.page == _vm.tesis.last_page
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page-link",
+                      attrs: { href: "#" },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = _vm.tesis.last_page),
+                            _vm.list()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "bi bi-skip-forward-fill",
+                          attrs: {
+                            xmlns: "http://www.w3.org/2000/svg",
+                            width: "16",
+                            height: "16",
+                            fill: "currentColor",
+                            viewBox: "0 0 16 16"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              d:
+                                "M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"
+                            }
+                          })
+                        ]
+                      )
+                    ]
+                  )
+                ]
+              )
+            ],
+            2
+          )
+        ])
+      ])
     ])
   ])
 }
@@ -57261,7 +59763,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-center" }, [
+    return _c("thead", { staticClass: "text-center table-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
         _vm._v(" "),
@@ -57303,53 +59805,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "row" }, [
-    _c("div", { staticClass: "col-xm-12" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-success ",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              _vm.update = false
-              _vm.openModal()
-            }
-          }
-        },
-        [
-          _vm._v("\n            Nuevo\n            "),
-          _c(
-            "svg",
-            {
-              staticClass: "bi bi-plus-circle",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "16",
-                height: "16",
-                fill: "currentColor",
-                viewBox: "0 0 16 16"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                }
-              }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d:
-                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                }
-              })
-            ]
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
     _c(
       "div",
       {
@@ -57395,18 +59850,18 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "mb-3 col-sm-12" }, [
                         _c(
@@ -57448,8 +59903,10 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -57462,179 +59919,40 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xm-12 col-sm-6 offset-sm-3" }, [
-      _c(
-        "table",
-        {
-          staticClass:
-            "table table-striped table-bordered border-danger bg-white"
-        },
-        [
-          _vm._m(0),
-          _vm._v(" "),
-          _c(
-            "tbody",
-            { staticClass: "text-center" },
-            _vm._l(_vm.tipoDuracions, function(tipoDuracion) {
-              return _c("tr", { key: tipoDuracion.id }, [
-                _c("th", [_vm._v(_vm._s(tipoDuracion.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(tipoDuracion.nombre))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.openModal(tipoDuracion)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-pencil-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-danger btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.confirm = false
-                          _vm.eliminarM(tipoDuracion.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-trash-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            }),
-            0
-          )
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-center" }, [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Editar")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Eliminar")])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TipoProgramasComponent.vue?vue&type=template&id=77502634&":
-/*!**********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TipoProgramasComponent.vue?vue&type=template&id=77502634& ***!
-  \**********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
     _c("div", { staticClass: "col-xm-12" }, [
       _c(
         "button",
@@ -57682,6 +60000,173 @@ var render = function() {
       )
     ]),
     _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-6 offset-sm-3" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-striped table-bordered border-primary" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              { staticClass: "text-center" },
+              _vm._l(_vm.tipoDuracions, function(tipoDuracion) {
+                return _c("tr", { key: tipoDuracion.id }, [
+                  _c("th", [_vm._v(_vm._s(tipoDuracion.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(tipoDuracion.nombre))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.openModal(tipoDuracion)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-pencil-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.confirm = false
+                            _vm.eliminarM(tipoDuracion.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "text-center table-dark" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Editar")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Eliminar")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TipoProgramasComponent.vue?vue&type=template&id=77502634&":
+/*!**********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TipoProgramasComponent.vue?vue&type=template&id=77502634& ***!
+  \**********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "row" }, [
     _c(
       "div",
       {
@@ -57727,18 +60212,18 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "form",
-                  {
-                    on: {
-                      submit: function($event) {
-                        $event.preventDefault()
-                        return _vm.save.apply(null, arguments)
-                      }
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.save.apply(null, arguments)
                     }
-                  },
-                  [
+                  }
+                },
+                [
+                  _c("div", { staticClass: "modal-body" }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "mb-3 col-sm-12" }, [
                         _c(
@@ -57780,8 +60265,10 @@ var render = function() {
                           }
                         })
                       ])
-                    ]),
-                    _vm._v(" "),
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "modal-footer" }, [
                     _c(
                       "button",
                       {
@@ -57794,134 +60281,188 @@ var render = function() {
                         }
                       },
                       [_vm._v("Guardar")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-secondary",
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        on: {
+                          click: function($event) {
+                            return _vm.closeModal()
+                          }
+                        }
+                      },
+                      [_vm._v("Close")]
                     )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.closeModal()
-                      }
-                    }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
+                  ])
+                ]
+              )
             ])
           ]
         )
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "col-xm-12 col-sm-6 offset-sm-3" }, [
+    _vm.cargando
+      ? _c(
+          "div",
+          {
+            staticClass: "d-flex align-items-center justify-content-center m-3"
+          },
+          [_c("strong", [_vm._v("Cargando Datos...")]), _vm._v(" "), _vm._m(0)]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12" }, [
       _c(
-        "table",
+        "button",
         {
-          staticClass:
-            "table table-striped table-bordered border-danger bg-white"
+          staticClass: "btn btn-success ",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              _vm.update = false
+              _vm.openModal()
+            }
+          }
         },
         [
-          _vm._m(0),
-          _vm._v(" "),
+          _vm._v("\n            Nuevo\n            "),
           _c(
-            "tbody",
-            { staticClass: "text-center" },
-            _vm._l(_vm.tipoProgramas, function(tipoPrograma) {
-              return _c("tr", { key: tipoPrograma.id }, [
-                _c("th", [_vm._v(_vm._s(tipoPrograma.id))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(tipoPrograma.nombre))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-info btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.openModal(tipoPrograma)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-pencil-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-outline-danger btn-sm",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.update = true
-                          _vm.eliminarM(tipoPrograma.id)
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-trash-fill",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "16",
-                            height: "16",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16"
-                          }
-                        },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                ])
-              ])
-            }),
-            0
+            "svg",
+            {
+              staticClass: "bi bi-plus-circle",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "16",
+                height: "16",
+                fill: "currentColor",
+                viewBox: "0 0 16 16"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                }
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d:
+                    "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                }
+              })
+            ]
           )
         ]
       )
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-xm-12 col-sm-6 offset-sm-3" }, [
+      _c("div", { staticClass: "table-responsive" }, [
+        _c(
+          "table",
+          { staticClass: "table table-striped table-bordered border-primary" },
+          [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              { staticClass: "text-center" },
+              _vm._l(_vm.tipoProgramas, function(tipoPrograma) {
+                return _c("tr", { key: tipoPrograma.id }, [
+                  _c("th", [_vm._v(_vm._s(tipoPrograma.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(tipoPrograma.nombre))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-info btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.openModal(tipoPrograma)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-pencil-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-danger btn-sm",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.update = true
+                            _vm.eliminarM(tipoPrograma.id)
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-trash-fill",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "16",
+                              height: "16",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16"
+                            }
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                              }
+                            })
+                          ]
+                        )
+                      ]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ]
+        )
+      ])
     ])
   ])
 }
@@ -57930,7 +60471,28 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("thead", { staticClass: "text-center" }, [
+    return _c("div", {}, [
+      _c("div", {
+        staticClass: "spinner-grow text-danger",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-warning",
+        attrs: { role: "status" }
+      }),
+      _vm._v(" "),
+      _c("div", {
+        staticClass: "spinner-grow text-info",
+        attrs: { role: "status" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "text-center table-dark" }, [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("ID")]),
         _vm._v(" "),

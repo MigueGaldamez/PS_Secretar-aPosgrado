@@ -10,9 +10,14 @@ use Illuminate\Support\Facades\File;
 class EnlaceController extends Controller
 {
 
-    public function index()
+    public function list()
     {
         return Enlace::get();
+    }
+    public function index(Request $request)
+    {
+        $per_page= $request->per_page;
+        return Enlace::paginate($per_page);
     }
 
     public function store(Request $request)
@@ -83,6 +88,6 @@ class EnlaceController extends Controller
 
     public function destroy(Enlace $enlaces_api)
     {
-        $enlaces_api->delete();
+        return $enlaces_api->delete();
     }
 }

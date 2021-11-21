@@ -10,10 +10,14 @@ use Illuminate\Support\Facades\File;
 use App\Models\Tesi;
 class FacultadesController extends Controller
 {
-    
-    public function index()
+    public function list()
     {
         return Facultades::with('posgrados')->get();
+    }
+    public function index(Request $request)
+    {
+        $per_page= $request->per_page;
+        return Facultades::with('posgrados')->paginate($per_page);
     }
     public function facultadesS()
     {

@@ -7,10 +7,14 @@ use Illuminate\Http\Request;
 
 class TesiController extends Controller
 {
-
-    public function index()
+    public function list()
     {
-        return Tesi::with('posgrado')->get();
+        return Tesi::get();
+    }
+    public function index(Request $request)
+    {
+        $per_page= $request->per_page;
+        return Tesi::with('posgrado')->paginate($per_page);
     }
     public function store(Request $request)
     {
@@ -45,7 +49,7 @@ class TesiController extends Controller
     {
         try
         {
-            $tesis_api->delete();
+            return $tesis_api->delete();
         }
         catch (\Exception $e) 
         {

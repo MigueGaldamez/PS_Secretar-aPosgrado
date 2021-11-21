@@ -1,16 +1,8 @@
-@extends('layouts.backend',['titulo' => 'Reseña historica'])
+@extends('layouts.backend',['titulo' => 'Noticias'])
 
 @section('content')
-<div class="container">
-    <div class="card shadow-lg ">
-        <ul class="list-group list-group-flush text-center">
-            <li class="list-group-item"><h3> Gestion de las Noticias</h3></li>
-        </ul>
-       
-        <div class="card-body px-4">
-            <noticias-component/>
-        </div>
-        <div class="text-muted text-center mb-2">{{date('Y-m-d')}}</div>
+    <div class="container">
+        <h1> Gestion de las Noticias</h1>
+        <noticias-component/>
     </div>
-</div>
 @endsection
