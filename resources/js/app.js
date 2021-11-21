@@ -40,6 +40,7 @@ Vue.component('equipo-trabajo-component', require('./components/EquipoTrabajoCom
 Vue.component('galery-component', require('./components/GaleryComponent.vue').default);
 Vue.component('historico-component', require('./components/HistoricoComponent.vue').default);
 Vue.component('noticias-component', require('./components/NoticiasComponent.vue').default);
+Vue.component('ofertaFacultad', require('./components/publico/OfertaFacultad.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

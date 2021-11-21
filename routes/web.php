@@ -103,3 +103,4 @@ Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv
 Route::get('/facultades/fac', [FacultadesController::class, 'facultadesF'])->name('fac.fac');
 Route::get('/facultades/sed', [FacultadesController::class, 'facultadesS'])->name('fac.sed');
 Route::get('/catalogo', [PublicoController::class, 'catalogoC'])->name('catalogoC');
+Route::get('/ObtenerFacultad/Oferta', [FacultadesController::class, 'getFacultadbyId'])->name('fac.by.id');

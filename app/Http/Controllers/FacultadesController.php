@@ -121,4 +121,9 @@ class FacultadesController extends Controller
         return $facultades;
         
     }
+    public function getFacultadbyId(Request $request){
+        
+        $posgrados = Posgrado::where('facultad_id','=',$request->idFacultad)->paginate($request->per_page);
+        return $posgrados;
+    }
 }
