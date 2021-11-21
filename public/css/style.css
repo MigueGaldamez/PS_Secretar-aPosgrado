@@ -1800,6 +1800,42 @@
   opacity: 1;
 }
 
+@media screen and (max-width: 600px) {
+  .wrapper-tol input:checked ~ .tooltip {
+    top: -13px;
+    left:35vw;
+    width: auto;
+    height: 46px;
+    -webkit-animation: stretch-animation 1s ease-out forwards 0.15s;
+            animation: stretch-animation 1s ease-out forwards 0.15s;
+    opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .wrapper-tol .tooltip {
+    background-color: #aa0000;
+    width:auto;
+    height: 46px;
+    border-radius: 70px;
+    position: absolute;
+    background:#52646E;
+    color:#FFFFFF;
+    z-index: 2;
+    padding: 0 15px;
+    box-shadow: 0 10px 30px rgba(65, 72, 86, 0.5);
+    opacity: 0;
+    top: -13px;
+    left:35vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: opacity 0.15s ease-in, top 0.15s ease-in, width 0.15s ease-in;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+}
+
+
 @-webkit-keyframes pang-animation {
   0% {
     transform: scale(0);
