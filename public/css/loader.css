@@ -1,0 +1,33 @@
+#loader-container
+{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: #7A0A04;
+    -webkit-animation: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    z-index: 10000;
+}
+.loader 
+{
+
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    -webkit-animation: girar 1.5s linear infinite;
+    -o-transition: girar 1.5s linear infinite;
+    transition: girar 1.5s linear infinite;
+}
+@keyframes girar {
+    from {transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+
+    
+}
