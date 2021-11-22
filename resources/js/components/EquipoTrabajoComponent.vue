@@ -1,152 +1,159 @@
 <template>
-    <div>  
-        <div class="row">
-            <div class="col-3 md-3">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#nuevo-Modal" @click="modificar=false;abrirModal();">
-                    Nuevo
-                </button>
-
-                    <!-- Modal -->
-                <div class="modal fade" id="nuevo-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">{{tituloModal}}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <div class="row">
+        <!-- Modal -->
+        <div class="modal fade" :class="{show:modal}" id="nuevo-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{tituloModal}}</h5>
+                        <button @click="cerrarModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="mb-3 col-sm-6">
+                                <label for="formFile" class="form-label">Logo de la Facultad</label>
+                                <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
                             </div>
-                            <div class="modal-body">
-                                <form v-on:submit.prevent="save" enctype="multipart/form-data">
-                                    <div class="mb-3 col-sm-6">
-                                        <label for="formFile" class="form-label">Logo de la Facultad</label>
-                                        <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
-                                    </div>
-                                    <div class="mb-3 col-sm-6">
-                                        <img :src="imagen" class="img-thumbnail" alt="...">
-                                    </div>
-                                    <div class="my-4">
-                                        <label for="nombre">Nombre Especialidad</label>
-                                        <input v-model="equipoTrabajo.nombre" type="text" class="form-control" placeholder="Nombre Miembro" id="nombre">
-                                        <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
-                                    </div>
-                                    <div class="my-4">
-                                        <label for="descripcion">Cargo Miembro</label>
-                                        <input v-model="equipoTrabajo.cargo" type="text" class="form-control" placeholder="Cargo" id="cargo">
-                                        <span class="text-danger" v-if="errores.cargo">{{errores.cargo[0]}}</span>
-                                    </div>
-                                    <div class="my-4">
-                                        <label for="descripcion">Descripción Miembro</label>
-                                        <textarea v-model="equipoTrabajo.descripcion" type="text" class="form-control" placeholder="Descripcion" id="descripcion"></textarea>
-                                        <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
-                                    </div>
-                                    <button type="button"  @click="guardar();" class="btn btn-primary"  >Guardar Cambios</button>
-                                </form> 
+                            <div class="mb-3 col-sm-6">
+                                <img :src="imagen" class="img-thumbnail" alt="...">
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                
+                            <div class="my-4">
+                                <label for="nombre">Nombre Especialidad</label>
+                                <input v-model="equipoTrabajo.nombre" type="text" class="form-control" placeholder="Nombre Miembro" id="nombre">
+                                <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                             </div>
+                            <div class="my-4">
+                                <label for="descripcion">Cargo Miembro</label>
+                                <input v-model="equipoTrabajo.cargo" type="text" class="form-control" placeholder="Cargo" id="cargo">
+                                <span class="text-danger" v-if="errores.cargo">{{errores.cargo[0]}}</span>
+                            </div>
+                            <div class="my-4">
+                                <label for="descripcion">Descripción Miembro</label>
+                                <textarea v-model="equipoTrabajo.descripcion" type="text" class="form-control" placeholder="Descripcion" id="descripcion"></textarea>
+                                <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
                             </div>
                         </div>
-                    </div>
-                    <!--FinModal-->
-            </div>
-            <div class="col-3 md-3">
-                {{equipoTrabajos.from}} - {{equipoTrabajos.to }} total: {{equipoTrabajos.total}}
-            </div>
-            <div class="col-3 md-3">                        
-                <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="listar();">
-                <option selected>Elementos por pagina</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                </select>
+                        <div class="modal-footer">
+                            <button type="button"  @click="guardar();" class="btn btn-primary"  >Guardar Cambios</button>
+                            <button type="button" @click="cerrarModal();" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </form> 
+                </div>
             </div>
         </div>
-        <br>
-        <table class="table table-striped table-sm table-hover text-center">
-            <thead class="table-dark"> 
-                <tr>
-                    <th scope="col">Imagen</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Cargo</th>
-                    <th scope="col">Descripcion</th>                            
-                    <th scope="col"  class="text-center">Acciones</th>                           
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="equi in equipoTrabajos.data" :key="equi.id">
-                    <td><img :src="equi.urlImagen"  class="img-thumbnail" alt="..."></td>
-                    <td>{{equi.nombre}}</td>
-                    <td>{{equi.cargo}}</td>
-                    <td>{{equi.descripcion}}</td>
-                    <td  class="text-center ">   
-                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" :data-bs-target="'#nuevo-Modal'" @click="modificar=true; abrirModal(equi);">
-                        Editar
-                        </button>
-                                                    
-                        <button type="button" class="btn btn-danger btn-sm text-light" data-bs-toggle="modal" :data-bs-target="'#eliminarModal_'+equi.id">
-                            Eliminar
-                        </button>
-                    </td>
-                    
-                    <!-- Modal -->
-                    <div class="modal fade" :id="'eliminarModal_'+equi.id"  tabindex="-1" :aria-labelledby="'eliminarModalLabel_'+equi.id" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" :id="'eliminarModalLabel_'+equi.id">Seguro que due desea eliminar este registro?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Seguro que desea eliminar el registro <b>{{equi.nombre}}</b>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-danger" @click="eliminar(equi.id);" data-bs-dismiss="modal">Si, Eliminar</button>
-                            </div>
+        <!--FinModal-->
+        <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
+            <strong>Cargando Datos...</strong>
+            <div class="">
+                <div class="spinner-grow text-danger" role="status"></div>
+                <div class="spinner-grow text-warning" role="status"></div>
+                <div class="spinner-grow text-info" role="status"></div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <button @click="update=false; abrirModal();" type="button" class="btn btn-success ">
+                Nuevo
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg> 
+            </button>
+        </div>
+        <div class="row mt-1 mb-1">
+            <div class="col-sm-4">
+                <div class="border rounded">
+                    <label for="customRange3" class="form-label"> {{equipoTrabajos.from}} - {{equipoTrabajos.to }} total: {{equipoTrabajos.total}}</label>
+                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="equipoTrabajos.total" step="1" @change="listar();" id="customRange3">
+                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
+                </div>
+            </div>
+        </div>
+        <div v-for="equi in equipoTrabajos.data" :key="equi.id" class=" col-sm-6 mb-3">
+            <div class="card  h-100" >
+                <div class="row g-0">
+                    <div class="col-sm-4 rounded mx-auto d-block text-center">
+                        <img :src="equi.urlImagen" class="img-fluid rounded-start" alt="">
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{equi.nombre}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{equi.cargo}}</h6>
+                            <p class="card-text">{{equi.descripcion}}</p>
+                            <div class="position-relative bottom-0 start-50 translate-middle-x mb-1 ">
+                                <button type="button"  @click="modificar=true; abrirModal(equi);" class="btn btn-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                    </svg>
+                                </button>
+                                <button type="button" @click="eliminarM(equi.id);" class="btn btn-danger">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                    </svg>
+                                </button>
                             </div>
                         </div>
                     </div>
-                    <!--Fin Modal eliminar-->
-                </tr>
-                
-            
-            </tbody>
-        </table>
+                </div>
+            </div>
+        </div>
         <div class="row">
-            
-            <div class="col-6 md-6 text-center">
+            <div class="col-sm-4 text-center">
                 <nav>
                     <ul class="pagination">
-                        <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page=1, listar();" href="#"><span>&laquo;</span></a></li>
-                        <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page--, listar();" href="#">&#60;</a></li>
-                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}"><a class="page-link" @click="pagination.page=n, listar();" href="#">{{n}}</a></li>
-                        <li class="page-item" :class="{disabled:pagination.page==equipoTrabajos.last_page}" ><a class="page-link" @click="pagination.page++, listar();" href="#">&#62;</a></li>
-                        <li class="page-item" :class="{disabled:pagination.page==equipoTrabajos.last_page}" ><a class="page-link" @click="pagination.page=equipoTrabajos.last_page, listar();" href="#" ><span >&raquo;</span></a></li>
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page=1, listar();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill" viewBox="0 0 16 16">
+                                    <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page--, listar();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}">
+                            <a class="page-link" @click="pagination.page=n, listar();" href="#">
+                                {{n}}
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==equipoTrabajos.last_page}" >
+                            <a class="page-link" @click="pagination.page++, listar();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==equipoTrabajos.last_page}" >
+                            <a class="page-link" @click="pagination.page=equipoTrabajos.last_page, listar();" href="#" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
+                                    <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
         </div>
-    
     </div>
-    
 </template>
-
 <script>
-    
-    export default {
-        components: {
-
-        },
-        data(){
+    export default 
+    {
+        data()
+        {
             return{
-                equipoTrabajo:{
+                equipoTrabajo:
+                {
                     urlImagen: null,
                     id:'',
                     nombre:'',
                     cargo:'',
                     descripcion:'',
                 },
+                cargando: false,
                 id:0,
                 imagenMiniatura:'',
                 modificar:true,
@@ -156,20 +163,22 @@
                 errores:{},
                 pagination:{
                     page:1,
-                    per_page:5,
-
+                    per_page:1,
                 },
                 paginas:[],
             }
         },
         methods:{
-            async listar(){
+            async listar()
+            {
+                this.cargando = true;
                 const res = await axios.get('/dashboard/equipoTrabajo/',{params:this.pagination,});
                 this.equipoTrabajos = res.data;
                 this.listarPaginas();
-
+                this.cargando = false;
             },
-            listarPaginas(){
+            listarPaginas()
+            {
                 const n = 2;
                 let arrayN=[];
                 let ini = this.pagination.page - 2;
@@ -185,15 +194,61 @@
                 }
                 this.paginas=arrayN;    
             },
-            async eliminar(id){
-                const res = await axios.delete('/dashboard/equipoTrabajo/'+id).then(response=>{console.log(response.data)});
-                this.cerrarModal();
-                this.listar();
-
+            eliminarM(id)
+            {
+                const confirmacion = false;
+                this.$swal({
+                    title: '¿Estás seguro?',
+                    text: "No hay vuelta atras si lo borras",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, ¡Bórralo!',
+                    cancelButtonText: 'Cancelar',
+                    focusCancel: true
+                }).then((result)=>
+                {
+                    if(result.isConfirmed)
+                    {
+                        this.eliminar(id);
+                    }
+                    else if(result.isDismissed)
+                    {
+                        console.log("Cancelar");
+                    }
+                });
             },
-            async guardar(){
-                try{
-
+            async eliminar(id) 
+            {
+                try
+                {                   
+                    const res = await axios.delete('/dashboard/equipoTrabajo/'+id)
+                    .then(response=>{
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Eliminado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                    });
+                }
+                catch(error)
+                {
+                    if(error.response.data)
+                    {
+                        this.errores = error.response.data.errors;
+                        console.log(this.errores);
+                    }
+                }
+                this.listar();
+            },
+            async guardar()
+            {
+                try
+                {
                     if(this.modificar)
                     {
                         let fields = new FormData();
@@ -201,9 +256,17 @@
                         {
                             fields.append(key,this.equipoTrabajo[key]);
                         }
-                        const res = await axios.post('/dashboard/equipoTrabajo/'+this.id,fields);  
-                        //console.log(this.equipoTrabajo); 
-                        console.log('modifica');      
+                        const res = await axios.post('/dashboard/equipoTrabajo/'+this.id,fields)
+                        .then(response=>{
+                            if(response.data==1)
+                            {
+                                this.$swal({title: 'Exitoso',text: 'Actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                            }
+                            else
+                            {
+                                this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                            }
+                        });
                     }
                     else
                     {
@@ -212,22 +275,34 @@
                         {
                             fields.append(key,this.equipoTrabajo[key]);
                         }
-                        const res = await axios.post('/dashboard/equipoTrabajo',fields);
-
+                        const res = await axios.post('/dashboard/equipoTrabajo',fields)
+                        .then(response=>{
+                            if(response.data==1)
+                            {
+                                this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                            }
+                            else
+                            {
+                                this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                            }
+                        });
                     }  
                     this.cerrarModal();
                     this.listar();      
-
-                }catch(error){
-                    if(error.response.data){
+                }
+                catch(error)
+                {
+                    if(error.response.data)
+                    {
                         this.errores = error.response.data.errors;
                     }
                 }
-
             },
-            abrirModal(data={}){
-                
-                if(this.modificar){
+            abrirModal(data={})
+            {
+                this.modal=1;
+                if(this.modificar)
+                {
                     this.tituloModal = "Modificar miembro";
                     this.id=data.id;
                     this.equipoTrabajo.id = data.id;
@@ -235,7 +310,8 @@
                     this.equipoTrabajo.descripcion=data.descripcion;
                     this.equipoTrabajo.cargo=data.cargo;   
                 }
-                else{
+                else
+                {
                     this.id=0;
                     this.equipoTrabajo.id = 0;
                     this.urlImagen = null;
@@ -264,10 +340,8 @@
                 reader.readAsDataURL(file);
             },
         },
-        mounted() {
-            console.log('Component mounted.')
-        },
-        created(){
+        created()
+        {
             this.listar();
         },
         computed:

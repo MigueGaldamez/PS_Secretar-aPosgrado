@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Posgrado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-
 class PosgradoController extends Controller
 {
+    public function list()
+    {
+        return Posgrado::get();
+    }
     public function index(Request $request)
     {
-        $per_page=$request->per_page;
-        return Posgrado::get();
+        $per_page= $request->per_page;
+        return Posgrado::paginate($per_page);
     }
     public function store(Request $request)
     {
@@ -34,16 +36,13 @@ class PosgradoController extends Controller
             }
             catch (\Exception $e) 
             {
-
                 return $e->getMessage();
             }
-
         }
         else
         {
             return 0;
-        }   
-
+        }
     }
     public function update(Request $request, Posgrado $posgrados_api)
     {
@@ -93,11 +92,10 @@ class PosgradoController extends Controller
     {
         try
         {
-            $posgrados_api->delete();
+            return $posgrados_api->delete();
         }
         catch (\Exception $e) 
         {
-
             return $e->getMessage();
         }
     }

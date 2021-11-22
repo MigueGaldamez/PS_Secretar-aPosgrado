@@ -19,7 +19,7 @@ class TipoProgramaController extends Controller
         {
             $tipoPrograma = new TipoPrograma();
             $tipoPrograma->nombre = $request->nombre;
-            $tipoPrograma->save();
+            return $tipoPrograma->save();
         }
         catch (\Exception $e) 
         {
@@ -32,8 +32,7 @@ class TipoProgramaController extends Controller
     {
         try
         {
-            $tipo_programas_api->update($request->all());
-            return "Guardado";
+            return $tipo_programas_api->update($request->all());
         }
         catch (\Exception $e) 
         {
@@ -46,7 +45,7 @@ class TipoProgramaController extends Controller
     {
         try
         {
-            $tipo_programas_api->delete();
+            return $tipo_programas_api->delete();
         }
         catch (\Exception $e) 
         {

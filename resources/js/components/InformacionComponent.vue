@@ -8,9 +8,8 @@
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
                         <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form v-on:submit.prevent="save" enctype="multipart/form-data">
-                        
+                    <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                        <div class="modal-body">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Logo de la Secretaría de Posgrado</label>
                                 <input accept="image/*" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
@@ -48,7 +47,6 @@
                                     <input  v-model="info.valores.nombre" type="text" class="form-control" placeholder="Agrgear un Valor" aria-label="Example text with button addon" aria-describedby="button-addon1">
                                 </div>
                             </div>
-
                             <div class="row ">
                                 <div v-for="valor in info.valores" :key="valor.id" class="input-group mb-3 col-sm-4">
                                     <button @click="eliminarValor(valor.id)" class="btn btn-danger" type="button" id="button-addon1">
@@ -59,13 +57,13 @@
                                     <input v-model="valor.nombre" type="text" class="form-control" placeholder="" aria-label="Example text with button addon" disabled aria-describedby="button-addon1">
                                 </div>
                             </div>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button @click="save();" type="button" class="btn btn-success">Guardar</button>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -136,7 +134,6 @@ export default {
             try
             {
                 const res = await axios.get('/dashboard/informacion');
-                //this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Cool'});  
                 this.infos = res.data;
             }
             catch(error)
@@ -198,7 +195,18 @@ export default {
                     fields.append(key,this.info[key]);
                 }
                 //.then(response=>{console.log(response.data)})
-                const res = await axios.post('/dashboard/informacion/'+ this.id, fields); 
+                const res = await axios.post('/dashboard/informacion/'+ this.id, fields)
+                .then(response=>
+                {
+                    if(response.data==1)
+                    {
+                        this.$swal({title: 'Exitoso',text: 'Actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                    }
+                    else
+                    {
+                        this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
+                    }
+                }); 
                 this.closeModal();
                 this.list();
             }

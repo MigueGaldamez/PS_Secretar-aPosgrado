@@ -37,7 +37,7 @@ class InformacionController extends Controller
             $informacion->vision=$request->vision;
             $informacion->quienesSomos=$request->quienesSomos;
             $informacion->urlLogo=$urlLogo;
-            $informacion->save();
+            return $informacion->save();
         }
         else
         {
@@ -47,7 +47,7 @@ class InformacionController extends Controller
             $informacion->mision=$request->mision;
             $informacion->vision=$request->vision;
             $informacion->quienesSomos=$request->quienesSomos;
-            $informacion->save();
+            return $informacion->save();
         }   
     }
 

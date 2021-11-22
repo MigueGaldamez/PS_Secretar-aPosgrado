@@ -12,7 +12,8 @@ class EquipoTrabajoController extends Controller
 
     public function index(Request $request)
     {
-        return EquipoTrabajo::paginate($request->perpage);
+        $per_page= $request->per_page;
+        return EquipoTrabajo::paginate($per_page);
     }
     public function store(Request $request)
     {
@@ -84,6 +85,6 @@ class EquipoTrabajoController extends Controller
     {
         $oldUrlImagen = explode('/',$equipoTrabajo->urlImagen);
         Storage::delete('public/equipo/'.$oldUrlImagen[3]);
-        $equipoTrabajo->delete();
+        return $equipoTrabajo->delete();
     }
 }

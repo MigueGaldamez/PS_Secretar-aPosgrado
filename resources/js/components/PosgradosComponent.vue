@@ -1,14 +1,5 @@
 <template >
     <div class="row">
-        <div class="col-xm-12">
-            <button @click="update=false; openModal();" type="button" class="btn btn-success ">
-                Nuevo
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                </svg> 
-            </button>
-        </div>
         <!-- Modal -->
         <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -17,8 +8,8 @@
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
                         <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                    <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                        <div class="modal-body">
                             <div class="row">
                                 <div class="mb-3 col-sm-6">
                                     <label for="formFile" class="form-label">Imagen representativa del posgrado</label>
@@ -57,40 +48,44 @@
                                     <input class="form-check-input" @change="ofertado(posgrado.ofertado)" v-model="posgrado.ofertado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label"  for="flexSwitchCheckDefault">{{textOfertado}}</label>
                                 </div>  
-                            </div>
+                            </div>         
+                        </div>
+                        <div class="modal-footer">
                             <button @click="save();" type="button" class="btn btn-success">Guardar</button>
-                        </form>                 
-                    </div>
-                    <div class="modal-footer">
-                        <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form> 
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3 md-3">
-                {{posgrados.from}} - {{posgrados.to }} total: {{posgrados.total}}
-            </div>
-            <div class="col-3 md-3">
-                
-                <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="list();">
-                <option selected>Elementos por pagina</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                </select>
             </div>
         </div>
         <!--Fin del modal -->
         <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
-            <strong>Loading...</strong>
+            <strong>Cargando Datos...</strong>
             <div class="">
                 <div class="spinner-grow text-danger" role="status"></div>
                 <div class="spinner-grow text-warning" role="status"></div>
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
-        <div v-for="posgrado in posgrados" :key="posgrado.id" class=" col-sm-6 mb-3">
+        <div class="col-sm-12">
+            <button @click="update=false; openModal();" type="button" class="btn btn-success ">
+                Nuevo
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg> 
+            </button>
+        </div>
+        <div class="row mt-1 mb-1">
+            <div class="col-sm-4">
+                <div class="border rounded">
+                    <label for="customRange3" class="form-label"> {{posgrados.from}} - {{posgrados.to }} total: {{posgrados.total}}</label>
+                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="posgrados.total" step="3" @change="list();" id="customRange3">
+                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
+                </div>
+            </div>
+        </div>
+        <div v-for="posgrado in posgrados.data" :key="posgrado.id" class=" col-sm-6 mb-3">
             <div class="card  h-100" >
                 <div class="row g-0">
                     <div class="col-sm-4 rounded mx-auto d-block text-center">
@@ -128,19 +123,46 @@
             </div>
         </div>
         <div class="row">
-        
-        <div class="col-6 md-6 text-center">
-            <nav>
-                <ul class="pagination">
-                    <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page=1, list();" href="#"><span>&laquo;</span></a></li>
-                    <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page--, list();" href="#">&#60;</a></li>
-                    <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}"><a class="page-link" @click="pagination.page=n, list();" href="#">{{n}}</a></li>
-                    <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" ><a class="page-link" @click="pagination.page++, list();" href="#">&#62;</a></li>
-                    <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" ><a class="page-link" @click="pagination.page=posgrados.last_page, list();" href="#" ><span >&raquo;</span></a></li>
-                </ul>
-            </nav>
+            <div class="col-sm-4 text-center">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page=1, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill" viewBox="0 0 16 16">
+                                    <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page--, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}">
+                            <a class="page-link" @click="pagination.page=n, list();" href="#">
+                                {{n}}
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" >
+                            <a class="page-link" @click="pagination.page++, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" >
+                            <a class="page-link" @click="pagination.page=posgrados.last_page, list();" href="#" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
+                                    <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
     </div>
 </template>
 <script>
@@ -185,10 +207,11 @@ export default
             {
                 try
                 {
+                    this.cargando = true;
                     const res = await axios.get('/dashboard/posgrados_api/',{params:this.pagination,});
                     this.posgrados = res.data;
-                    this.cargando = false;
                     this.listarPaginas();
+                    this.cargando = false;
                 }
                 catch(error)
                 {
@@ -200,6 +223,7 @@ export default
             },
             listarPaginas()
             {
+                
                 const n = 2;
                 let arrayN=[];
                 let ini = this.pagination.page - 2;
@@ -220,7 +244,7 @@ export default
             },
             async listarSelects()
             {
-                const resF = await axios.get('/dashboard/facultad_api');
+                const resF = await axios.get('/dashboard/facultades_list');
                 const resT = await axios.get('/dashboard/tipo_programas_api');
                 this.facultades = resF.data;
                 this.tipo_programas =  resT.data;
@@ -254,7 +278,17 @@ export default
             {
                 try
                 {   
-                    const res = await axios.delete('/dashboard/posgrados_api/'+id);
+                    const res = await axios.delete('/dashboard/posgrados_api/'+id)
+                    .then(response=>{
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Eliminado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                    });
                 }
                 catch(error)
                 {
@@ -299,7 +333,7 @@ export default
                             {
                                 this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
                             }
-                            });
+                        });
                     }
                     catch(error)
                     {
@@ -321,14 +355,14 @@ export default
                         }
                         const res = await axios.post('/dashboard/posgrados_api', fields)
                         .then(response=>{
-                        if(response.data==1)
-                        {
-                            this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
-                        }
-                        else
-                        {
-                            this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
-                        }
+                            if(response.data==1)
+                            {
+                                this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                            }
+                            else
+                            {
+                                this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                            }
                         });
                     }
                     catch(error)
@@ -411,11 +445,10 @@ export default
         },
         created()
         {
-            this.cargando = true;
             try 
             {
-                this.listarSelects();
                 this.list();
+                this.listarSelects();
             } 
             catch (error) 
             {

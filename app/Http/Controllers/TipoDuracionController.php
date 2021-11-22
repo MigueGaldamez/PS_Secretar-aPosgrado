@@ -19,7 +19,7 @@ class TipoDuracionController extends Controller
         {
             $tipoDuracion = new TipoDuracion();
             $tipoDuracion->nombre = $request->nombre;
-            $tipoDuracion->save();
+            return $tipoDuracion->save();
         }
         catch (\Exception $e) 
         {
@@ -31,7 +31,7 @@ class TipoDuracionController extends Controller
     {
         try
         {
-            $tipo_duracions_api->update($request->all());
+            return $tipo_duracions_api->update($request->all());
             return "Guardado";
         }
         catch (\Exception $e) 
@@ -45,7 +45,7 @@ class TipoDuracionController extends Controller
     {
         try
         {
-            $tipo_duracions_api->delete();
+            return $tipo_duracions_api->delete();
         }
         catch (\Exception $e) 
         {
