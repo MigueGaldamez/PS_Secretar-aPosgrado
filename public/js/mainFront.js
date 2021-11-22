@@ -172,3 +172,17 @@ items.forEach((el) => {
    
 })
 
+$(function(){
+  var stickyHeaderTop = $('.stickyHeaderFacul').offset().top;
+  if(stickyHeaderTop){
+    $(window).scroll(function(){
+      if( $(window).scrollTop()> stickyHeaderTop-46 ) {
+              $('.stickyHeaderFacul').css({position: 'fixed', top: '38px'});
+            
+      } else {
+              $('.stickyHeaderFacul').css({position: 'static', top: '38px'});
+      }
+});
+  }
+   
+});

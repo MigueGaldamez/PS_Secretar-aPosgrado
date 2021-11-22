@@ -51,8 +51,9 @@
  
  
     <div v-if="mostrar" id="informacionPosgrado">
-        <div class="colorGris mt-4 pb-1 pt-2"  :style="'background-color: '+facultad.color+';'">
+        <div class="colorGris mt-4 pb-1 py-3 stickyHeaderFacul"  :style="'background-color: '+facultad.color+';'" >
                 <h3 class="text-light text-center"><span class="textoSuavecito">Tesis de Posgrados de la <b>{{posgrado.nombre}}</b></span></h3>
+                  <h5 class="textoSuavecito text-light text-center" >En la Facultad: {{facultad.nombre}}</h5>   
         </div>
         <div class="container">
              <div class="col-12 md-12 text-center mt-2">
@@ -101,7 +102,7 @@
                 facultades:[],
                 id:0,
                 imagenMiniatura:'',
-                mostrar:false,
+                mostrar:true,
                 }
         },
         computed: {
@@ -130,6 +131,8 @@
                 {
                     const res = await axios.get('/facultades/conTesis');
                     this.facultades = res.data;
+                    this.mostrarFacultad(this.facultades[0]);
+                    this.mostrarPosgrado(this.facultades[0].posgrados_con_tesis[0]);
                   
                 }
                 catch(error)

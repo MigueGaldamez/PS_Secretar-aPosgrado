@@ -35,7 +35,7 @@
       
       
 
-        <div class="colorGris mt-4 py-2" :style="'background-color: '+facultad.color+';'" id="titulo">
+        <div class="colorGris mt-4 py-3 stickyHeaderFacul" :style="'background-color: '+facultad.color+';'" id="titulo">
             <h3 class="textoSuavecito text-light" >Investigaciones en curso de {{posgrado.nombre}}</h3>    
              <h5 class="textoSuavecito text-light" >Facultad: {{facultad.nombre}}</h5>      
         </div>

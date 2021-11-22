@@ -9586,6 +9586,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -9596,7 +9597,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       facultades: [],
       id: 0,
       imagenMiniatura: '',
-      mostrar: false
+      mostrar: true
     };
   },
   computed: {
@@ -9633,23 +9634,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 res = _context.sent;
                 _this.facultades = res.data;
-                _context.next = 10;
+
+                _this.mostrarFacultad(_this.facultades[0]);
+
+                _this.mostrarPosgrado(_this.facultades[0].posgrados_con_tesis[0]);
+
+                _context.next = 12;
                 break;
 
-              case 7:
-                _context.prev = 7;
+              case 9:
+                _context.prev = 9;
                 _context.t0 = _context["catch"](0);
 
                 if (_context.t0.response.data) {
                   _this.errores = _context.t0.response.data.errors;
                 }
 
-              case 10:
+              case 12:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee, null, [[0, 7]]);
+        }, _callee, null, [[0, 9]]);
       }))();
     },
     mostrarPosgrado: function mostrarPosgrado() {
@@ -56254,7 +56260,7 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "colorGris mt-4 py-2",
+          staticClass: "colorGris mt-4 py-3 stickyHeaderFacul",
           style: "background-color: " + _vm.facultad.color + ";",
           attrs: { id: "titulo" }
         },
@@ -56771,7 +56777,7 @@ var render = function() {
           _c(
             "div",
             {
-              staticClass: "colorGris mt-4 pb-1 pt-2",
+              staticClass: "colorGris mt-4 pb-1 py-3 stickyHeaderFacul",
               style: "background-color: " + _vm.facultad.color + ";"
             },
             [
@@ -56780,7 +56786,13 @@ var render = function() {
                   _vm._v("Tesis de Posgrados de la "),
                   _c("b", [_vm._v(_vm._s(_vm.posgrado.nombre))])
                 ])
-              ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "h5",
+                { staticClass: "textoSuavecito text-light text-center" },
+                [_vm._v("En la Facultad: " + _vm._s(_vm.facultad.nombre))]
+              )
             ]
           ),
           _vm._v(" "),
@@ -58241,7 +58253,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "colorGris text-center py-4 mt-4",
+        staticClass: "colorGris text-center py-4 mt-4 stickyHeaderFacul",
         style: "background-color:" + _vm.facultad.color + " !important; "
       },
       [

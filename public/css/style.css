@@ -2209,3 +2209,8 @@ font-size: 16px;
   border-radius: 10px;
   background-color:#52646E ;
 }
+/**/
+.stickyHeaderFacul {
+  width: 100%;
+  z-index: 6;
+}

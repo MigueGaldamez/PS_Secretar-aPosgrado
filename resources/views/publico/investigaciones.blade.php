@@ -6,9 +6,10 @@
 
 <div class="container mb-4">
     <div class="row">
+    {{--
         <div class="col">
             <img src="{{asset('img/enlaces/uno.jpg')}}"  alt="..." class="bannerLink">
-        </div>
+        </div>--}}
     </div>
     <div class="row mt-4">
         <div class="col col-12">
