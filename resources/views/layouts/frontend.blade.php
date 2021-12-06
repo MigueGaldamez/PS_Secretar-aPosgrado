@@ -39,33 +39,16 @@
             <nav class="navbar navbar-expand-md navbar-dark colorGris shadow-sm paddings sticky-top">
                 <div class="container margenes">
                     @if(request()->routeIs('inicio'))
-                        <a class="navbar-brand oculto" href="{{ url('/') }}">
-                            <div class="row"> 
-                                <div class="col">
-                                    <img class="rounded float-start tamañoLogo" src="{{asset('img/logoRedondoBlanco.svg')}}">
-                                </div>
-                                <div class="col">
-                                    <ul class="list-unstyled mb-0 pt-1">
-                                        <li class="lh-sm">  <b>Secretaría de</b></li>
-                                        <li class="lh-sm"> Posgrado</li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                         
+                            <img class="float-start tamañoLogoLateral" src="{{asset('img/logolateral3.svg')}}">
                         </a>      
                     @endif      
                     @if (!request()->routeIs('inicio'))               
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            <div class="row"> 
-                                <div class="col">
-                                    <img class="rounded float-start tamañoLogo" src="{{asset('img/logoRedondoBlanco.svg')}}">
-                                </div>
-                                <div class="col">
-                                    <ul class="list-unstyled mb-0 pt-1">
-                                        <li class="lh-sm">  <b>Secretaría de</b></li>
-                                        <li class="lh-sm"> Posgrado</li>
-                                    </ul>
-                                </div>
-                            </div>
+                          
+                            <img class="float-start tamañoLogoLateral" src="{{asset('img/logolateral3.svg')}}">
+                            
                         </a>          
                     @endif
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -74,9 +57,9 @@
                     {{--Nav de hamburguesa--}}
                     <div class="collapse navbar-collapse  nolist " id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav me-auto"></ul>
+                        {{--<ul class="navbar-nav me-auto"></ul>--}}
                         @if(request()->routeIs('inicio'))
-                            <ul class="navbar-nav ms-auto">
+                            <ul class="navbar-nav ms-auto me-auto">
                                 <!-- Authentication Links -->
                                 <li class="nav-item  nolist">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
@@ -104,14 +87,15 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                                 </li>
+                                {{--
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
-                                </li>
+                                </li>--}}
                             </ul>
                         @endif   
                         <!-- Right Side Of Navbar -->
                         @if(!request()->routeIs('inicio'))
-                        <ul class="navbar-nav ms-auto">
+                        <ul class="navbar-nav ms-auto me-auto">
                             <!-- Authentication Links -->
                             <li class="nav-item  nolist">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
@@ -139,14 +123,21 @@
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                             </li>
+                                {{--
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
-                            </li>
+                            </li>--}}
                         </ul>
                         @endif  
                     </div>
                 </div>
+                 <div class="catalogoIcono">
+                <a href="{{route('catalogoC')}}">
+                    <img class="img-fluid" src="{{asset('img/catalogo/ICONO DE CATALOGO negro.png')}}" alt="">
+                </a>
+            </div>
             </nav>
+           
             <main class="">
                 @yield('content')
             </main>
@@ -159,7 +150,7 @@
                         <div class="pr-xl-4">
                             <a class="brand" href="index.html"><img class="brand-logo-light"  src="{{asset('img/ues_logo3.svg')}}" alt="" width="80"  srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
                         </div>
-                    </div>
+                    </div> 
                     <div class="col-md-7">
                         <ul class="list-unstyled mb-0">
                             <li class="lh-sm">  2021 Universidad de El Salvador.</li>

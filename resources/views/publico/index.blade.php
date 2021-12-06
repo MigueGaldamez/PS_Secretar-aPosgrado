@@ -22,11 +22,7 @@
             </div>
         </div> 
     </div>
-    <div class="catalogoIcono">
-        <a href="{{route('catalogoC')}}">
-            <img class="img-fluid" src="{{asset('img/catalogo.svg')}}" alt="">
-        </a>
-    </div>
+
     <div class="container px-0 col-10">
         <div class="row negativoBanner ">          
             <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('oferta')}}">
