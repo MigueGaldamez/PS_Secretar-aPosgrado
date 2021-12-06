@@ -15,7 +15,7 @@
                 <div class=" callout callout-danger row shadow-lg">
                     <div class="col col-9 ">
                     
-                        <a href=""><span><b>Asamblea General Universitaria.</b></span></a>
+                        <a href="https://www.agu.ues.edu.sv/" target="_blank"><span><b>Asamblea General Universitaria.</b></span></a>
                         <br>
                         <span>Es el máximo organismo normativo y elector de la universidad; es, además, el órgano supremo para la interpretación de sus fines y la conservación de sus instituciones, todo dentro del marco de las atribuciones que la Ley Organiza de la Universidad de El Salvador determina (artículo 16, Ley Orgánica de la Universidad de El Salvador).</span>
                             
@@ -30,7 +30,7 @@
                 <div class=" callout callout-danger row shadow-lg">
                     <div class="col col-9 ">
                     
-                        <a href=""><span><b>Consejo Superior Universitario.</b></span></a>
+                        <a href="https://acsu.ues.edu.sv/rps/" target="_blank"><span><b>Consejo Superior Universitario.</b></span></a>
                         <br>
                         <span>Es el máximo organismo en las funciones administrativas, docente, técnica y disciplinaria de la universidad; al efecto, dictará las resoluciones pertinentes para el cumplimiento de las disposiciones de esta ley y los reglamentos universitarios correspondientes.</span>
                             

@@ -2225,4 +2225,24 @@ font-size: 16px;
 .recuadro{
   border-top: 4px solid #e73c3c;
   box-shadow: 10px 10px #888888;
+  -webkit-border-radius: 0px 40px 0px 40px;
+  -moz-border-radius: 0px 40px 0px 40px;
+  border-radius: 0px 40px 0px 40px;
+  border-right: 5px outset #1C6EA4;
+  border-radius: 0px 40px 0px 40px;
+}
+.marco1{
+  background-color: transparent;
+    padding: 4px;
+  -webkit-box-shadow: 
+  8px 0px 0px 0px #DCD0C0, 
+  0px 8px 0px 0px #B1938B, 
+  -8px 0px 0px 0px #4E4E56, 
+  0px 0px 0px 8px #e73c3c, 
+  5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: 8px 0px 0px 0px #DCD0C0, 
+  0px 8px 0px 0px #B1938B, 
+  -8px 0px 0px 0px #4E4E56, 
+  0px 0px 0px 8px #e73c3c, 
+  5px 5px 15px 5px rgba(0,0,0,0);
 }

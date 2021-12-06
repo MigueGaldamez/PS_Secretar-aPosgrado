@@ -22,7 +22,7 @@
             </h2>
             <div id="facultad-{{$facultad->id}}" class="accordion-collapse collapse nolist" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                 <div class="accordion-body pt-0 mt-0">            
-                <p class="mt-0"><b>Contacto: </b>{{$facultad->contactoDiplomado}}</p>  
+                <h3><p class="mt-0 marco1"><b>Contacto: </b>{{$facultad->contactoDiplomado}}</p>  </h3>
                      <table class="table table-striped  table-borderless text-center">
                         <thead class="tableGris">
                             <tr>
