@@ -10788,6 +10788,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -10797,7 +10802,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         publicado: 2021,
         titulo: '',
         autor: '',
-        link: ''
+        link: '',
+        estado: 0
       },
       cargando: false,
       errores: {},
@@ -11109,14 +11115,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           this.tesi.titulo = data.titulo;
           this.tesi.autor = data.autor;
           this.tesi.link = data.link;
+          this.tesi.estado = data.estado;
         } else {
           this.titleModal = "Agregar Tesis";
           this.id = 0;
           this.tesi.posgrado = 0;
-          this.tesi.publicado = data.publicado;
-          this.tesi.titulo = data.titulo;
-          this.tesi.autor = data.autor;
-          this.tesi.link = data.link;
+          this.tesi.publicado = "";
+          this.tesi.titulo = "";
+          this.tesi.autor = "";
+          this.tesi.link = "";
+          this.tesi.estado = 0;
         }
       } catch (error) {
         if (error.response.data) {
@@ -11126,7 +11134,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     closeModal: function closeModal() {
-      this.modal = 0;
+      this.errores = {}, this.modal = 0;
     }
   },
   created: function created() {
@@ -60325,6 +60333,76 @@ var render = function() {
                         _vm.errores.link
                           ? _c("span", { staticClass: "text-danger" }, [
                               _vm._v(_vm._s(_vm.errores.link[0]))
+                            ])
+                          : _vm._e()
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "mb-3 col-sm-6" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.tesi.estado,
+                              expression: "tesi.estado"
+                            }
+                          ],
+                          staticClass: "form-check-input",
+                          attrs: {
+                            "true-value": "1",
+                            "false-value": "0",
+                            type: "checkbox",
+                            id: "flexSwitchCheckDefault"
+                          },
+                          domProps: {
+                            checked: Array.isArray(_vm.tesi.estado)
+                              ? _vm._i(_vm.tesi.estado, null) > -1
+                              : _vm._q(_vm.tesi.estado, "1")
+                          },
+                          on: {
+                            change: function($event) {
+                              var $$a = _vm.tesi.estado,
+                                $$el = $event.target,
+                                $$c = $$el.checked ? "1" : "0"
+                              if (Array.isArray($$a)) {
+                                var $$v = null,
+                                  $$i = _vm._i($$a, $$v)
+                                if ($$el.checked) {
+                                  $$i < 0 &&
+                                    _vm.$set(
+                                      _vm.tesi,
+                                      "estado",
+                                      $$a.concat([$$v])
+                                    )
+                                } else {
+                                  $$i > -1 &&
+                                    _vm.$set(
+                                      _vm.tesi,
+                                      "estado",
+                                      $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1))
+                                    )
+                                }
+                              } else {
+                                _vm.$set(_vm.tesi, "estado", $$c)
+                              }
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "form-check-label",
+                            attrs: { for: "flexSwitchCheckDefault" }
+                          },
+                          [_vm._v("Terminado")]
+                        ),
+                        _vm._v(" "),
+                        _vm.errores.estado
+                          ? _c("span", { staticClass: "text-danger" }, [
+                              _vm._v(_vm._s(_vm.errores.estado[0]))
                             ])
                           : _vm._e()
                       ])

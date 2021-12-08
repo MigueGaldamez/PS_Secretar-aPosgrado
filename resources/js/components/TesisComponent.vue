@@ -39,6 +39,11 @@
                                     <input class="form-control" type="url" v-model="tesi.link" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
                                     <span class="text-danger" v-if="errores.link">{{errores.link[0]}}</span> 
                                 </div>
+                                <div class="mb-3 col-sm-6">
+                                    <input class="form-check-input" v-model="tesi.estado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label"  for="flexSwitchCheckDefault">Terminado</label>
+                                    <span class="text-danger" v-if="errores.estado">{{errores.estado[0]}}</span>
+                                </div> 
                             </div>           
                         </div>
                         <div class="modal-footer">
@@ -181,6 +186,7 @@
                     titulo:'',
                     autor:'',
                     link:'',
+                    estado: 0,
                 },
                 cargando: false,
                 errores:{},
@@ -375,16 +381,18 @@
                         this.tesi.titulo = data.titulo;
                         this.tesi.autor = data.autor;
                         this.tesi.link = data.link;
+                        this.tesi.estado = data.estado;
                     }
                     else
                     {
                         this.titleModal = "Agregar Tesis";
                         this.id=0;
                         this.tesi.posgrado= 0;
-                        this.tesi.publicado= data.publicado;
-                        this.tesi.titulo = data.titulo;
-                        this.tesi.autor = data.autor;
-                        this.tesi.link = data.link;
+                        this.tesi.publicado= "";
+                        this.tesi.titulo = "";
+                        this.tesi.autor = "";
+                        this.tesi.link = "";
+                        this.tesi.estado = 0;
                     }
                 }
                 catch(error)
@@ -398,6 +406,7 @@
             },
             closeModal() 
             {
+                this.errores = {},
                 this.modal=0
             },
         },

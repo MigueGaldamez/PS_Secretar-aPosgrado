@@ -27,6 +27,7 @@ class TesiController extends Controller
             $tesi->titulo = $request->titulo;
             $tesi->autor = $request->autor;
             $tesi->link = $request->link;
+            $tesi->estado = $request->estado;
             return $tesi->save();
         }
         catch (\Exception $e) 
@@ -39,6 +40,7 @@ class TesiController extends Controller
         try
         {
             $tesis_api->posgrado_id = $request->posgrado;
+            $tesis_api->estado = $request->estado;
             return $tesis_api->update($request->all());
         }
         catch (\Exception $e) 
