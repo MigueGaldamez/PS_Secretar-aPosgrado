@@ -2,7 +2,7 @@
     <div class="row">
         <!-- Modal -->
         <div class="modal fade" :class="{show:modal}" id="nuevo-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">{{tituloModal}}</h5>
@@ -13,9 +13,10 @@
                             <div class="mb-3 col-sm-6">
                                 <label for="formFile" class="form-label">Logo de la Facultad</label>
                                 <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
                             </div>
                             <div class="mb-3 col-sm-6">
-                                <img :src="imagen" class="img-thumbnail" alt="...">
+                                <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>
                             <div class="my-4">
                                 <label for="nombre">Nombre Especialidad</label>
@@ -50,8 +51,11 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{equipoTrabajos.from}} - {{equipoTrabajos.to }} | Total: {{equipoTrabajos.total}}</label>
+        </div>
         <div class="col-sm-12">
-            <button @click="update=false; abrirModal();" type="button" class="btn btn-success ">
+            <button @click="modificar=false; abrirModal();" type="button" class="btn btn-success ">
                 Nuevo
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -60,12 +64,13 @@
             </button>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-sm-4">
-                <div class="border rounded">
-                    <label for="customRange3" class="form-label"> {{equipoTrabajos.from}} - {{equipoTrabajos.to }} total: {{equipoTrabajos.total}}</label>
-                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="equipoTrabajos.total" step="1" @change="listar();" id="customRange3">
-                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
-                </div>
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="listar();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="2">2</option>
+                    <option value="6">6</option>
+                </select>
             </div>
         </div>
         <div v-for="equi in equipoTrabajos.data" :key="equi.id" class=" col-sm-6 mb-3">
@@ -152,7 +157,9 @@
                     nombre:'',
                     cargo:'',
                     descripcion:'',
+                    imagen: false,
                 },
+                selImagen: false,
                 cargando: false,
                 id:0,
                 imagenMiniatura:'',
@@ -163,7 +170,7 @@
                 errores:{},
                 pagination:{
                     page:1,
-                    per_page:1,
+                    per_page:2,
                 },
                 paginas:[],
             }
@@ -247,9 +254,9 @@
             },
             async guardar()
             {
-                try
+                if(this.modificar)
                 {
-                    if(this.modificar)
+                    try
                     {
                         let fields = new FormData();
                         for(let key in this.equipoTrabajo)
@@ -267,8 +274,20 @@
                                 this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.cerrarModal();
+                        this.listar(); 
                     }
-                    else
+                    catch(error)
+                    {
+                        if(error.response.data)
+                        {
+                            this.errores = error.response.data.errors;
+                        }
+                    } 
+                }
+                else
+                {
+                    try
                     {
                         let fields = new FormData();
                         for(let key in this.equipoTrabajo)
@@ -286,16 +305,17 @@
                                 this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
-                    }  
-                    this.cerrarModal();
-                    this.listar();      
-                }
-                catch(error)
-                {
-                    if(error.response.data)
-                    {
-                        this.errores = error.response.data.errors;
+                        this.cerrarModal();
+                        this.listar();  
                     }
+                    catch(error)
+                    {
+                        if(error.response.data)
+                        {
+                            this.errores = error.response.data.errors;
+                            console.log(this.errores)
+                        }
+                    } 
                 }
             },
             abrirModal(data={})
@@ -308,25 +328,32 @@
                     this.equipoTrabajo.id = data.id;
                     this.equipoTrabajo.nombre=data.nombre;
                     this.equipoTrabajo.descripcion=data.descripcion;
-                    this.equipoTrabajo.cargo=data.cargo;   
+                    this.equipoTrabajo.cargo=data.cargo; 
+                    this.equipoTrabajo.imagen = false;  
                 }
                 else
                 {
                     this.id=0;
-                    this.equipoTrabajo.id = 0;
                     this.urlImagen = null;
                     this.tituloModal='Agregar Miembro';
                     this.equipoTrabajo.nombre='';
                     this.equipoTrabajo.descripcion='';
                     this.equipoTrabajo.cargo='';   
+                    this.equipoTrabajo.imagen = true;  
                 }
             },
             cerrarModal(){
+                this.errores= {};
+                this.selImagen = false;
+                this.$refs.urlImg.value=null;
+                this.imagenMiniatura='';
                 this.modal=0;
                 this.errores={};
             },
             obtenerImagen(e)
             {
+                this.selImagen = true;
+                this.equipoTrabajo.imagen = true;  
                 this.equipoTrabajo.urlImagen=e.target.files[0];
                 this.cargarImagen(this.equipoTrabajo.urlImagen); 
             },

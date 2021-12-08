@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ReseniaHistoriaRequest;
 use App\Models\ReseniaHistorica;
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class ReseniaHistoricaController extends Controller
     {
         return ReseniaHistorica::paginate($request->per_page);
     }
-    public function store(Request $request)
+    public function store(ReseniaHistoriaRequest $request)
     {
         try
         {          
@@ -26,7 +26,7 @@ class ReseniaHistoricaController extends Controller
             return $e->getMessage();
         }
     }
-    public function update(Request $request, ReseniaHistorica $reseniaHistorica)
+    public function update(ReseniaHistoriaRequest $request, ReseniaHistorica $reseniaHistorica)
     {
         try
         {

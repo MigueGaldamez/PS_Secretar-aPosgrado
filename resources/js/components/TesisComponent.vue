@@ -3,7 +3,7 @@
         <!-- Modal -->
         <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
+                <div class="modal-content modal-lg">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
                         <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -17,22 +17,27 @@
                                         <option value=0 >Selecciona un Posgrado</option>
                                         <option v-for="posgrado in posgrados" :key="posgrado.id" v-bind:value="posgrado.id"> {{posgrado.nombre}}</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.posgrado">{{errores.posgrado[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
                                     <label for="publicado" class="form-label">Año publicado</label>
                                     <input class="form-control" type="number" v-model="tesi.publicado" name="tentacles" min="1800">
+                                    <span class="text-danger" v-if="errores.publicado">{{errores.publicado[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="titulo" class="form-label">Titulo</label>
                                     <textarea v-model="tesi.titulo" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    <span class="text-danger" v-if="errores.titulo">{{errores.titulo[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="autor" class="form-label">Autor/es</label>
                                     <textarea v-model="tesi.autor" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    <span class="text-danger" v-if="errores.autor">{{errores.autor[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="link" class="form-label">Link</label>
-                                    <input class="form-control" type="url" v-model="tesi.link" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*"> 
+                                    <input class="form-control" type="url" v-model="tesi.link" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
+                                    <span class="text-danger" v-if="errores.link">{{errores.link[0]}}</span> 
                                 </div>
                             </div>           
                         </div>
@@ -53,6 +58,9 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{tesis.from}} - {{tesis.to }} | Total: {{tesis.total}}</label>
+        </div>
         <div class="col-xm-12">
             <button @click="update=false; openModal();" type="button" class="btn btn-success ">
                 Nuevo
@@ -63,12 +71,15 @@
             </button>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-sm-4">
-                <div class="border rounded">
-                    <label for="customRange3" class="form-label"> {{tesis.from}} - {{tesis.to }} total: {{tesis.total}}</label>
-                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="tesis.total" step="10" @change="list();" id="customRange3">
-                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
-                </div>
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
         
@@ -172,7 +183,6 @@
                     link:'',
                 },
                 cargando: false,
-                errors: [],
                 errores:{},
                 id:0,
                 update:true,
@@ -306,13 +316,14 @@
                                 this.$swal({title: 'Error!',text: console.log(response.data) ,icon: 'error',confirmButtonText: 'Ok'});
                             }
                             });
+                    this.closeModal();
+                    this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
@@ -328,27 +339,26 @@
                         //.then(response=>{console.log(response.data)})
                         const res = await axios.post('/dashboard/tesis_api', fields)
                         .then(response=>{
-                        if(response.data==1)
-                        {
-                            this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
-                        }
-                        else
-                        {
-                            this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
-                        }
+                            if(response.data==1)
+                            {
+                                this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                            }
+                            else
+                            {
+                                this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                            }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
-                this.closeModal();
-                this.list();
             },
             openModal(data={}) 
             {

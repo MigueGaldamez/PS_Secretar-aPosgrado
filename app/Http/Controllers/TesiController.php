@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TesisRequest;
 use App\Models\Tesi;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class TesiController extends Controller
         $per_page= $request->per_page;
         return Tesi::with('posgrado')->paginate($per_page);
     }
-    public function store(Request $request)
+    public function store(TesisRequest $request)
     {
         try
         {
@@ -33,7 +34,7 @@ class TesiController extends Controller
             return $e->getMessage();
         }
     }
-    public function update(Request $request, Tesi $tesis_api)
+    public function update(TesisRequest $request, Tesi $tesis_api)
     {
         try
         {

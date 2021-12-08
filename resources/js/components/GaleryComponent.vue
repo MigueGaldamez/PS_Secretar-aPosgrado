@@ -1,47 +1,79 @@
 <template>
 <div>
-    <!-- Button trigger modal -->
-    <button @click="update=false; openModal();" type="button" class="btn btn-primary"  >
-    Nuevo +
-    </button>
-    <!-- Modal -->
-    <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
-                    <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+    <div class="row">
+        <!-- Modal -->
+        <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
+                        <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <form v-on:submit.prevent="save" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="mb-3 col-sm-6">
-                                <label for="formFile" class="form-label">Imagen</label>
-                                <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="mb-3 col-sm-6">
+                                    <label for="formFile" class="form-label">Imagen</label>
+                                    <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <img :src="imagen" class="img-thumbnail" alt="...">
+                                </div>
+                                <div class="mb-3 col-sm-12" >
+                                    <label  class="form-label">Título</label>
+                                    <input v-model="galery.titulo" class="form-control" type="text" placeholder="Título" aria-label="Titulo de la imagen">
+                                    <span class="text-danger" v-if="errores.titulo">{{errores.titulo[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-12" >
+                                    <label  class="form-label">Subtítulo</label>
+                                    <input v-model="galery.subtitulo" class="form-control" type="text" placeholder="Subtítulo" aria-label="Subtitulo de la imagen">
+                                    <span class="text-danger" v-if="errores.subtitulo">{{errores.subtitulo[0]}}</span>
+                                </div>
                             </div>
-                            <div class="mb-3 col-sm-6">
-                                <img :src="imagen" class="img-thumbnail" alt="...">
-                            </div>
-                            <div class="mb-3 col-sm-12" >
-                                <label  class="form-label">Título</label>
-                                <input v-model="galery.titulo" class="form-control" type="text" placeholder="Título" aria-label="Titulo de la imagen">
-                            </div>
-                            <div class="mb-3 col-sm-12" >
-                                <label  class="form-label">Subtítulo</label>
-                                <input v-model="galery.subtitulo" class="form-control" type="text" placeholder="Subtítulo" aria-label="Subtitulo de la imagen">
-                            </div>
+                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>          
                         </div>
-                        <button @click="save();" type="button" class="btn btn-success">Guardar</button>
-                    </form>                 
-                </div>
-                <div class="modal-footer">
-                    <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <div class="modal-footer">
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form> 
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-3" v-for="galery in galeries" :key="galery.id">
+        <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
+            <strong>Cargando Datos...</strong>
+            <div class="">
+                <div class="spinner-grow text-danger" role="status"></div>
+                <div class="spinner-grow text-warning" role="status"></div>
+                <div class="spinner-grow text-info" role="status"></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{galeries.from}} - {{galeries.to }} | Total: {{galeries.total}}</label>
+        </div>
+            <!-- Button trigger modal -->
+        <div class="col-sm-12">
+            <button @click="update=false; openModal();" type="button" class="btn btn-success ">
+                Nuevo
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg> 
+            </button>
+        </div>
+        <div class="row mt-1 mb-1">
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-3" v-for="galery in galeries.data" :key="galery.id">
             <div class="card p-2 h-100" >
                 <img :src="galery.urlImagen" class="card-img-top h-50" alt="...">
                 <div class="card-body text-center">
@@ -62,6 +94,47 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page=1, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill" viewBox="0 0 16 16">
+                                    <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page--, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}">
+                            <a class="page-link" @click="pagination.page=n, list();" href="#">
+                                {{n}}
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==galeries.last_page}" >
+                            <a class="page-link" @click="pagination.page++, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==galeries.last_page}" >
+                            <a class="page-link" @click="pagination.page=galeries.last_page, list();" href="#" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
+                                    <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
 </div>
 </template>
@@ -75,13 +148,22 @@ export default {
                 urlImagen: null,
                 titulo: '',
                 subtitulo: '',
+                imagen: false,
             },
+            cargando: false,
+            selImagen: false,//para cuando seleccione una imagen
+            errores: {},
             update:true,
             modal:0,
             titleModal:'',
             galeries:[],
             id:0,
             imagenMiniatura:'',
+            pagination:{
+                page:1,
+                per_page:4,
+            },
+            paginas:[],
         }
     },
     methods: {
@@ -89,8 +171,11 @@ export default {
         {
             try
             {
-                const res = await axios.get('/dashboard/galery_api');
+                this.cargando = true;
+                const res = await axios.get('/dashboard/galery_api',{params:this.pagination,});
                 this.galeries = res.data;
+                this.listarPaginas();
+                this.cargando = false;
             }
             catch(error)
             {
@@ -99,6 +184,27 @@ export default {
                     this.errores = error.response.data.errors;
                 }
             }
+        },
+        listarPaginas()
+        {
+            
+            const n = 2;
+            let arrayN=[];
+            let ini = this.pagination.page - 2;
+            if(ini<1)
+            {
+                ini=1;
+            }
+            let fin = this.pagination.page + 2;
+            if(fin>this.galeries.last_page)
+            {
+                fin=this.galeries.last_page;
+            }
+            for(let i=ini; i<=fin; i++)
+            {
+                arrayN.push(i);
+            }
+            this.paginas=arrayN;    
         },
         eliminarM(id)
         {
@@ -154,15 +260,17 @@ export default {
                     //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/galery_api/'+this.id, fields)
                     .then(response=>{
-                    if(response.data==1)
-                    {
-                        this.$swal({title: 'Exitoso',text: 'Actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
-                    }
-                    else
-                    {
-                        this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
-                    }
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
                     });
+                    this.closeModal();
+                    this.list();
                 }
                 catch(error)
                 {
@@ -184,15 +292,17 @@ export default {
                     //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/galery_api', fields)
                     .then(response=>{
-                    if(response.data==1)
-                    {
-                        this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
-                    }
-                    else
-                    {
-                        this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
-                    }
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
                     });
+                    this.closeModal();
+                    this.list();
                 }
                 catch(error)
                 {
@@ -202,8 +312,7 @@ export default {
                     }
                 }
             }
-            this.closeModal();
-            this.list();
+
         },
         openModal(data={}) {
             this.modal=1
@@ -215,6 +324,7 @@ export default {
                 this.galery.urlImagen = data.urlImagen;
                 this.galery.titulo = data.titulo;
                 this.galery.subtitulo = data.subtitulo;
+                this.galery.imagen = false;
             }
             else
             {
@@ -223,15 +333,20 @@ export default {
                 this.galery.urlImagen = null;
                 this.galery.titulo = '';
                 this.galery.subtitulo = '';
+                this.galery.imagen = true;
             }
         },
         closeModal() {
+            this.selImagen = false;
+            this.errores = {};
             this.$refs.urlImg.value=null;
             this.imagenMiniatura='';
             this.modal=0
         },
         obtenerImagen(e)
         {
+            this.galery.imagen = true;
+            this.selImagen = true;
             this.galery.urlImagen=e.target.files[0];
             this.cargarImagen(this.galery.urlImagen); 
         },

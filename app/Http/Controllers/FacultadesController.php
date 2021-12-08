@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Facultades;
 use App\Models\Posgrado;
 use Illuminate\Http\Request;
+use App\Http\Requests\FacultadRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Models\Tesi;
@@ -27,7 +28,7 @@ class FacultadesController extends Controller
     {
         return Facultades::with('posgrados')->where('multidis','=',0)->get();
     }
-    public function store(Request $request)
+    public function store(FacultadRequest $request)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -57,7 +58,7 @@ class FacultadesController extends Controller
             return "No has elejido un archivo.";
         }   
     }
-    public function update(Request $request, Facultades $facultad)
+    public function update(FacultadRequest $request, Facultades $facultad)
     {
         if($request->hasFile('urlImagen'))
         {
