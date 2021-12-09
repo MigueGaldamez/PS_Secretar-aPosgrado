@@ -14,21 +14,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="{{asset('img/historia/rectoria.jpg')}}" class="d-block w-100" alt="...">
+                <img src="https://i.imgur.com/x2fjApo.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
                     <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
                 </div>
                 </div>
                 <div class="carousel-item">
-                <img src="{{asset('img/historia/ANTIGUOS.S3-.jpg')}}" class="d-block w-100" alt="...">
+                <img src="https://i.imgur.com/7MPUaV4.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
                     <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
                 </div>
                 </div>
                 <div class="carousel-item">
-                <img src="{{asset('img/historia/rectoria.jpg')}}" class="d-block w-100" alt="...">
+                <img src="https://i.imgur.com/QQUI3P6.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                      <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
                     <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
