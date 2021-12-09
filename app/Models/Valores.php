@@ -8,6 +8,7 @@ use App\Models\Informacion;
 class Valores extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'nombre',
         'informacion_id',

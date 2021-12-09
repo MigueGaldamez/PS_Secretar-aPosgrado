@@ -15,9 +15,9 @@ class CreateDetalleNoticiasTable extends Migration
     {
         Schema::create('detalleNoticias', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('noticia_id')->unsigned();
             $table->integer('orden');
             $table->longText('descripcion');
-            $table->unsignedBigInteger('noticia_id')->unsigned();
             $table->foreign('noticia_id')->references('id')->on('noticias');
             $table->timestamps();
         });
