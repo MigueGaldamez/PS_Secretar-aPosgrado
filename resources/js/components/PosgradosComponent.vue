@@ -2,7 +2,7 @@
     <div class="row">
         <!-- Modal -->
         <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-dialog modal-lg ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
@@ -11,12 +11,13 @@
                     <form v-on:submit.prevent="save" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="row">
-                                <div class="mb-3 col-sm-6">
+                                <div  class="mb-3 col-sm-6">
                                     <label for="formFile" class="form-label">Imagen representativa del posgrado</label>
-                                    <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    <input ref="urlImg"  accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <img :src="imagen" class="img-thumbnail" alt="...">
+                                    <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                                 </div>
                                 <div class="mb-3 col-sm-6 offset-sm-3">
                                     <label for="nombre" class="form-label">Facultad</label>
@@ -24,18 +25,22 @@
                                         <option value=0 >Selecciona una Facultad</option>
                                         <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.facultad">{{errores.facultad[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label for="nombrePosgrado" class="form-label">Nombre posgrado</label>
                                     <input v-model="posgrado.nombre" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
+                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="descripcionPosgrado" class="form-label">Descripción</label>
                                     <textarea v-model="posgrado.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label for="tituloPosgrado" class="form-label">Titulo</label>
                                     <input v-model="posgrado.titulo" class="form-control" type="text" placeholder="Titulo" aria-label="Titulo del posgrado">
+                                    <span class="text-danger" v-if="errores.titulo">{{errores.titulo[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-4">
                                     <label for="TipoProgramaPosgrado" class="form-label">Tipo Pograma</label>
@@ -43,10 +48,12 @@
                                         <option value=0 >Selecciona una Modalidad</option>
                                         <option v-for="tipo_programa in tipo_programas" :key="tipo_programa.id" v-bind:value="tipo_programa.id"> {{tipo_programa.nombre}}</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.tipo_programa">{{errores.tipo_programa[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
                                     <input class="form-check-input" @change="ofertado(posgrado.ofertado)" v-model="posgrado.ofertado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label"  for="flexSwitchCheckDefault">{{textOfertado}}</label>
+                                    <span class="text-danger" v-if="errores.ofertado">{{errores.ofertado[0]}}</span>
                                 </div>  
                             </div>         
                         </div>
@@ -67,6 +74,9 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{posgrados.from}} - {{posgrados.to }} | Total: {{posgrados.total}}</label>
+        </div>
         <div class="col-sm-12">
             <button @click="update=false; openModal();" type="button" class="btn btn-success ">
                 Nuevo
@@ -77,12 +87,15 @@
             </button>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-sm-4">
-                <div class="border rounded">
-                    <label for="customRange3" class="form-label"> {{posgrados.from}} - {{posgrados.to }} total: {{posgrados.total}}</label>
-                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="posgrados.total" step="3" @change="list();" id="customRange3">
-                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
-                </div>
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
         <div v-for="posgrado in posgrados.data" :key="posgrado.id" class=" col-sm-6 mb-3">
@@ -181,10 +194,11 @@ export default
                     titulo: '',
                     tipo_programa: null,
                     ofertado: 0,
+                    imagen: false,
                 },
+                selImagen: false,//para cuando seleccione una imagen
                 cargando: false,
                 textOfertado: '',
-                errors: [],
                 errores:{},
                 id:0,
                 update:true,
@@ -295,7 +309,6 @@ export default
                     if(error.response.data)
                     {
                         this.errores = error.response.data.errors;
-                        console.log(this.errores);
                     }
                 }
                 this.list();
@@ -334,13 +347,14 @@ export default
                                 this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
@@ -364,18 +378,18 @@ export default
                                 this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
-                this.closeModal();
-                this.list();
+
             },
             openModal(data={}) 
             {
@@ -394,6 +408,7 @@ export default
                         this.posgrado.titulo = data.titulo;
                         this.posgrado.tipo_programa = data.tipo_programa.id;
                         this.posgrado.ofertado = data.ofertado;
+                        this.posgrado.imagen = false;
                         this.ofertado(data.ofertado);
                     }
                     else
@@ -408,6 +423,7 @@ export default
                         this.posgrado.titulo = '';
                         this.posgrado.tipo_programa = 0;
                         this.posgrado.ofertado = 0;
+                        this.posgrado.imagen = true;
                     }
                 }
                 catch(error)
@@ -421,6 +437,9 @@ export default
             },
             closeModal() 
             {
+                
+                this.errores ={};
+                this.selImagen = false;
                 this.$refs.urlImg.value=null;
                 this.posgrado.urlImagen = null;
                 this.imagenMiniatura='';
@@ -430,6 +449,8 @@ export default
             },
             obtenerImagen(e)
             {
+                this.posgrado.imagen = true;
+                this.selImagen = true;
                 this.posgrado.urlImagen=e.target.files[0];
                 this.cargarImagen(this.posgrado.urlImagen); 
             },

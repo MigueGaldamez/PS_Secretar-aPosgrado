@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Posgrado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\PosgradoRequest;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 class PosgradoController extends Controller
 {
     public function list()
@@ -16,11 +18,11 @@ class PosgradoController extends Controller
         $per_page= $request->per_page;
         return Posgrado::paginate($per_page);
     }
-    public function store(Request $request)
+    public function store(PosgradoRequest $request)
     {
-        if($request->hasFile('urlImagen'))
+        try
         {
-            try
+            if($request->hasFile('urlImagen'))
             {
                 $fileImagen=$request->file('urlImagen')->store('public/posgrados');
                 $urlImagen = Storage::url($fileImagen);
@@ -34,17 +36,17 @@ class PosgradoController extends Controller
                 $posgrado->ofertado = $request->ofertado;
                 return $posgrado->save();
             }
-            catch (\Exception $e) 
+            else
             {
-                return $e->getMessage();
+                $request->validate(['urlImagen'=>'required|image|max:1024']);
             }
         }
-        else
+        catch (\Exception $e) 
         {
-            return 0;
+            return $e->getMessage();
         }
     }
-    public function update(Request $request, Posgrado $posgrados_api)
+    public function update(PosgradoRequest $request, Posgrado $posgrados_api)
     {
         if($request->hasFile('urlImagen'))
         {

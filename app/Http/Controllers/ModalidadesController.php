@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ModalidadRequest;
 use App\Models\Modalidades;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class ModalidadesController extends Controller
         return Modalidades::get();
     }
 
-    public function store(Request $request)
+    public function store(ModalidadRequest $request)
     {
         try
         {
@@ -41,7 +41,7 @@ class ModalidadesController extends Controller
         }
     }
 
-    public function update(Request $request, Modalidades $modalidades_api)
+    public function update(ModalidadRequest $request, Modalidades $modalidades_api)
     {
         try
         {

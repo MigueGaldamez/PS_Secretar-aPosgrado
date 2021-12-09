@@ -17,14 +17,17 @@
                                         <option value=0 >Selecciona una Facultad</option>
                                         <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.facultad">{{errores.facultad[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="nombreDiplomado" class="form-label">Nombre del Diplomado</label>
                                     <textarea v-model="diplomado.nombre" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-4">
                                     <label for="duracionDiplomado" class="form-label">Duracion</label>
                                     <input class="form-control" v-model="diplomado.duracion" type="number" min="0" max="255" placeholder="Duracion" aria-label="duracion">
+                                    <span class="text-danger" v-if="errores.duracion">{{errores.duracion[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-4">
                                     <label for="tipoDuracionDiplomado" class="form-label">Tipo Duración</label>
@@ -32,6 +35,7 @@
                                         <option value=0 >Selecciona un tipo de duración</option>
                                         <option v-for="tipo_duracion in tipo_duracions" :key="tipo_duracion.id" v-bind:value="tipo_duracion.id"> {{tipo_duracion.nombre}}</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.tipo_duracion">{{errores.tipo_duracion[0]}}</span>
                                 </div> 
                                 <div class="mb-3 col-sm-4">
                                     <label for="ModalidadDiplomado" class="form-label">Modalidad</label>
@@ -39,10 +43,12 @@
                                         <option value=0 >Selecciona una Modalidad</option>
                                         <option v-for="modalidad in modalidades" :key="modalidad.id" v-bind:value="modalidad.id"> {{modalidad.nombre}}</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.modalidad">{{errores.modalidad[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
                                     <input class="form-check-input" @change="ofertado(diplomado.ofertado)" v-model="diplomado.ofertado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label"  for="flexSwitchCheckDefault">{{textOfertado}}</label>
+                                    <span class="text-danger" v-if="errores.ofertado">{{errores.ofertado[0]}}</span>
                                 </div>  
                             </div>             
                         </div>
@@ -63,6 +69,9 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{diplomados.from}} - {{diplomados.to }} | Total: {{diplomados.total}}</label>
+        </div>
         <div class="col-xm-12">
             <button @click="update=false; openModal();" type="button" class="btn btn-success ">
                 Nuevo
@@ -73,12 +82,15 @@
             </button>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-sm-4">
-                <div class="border rounded">
-                    <label for="customRange3" class="form-label"> {{diplomados.from}} - {{diplomados.to }} total: {{diplomados.total}}</label>
-                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="diplomados.total" step="4" @change="list();" id="customRange3">
-                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
-                </div>
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
         <div class="col-xm-12 col-sm-12">
@@ -189,7 +201,6 @@
                 cargando:  false,
                 selected: "Seleccione una opcion",
                 textOfertado: '',
-                errors: [],
                 errores:{},
                 id:0,
                 update:true,
@@ -369,13 +380,14 @@
                                 this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
@@ -399,17 +411,19 @@
                                 this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
+                            console.log(this.errores);
                         }
                     }
                 }
-                this.closeModal();
-                this.list();
+
             },
             openModal(data={}) 
             {
@@ -452,6 +466,7 @@
             },
             closeModal() 
             {
+                this.errores ={};
                 this.modal=0
                 this.textOfertado = '';
             },

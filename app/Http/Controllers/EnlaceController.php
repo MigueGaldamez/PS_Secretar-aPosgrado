@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\EnlaceRequest;
 use App\Models\Enlace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +20,7 @@ class EnlaceController extends Controller
         return Enlace::paginate($per_page);
     }
 
-    public function store(Request $request)
+    public function store(EnlaceRequest $request)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -46,7 +46,7 @@ class EnlaceController extends Controller
             return "error";
         } 
     }
-    public function update(Request $request, Enlace $enlace)
+    public function update(EnlaceRequest $request, Enlace $enlace)
     {
         if($request->hasFile('urlImagen'))
         {

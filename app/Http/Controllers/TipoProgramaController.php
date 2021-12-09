@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoPrograma;
 use Illuminate\Http\Request;
+use App\Http\Requests\TipoDuracionRequest;
 
 class TipoProgramaController extends Controller
 {
@@ -13,7 +14,7 @@ class TipoProgramaController extends Controller
         return TipoPrograma::get();
     }
 
-    public function store(Request $request)
+    public function store(TipoDuracionRequest $request)
     {
         try
         {
@@ -28,7 +29,7 @@ class TipoProgramaController extends Controller
         }
     }
 
-    public function update(Request $request, TipoPrograma $tipo_programas_api)
+    public function update(TipoDuracionRequest $request, TipoPrograma $tipo_programas_api)
     {
         try
         {

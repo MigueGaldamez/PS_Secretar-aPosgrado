@@ -14,17 +14,21 @@
                                 <div class="mb-3 col-sm-6">
                                     <label for="formFile" class="form-label">Imagen o logo de la entidad</label>
                                     <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <img :src="imagen" class="img-thumbnail" alt="...">
+                                    <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
+                                    
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label for="exampleFormControlTextarea1" class="form-label">Titulo del enlace</label>
-                                    <input v-model="enlace.titulo" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
+                                    <input v-model="enlace.titulo" class="form-control" type="text" placeholder="Título" aria-label="Título">
+                                    <span class="text-danger" v-if="errores.titulo">{{errores.titulo[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="exampleFormControlTextarea1" class="form-label">Enlace</label>
-                                    <textarea v-model="enlace.link" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input class="form-control" type="url" v-model="enlace.link" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
+                                    <span class="text-danger" v-if="errores.link">{{errores.link[0]}}</span>
                                 </div>
                             </div>
                         </div>
@@ -45,6 +49,9 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{enlaces.from}} - {{enlaces.to }} | Total: {{enlaces.total}}</label>
+        </div>
         <div class="col-xm-12">
             <button @click="update=false; openModal();" type="button" class="btn btn-success ">
                 Nuevo
@@ -55,12 +62,15 @@
             </button>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-sm-4">
-                <div class="border rounded">
-                    <label for="customRange3" class="form-label"> {{enlaces.from}} - {{enlaces.to }} total: {{enlaces.total}}</label>
-                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="enlaces.total" step="2" @change="list();" id="customRange3">
-                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
-                </div>
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
         <div class="row">
@@ -142,7 +152,10 @@ export default {
                 urlImagen: null,
                 titulo: '',
                 link: '',
+                imagen: false,
             },
+            selImagen: false,
+            errores: {},
             cargando:  false,
             update:true,
             modal:0,
@@ -260,14 +273,14 @@ export default {
                             this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
+                    this.closeModal();
+                    this.list();
                 }
                 catch(error)
                 {
                     if(error.response.data)
                     {
-                        
                         this.errores = error.response.data.errors;
-
                     }
                 }
             }
@@ -293,19 +306,18 @@ export default {
                             this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
+                    this.closeModal();
+                    this.list();
                 }
                 catch(error)
                 {
                     if(error.response.data)
                     {
-                        
                         this.errores = error.response.data.errors;
-
                     }
                 }
             }
-            this.closeModal();
-            this.list();
+            
         },
         openModal(data={}) {
             this.modal=1
@@ -318,6 +330,7 @@ export default {
                 this.enlace.urlImagen = data.urlImagen;
                 this.enlace.titulo = data.titulo;
                 this.enlace.link = data.link;
+                this.enlace.imagen = false;
             }
             else
             {
@@ -326,15 +339,20 @@ export default {
                 this.enlace.urlImagen = '';
                 this.enlace.titulo ='';
                 this.enlace.link = '';
+                this.enlace.imagen = true;
             }
         },
         closeModal() {
+            this.selImagen = false;
+            this.errores = {};
             this.modal=0
             this.$refs.urlImg.value=null;
             this.imagenMiniatura='';
         },
         obtenerImagen(e)
         {
+            this.enlace.imagen = true;
+            this.selImagen= true;
             this.enlace.urlImagen=e.target.files[0];
             this.cargarImagen(this.enlace.urlImagen); 
         },

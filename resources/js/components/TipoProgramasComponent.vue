@@ -14,6 +14,7 @@
                                 <div class="mb-3 col-sm-12">
                                     <label for="nombre" class="form-label">Nombre del Tipo de Programa</label>
                                     <input v-model="tipoPrograma.nombre" class="form-control" type="text" placeholder="Tipo de Programa" aria-label="default input example">
+                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                                 </div>
                             </div>             
                         </div>
@@ -91,7 +92,6 @@
                     nombre:'',
                 },
                 cargando:  false,
-                errors: [],
                 errores:{},
                 id:0,
                 update:true,
@@ -194,13 +194,14 @@
                                 this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
                             }
                             });
+                            this.closeModal();
+                            this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
@@ -226,18 +227,18 @@
                                 this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
-                this.closeModal();
-                this.list();
+                
             },
             openModal(data={}) 
             {
@@ -275,6 +276,7 @@
         created()
         {
             this.list();
+            this.errores = {};
         },
         computed:
         {

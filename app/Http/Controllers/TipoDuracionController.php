@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\TipoDuracionRequest;
 use App\Models\TipoDuracion;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class TipoDuracionController extends Controller
         return TipoDuracion::get();
     }
 
-    public function store(Request $request)
+    public function store(TipoDuracionRequest $request)
     {
         try
         {
@@ -27,7 +27,7 @@ class TipoDuracionController extends Controller
             return $e->getMessage();
         }
     }
-    public function update(Request $request, TipoDuracion $tipo_duracions_api)
+    public function update(TipoDuracionRequest $request, TipoDuracion $tipo_duracions_api)
     {
         try
         {

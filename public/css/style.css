@@ -33,7 +33,7 @@
 @media screen and (max-width: 600px) {
   .imgBannerInicio{
     width: 107.5%;
-    margin-top: 24px;
+    margin-top: 0px;
     margin-left: -5%;
     margin-right: -5%;
     
@@ -1914,7 +1914,8 @@
   margin-top: 50px;
   display: flex;
   justify-content: center;
- 
+
+
 }
 
 /*common link styles !!!YOU NEED THEM*/
@@ -1922,6 +1923,7 @@
   display: flex;
   justify-content: center;
   visibility: hidden;
+
 }
 .effect a {
   text-decoration: none !important;
@@ -1933,7 +1935,6 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  margin-right: 20px;
   font-size: 25px;
   position: relative;
   visibility: visible;
@@ -1942,53 +1943,48 @@
   position: relative;
   z-index: 3;
 }
-.effect a:after {
+.effect a.in:after {
   content: attr(title);
   visibility: hidden;
-  width: 250px;
+  width: 275px;
   height: 100%;
   display: flex;
   align-items: center;
   z-index: 400;
   font-size: 18px;
 }
-.effect a:nth-child(-n+4):after {
-  position: absolute;
-  top: 0;
-  left: 70px;
-  text-align: left;
-  justify-content: flex-start;
+.effect a.insta:after {
+  content: attr(title);
+  visibility: hidden;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 400;
+  font-size: 18px;
 }
-.effect a:nth-child(n+5):after {
-  position: absolute;
-  top: 0;
-  right: 70px;
-  justify-content: flex-end;
+.effect a.fb:after {
+  content: attr(title);
+  visibility: hidden;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 400;
+  font-size: 18px;
 }
+
 .effect a.fb {
   background-color: #3b5998;
 }
-.effect a.tw {
-  background-color: #00aced;
-}
-.effect a.g-plus {
-  background-color: #dd4b39;
-}
-.effect a.dribbble {
-  background-color: #ea4c89;
-}
-.effect a.pinterest {
-  background-color: #cb2027;
-}
+
 .effect a.insta {
   background-color: #bc2a8d;
 }
 .effect a.in {
   background-color: #007bb6;
 }
-.effect a.vimeo {
-  background-color: #1ab7ea;
-}
+
 
 
 /* cinna effect */
@@ -2018,21 +2014,83 @@
 .effect.cinna .buttons:hover a:not(:hover) {
   transform: scale(0.7);
 }
-.effect.cinna .buttons:hover a:hover {
-  padding-right: 190px;
+.effect.cinna .buttons:hover a.in:hover {
+  padding-right: 275px;
   border-radius: 5px;
 }
-.effect.cinna .buttons:last-child:hover a:last-child:hover  {
-  padding-right: 300px;
+
+.effect.cinna .buttons:hover a.insta:hover {
+  padding-right: 150px;
   border-radius: 5px;
 }
+
+.effect.cinna .buttons:hover a.fb:hover {
+  padding-right: 170px;
+  border-radius: 5px;
+}
+
 /**/
 .recipeCarousel .carousel-inner .carousel-item.active,
 .recipeCarousel .carousel-inner .carousel-item-next,
 .recipeCarousel .carousel-inner .carousel-item-prev {
     display: flex;
 }
-
+/*Telefonos */
+@media (max-width: 768px) {
+  .effect a {
+    text-decoration: none !important;
+    color: #fff;
+    width: 40px;
+    height: 60px;
+    display: inline;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 25px;
+    position: relative;
+    visibility: visible;
+    padding-left: 5px;
+  }
+  .effect a:after{
+    position: absolute;
+    top: 0;
+    margin-left: -24px;
+    left: 0px;
+    text-align: left;
+    justify-content: flex-start;
+    opacity: 0;
+  }
+  .effect a.fb {
+    padding-right: 170px;
+    border-radius: 5px;
+  
+    transform: scale(0.7);
+  }
+  .effect a.in {
+    padding-right: 275px;
+    border-radius: 5px;
+    
+    transform: scale(0.7);
+  }
+  
+  .effect a.insta {
+    padding-right: 150px;
+    border-radius: 5px;
+    transform: scale(0.7);
+  }
+  .effect a{
+    margin-bottom: 10px;
+  }
+  .effect.cinna a:after {
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+    visibility: visible;
+    opacity: 1;
+  }
+}
 /* medium and up screens */
 @media (min-width: 768px) {
     
@@ -2230,6 +2288,18 @@ font-size: 16px;
   border-radius: 0px 40px 0px 40px;
   border-right: 5px outset #1C6EA4;
   border-radius: 0px 40px 0px 40px;
+  overflow: hidden;
+}
+
+.recuadro::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-100%, -50%);
+  width: 0px;
+  height: 20px;
+  background: #000000;
 }
 .marco1{
   background-color: transparent;

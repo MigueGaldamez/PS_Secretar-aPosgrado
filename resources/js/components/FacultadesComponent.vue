@@ -2,7 +2,7 @@
     <div>
         <!-- Modal -->
         <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-dialog modal-lg ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
@@ -14,13 +14,15 @@
                                 <div class="mb-3 col-sm-6">
                                     <label for="formFile" class="form-label">Logo de la Facultad</label>
                                     <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <img :src="imagen" class="img-thumbnail" alt="...">
+                                    <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label  class="form-label">Nombre de la Facultad</label>
                                     <input v-model="facultad.nombre" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
+                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12 ">
                                     <label  class="form-label">Descripcion pequeña</label>
@@ -28,6 +30,7 @@
                                     <div id="passwordHelpBlock" class="form-text">
                                     {{charFaltantesD}}/255
                                     </div>
+                                    <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label  class="form-label">Informacion de contacto de Diplomado</label>
@@ -35,6 +38,7 @@
                                     <div id="passwordHelpBlock" class="form-text">
                                         {{charFaltantesC}}/120 | Puedes separar email, telefono con una ",". 
                                     </div>
+                                    <span class="text-danger" v-if="errores.contactoDiplomado">{{errores.contactoDiplomado[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label  class="form-label">Informacion de contacto de Posgrados</label>
@@ -42,14 +46,17 @@
                                     <div id="passwordHelpBlock" class="form-text">
                                         {{charFaltantesP}}/120 | Puedes separar email, telefono con una ",". 
                                     </div>
+                                    <span class="text-danger" v-if="errores.contactoPosgrado">{{errores.contactoPosgrado[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6" >
                                     <label class="form-label">Color Facultad</label>
                                     <input type="color" class="form-control form-control-color" id="exampleColorInput" v-model="facultad.color" title="Choose your color">
+                                    <span class="text-danger" v-if="errores.color">{{errores.conlor[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
                                     <input class="form-check-input" v-model="facultad.multidis" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label"  for="flexSwitchCheckDefault">Multi-Disciplinaria</label>
+                                    <span class="text-danger" v-if="errores.multidis">{{errores.multidis[0]}}</span>
                                 </div> 
                             </div>           
                         </div>
@@ -70,6 +77,9 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{facultades.from}} - {{facultades.to }} | Total: {{facultades.total}}</label>
+        </div>
         <div class="col-xm-12">
             <button @click="update=false; openModal();" type="button" class="btn btn-success ">
                 Nuevo
@@ -80,12 +90,15 @@
             </button>
         </div>
         <div class="row mt-1 mb-1">
-            <div class="col-sm-4">
-                <div class="border rounded">
-                    <label for="customRange3" class="form-label"> {{facultades.from}} - {{facultades.to }} total: {{facultades.total}}</label>
-                        <input type="range" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Top popover" class="form-range" min="1" v-model="pagination.per_page" v-bind:max="facultades.total" step="2" @change="list();" id="customRange3">
-                        <span class=" badge bg-secondary">{{pagination.per_page}}</span>
-                </div>
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
             </div>
         </div>
         <div class="row mt-1 mb-1">
@@ -171,6 +184,7 @@ export default {
                 color: '#CCCCCC',
                 multidis: 0,
                 descripcion: '',
+                imagen: false,
             },
             //objetos para el contador de caracteres
             charMaxC:120,//Maximo para contacto de diplomado
@@ -179,6 +193,8 @@ export default {
             charFaltantesD:255,//faltante para la descripcion
             charMaxP:120,//Maximo para contacto posgrado
             charFaltantesP:120,//faltante contacto posgrado
+            selImagen: false, //para la imagen del modal
+            errores: {},
             update:true,
             modal:0,
             titleModal:'',
@@ -261,6 +277,8 @@ export default {
                             this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
+                    this.closeModal();
+                    this.list();
                 }
                 catch(error)
                 {
@@ -292,6 +310,8 @@ export default {
                             this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
+                    this.closeModal();
+                    this.list();
                 }
                 catch(error)
                 {
@@ -301,8 +321,7 @@ export default {
                     }
                 }
             }
-            this.closeModal();
-            this.list();
+            
         },
         openModal(data={}) {
             this.modal=1
@@ -321,6 +340,7 @@ export default {
                 this.charFaltantesC = 120 -  (encodeURI(data.contactoDiplomado).split(/%..|./).length - 1);
                 this.charFaltantesD = 255 - (encodeURI(data.descripcion).split(/%..|./).length - 1);
                 this.charFaltantesP = 120 - (encodeURI(data.contactoPosgrado).split(/%..|./).length - 1);
+                this.facultad.imagen = false;
             }
             else
             {
@@ -336,9 +356,12 @@ export default {
                 this.charFaltantesC = 120;
                 this.charFaltantesD = 255;
                 this.charFaltantesP = 120;
+                this.facultad.imagen = true;
             }
         },
         closeModal() {
+            this.errores ={};
+            this.selImagen = false;
             this.$refs.urlImg.value=null;
             this.imagenMiniatura='';
             this.modal=0
@@ -359,6 +382,8 @@ export default {
         },
         obtenerImagen(e)
         {
+            this.facultad.imagen = true;
+            this.selImagen = true;
             this.facultad.urlImagen=e.target.files[0];
             this.cargarImagen(this.facultad.urlImagen); 
         },

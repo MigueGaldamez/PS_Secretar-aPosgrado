@@ -49,54 +49,51 @@
 </div>
 <div class="container mt-2">
     <div class="row"> 
-        <div class="col-6 mx-auto">
+        <div class="col-12 col-md-6  mx-auto">
             <div class="card mb-3 recuadro">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-4 ">
                     <img src="{{asset('img/organos/rector.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-8">
                     <div class="card-body">
                         <h5 class="card-title">Msc. Roger Armando Arias</h5>
                         <h6 class="card-title text-muted">Rector de la Universidad de El Salvador</h6>
                         <p class="card-text">Máximo funcionario ejecutivo de la Universidad y tiene a su cargo la representación legal de la Universidad de El Salvador. Ejecuta y hace cumplir las resoluciones de la Asamblea General Universitaria y del Consejo Superior Universitario</p>
-                        <p class="card-text"><small class="text-muted">Periodo 2019-2023</small></p>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row"> 
-        <div class="col-6">
+    <div class="row col-12 col-md-10 mx-auto"> 
+        <div class="col-12 col-md-6">
             <div class="card mb-3 recuadro">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-4">
                     <img src="{{asset('img/organos/vicerrector académico.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-8">
                     <div class="card-body">
                         <h5 class="card-title">PhD. Raúl Ernesto Azcúnaga López</h5>
                         <h6 class="card-title text-muted">Vicerrector Académico de la Universidad de El Salvador</h6>
                         <p class="card-text">Coordinar y supervisar las funciones académicas, en conjunto con las autoridades de las Facultades.</p>
-                        <p class="card-text"><small class="text-muted">Periodo 2019-2023</small></p>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card mb-3 recuadro">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-4">
                     <img src="{{asset('img/organos/vicerrector administrativo.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-8">
                     <div class="card-body">
                         <h5 class="card-title">Ing. Juan Rosa Quintanilla</h5>
                         <h6 class="card-title text-muted">Vicerrector Administrativo de la Universidad de El Salvador</h6>
                         <p class="card-text">Dirige, supervisa y evalúa el sistema administrativo de la Universidad, señalando las pautas para que la administración cumpla sus funciones en forma eficiente y eficaz.</p>
-                        <p class="card-text"><small class="text-muted">Periodo 2019-2023</small></p>
                     </div>
                     </div>
                 </div>
@@ -104,6 +101,55 @@
         </div>
         
        
+    </div>
+    <div class="row"> 
+         <div class="col-12 col-md-4">
+            <div class="card mb-3 recuadro">
+                <div class="row g-0">
+                  
+                    <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title">Ing. Francisco Alarcón</h5>
+                        <h6 class="card-title text-muted">Secretario General de la Universidad de El Salvador</h6>
+                        <p class="card-text">Certifica las resoluciones y acuerdos del Consejo Superior Universitario (CSU), vela por la publicidad oficial de acuerdos y resoluciones, autentica con su firma documentos oficiales, presenta al Rector una nómina de asuntos y solicitudes pendientes de resolver por el CSU para el establecimiento de la agenda a tratar y realiza publicaciones de los ordenamientos en el Diario Oficial.</p>
+                      
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="col-12 col-md-4">
+            <div class="card mb-3 recuadro">
+                <div class="row g-0">
+                  
+                    <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title">Licdo. Rafael Humberto Peña Marín  </h5>
+                        <h6 class="card-title text-muted">Fiscal General</h6>
+                        <p class="card-text">El Fiscal General vela por el estricto cumplimiento de la Ley Orgánica de La Universidad de El Salvador, de los reglamentos y de las normas válidamente emanadas de los órganos competentes que integran el gobierno universitario, así como de las demás leyes que fueren aplicables a las actividades de la Universidad.</p>
+                      
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="col-12 col-md-4">
+            <div class="card mb-3 recuadro">
+                <div class="row g-0">
+                  
+                    <div class="col-md-12">
+                    <div class="card-body">
+                        <h5 class="card-title">Licdo. Luis Antonio Mejía Lipe</h5>
+                        <h6 class="card-title text-muted">Defensor de los Derechos Universitarios</h6>
+                        <p class="card-text">Son atribuciones y deberes del Defensor de garantizar la defensa de los derechos universitarios a través de asesoría jurídica a los afectados por supuestas violaciones a sus derechos e interposición de peticiones o recursos administrativos en su nombre o representación.</p>
+                      
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
     </div>
 </div>
 

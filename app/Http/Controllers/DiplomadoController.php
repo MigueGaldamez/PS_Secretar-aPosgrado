@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DiplomadoRequest;
 use App\Models\Diplomado;
 use Illuminate\Http\Request;
 use PhpParser\Node\Expr\FuncCall;
@@ -17,7 +18,7 @@ class DiplomadoController extends Controller
         $per_page= $request->per_page;
         return Diplomado::paginate($per_page);
     }
-    public function store(Request $request)
+    public function store(DiplomadoRequest $request)
     {
         try
         {
@@ -35,7 +36,7 @@ class DiplomadoController extends Controller
             return $e->getMessage();
         }
     }
-    public function update(Request $request, Diplomado $diplomados_api)
+    public function update(DiplomadoRequest $request, Diplomado $diplomados_api)
     {
         try
         {

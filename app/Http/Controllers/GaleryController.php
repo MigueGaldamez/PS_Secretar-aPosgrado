@@ -1,15 +1,18 @@
 <?php
 namespace App\Http\Controllers;
+
+use App\Http\Requests\GaleryRequest;
 use App\Models\Galery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 class GaleryController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return Galery::get();
+        $per_page= $request->per_page;
+        return Galery::paginate($per_page);
     }
-    public function store(Request $request)
+    public function store(GaleryRequest $request)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -34,7 +37,7 @@ class GaleryController extends Controller
             return "No has elejido un archivo.";
         }  
     }
-    public function update(Request $request, galery $galery_api)
+    public function update(GaleryRequest $request, galery $galery_api)
     {
         if($request->hasFile('urlImagen'))
         {

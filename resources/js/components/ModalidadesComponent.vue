@@ -28,10 +28,12 @@
                                         <option value="Amarillo">Amarillo</option>
                                         <option value="Gris">Gris</option>
                                     </select>
+                                    <span class="text-danger" v-if="errores.color">{{errores.color[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
                                     <label for="nombre" class="form-label">Nombre de la modalidad</label>
                                     <input v-model="modalidad.nombre" class="form-control" type="text" placeholder="Modalidad" aria-label="nombre">
+                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                                 </div>  
                             </div>       
                         </div>
@@ -112,7 +114,6 @@
                     color: '',
                 },
                 cargando:  false,
-                errors: [],
                 errores:{},
                 id:0,
                 update:true,
@@ -244,13 +245,14 @@
                                 this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
                             }
                             });
+                            this.closeModal();
+                            this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
@@ -276,18 +278,17 @@
                                 this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
                             }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
-                this.closeModal();
-                this.list();
             },
             openModal(data={}) 
             {
@@ -322,6 +323,7 @@
             closeModal() 
             {
                 this.modal=0
+                this.errores = {};
             },
         },
         created()
