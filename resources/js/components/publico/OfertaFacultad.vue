@@ -3,6 +3,7 @@
     <div class="colorGris text-center py-4 mt-4 stickyHeaderFacul"  :style="'background-color:'+facultad.color+' !important; '">
         <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">{{facultad.nombre}}</h1>
         <h5 class="text-light textoSuavecito">Aquí se muestran los posgrados de la facultad, tanto los ofertados como los no ofertados. </h5>
+        <a v-if="facultad.link != null" :href="facultad.link" target="_blank" class="text-light">Visitar Pagina oficial</a>
     </div>
         <div class="titulohr mb-2 mt-2"></div>
     <div class="container-fluid mb-2">

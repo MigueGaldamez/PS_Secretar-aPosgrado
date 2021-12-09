@@ -144,9 +144,12 @@ $(function() {
 });
 
 /**/ 
-let items = document.querySelectorAll('#informacionPosgrado.carousel .carousel-item')
 
-items.forEach((el) => {
+let items = document.querySelectorAll('#informacionPosgrado.carousel .carousel-item');
+
+if(undefined !== items){
+
+  items.forEach((el) => {
   
     let minPerSlide = 4
     let next = el.nextElementSibling
@@ -157,9 +160,11 @@ items.forEach((el) => {
     for (var i=1; i<minPerSlide; i++) {
         if (!next) {
             // wrap carousel by using first child
-            if(items.length>=5){
-            next = items[0]
-            }
+            
+              if(items.length>=5){
+              next = items[0]
+              }
+          
         }
        
         if(next!=null){
@@ -171,18 +176,23 @@ items.forEach((el) => {
     }
    
 })
+}
+
 
 $(function(){
-  var stickyHeaderTop = $('.stickyHeaderFacul').offset().top;
-  if(stickyHeaderTop){
-    $(window).scroll(function(){
-      if( $(window).scrollTop()> stickyHeaderTop-46 ) {
-              $('.stickyHeaderFacul').css({position: 'fixed', top: '38px'});
-            
-      } else {
-              $('.stickyHeaderFacul').css({position: 'static', top: '38px'});
-      }
-});
-  }
-   
+  var seleccionar = document.querySelector('.stickyHeaderFacul') !== null;
+  if(seleccionar)
+  {
+      var stickyHeaderTop = $('.stickyHeaderFacul').offset().top;
+    if(stickyHeaderTop){
+      $(window).scroll(function(){
+            if( $(window).scrollTop()> stickyHeaderTop-46 ) {
+                    $('.stickyHeaderFacul').css({position: 'fixed', top: '38px'});
+                  
+            } else {
+                    $('.stickyHeaderFacul').css({position: 'static', top: '38px'});
+            }
+      });
+    }
+   }
 });

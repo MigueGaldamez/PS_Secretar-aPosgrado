@@ -10334,10 +10334,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.indexStart + this.pageSize;
     },
     paginated: function paginated() {
-      return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+      if (this.posgrado.inv !== undefined) {
+        return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+      } else {
+        return 0;
+      }
     },
     paginas: function paginas() {
-      return Array.from(Array(Math.ceil(this.posgrado.inv.length / this.pageSize)).keys());
+      if (this.posgrado.inv !== undefined) {
+        return Array.from(Array(Math.ceil(this.posgrado.inv.length / this.pageSize)).keys());
+      } else {
+        return 0;
+      }
     }
   },
   methods: {
@@ -10394,9 +10402,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     this.list();
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   }
 });
 
@@ -10538,10 +10543,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return this.indexStart + this.pageSize;
     },
     paginated: function paginated() {
-      return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
+      if (this.posgrado.tesis !== undefined) {
+        return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
+      } else {
+        return 0;
+      }
     },
     paginas: function paginas() {
-      return Array.from(Array(Math.ceil(this.posgrado.tesis.length / this.pageSize)).keys());
+      if (this.posgrado.tesis !== undefined) {
+        return Array.from(Array(Math.ceil(this.posgrado.tesis.length / this.pageSize)).keys());
+      } else {
+        return 0;
+      }
     }
   },
   methods: {
@@ -11944,6 +11957,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -61754,7 +61768,18 @@ var render = function() {
           _vm._v(
             "Aquí se muestran los posgrados de la facultad, tanto los ofertados como los no ofertados. "
           )
-        ])
+        ]),
+        _vm._v(" "),
+        _vm.facultad.link != null
+          ? _c(
+              "a",
+              {
+                staticClass: "text-light",
+                attrs: { href: _vm.facultad.link, target: "_blank" }
+              },
+              [_vm._v("Visitar Pagina oficial")]
+            )
+          : _vm._e()
       ]
     ),
     _vm._v(" "),

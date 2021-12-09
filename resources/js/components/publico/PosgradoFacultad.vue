@@ -116,10 +116,18 @@
             return this.indexStart + this.pageSize;
             },
             paginated() {
-            return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
+                if(this.posgrado.tesis!==undefined){
+                    return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
+                }else{
+                    return 0;
+                }
             },
             paginas(){
-             return Array.from(Array(Math.ceil(this.posgrado.tesis.length/this.pageSize)).keys())
+                if(this.posgrado.tesis!==undefined){
+                    return Array.from(Array(Math.ceil(this.posgrado.tesis.length/this.pageSize)).keys())
+                }else{
+                    return 0;
+                }
 
             }
         },

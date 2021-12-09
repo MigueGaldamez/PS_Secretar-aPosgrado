@@ -18,7 +18,7 @@ class CreateInformacionsTable extends Migration
             $table->tinyText('urlLogo');
             $table->mediumText('quienesSomos');
             $table->mediumText('mision');
-            $table->meidumText('vision');
+            $table->mediumText('vision');
             $table->string('correo');
             $table->tinyText('horarioAtencion');
             $table->timestamps();
