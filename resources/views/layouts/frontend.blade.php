@@ -65,7 +65,7 @@
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
+                                    <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Académica</a>
                                 </li>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -87,6 +87,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="btn btn-danger text-light btn-lg">Catalogo</a>
+                                </li>
                                 {{--
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
@@ -101,7 +104,7 @@
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('inicio') ? 'activoNav' : '' }}" href="{{ route('inicio') }}">Inicio</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta','ofertaFacultad') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Academica</a>
+                                <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta','ofertaFacultad') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Académica</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
@@ -123,6 +126,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="btn btn-danger">Catalogo</a>
+                            </li>
                                 {{--
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
@@ -131,9 +137,9 @@
                         @endif  
                     </div>
                 </div>
-                 <div class="catalogoIcono">
-                <a href="{{route('catalogoC')}}">
-                    <img class="img-fluid" src="{{asset('img/catalogo/ICONO DE CATALOGO negro.png')}}" alt="">
+                 <div class="catalogoIcono d-none">
+                <a  href="{{route('catalogoC')}}">
+                    <img class="img-fluid" src="{{asset('img/catalogo/CATALOGOROJO.svg')}}" alt="">
                 </a>
             </div>
             </nav>

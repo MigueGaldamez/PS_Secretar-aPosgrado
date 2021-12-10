@@ -66,7 +66,7 @@
             <div class="col col-12 col-lg-8 col-sm-12">
                 <div class="row">
                     <div class="box col-11 mt-4 mx-auto  bg-griscito">
-                        <h1 class="textoGris text-uppercase textoDuro">Quienes somos</h1>
+                        <h1 class="textoGris text-uppercase textoDuro">¿Quiénes somos?</h1>
                         <div class="titulohr mb-4"></div>
                         <p>{{$informacion->quienesSomos}}</p>
                     </div>
@@ -75,14 +75,14 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                         <div class="box box-down pink  bg-griscito">
                             <img class="imgMVV" src="{{asset('img/iconos/mision.png ')}}" alt="" height="90">
-                            <h2>Mision</h2>
+                            <h2>Misión</h2>
                             <p>{{$informacion->mision}}</p>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 ">
                         <div class="box box-down cyan  bg-griscito">
                         <img class="imgMVV" src="{{asset('img/iconos/vision.png ')}}" alt="" height="90">
-                            <h2>Vision</h2>
+                            <h2>Visión</h2>
                             <p>{{$informacion->vision}}</p>
                         </div>
                     </div>
