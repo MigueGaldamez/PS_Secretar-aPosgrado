@@ -10818,7 +10818,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       tesi: {
         id: 0,
         posgrado: null,
-        publicado: 2021,
+        publicado: null,
         titulo: '',
         autor: '',
         link: '',
@@ -11139,7 +11139,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           this.titleModal = "Agregar Tesis";
           this.id = 0;
           this.tesi.posgrado = 0;
-          this.tesi.publicado = "";
+          this.tesi.publicado = new Date().getFullYear();
+          ;
           this.tesi.titulo = "";
           this.tesi.autor = "";
           this.tesi.link = "";

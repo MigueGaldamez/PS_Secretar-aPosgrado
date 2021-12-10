@@ -133,11 +133,10 @@
                 
                 <div class="row">
                     <div class="box col-10 mt-4 mb-4 mx-auto  bg-griscito">
-                        <h1 class="textoGris text-uppercase textoDuro">Informacion de contacto</h1>
+                        <h1 class="textoGris text-uppercase textoDuro">Información de contacto</h1>
                         <div class="titulohr mb-0"></div>
                         <p class="my-0">No te olvides de seguirnos en nuestras redes</p>
-                         <div class="effect cinna container-fluid text-start px-0 mx-0">
-    
+                        <div class="effect cinna container-fluid text-start px-0 mx-0">
                             <div class="buttons row bg-danger">
                                 <div class="col">
                                     <a href="#" class="fb" title="@PosgradosUES"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -148,10 +147,11 @@
                                 <div class="col">    
                                     <a href="#" class="in" title="Secretaria.posgrado@ues.edu.sv"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
                                 </div>
+                                <div class="col">    
+                                    <a href="https://www.youtube.com/channel/UC7jidcsLyjpLAfMhT1GPa2A/videos" class="in" title="PosgradosUES"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                </div>
                             </div>
                         </div>
-                        
-                      
                     </div>
                 </div>   
             </div>

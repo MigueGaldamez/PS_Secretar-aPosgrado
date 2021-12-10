@@ -15,10 +15,9 @@ class CreateValoresTable extends Migration
     {
         Schema::create('valores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('nombre');
+            $table->string('nombre');
             $table->unsignedBigInteger('informacion_id')->unsigned();
             $table->foreign('informacion_id')->references('id')->on('informacions');
-            $table->timestamps();
         });
     }
 

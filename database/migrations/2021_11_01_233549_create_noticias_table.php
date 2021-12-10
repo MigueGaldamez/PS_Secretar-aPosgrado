@@ -15,10 +15,11 @@ class CreateNoticiasTable extends Migration
     {
         Schema::create('noticias', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('urlImagen');
             $table->string('titulo');
-            $table->date('fechaPublicacion');
-            $table->string('autor');
-            $table->timestamps();
+            $table->string('subtitulo');
+            $table->date('creado');
+            $table->boolean('publicado');
         });
     }
 

@@ -8,6 +8,7 @@ use App\Models\Valores;
 class Informacion extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $fillable = [
         'urlLogo',
         'quienesSomos',

@@ -182,7 +182,7 @@
                 {
                     id:0,
                     posgrado:null,
-                    publicado:  2021,
+                    publicado: null,
                     titulo:'',
                     autor:'',
                     link:'',
@@ -388,7 +388,7 @@
                         this.titleModal = "Agregar Tesis";
                         this.id=0;
                         this.tesi.posgrado= 0;
-                        this.tesi.publicado= "";
+                        this.tesi.publicado= new Date().getFullYear();;
                         this.tesi.titulo = "";
                         this.tesi.autor = "";
                         this.tesi.link = "";

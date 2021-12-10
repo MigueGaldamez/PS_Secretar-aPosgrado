@@ -18,7 +18,8 @@ class CreateEquipoTrabajosTable extends Migration
             $table->string('urlImagen');
             $table->string('nombre',100);
             $table->string('cargo',100);
-            $table->mediumText('descripcion');
+            $table->text('descripcion');
+            $table->string('contacto',50);
         });
     }
 

@@ -53,7 +53,7 @@
          {{--inicio cards--}}
         <div class="row">
             <div class="col historia">
-                <h3 class="textoDuro  lh-sm "><b>Acerca de la Universidad de El Salvador UES</b></h3>
+                <h3 class="textoDuro  lh-sm "><b>Acerca de la Universidad de El Salvador</b></h3>
                 {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
                 <p class="has-dropcap textoSuavecito2 parrafo"> A lo largo de su existencia la Universidad de El Salvador ha sido testigo y protagonista de importantes cambios políticos y sociales del país, ha superado daños en infraestructuras causados por terremotos, ocupaciones militares que prolongaron el cierre del campus en varias ocasiones, represión y persecución política de sus estudiantes y trabajadores en un contexto de guerra civil.
 Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carreras en modalidad presencial y 7 a distancia; 71 maestrías, 9 doctorados, 27 especialidades médicas y 44 diplomados como parte de la educación continua.

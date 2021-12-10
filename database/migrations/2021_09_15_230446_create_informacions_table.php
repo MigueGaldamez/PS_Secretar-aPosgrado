@@ -16,12 +16,11 @@ class CreateInformacionsTable extends Migration
         Schema::create('informacions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyText('urlLogo');
-            $table->mediumText('quienesSomos');
-            $table->mediumText('mision');
-            $table->mediumText('vision');
+            $table->text('quienesSomos');
+            $table->text('mision');
+            $table->text('vision');
             $table->string('correo');
             $table->tinyText('horarioAtencion');
-            $table->timestamps();
         });
     }
 
