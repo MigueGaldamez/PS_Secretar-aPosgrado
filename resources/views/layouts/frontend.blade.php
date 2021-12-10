@@ -140,7 +140,7 @@
                 </div>
                 <div class="catalogoIcono">
                    
-                    <a class="btn btn-danger text-light">Catálogo 2022</a>
+                    <a href="{{route('catalogoC')}}" target="_blank" class="btn btn-danger text-light">Catálogo 2022</a>
                     
                 </div>
             </nav>

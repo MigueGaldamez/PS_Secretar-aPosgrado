@@ -73,6 +73,9 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
         </div>
         
 </div>
+<div class="text-center colorGris text-light py-3 fuenteHistoria">
+  <h2>La UES a través del tiempo</h2>
+</div>
 {{--INICIO--}}
 <div class="parallax my-4" style="background-image: linear-gradient(black, black),url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Escuela_de_Filosof%C3%ADa%2C_Facultad_de_Ciencias_y_Humanidades_%28UES%29.jpg/1200px-Escuela_de_Filosof%C3%ADa%2C_Facultad_de_Ciencias_y_Humanidades_%28UES%29.jpg'); background-blend-mode: saturation;">
 <div class="fechas mb-4 mt-4"> 
@@ -83,7 +86,7 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
           <div class="entry box box-down red bg-dark text-light">
             <div class="title text-light">{{$fecha->anio}}</div>
             <div class="body text-light">
-              <p> {{$fecha->descripcion}}.</p>
+              <p> {{$fecha->descripcion}}..</p>
             </div>
           </div>
         
@@ -92,7 +95,7 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
           <div class="entry box box-down red card">
             <div class="title big">{{$fecha->anio}}</div>
             <div class="body">
-               <p> {{$fecha->descripcion}}.</p>
+               <p> {{$fecha->descripcion}}..</p>
             </div>
           </div>
         @endif

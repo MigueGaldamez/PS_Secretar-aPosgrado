@@ -148,7 +148,7 @@
                                     <a href="#" class="in" title="secretaria.posgrado@ues.edu.sv"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="col">    
-                                    <a href="https://www.youtube.com/channel/UC7jidcsLyjpLAfMhT1GPa2A/videos" class="in" title="PosgradosUES"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    <a class="youtube" href="https://www.youtube.com/channel/UC7jidcsLyjpLAfMhT1GPa2A/videos" class="in" title="PosgradosUES"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>

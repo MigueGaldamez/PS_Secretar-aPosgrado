@@ -1984,7 +1984,9 @@
 .effect a.in {
   background-color: #007bb6;
 }
-
+.effect a.youtube {
+  background-color: #f70d28;
+}
 
 
 /* cinna effect */
@@ -2335,4 +2337,10 @@ font-size: 16px;
 .negroBlanco{
   background-color: #000 !important;
   color:#fff !important;
+}
+.fuenteHistoria{
+  font-family: 'MyWebFont';
+  
+  src: url('/fonts/Merriweather-Italic.ttf')  format('truetype'), /* Safari, Android, iOS */
+
 }
