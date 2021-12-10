@@ -9,55 +9,68 @@
     </div>
 
     <div class="container px-0 col-10">
-        <div class="row negativoBanner ">          
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('oferta')}}">
+        <div class="row negativoBanner bg-light ">          
+            <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('oferta')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                         <div class="col-4">
                             <img src="{{asset('img/iconos/principal4.png')}}" class="imagenIconoIni">
                         </div>
                         <div class="col-8">
-                            <h4 class="text-start text-uppercase textoDuro3"><b>Oferta Academica</b></h4>
+                            <h4 class="text-start textoDuro3"><b>Oferta Académica</b></h4>
                         </div>
                     </div>         
                 </div>
             </a>
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('investigaciones')}}">
+            <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('investigaciones')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                         <div class="col-3">
                             <img src="{{asset('img/iconos/principal1.png')}}" class="imagenIconoIni">
                         </div>
                         <div class="col-9">
-                            <h4 class="text-start text-uppercase textoDuro3"><b>Investigaciones</b></h4>
+                            <h4 class="text-start textoDuro3"><b>Investigaciones</b></h4>
                         </div>
                     </div>         
                 </div>
             </a>
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('diplomados')}}">
+             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
+                <div class="card-body py-0 px-1">
+                    <div class="row">
+                       <div class="col-3">
+                            <img src="{{asset('img/iconos/principal1.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-9">
+                            <h4 class="text-start  textoDuro3"><b>Publicaciones</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a>   
+            <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('diplomados')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                         <div class="col-4">
                             <img src="{{asset('img/iconos/principal2.png')}}" class="imagenIconoIni">
                         </div>
                         <div class="col-8">
-                            <h4 class="text-start text-uppercase textoDuro3"><b>Educacion Continua</b></h4>
+                            <h4 class="text-start   textoDuro3"><b>Educación Continua</b></h4>
                         </div>
                     </div>         
                 </div>
             </a>
-            <a class="col col-lg-3 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
+            <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                         <div class="col-4">
                             <img src="{{asset('img/iconos/principal3.png')}}" class="imagenIconoIni">
                         </div>
                         <div class="col-8">
-                            <h4 class="text-start text-uppercase textoDuro3"><b>Tesis de Posgrados</b></h4>
+                            <h4 class="text-start  textoDuro3"><b>Tesis de Posgrados</b></h4>
                         </div>
                     </div>         
                 </div>
             </a>   
+              
         </div>
     </div>
    
@@ -188,7 +201,7 @@
                         <p>Universidad de El Salvador, única institución pública de educación superior de la República de El Salvador con reconocimiento en la excelencia académica.</p>
                         <img class="img-fluid mt-1 mb-3" src="{{asset('img/acreditacion/ranking.png')}}" alt="">
                         <p>
-                        Acreditada por en 2019 por el Instituto de Alto Consejo de la Evaluación de la Investigación de la Educación Superior (Hcéres-Francia)
+                        Acreditada en 2019 por el Instituto de Alto Consejo de la Evaluación de la Investigación de la Educación Superior (Hcéres-Francia)
                         </p>
                         <div class="text-center">
                             <img class="mx-auto" src="{{asset('img/acreditacion/hceres.png')}}" alt="" height="150px">
