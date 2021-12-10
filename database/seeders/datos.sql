@@ -22,16 +22,16 @@ INSERT INTO `enlaces` (`id`, `urlImagen`, `titulo`, `link`) VALUES
 COMMIT;
 
 INSERT INTO `equipoTrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES
-(1, '/storage/equipo/evelin.jpg', 'Evelin Patricia Gutiérrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias Políticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de Posgrados de la Universidad de El Salvador con el objetivo de unificar\\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.'),
-(2, '/storage/equipo/nancy.jpg', 'Nancy Orellana', 'Área de comunicaciones', 'Licenciada en Periodismo, Nancy Orellana, asignada para en el área de Comunicaciones de la Secretaría de Posgrados'),
-(3, '/storage/equipo/sandra.jpg', 'Sandra Hernández', 'Asistente Administrativo', 'Sandra Hernández, Asistente Administrativo de la Secretaría de Posgrado.');
+(1, '/storage/equipo/evelin.jpg', 'Evelin Patricia Gutiérrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias Políticas, Evelin Gutiérrez, asignada como coordinadora de la Secretaría de Posgrados de la Universidad de El Salvador con el objetivo de unificar el sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.'),
+(2, '/storage/equipo/nancy.jpg', 'Nancy Orellana', 'Área de comunicaciones', 'Licenciada Nancy Orellana, asignada en el área de Comunicaciones de la Secretaría de Posgrados: trabaja con la información, investigación, redacción, edición y presentación de contenidos en las plataformas web de la Secretaría de Posgrados y los sistemas de posgrados de la Universidad de El Salvador'),
+(3, '/storage/equipo/sandra.jpg', 'Sandra Hernández', 'Asistente Administrativo', 'Licenciada Sandra Hernández, Asistente Administrativo de la Secretaría de Posgrado encargada de asistir en el buen funcionamiento de la Secretaría de Posgrado de la Universidad de El Salvador, realizando labores administrativas.');
 COMMIT;
 
-INSERT INTO `reseniaHistoricas` (`id`, `anio`, `importancia`, `descripcion`) VALUES
-(1, 1841, 1, 'Por decreto de la Asamblea Legislativa, la Universidad de El Salvador se crea el 16 de febrero, siendo la primera universidad en el territorio nacional además de ser la única Universidad pública hasta la actualidad.'),
+INSERT INTO `reseniaHistoricas` (`id`, `anio`, `importancia`, `descripcion`,`contacto`) VALUES
+(1, 1841, 1, 'Por decreto de la Asamblea Legislativa, la Universidad de El Salvador se crea el 16 de febrero, siendo la primera universidad en el territorio nacional además de ser la única Universidad pública hasta la actualidad.','evelin.gutierrez@ues.edu.sv'),
 (2, 1843, 2, 'Inicia sus actividades impartiendo matemáticas puras, lógica,\r\nmoral, metafísica y física general.'),
-(3, 1880, 2, 'por resolución del Poder Ejecutivo se subdividió en Facultades, algunas de las cuales desaparecieron tiempo después y otras nuevas fueron creadas.'),
-(4, 1937, 2, 'por solicitud de las autoridades universitarias, el Gobierno de la República formaliza la compraventa de 20 manzanas de terreno de la\r\nfinca San Carlos, ubicada al norte de la ciudad de San Salvador.'),
+(3, 1880, 2, 'por resolución del Poder Ejecutivo se subdividió en Facultades, algunas de las cuales desaparecieron tiempo después y otras nuevas fueron creadas.','nancy.guevara@ues.edu.sv'),
+(4, 1937, 2, 'por solicitud de las autoridades universitarias, el Gobierno de la República formaliza la compraventa de 20 manzanas de terreno de la\r\nfinca San Carlos, ubicada al norte de la ciudad de San Salvador.','sandra.hernadez@ues.edu.sv'),
 (5, 1947, 1, 'La UES inicia las obras de construcción de la actual Ciudad\r\nUniversitaria.'),
 (6, 1949, 2, 'Se amplía el predio de la UES mediante la compraventa de 19 manzanas más, aunque su campus central está ubicado en el\r\ndepartamento de San Salvador con 9 Facultades, también, cuenta con tres sedes departamentales: la Facultad Multidisciplinaria Occidental, en el departamento de Santa Ana, la Facultad Multidisciplinaria Paracentral, en el departamento de San Vicente y la Facultad Multidisciplinaria Oriental, en el departamento de San Miguel.'),
 (7, 1992, 2, 'Después de los Acuerdos de Paz que puso fin al conflicto armado\r\nen el país, la UES logra recuperar su patrimonio físico para continuar\r\ncon la excelencia académica, además se el artículo 61 de la\r\nConstitución de la República de El Salvador garantiza que la\r\nUniversidad de El Salvador goza de autonomía académica,\r\nadministrativa y financiera.'),

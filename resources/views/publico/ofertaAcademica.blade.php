@@ -23,8 +23,7 @@
 @include('publico.cabecera',['titulo' => 'Oferta Académica','descripcion'=>'Oferta académica por facultades.'])
 </div>
 <div class="colorGris text-center py-4 mt-4">
-    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Titulo Información</h1>
-    <h5 class="text-light textoSuavecito">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </h5>
+    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Facultades Sede Central</h1>
 </div>
 <div class="container mt-4">
     <div class="row">
@@ -44,8 +43,7 @@
     </div>
 </div>
 <div class="colorGris text-center py-4 ">
-    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Sedes de nuestra Universidad</h1>
-    <h5 class="text-light textoSuavecito">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </h5>
+    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Facultades Sedes Multidisciplinarias</h1>
 </div>
 <div class="container mt-4">
     <div class="row">

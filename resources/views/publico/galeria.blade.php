@@ -133,9 +133,5 @@
         </div>
     </div>
 </div>
-<div class="py-2 colorGris my-4">
-    <h1 class="textoSuavecito text-center text-light"><span >Mas Contenidos</span></h1>
-    <h6 class="textoDuro text-center text-light"><span >Mas Conteidos</span></h6>
-</div>
 {{--FIN--}}
 @endsection
