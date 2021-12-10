@@ -18,7 +18,11 @@ INSERT INTO `enlaces` (`id`, `urlImagen`, `titulo`, `link`) VALUES
 (1, '/storage/enlace/7sR80VKxoWZ3Gc4JlLT9XS0ksEeL8EL0t7lSYoA9.png', 'Secretaría de Investigaciones Científicas de la Universidad de El Salvador', 'https://sic.ues.edu.sv/'),
 (2, '/storage/enlace/VluYBvogyyXm9DXKR3KeZYwVhM34XmnQ79K356Wn.png', 'Secretaría de Asuntos Académicos de la Universidad de El Salvador', 'https://academica.ues.edu.sv/'),
 (3, '/storage/enlace/tmVhzq1PqcsjfqYAQsftDg30CJ2yPgkQod5XPSgf.jpg', 'Secretaría de Proyección Social de la Universidad de El Salvador', 'http://proyeccionsocial.ues.edu.sv/index.php/proyeccion-social'),
-(4, '/storage/enlace/DVyqR5BFXYODWtR0R1KdrEUjS8EA4ySKqiOoLou6.png', 'Secretaría de Relaciones Nacionales e Internacionales de la Universidad de El Salvador', 'https://www.facebook.com/srniues/');
+(4, '/storage/enlace/DVyqR5BFXYODWtR0R1KdrEUjS8EA4ySKqiOoLou6.png', 'Secretaría de Relaciones Nacionales e Internacionales de la Universidad de El Salvador', 'https://www.facebook.com/srniues/'),
+(5, '/storage/enlace/8CR8UNsLz3yN1fMvRKOrmb0od1iRmjTzSy36aRqh.png', 'Biblioteca Central', 'https://biblioteca.ues.edu.sv/'),
+(6, '/storage/enlace/SK9IyDUl42WwtWEckRK3fV9skqShCeExZamwqjCp.png', 'Repositorio Institucional', 'http://ri.ues.edu.sv/'),
+(7, '/storage/enlace/iCVXGjbj7t9Gh2HiJKXLFc8fIdLjYhPg91PLuUqi.jpg', 'Consorcio de Bibliotecas Universitarias de El Salvador', 'http://www.cbues.org.sv/'),
+(8, '/storage/enlace/i4pt9BcVablnEUPKnNzQ4NmjOupbHBHjWFOEVxXs.png', 'Portal de Revistas de la Universidad de El Salvador', 'https://revistas.ues.edu.sv/');
 COMMIT;
 
 INSERT INTO `equipoTrabajos` (`id`, `urlImagen`, `nombre`, `cargo`, `descripcion`) VALUES

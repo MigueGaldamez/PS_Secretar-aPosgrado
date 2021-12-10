@@ -35,7 +35,7 @@
                         <br><a href="{{$enlace->link}}" class="">Visitar</a>
                     </div>
                     <div class="col col-12 col-lg-4 my-n3">
-                        <img src="{{$enlace->urlImagen}}" alt="" height="150" width="100%" class="pe-0">
+                        <img src="{{$enlace->urlImagen}}" alt="" height="150" class="pe-0">
                     
                     </div>
                 </div>
