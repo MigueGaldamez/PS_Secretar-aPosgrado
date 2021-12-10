@@ -44,7 +44,7 @@
     </div>
 </div>
 <div class="colorGris text-center py-4 ">
-    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Facultades Sedes Multidisciplinarias</h1>
+    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Facultades Multidisciplinarias</h1>
 </div>
 <div class="container mt-4">
     <div class="row">

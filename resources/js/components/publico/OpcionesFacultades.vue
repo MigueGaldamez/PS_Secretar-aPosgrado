@@ -5,7 +5,21 @@
             <div class="row mx-auto my-auto justify-content-center">
                 <div id="informacionPosgrado" class="carousel slide recipeCarousel" data-bs-interval="false">
                     <div class="carousel-inner siOv" role="listbox">
-                        <div v-for="facultad in facultades" :key="facultad.id" class="carousel-item active">
+                         <div class="carousel-item active">
+                            <div class="col-md-3 col-6 carou">
+                                <div role="navigation" class="cardOv primary-navigation">
+                                    <ul>  
+                                        <li><a href="#">Facultad</a>
+                                            <ul class="dropdown">
+                                                
+                                            </ul>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-for="facultad  in facultades" :key="facultad.id" class="carousel-item">
                             <div class="col-md-3 col-6 carou">
                                 <div role="navigation" class="cardOv primary-navigation">
                                     <ul>  
@@ -20,6 +34,7 @@
                                 </div>
                             </div>
                         </div>
+                     
                     </div>
                     <a class="carousel-control-prev izquiInv" href="#informacionPosgrado" role="button" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>

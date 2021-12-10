@@ -2323,3 +2323,16 @@ font-size: 16px;
   font-size: 30px;
   background-color: rgba(240, 31, 31, 0.5);
 }
+
+.rojoBlanco{
+  background-color: #f70d28 !important;
+  color:#fff !important;
+}
+.grisBlanco{
+  background-color: #a8b4bb !important;
+  color:#fff !important;
+}
+.negroBlanco{
+  background-color: #000 !important;
+  color:#fff !important;
+}
