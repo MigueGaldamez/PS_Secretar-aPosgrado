@@ -20,7 +20,7 @@
     </div>
 </div>
 <div class="bg-light negativoBanner sinBordes pt-2 bannerAdelante">
-@include('publico.cabecera',['titulo' => 'Oferta Academica','descripcion'=>'Oferta academica por facultades.'])
+@include('publico.cabecera',['titulo' => 'Oferta Académica','descripcion'=>'Oferta académica por facultades.'])
 </div>
 <div class="colorGris text-center py-4 mt-4">
     <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Titulo Información</h1>

@@ -35,7 +35,7 @@
       
       
 
-        <div class="colorGris mt-4 py-2" :style="'background-color: '+facultad.color+';'" id="titulo">
+        <div class="colorGris mt-4 py-3 stickyHeaderFacul" :style="'background-color: '+facultad.color+';'" id="titulo">
             <h3 class="textoSuavecito text-light" >Investigaciones en curso de {{posgrado.nombre}}</h3>    
              <h5 class="textoSuavecito text-light" >Facultad: {{facultad.nombre}}</h5>      
         </div>
@@ -135,12 +135,19 @@
             indexEnd() {
             return this.indexStart + this.pageSize;
             },
-            paginated() {
-            return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+            paginated() { 
+                if(this.posgrado.inv!==undefined){
+                    return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+                }else{
+                    return 0;
+                }
             },
             paginas(){
-             return Array.from(Array(Math.ceil(this.posgrado.inv.length/this.pageSize)).keys())
-
+                if(this.posgrado.inv!==undefined){
+                    return Array.from(Array(Math.ceil(this.posgrado.inv.length/this.pageSize)).keys())
+                }else{
+                    return 0;
+                }
             }
         },
         methods: {
@@ -170,7 +177,7 @@
                 this.current=1;
             },
             mostrarPosgrado(data={}){
-                
+               
                 this.posgrado = data;
             },
         },
@@ -178,8 +185,5 @@
         {
             this.list();
         },
-        mounted() {
-            console.log('Component mounted.')
-        }
     }
 </script>

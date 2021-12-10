@@ -14,21 +14,21 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                <img src="{{asset('img/historia/rectoria.jpg')}}" class="d-block w-100" alt="...">
+                <img src="https://i.imgur.com/x2fjApo.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
                     <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
                 </div>
                 </div>
                 <div class="carousel-item">
-                <img src="{{asset('img/historia/ANTIGUOS.S3-.jpg')}}" class="d-block w-100" alt="...">
+                <img src="https://i.imgur.com/7MPUaV4.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                   <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
                     <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
                 </div>
                 </div>
                 <div class="carousel-item">
-                <img src="{{asset('img/historia/rectoria.jpg')}}" class="d-block w-100" alt="...">
+                <img src="https://i.imgur.com/QQUI3P6.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                      <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
                     <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
@@ -54,24 +54,20 @@
         <div class="row">
             <div class="col historia">
                 <h3 class="textoDuro  lh-sm "><b>Acerca de la Universidad de El Salvador UES</b></h3>
-                <h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>
-                <p class="has-dropcap textoSuavecito2 parrafo">La Universidad de El Salvador (UES) es la única universidad pública de
-                    El Salvador, además de ser la más grande del país fue la primera que
-                    se fundó en territorio salvadoreño.
-                    Por decreto de la Asamblea Legislativa la UES, se creó el 16 de febrero
-                    de 1841; más tarde en <b>1843</b> inició sus actividades impartiendo
-                    matemáticas puras, lógica, moral, metafísica y física general.
+                {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
+                <p class="has-dropcap textoSuavecito2 parrafo"> A lo largo de su existencia la Universidad de El Salvador ha sido testigo y protagonista de importantes cambios políticos y sociales del país, ha superado daños en infraestructuras causados por terremotos, ocupaciones militares que prolongaron el cierre del campus en varias ocasiones, represión y persecución política de sus estudiantes y trabajadores en un contexto de guerra civil.
+Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carreras en modalidad presencial y 7 a distancia; 71 maestrías, 9 doctorados, 27 especialidades médicas y 44 diplomados como parte de la educación continua.
+
                   
 
                    </p>
             </div>
             <div class="col historia">
                 <h3 class="textoDuro  lh-sm"><b>Secretaría de Posgrado</b></h3>
-                <h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>
-                <p class="has-dropcap textoSuavecito2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
+                <p class="has-dropcap textoSuavecito2">La Secretaría de Posgrado de la Universidad de El Salvador es una dependencia administrativa de la Vicerrectoría Académica, cuya finalidad principal es contribuir al fortalecimiento del sistema de posgrado y atender las necesidades de formación y educación avanzada en la UES.
+                Coordina y promueve las actividades académicas y administrativas del Sistema de Estudios de Posgrados (SEP) encaminadas hacia la excelencia académica, también, ejecuta políticas que rigen los sistemas de Estudio de posgrado.
+                </p>
             </div>
              
         </div>

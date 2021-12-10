@@ -14,8 +14,3 @@
        
     </div>
 </div>
-<div class="catalogoIcono">
-<a href="{{route('catalogoC')}}">
-     <img class="img-fluid" src="{{asset('img/catalogo.svg')}}" alt="">
-</a>
-</div>
