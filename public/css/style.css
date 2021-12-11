@@ -82,7 +82,7 @@
 }
 .fontInicio{
     font-size: 50px;
-    padding-left: 10%;
+    padding-left: 8%;
     border-radius: 20px;
     background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
 }
@@ -2346,7 +2346,7 @@ font-size: 16px;
 .fondoRojizo{
   padding-top: 20px;
   font-size: 30px;
-  background-color: rgba(240, 31, 31, 0.7);
+  background-color: rgba(240, 31, 31, 0.6);
   border-radius: 20px;
 }
 
