@@ -13,7 +13,10 @@
 }
 
  body{
-    background-color: #FFFFFF;
+    background-color: #eeeeee;
+}
+.bodyClaro{
+  background-color: #eeeeee;
 }
 .colorGris{
     background-color: #52646E;
@@ -80,6 +83,7 @@
 .fontInicio{
     font-size: 50px;
     padding-left: 10%;
+    border-radius: 20px;
     background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
 }
 .paddingBotonInicio{
@@ -1963,6 +1967,16 @@
   z-index: 400;
   font-size: 18px;
 }
+.effect a.youtube:after {
+  content: attr(title);
+  visibility: hidden;
+  width: 150px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 400;
+  font-size: 18px;
+}
 .effect a.fb:after {
   content: attr(title);
   visibility: hidden;
@@ -2030,6 +2044,10 @@
   padding-right: 170px;
   border-radius: 5px;
 }
+.effect.cinna .buttons:hover a.youtube:hover {
+  padding-right: 150px;
+  border-radius: 5px;
+}
 
 /**/
 .recipeCarousel .carousel-inner .carousel-item.active,
@@ -2077,6 +2095,11 @@
   }
   
   .effect a.insta {
+    padding-right: 150px;
+    border-radius: 5px;
+    transform: scale(0.7);
+  }
+  .effect a.youtube {
     padding-right: 150px;
     border-radius: 5px;
     transform: scale(0.7);
@@ -2323,7 +2346,8 @@ font-size: 16px;
 .fondoRojizo{
   padding-top: 20px;
   font-size: 30px;
-  background-color: rgba(240, 31, 31, 0.5);
+  background-color: rgba(240, 31, 31, 0.7);
+  border-radius: 20px;
 }
 
 .rojoBlanco{
@@ -2343,4 +2367,44 @@ font-size: 16px;
   
   src: url('/fonts/Merriweather-Italic.ttf')  format('truetype'), /* Safari, Android, iOS */
 
+}
+
+
+/*ANIMACION*/
+.divConAnimadoN {
+  position: relative;
+  overflow: hidden;
+}
+
+.divConAnimadoN .slide {
+  position: relative;
+  left: -515px;
+  padding-left: 10px;
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 2.5s;
+  animation: slide 0.5s forwards;
+  animation-delay: 2.5s;
+  border-left: 4px solid #f70d28;
+}
+.divConAnimadoR {
+  position: relative;
+  overflow: hidden;
+}
+
+.divConAnimadoR .slide {
+  position: relative;
+  left: -470px;
+  padding-left: 10px;
+  -webkit-animation: slide 0.5s forwards;
+  -webkit-animation-delay: 3.0s;
+  animation: slide 0.5s forwards;
+  animation-delay: 3.0s;
+  border-left: 4px solid #1d1d1d;
+}
+@-webkit-keyframes slide {
+  100% { left: 0; }
+}
+
+@keyframes slide {
+  100% { left: 0; }
 }

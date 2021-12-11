@@ -1,15 +1,15 @@
 @extends('layouts.frontend',['subtitulo' => 'Inicio'])
 
 @section('content')
-    <div class="container-fluid cardImagenBanner mt-n4">       
-        <img src="{{asset('/img/Portada FB-01.svg')}}" class="imgBannerInicio">
-        <div class="row pt-4 imagenFondo">
+    <div class="container-fluid cardImagenBanner mt-n4 bodyClaro">       
+        <img src="{{asset('/img/Portada FB-01.svg')}}" class="w-100 imgBannerInicio">
+        <div class="row pt-4 imagenFondo bodyClaro">
             
         </div> 
     </div>
 
     <div class="container px-0 col-10">
-        <div class="row negativoBanner bg-light ">          
+        <div class="row negativoBanner">          
             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('oferta')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
@@ -75,7 +75,7 @@
     </div>
    
     <div class="container-fluid bg-grisFondo">
-        <div class="row p-4">
+        <div class="row p-0 p-md-4">
             <div class="col col-12 col-lg-8 col-sm-12">
                 <div class="row">
                     <div class="box col-11 mt-4 mx-auto  bg-griscito">
@@ -132,22 +132,22 @@
                 </div>
                 
                 <div class="row">
-                    <div class="box col-10 mt-4 mb-4 mx-auto  bg-griscito">
+                    <div class="box col-11 mt-4 mb-4 mx-auto  bg-griscito">
                         <h1 class="textoGris text-uppercase textoDuro">Información de contacto</h1>
                         <div class="titulohr mb-0"></div>
                         <p class="my-0">No te olvides de seguirnos en nuestras redes</p>
                         <div class="effect cinna container-fluid text-start px-0 mx-0">
                             <div class="buttons row bg-danger">
-                                <div class="col">
+                                <div class="col col-12 col-md-auto">
                                     <a href="#" class="fb" title="@PosgradosUES"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 </div>
-                                <div class="col">
+                                <div class="col col-12 col-md-auto">
                                     <a href="#" class="insta" title="@posgradosues"><i class="fa fa-instagram" aria-hidden="true"></i></a>
                                 </div>
-                                <div class="col">    
+                                <div class="col col-12 col-md-auto">    
                                     <a href="#" class="in" title="secretaria.posgrado@ues.edu.sv"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
                                 </div>
-                                <div class="col">    
+                                <div class="col col-12 col-md-auto">    
                                     <a class="youtube" href="https://www.youtube.com/channel/UC7jidcsLyjpLAfMhT1GPa2A/videos" class="in" title="PosgradosUES"><i class="fa fa-youtube" aria-hidden="true"></i></a>
                                 </div>
                             </div>
@@ -155,7 +155,7 @@
                     </div>
                 </div>   
             </div>
-            <div class="col col-12 col-lg-4 col-sm-12">
+            <div class="col col-12 col-lg-4 col-sm-12 p-4 p-md-0">
                 <h3 class="text-center tituloSuperior text-uppercase  textoDuro mt-4"><span>Noticias Relevantes</span></h3>
                 <div class="titulohr mb-2 mt-2"></div>
                 <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
