@@ -13,10 +13,10 @@
 }
 
  body{
-    background-color: #eeeeee;
+    /*background-color: #eeeeee;*/
 }
 .bodyClaro{
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;*/
 }
 .colorGris{
     background-color: #52646E;
@@ -2162,7 +2162,7 @@
   position: relative;
   text-decoration: none;
   text-align: center;
-font-size: 16px;
+  font-size: 16px;
 }
 .primary-navigation li a {
   color: black;
@@ -2190,6 +2190,8 @@ font-size: 16px;
   min-width: 250px;
   text-align: left;
   padding-top: 20px;
+  position: absolute;
+  z-index: 1000;
   box-shadow: 0px 3px 5px -1px #ccc;
 }
 .primary-navigation ul li ul li {
@@ -2287,12 +2289,12 @@ font-size: 16px;
 }
 /**/
 .izquiInv{
-  margin-left: 0px;
+  margin-left: 7%;
   max-width: 30px;
 }
 
 .derecInv{
-  margin-right:0px ;
+  margin-right:9%;
   max-width: 30px;
 }
 .izquiInv span, .derecInv span{
@@ -2355,8 +2357,10 @@ font-size: 16px;
   color:#fff !important;
 }
 .grisBlanco{
-  background-color: #a8b4bb !important;
-  color:#fff !important;
+
+    background-color: #52646E !important;
+    color: #FDF9F2;
+
 }
 .negroBlanco{
   background-color: #000 !important;
@@ -2373,7 +2377,7 @@ font-size: 16px;
 /*ANIMACION*/
 .divConAnimadoN {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .divConAnimadoN .slide {
@@ -2407,4 +2411,69 @@ font-size: 16px;
 
 @keyframes slide {
   100% { left: 0; }
+}
+
+/*ULTIMO SLIDE*/
+.sCont{
+  height: auto;
+  width: auto;
+  margin-right: 8%;
+  margin-left: 8%;
+  
+}
+#contN {
+  user-select: none;
+  padding:0px;
+  height:90px;
+  width:1100px;
+  overflow:hidden;
+  border-radius:6px;
+
+  top:0px;
+}
+#contN:active{
+  cursor:e-resize;
+}
+#slider-containerN {
+  width:400%;
+  left: 0;
+  align-items: flex-start;
+  align-content: flex-start;
+}
+.item-containerN {
+  padding:10px;
+  border-radius:4px;
+  margin:0 8px;
+  height:80px;
+  width:5.885%;
+  display:inline-block;
+  border-left: 2px solid #f70d28;
+  background-color: #c2c1c1; 
+  transition: all .2s ease-out;  
+  cursor:pointer; 
+  top:0px !important;
+  vertical-align: text-top;
+}
+
+.item-containerN:hover h5 span{
+  color: #f70d28 !important;
+}
+.item-containerN:hover{
+  box-shadow:0px 6px 20px rgba(0,0,0,0.5);
+}
+
+.item-containerN .togi {
+  width: 100% !important;
+  height: 100%;
+  margin-top:-50px;
+  position: relative;
+}
+.item-containerN ul{
+  padding-left: 10px !important;
+}
+
+.item-containerN ul li a:hover {
+  padding-left: 10px;
+  border-left: 2px solid #e73c3c;
+  transition: all 0.3s ease;
 }

@@ -111,7 +111,7 @@ class FacultadesController extends Controller
     public function facultadesConTesis(){
         $tesis = Tesi::where('estado','=',1)->pluck('posgrado_id');
         $posgrados = Posgrado::whereIn('id',$tesis)->pluck('facultad_id');
-        $facultades = Facultades::with('posgradosConTesis')->whereIn('id',$posgrados)->get();
+        $facultades = Facultades::with('posgradosConTesis')->get();
         return $facultades;
         
     }

@@ -196,3 +196,65 @@ $(function(){
     }
    }
 });
+
+
+var nextButton = $("#right-btnN");
+var backButton = $("#left-btnN");
+var con = $("#cont");
+var sliderCont = $("#slider-containerN");
+
+var i = 0;
+
+
+var mL = 0, maxX = 200, diff = 0 ;
+
+function slide() {
+   mL-=100;
+  if( mL < -maxX ){ mL = 0 ;}
+  sliderCont.animate({"margin-left" : mL + "%"}, 800);
+}
+
+function slideBack() {
+  mL += 100;
+  if ( mL > 0 ) { mL = -200 ; }
+  sliderCont.animate({"margin-left" : mL + "%"}, 800);
+}
+
+nextButton.click(slide);
+backButton.click(slideBack);
+
+$(document).on("mousedown touchstart", con, function(e) {
+  
+  var startX = e.pageX || e.originalEvent.touches[0].pageX;
+  diff = 0;
+
+  $(document).on("mousemove touchmove", function(e) {
+    
+      var xt = e.pageX || e.originalEvent.touches[0].pageX;
+      diff = (xt - startX) * 100 / window.innerWidth;
+    if( mL == 0 && diff > 10 ) { 
+      event.preventDefault() ;
+    } else if (  mL == -maxX && diff < -10 ) {
+       event.preventDefault();   
+    } else {
+      sliderCont.css("margin-left", mL + diff + "%");
+    }
+  });
+});
+
+$(document).on("mouseup touchend", function(e) {
+  $(document).off("mousemove touchmove");
+  if(  mL == 0 && diff > 4 ) { 
+      sliderCont.animate({"margin-left" :  0 + "%"},100);
+   } else if (  mL == -maxX  && diff < 4 ){
+       sliderCont.animate({"margin-left" : -maxX  + "%"},100);  
+   } else {
+      if (diff < -10) {
+        slide();
+      } else if (diff > 10) {
+        slideBack();
+      } else {
+        sliderCont.animate({"margin-left" :  mL + "%"},300);
+      }
+  }
+});

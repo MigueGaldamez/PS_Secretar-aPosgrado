@@ -10311,19 +10311,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -59208,100 +59195,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "text-center" }, [
-      _c("div", { staticClass: "container text-center my-3" }, [
+    _c("div", { staticClass: "text-center" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "sCont" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "contN" } }, [
         _c(
           "div",
-          { staticClass: "row mx-auto my-auto justify-content-center" },
-          [
-            _c(
+          { attrs: { id: "slider-containerN" } },
+          _vm._l(_vm.facultades, function(facultad, index) {
+            return _c(
               "div",
               {
-                staticClass: "carousel slide recipeCarousel",
-                attrs: {
-                  id: "informacionPosgrado",
-                  "data-bs-interval": "false"
+                key: facultad.id,
+                staticClass: "item-containerN text-center list-unstyled",
+                class: {
+                  rojoBlanco: index % 3 == 0,
+                  grisBlanco: index % 3 == 1
                 }
               },
               [
+                _c("h5", [_vm._v(_vm._s(facultad.nombre))]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "togi",
+                  attrs: { "data-bs-toggle": "dropdown" }
+                }),
+                _vm._v(" "),
                 _c(
-                  "div",
-                  {
-                    staticClass: "carousel-inner siOv",
-                    attrs: { role: "listbox" }
-                  },
-                  [
-                    _vm._m(0),
-                    _vm._v(" "),
-                    _vm._l(_vm.facultades, function(facultad) {
-                      return _c(
-                        "div",
-                        { key: facultad.id, staticClass: "carousel-item" },
-                        [
-                          _c("div", { staticClass: "col-md-3 col-6 carou" }, [
-                            _c(
-                              "div",
-                              {
-                                staticClass: "cardOv primary-navigation",
-                                attrs: { role: "navigation" }
-                              },
-                              [
-                                _c("ul", [
-                                  _c("li", [
-                                    _c("a", { attrs: { href: "#" } }, [
-                                      _vm._v(_vm._s(facultad.nombre))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "ul",
-                                      { staticClass: "dropdown" },
-                                      _vm._l(
-                                        facultad.posgrados_con_inv,
-                                        function(pos) {
-                                          return _c("li", { key: pos.id }, [
-                                            _c(
-                                              "a",
-                                              {
-                                                attrs: {
-                                                  href: "#informacionPosgrado"
-                                                },
-                                                on: {
-                                                  click: function($event) {
-                                                    _vm.mostrarPosgrado(pos)
-                                                    _vm.mostrarFacultad(
-                                                      facultad
-                                                    )
-                                                  }
-                                                }
-                                              },
-                                              [_vm._v(_vm._s(pos.nombre))]
-                                            )
-                                          ])
-                                        }
-                                      ),
-                                      0
-                                    )
-                                  ])
-                                ])
-                              ]
-                            )
-                          ])
-                        ]
+                  "ul",
+                  { staticClass: "dropdown-menu" },
+                  _vm._l(facultad.posgrados_con_inv, function(pos) {
+                    return _c("li", { key: pos.id }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "#informacionPosgrado" },
+                          on: {
+                            click: function($event) {
+                              _vm.mostrarPosgrado(pos)
+                              _vm.mostrarFacultad(facultad)
+                            }
+                          }
+                        },
+                        [_vm._v(" " + _vm._s(pos.nombre))]
                       )
-                    })
-                  ],
-                  2
-                ),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2)
+                    ])
+                  }),
+                  0
+                )
               ]
             )
-          ]
+          }),
+          0
         )
-      ]),
-      _vm._v(" "),
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
       _c(
         "div",
         {
@@ -59315,7 +59270,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("h5", { staticClass: "textoSuavecito text-light" }, [
-            _vm._v("Facultad: " + _vm._s(_vm.facultad.nombre))
+            _vm._v(_vm._s(_vm.facultad.nombre))
           ])
         ]
       )
@@ -59342,7 +59297,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._m(3)]
+                  [_vm._m(2)]
                 ),
                 _vm._v(" "),
                 _c(
@@ -59428,7 +59383,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._m(4)]
+                  [_vm._m(3)]
                 )
               ],
               2
@@ -59467,7 +59422,6 @@ var render = function() {
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
-                          _vm._v("Facultad: "),
                           _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
                         ]),
                         _vm._v(" "),
@@ -59485,7 +59439,7 @@ var render = function() {
                           _c("div", { staticClass: "col" }, [
                             _c("p", { staticClass: "card-text text-end" }, [
                               _c("small", [
-                                _vm._v("Año de publicación: "),
+                                _vm._v("Año de investigación: "),
                                 _c("b", [_vm._v(_vm._s(inv.publicado))])
                               ])
                             ])
@@ -59567,36 +59521,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "carousel-item active" }, [
-      _c("div", { staticClass: "col-md-3 col-6 carou" }, [
-        _c(
-          "div",
-          {
-            staticClass: "cardOv primary-navigation",
-            attrs: { role: "navigation" }
-          },
-          [
-            _c("ul", [
-              _c("li", [
-                _c("a", { attrs: { href: "#" } }, [_vm._v("Facultad")]),
-                _vm._v(" "),
-                _c("ul", { staticClass: "dropdown" })
-              ])
-            ])
-          ]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "a",
       {
         staticClass: "carousel-control-prev izquiInv",
         attrs: {
+          id: "left-btnN",
           href: "#informacionPosgrado",
           role: "button",
           "data-bs-slide": "prev"
@@ -59619,6 +59549,7 @@ var staticRenderFns = [
       {
         staticClass: "carousel-control-next derecInv",
         attrs: {
+          id: "right-btnN",
           href: "#informacionPosgrado",
           role: "button",
           "data-bs-slide": "next"
