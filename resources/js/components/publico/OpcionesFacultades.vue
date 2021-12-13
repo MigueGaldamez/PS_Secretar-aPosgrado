@@ -69,7 +69,7 @@
                             <small> <b>{{facultad.nombre}}</b></small>
                             <div class="row">
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><a :href="''+inv.link">Descargar</a> </small></p>
+                                
                                 </div>
                                 <div class="col">
                                     <p class="card-text text-end"><small >Año de investigación: <b>{{inv.publicado}}</b> </small></p>
@@ -87,10 +87,10 @@
                              <h5><a :href="''+inv.link" class="text-dark"><b>{{inv.titulo}}</b></a></h5>
                             
                             <small>Autor: <b>{{inv.autor}}</b></small><br>
-                            <small>Facultad: <b>{{facultad.nombre}}</b></small>
+                            <small><b>{{facultad.nombre}}</b></small>
                             <div class="row">
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><a :href="''+inv.link">Descargar</a> </small></p>
+                                   
                                 </div>
                                 <div class="col">
                                     <p class="card-text text-end"><small >Año de publicación: <b>{{inv.publicado}}</b> </small></p>

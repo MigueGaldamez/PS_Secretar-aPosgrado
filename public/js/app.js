@@ -59426,15 +59426,7 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col" }, [
-                            _c("p", { staticClass: "card-text" }, [
-                              _c("small", { staticClass: "text-muted" }, [
-                                _c("a", { attrs: { href: "" + inv.link } }, [
-                                  _vm._v("Descargar")
-                                ])
-                              ])
-                            ])
-                          ]),
+                          _c("div", { staticClass: "col" }),
                           _vm._v(" "),
                           _c("div", { staticClass: "col" }, [
                             _c("p", { staticClass: "card-text text-end" }, [
@@ -59480,20 +59472,11 @@ var render = function() {
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
-                          _vm._v("Facultad: "),
                           _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col" }, [
-                            _c("p", { staticClass: "card-text" }, [
-                              _c("small", { staticClass: "text-muted" }, [
-                                _c("a", { attrs: { href: "" + inv.link } }, [
-                                  _vm._v("Descargar")
-                                ])
-                              ])
-                            ])
-                          ]),
+                          _c("div", { staticClass: "col" }),
                           _vm._v(" "),
                           _c("div", { staticClass: "col" }, [
                             _c("p", { staticClass: "card-text text-end" }, [
