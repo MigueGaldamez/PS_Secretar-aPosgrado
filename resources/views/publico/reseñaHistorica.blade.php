@@ -86,7 +86,7 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
           <div class="entry box box-down red bg-dark text-light">
             <div class="title text-light">{{$fecha->anio}}</div>
             <div class="body text-light">
-              <p> {{$fecha->descripcion}}..</p>
+              <p> {{$fecha->descripcion}}</p>
             </div>
           </div>
         
@@ -95,7 +95,7 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
           <div class="entry box box-down red card">
             <div class="title big">{{$fecha->anio}}</div>
             <div class="body">
-               <p> {{$fecha->descripcion}}..</p>
+               <p> {{$fecha->descripcion}}</p>
             </div>
           </div>
         @endif
