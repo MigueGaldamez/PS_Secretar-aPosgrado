@@ -1,6 +1,83 @@
 <template >
     <div class="row">
-        <div class="col-xm-12">
+        <!-- Modal -->
+        <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
+                        <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form v-on:submit.prevent="save" enctype="multipart/form-data">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div  class="mb-3 col-sm-6">
+                                    <label for="formFile" class="form-label">Imagen representativa del posgrado</label>
+                                    <input ref="urlImg"  accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
+                                    <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
+                                </div>
+                                <div class="mb-3 col-sm-6 offset-sm-3">
+                                    <label for="nombre" class="form-label">Facultad</label>
+                                    <select v-model="posgrado.facultad"  class="form-select" aria-label="facultad">
+                                        <option value=0 >Selecciona una Facultad</option>
+                                        <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
+                                    </select>
+                                    <span class="text-danger" v-if="errores.facultad">{{errores.facultad[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-12" >
+                                    <label for="nombrePosgrado" class="form-label">Nombre posgrado</label>
+                                    <input v-model="posgrado.nombre" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
+                                    <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-12">
+                                    <label for="descripcionPosgrado" class="form-label">Descripción</label>
+                                    <textarea v-model="posgrado.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                                    <span class="text-danger" v-if="errores.descripcion">{{errores.descripcion[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-12" >
+                                    <label for="tituloPosgrado" class="form-label">Titulo</label>
+                                    <input v-model="posgrado.titulo" class="form-control" type="text" placeholder="Titulo" aria-label="Titulo del posgrado">
+                                    <span class="text-danger" v-if="errores.titulo">{{errores.titulo[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-4">
+                                    <label for="TipoProgramaPosgrado" class="form-label">Tipo Pograma</label>
+                                    <select v-model="posgrado.tipo_programa"  class="form-select" aria-label="tipo_programa">
+                                        <option value=0 >Selecciona una Modalidad</option>
+                                        <option v-for="tipo_programa in tipo_programas" :key="tipo_programa.id" v-bind:value="tipo_programa.id"> {{tipo_programa.nombre}}</option>
+                                    </select>
+                                    <span class="text-danger" v-if="errores.tipo_programa">{{errores.tipo_programa[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-6">
+                                    <input class="form-check-input" @change="ofertado(posgrado.ofertado)" v-model="posgrado.ofertado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
+                                    <label class="form-check-label"  for="flexSwitchCheckDefault">{{textOfertado}}</label>
+                                    <span class="text-danger" v-if="errores.ofertado">{{errores.ofertado[0]}}</span>
+                                </div>  
+                            </div>         
+                        </div>
+                        <div class="modal-footer">
+                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
+        <!--Fin del modal -->
+        <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
+            <strong>Cargando Datos...</strong>
+            <div class="">
+                <div class="spinner-grow text-danger" role="status"></div>
+                <div class="spinner-grow text-warning" role="status"></div>
+                <div class="spinner-grow text-info" role="status"></div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{posgrados.from}} - {{posgrados.to }} | Total: {{posgrados.total}}</label>
+        </div>
+        <div class="col-sm-12">
             <button @click="update=false; openModal();" type="button" class="btn btn-success ">
                 Nuevo
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -9,88 +86,19 @@
                 </svg> 
             </button>
         </div>
-        <!-- Modal -->
-        <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
-                        <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form v-on:submit.prevent="save" enctype="multipart/form-data">
-                            <div class="row">
-                                <div class="mb-3 col-sm-6">
-                                    <label for="formFile" class="form-label">Imagen representativa del posgrado</label>
-                                    <input ref="urlImg" accept="image/*" class="form-control" type="file" name="urlImagen" @change="obtenerImagen">
-                                </div>
-                                <div class="mb-3 col-sm-6">
-                                    <img :src="imagen" class="img-thumbnail" alt="...">
-                                </div>
-                                <div class="mb-3 col-sm-6 offset-sm-3">
-                                    <label for="nombre" class="form-label">Facultad</label>
-                                    <select v-model="posgrado.facultad"  class="form-select" aria-label="facultad">
-                                        <option value=0 >Selecciona una Facultad</option>
-                                        <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-sm-12" >
-                                    <label for="nombrePosgrado" class="form-label">Nombre posgrado</label>
-                                    <input v-model="posgrado.nombre" class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
-                                </div>
-                                <div class="mb-3 col-sm-12">
-                                    <label for="descripcionPosgrado" class="form-label">Descripción</label>
-                                    <textarea v-model="posgrado.descripcion" class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                                </div>
-                                <div class="mb-3 col-sm-12" >
-                                    <label for="tituloPosgrado" class="form-label">Titulo</label>
-                                    <input v-model="posgrado.titulo" class="form-control" type="text" placeholder="Titulo" aria-label="Titulo del posgrado">
-                                </div>
-                                <div class="mb-3 col-sm-4">
-                                    <label for="TipoProgramaPosgrado" class="form-label">Tipo Pograma</label>
-                                    <select v-model="posgrado.tipo_programa"  class="form-select" aria-label="tipo_programa">
-                                        <option value=0 >Selecciona una Modalidad</option>
-                                        <option v-for="tipo_programa in tipo_programas" :key="tipo_programa.id" v-bind:value="tipo_programa.id"> {{tipo_programa.nombre}}</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3 col-sm-6">
-                                    <input class="form-check-input" @change="ofertado(posgrado.ofertado)" v-model="posgrado.ofertado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label"  for="flexSwitchCheckDefault">{{textOfertado}}</label>
-                                </div>  
-                            </div>
-                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>
-                        </form>                 
-                    </div>
-                    <div class="modal-footer">
-                        <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-3 md-3">
-                {{posgrados.from}} - {{posgrados.to }} total: {{posgrados.total}}
-            </div>
-            <div class="col-3 md-3">
-                
-                <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="list();">
-                <option selected>Elementos por pagina</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
+        <div class="row mt-1 mb-1">
+            <div class="col-sm-1">
+                <label  class="form-label">Mostrar:</label>
+                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option selected>Seleccione:</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
                 </select>
             </div>
         </div>
-        <!--Fin del modal -->
-        <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
-            <strong>Loading...</strong>
-            <div class="">
-                <div class="spinner-grow text-danger" role="status"></div>
-                <div class="spinner-grow text-warning" role="status"></div>
-                <div class="spinner-grow text-info" role="status"></div>
-            </div>
-        </div>
-        <div v-for="posgrado in posgrados" :key="posgrado.id" class=" col-sm-6 mb-3">
+        <div v-for="posgrado in posgrados.data" :key="posgrado.id" class=" col-sm-6 mb-3">
             <div class="card  h-100" >
                 <div class="row g-0">
                     <div class="col-sm-4 rounded mx-auto d-block text-center">
@@ -128,19 +136,46 @@
             </div>
         </div>
         <div class="row">
-        
-        <div class="col-6 md-6 text-center">
-            <nav>
-                <ul class="pagination">
-                    <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page=1, list();" href="#"><span>&laquo;</span></a></li>
-                    <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page--, list();" href="#">&#60;</a></li>
-                    <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}"><a class="page-link" @click="pagination.page=n, list();" href="#">{{n}}</a></li>
-                    <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" ><a class="page-link" @click="pagination.page++, list();" href="#">&#62;</a></li>
-                    <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" ><a class="page-link" @click="pagination.page=posgrados.last_page, list();" href="#" ><span >&raquo;</span></a></li>
-                </ul>
-            </nav>
+            <div class="col-sm-4 text-center">
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page=1, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill" viewBox="0 0 16 16">
+                                    <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==1}" >
+                            <a class="page-link" @click="pagination.page--, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}">
+                            <a class="page-link" @click="pagination.page=n, list();" href="#">
+                                {{n}}
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" >
+                            <a class="page-link" @click="pagination.page++, list();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" >
+                            <a class="page-link" @click="pagination.page=posgrados.last_page, list();" href="#" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
+                                    <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </div>
     </div>
 </template>
 <script>
@@ -159,10 +194,11 @@ export default
                     titulo: '',
                     tipo_programa: null,
                     ofertado: 0,
+                    imagen: false,
                 },
+                selImagen: false,//para cuando seleccione una imagen
                 cargando: false,
                 textOfertado: '',
-                errors: [],
                 errores:{},
                 id:0,
                 update:true,
@@ -185,10 +221,11 @@ export default
             {
                 try
                 {
+                    this.cargando = true;
                     const res = await axios.get('/dashboard/posgrados_api/',{params:this.pagination,});
                     this.posgrados = res.data;
-                    this.cargando = false;
                     this.listarPaginas();
+                    this.cargando = false;
                 }
                 catch(error)
                 {
@@ -200,6 +237,7 @@ export default
             },
             listarPaginas()
             {
+                
                 const n = 2;
                 let arrayN=[];
                 let ini = this.pagination.page - 2;
@@ -220,7 +258,7 @@ export default
             },
             async listarSelects()
             {
-                const resF = await axios.get('/dashboard/facultad_api');
+                const resF = await axios.get('/dashboard/facultades_list');
                 const resT = await axios.get('/dashboard/tipo_programas_api');
                 this.facultades = resF.data;
                 this.tipo_programas =  resT.data;
@@ -254,14 +292,23 @@ export default
             {
                 try
                 {   
-                    const res = await axios.delete('/dashboard/posgrados_api/'+id);
+                    const res = await axios.delete('/dashboard/posgrados_api/'+id)
+                    .then(response=>{
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Eliminado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                    });
                 }
                 catch(error)
                 {
                     if(error.response.data)
                     {
                         this.errores = error.response.data.errors;
-                        console.log(this.errores);
                     }
                 }
                 this.list();
@@ -299,14 +346,15 @@ export default
                             {
                                 this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
                             }
-                            });
+                        });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
@@ -321,27 +369,27 @@ export default
                         }
                         const res = await axios.post('/dashboard/posgrados_api', fields)
                         .then(response=>{
-                        if(response.data==1)
-                        {
-                            this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
-                        }
-                        else
-                        {
-                            this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
-                        }
+                            if(response.data==1)
+                            {
+                                this.$swal({title: 'Exitoso',text: 'Guardado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                            }
+                            else
+                            {
+                                this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                            }
                         });
+                        this.closeModal();
+                        this.list();
                     }
                     catch(error)
                     {
                         if(error.response.data)
                         {
                             this.errores = error.response.data.errors;
-                            console.log(this.errores);
                         }
                     }
                 }
-                this.closeModal();
-                this.list();
+
             },
             openModal(data={}) 
             {
@@ -360,6 +408,7 @@ export default
                         this.posgrado.titulo = data.titulo;
                         this.posgrado.tipo_programa = data.tipo_programa.id;
                         this.posgrado.ofertado = data.ofertado;
+                        this.posgrado.imagen = false;
                         this.ofertado(data.ofertado);
                     }
                     else
@@ -374,6 +423,7 @@ export default
                         this.posgrado.titulo = '';
                         this.posgrado.tipo_programa = 0;
                         this.posgrado.ofertado = 0;
+                        this.posgrado.imagen = true;
                     }
                 }
                 catch(error)
@@ -387,6 +437,9 @@ export default
             },
             closeModal() 
             {
+                
+                this.errores ={};
+                this.selImagen = false;
                 this.$refs.urlImg.value=null;
                 this.posgrado.urlImagen = null;
                 this.imagenMiniatura='';
@@ -396,6 +449,8 @@ export default
             },
             obtenerImagen(e)
             {
+                this.posgrado.imagen = true;
+                this.selImagen = true;
                 this.posgrado.urlImagen=e.target.files[0];
                 this.cargarImagen(this.posgrado.urlImagen); 
             },
@@ -411,11 +466,10 @@ export default
         },
         created()
         {
-            this.cargando = true;
             try 
             {
-                this.listarSelects();
                 this.list();
+                this.listarSelects();
             } 
             catch (error) 
             {

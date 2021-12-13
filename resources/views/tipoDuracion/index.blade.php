@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.backend',['titulo' => 'Tipo Duración'])
 @section('content')
 <div class="container">
     <h1>Tipos de duración de diplomados</h1>

@@ -15,13 +15,12 @@ class CreateInformacionsTable extends Migration
     {
         Schema::create('informacions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('urlLogo');
+            $table->tinyText('urlLogo');
             $table->text('quienesSomos');
             $table->text('mision');
             $table->text('vision');
             $table->string('correo');
-            $table->text('horarioAtencion');
-            $table->timestamps();
+            $table->tinyText('horarioAtencion');
         });
     }
 

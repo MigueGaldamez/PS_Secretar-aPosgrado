@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Facultades;
 use App\Models\Posgrado;
 use Illuminate\Http\Request;
+use App\Http\Requests\FacultadRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use App\Models\Tesi;
 class FacultadesController extends Controller
 {
-    
-    public function index()
+    public function list()
     {
         return Facultades::with('posgrados')->get();
+    }
+    public function index(Request $request)
+    {
+        $per_page= $request->per_page;
+        return Facultades::with('posgrados')->paginate($per_page);
     }
     public function facultadesS()
     {
@@ -23,7 +28,7 @@ class FacultadesController extends Controller
     {
         return Facultades::with('posgrados')->where('multidis','=',0)->get();
     }
-    public function store(Request $request)
+    public function store(FacultadRequest $request)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -53,7 +58,7 @@ class FacultadesController extends Controller
             return "No has elejido un archivo.";
         }   
     }
-    public function update(Request $request, Facultades $facultad)
+    public function update(FacultadRequest $request, Facultades $facultad)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -106,14 +111,14 @@ class FacultadesController extends Controller
     public function facultadesConTesis(){
         $tesis = Tesi::where('estado','=',1)->pluck('posgrado_id');
         $posgrados = Posgrado::whereIn('id',$tesis)->pluck('facultad_id');
-        $facultades = Facultades::with('posgradosConTesis')->whereIn('id',$posgrados)->get();
+        $facultades = Facultades::with('posgradosConTesis')->get();
         return $facultades;
         
     }
     public function facultadesConInv(){
         $tesis = Tesi::where('estado','=',0)->pluck('posgrado_id');
         $posgrados = Posgrado::whereIn('id',$tesis)->pluck('facultad_id');
-        $facultades = Facultades::with('posgradosConInv')->whereIn('id',$posgrados)->get();
+        $facultades = Facultades::with('posgradosConInv')->get();
         return $facultades;
         
     }

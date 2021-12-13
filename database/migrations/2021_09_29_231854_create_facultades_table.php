@@ -21,6 +21,7 @@ class CreateFacultadesTable extends Migration
             $table->tinyText('contactoPosgrado',150);
             $table->char('color',7);
             $table->boolean('multidis');
+            $table->string('link')->nullable($value=true);
             $table->tinyText('descripcion')->nullable($value = false);
         });
     }

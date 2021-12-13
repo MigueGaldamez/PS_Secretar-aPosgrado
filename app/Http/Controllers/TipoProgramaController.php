@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\TipoPrograma;
 use Illuminate\Http\Request;
+use App\Http\Requests\TipoDuracionRequest;
 
 class TipoProgramaController extends Controller
 {
@@ -13,13 +14,13 @@ class TipoProgramaController extends Controller
         return TipoPrograma::get();
     }
 
-    public function store(Request $request)
+    public function store(TipoDuracionRequest $request)
     {
         try
         {
             $tipoPrograma = new TipoPrograma();
             $tipoPrograma->nombre = $request->nombre;
-            $tipoPrograma->save();
+            return $tipoPrograma->save();
         }
         catch (\Exception $e) 
         {
@@ -28,12 +29,11 @@ class TipoProgramaController extends Controller
         }
     }
 
-    public function update(Request $request, TipoPrograma $tipo_programas_api)
+    public function update(TipoDuracionRequest $request, TipoPrograma $tipo_programas_api)
     {
         try
         {
-            $tipo_programas_api->update($request->all());
-            return "Guardado";
+            return $tipo_programas_api->update($request->all());
         }
         catch (\Exception $e) 
         {
@@ -46,7 +46,7 @@ class TipoProgramaController extends Controller
     {
         try
         {
-            $tipo_programas_api->delete();
+            return $tipo_programas_api->delete();
         }
         catch (\Exception $e) 
         {

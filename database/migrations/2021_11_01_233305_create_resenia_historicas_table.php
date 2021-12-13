@@ -15,9 +15,9 @@ class CreateReseniaHistoricasTable extends Migration
     {
         Schema::create('reseniaHistoricas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('anio');
-            $table->integer('importancia');
-            $table->longText('descripcion');
+            $table->string('anio');
+            $table->tinyInteger('importancia')->unsigned();
+            $table->text('descripcion');
             $table->timestamps();
         });
     }

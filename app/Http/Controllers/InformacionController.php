@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Informacion;
 use App\Models\Valores;
 use Illuminate\Http\Request;
+use App\Http\Requests\InfoSecretariaRequest;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class InformacionController extends Controller
     {
         return $informacion;
     }
-    public function update(Request $request, Informacion $informacion)
+    public function update(InfoSecretariaRequest $request, Informacion $informacion)
     {
         if($request->hasFile('urlLogo'))
         {
@@ -37,7 +38,7 @@ class InformacionController extends Controller
             $informacion->vision=$request->vision;
             $informacion->quienesSomos=$request->quienesSomos;
             $informacion->urlLogo=$urlLogo;
-            $informacion->save();
+            return $informacion->save();
         }
         else
         {
@@ -47,7 +48,7 @@ class InformacionController extends Controller
             $informacion->mision=$request->mision;
             $informacion->vision=$request->vision;
             $informacion->quienesSomos=$request->quienesSomos;
-            $informacion->save();
+            return $informacion->save();
         }   
     }
 

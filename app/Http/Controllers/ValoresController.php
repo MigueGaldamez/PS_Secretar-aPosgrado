@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\ValorRequest;
 use App\Models\Valores;
 use Illuminate\Http\Request;
 
@@ -11,7 +11,7 @@ class ValoresController extends Controller
     {
         return Valores::get();
     }
-    public function store(Request $request)
+    public function store(ValorRequest $request)
     {
         $valor =  new Valores();
         
@@ -24,7 +24,6 @@ class ValoresController extends Controller
     }
     public function destroy(Valores $valore)
     {
-        
         $valore->delete();
     }
 }

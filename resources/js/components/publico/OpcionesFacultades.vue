@@ -1,43 +1,45 @@
 <template>
 <div>
     <div class="text-center">
-         <div class="container text-center my-3">
-            <div class="row mx-auto my-auto justify-content-center">
-                <div id="informacionPosgrado" class="carousel slide recipeCarousel" data-bs-interval="false">
-                    <div class="carousel-inner siOv" role="listbox">
-                        <div v-for="facultad in facultades" :key="facultad.id" class="carousel-item active">
-                            <div class="col-md-3 col-6 carou">
-                                <div role="navigation" class="cardOv primary-navigation">
-                                    <ul>  
-                                        <li><a href="#">{{facultad.nombre}}</a>
-                                            <ul class="dropdown">
-                                                <li v-for="pos in facultad.posgrados_con_inv" :key="pos.id"><a href="#informacionPosgrado" @click="mostrarPosgrado(pos); mostrarFacultad(facultad);">{{pos.nombre}}</a></li>
-                                                
-                                            </ul>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev izquiInv" href="#informacionPosgrado" role="button" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
-                    </a>
-                    <a class="carousel-control-next derecInv" href="#informacionPosgrado" role="button" data-bs-slide="next">
-                        <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
-                    </a>
-                </div>
-            </div>
         
+    </div>
+    <div class="sCont">
+        <a id="left-btnN" class="carousel-control-prev izquiInv" href="#informacionPosgrado" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+        </a>
+        <a id="right-btnN" class="carousel-control-next derecInv" href="#informacionPosgrado" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+        </a>
+       
+        <div id="contN">
+    
+            <div id="slider-containerN" class="">
+                
+                 <div  v-for="(facultad,index)  in facultades" :key="facultad.id" :class="{rojoBlanco:index%3==0,grisBlanco:index%3==1}" class="item-containerN text-center list-unstyled"  >
+                    <h5>{{facultad.nombre}}</h5>
+                    <div class="togi" data-bs-toggle="dropdown">
+                     
+                    </div>
+                 
+                    <ul class="dropdown-menu">
+                          <li v-for="pos in facultad.posgrados_con_inv" :key="pos.id"><a class="dropdown-item" href="#informacionPosgrado" @click="mostrarPosgrado(pos); mostrarFacultad(facultad);"> {{pos.nombre}}</a></li>
+                        
+                    </ul>
+                </div>
+                 
+                
+                
+        
+            
+            </div>
         </div>
+    </div>
       
       
-      
-
-        <div class="colorGris mt-4 py-2" :style="'background-color: '+facultad.color+';'" id="titulo">
+    <div class="text-center">
+        <div class="colorGris mt-4 py-3 stickyHeaderFacul" :style="'background-color: '+facultad.color+';'" id="titulo">
             <h3 class="textoSuavecito text-light" >Investigaciones en curso de {{posgrado.nombre}}</h3>    
-             <h5 class="textoSuavecito text-light" >Facultad: {{facultad.nombre}}</h5>      
+             <h5 class="textoSuavecito text-light" >{{facultad.nombre}}</h5>      
         </div>
    
     </div>
@@ -64,13 +66,13 @@
                             <h5><a :href="''+inv.link" class="text-dark"><b>{{inv.titulo}}</b></a></h5>
                             
                             <small>Autor: <b>{{inv.autor}}</b></small><br>
-                            <small>Facultad: <b>{{facultad.nombre}}</b></small>
+                            <small> <b>{{facultad.nombre}}</b></small>
                             <div class="row">
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><a :href="''+inv.link">Descargar</a> </small></p>
+                                
                                 </div>
                                 <div class="col">
-                                    <p class="card-text text-end"><small >Año de publicación: <b>{{inv.publicado}}</b> </small></p>
+                                    <p class="card-text text-end"><small >Año de investigación: <b>{{inv.publicado}}</b> </small></p>
                                 </div>
                             </div>
                        
@@ -85,10 +87,10 @@
                              <h5><a :href="''+inv.link" class="text-dark"><b>{{inv.titulo}}</b></a></h5>
                             
                             <small>Autor: <b>{{inv.autor}}</b></small><br>
-                            <small>Facultad: <b>{{facultad.nombre}}</b></small>
+                            <small><b>{{facultad.nombre}}</b></small>
                             <div class="row">
                                 <div class="col">
-                                    <p class="card-text"><small class="text-muted"><a :href="''+inv.link">Descargar</a> </small></p>
+                                   
                                 </div>
                                 <div class="col">
                                     <p class="card-text text-end"><small >Año de publicación: <b>{{inv.publicado}}</b> </small></p>
@@ -135,12 +137,19 @@
             indexEnd() {
             return this.indexStart + this.pageSize;
             },
-            paginated() {
-            return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+            paginated() { 
+                if(this.posgrado.inv!==undefined){
+                    return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+                }else{
+                    return 0;
+                }
             },
             paginas(){
-             return Array.from(Array(Math.ceil(this.posgrado.inv.length/this.pageSize)).keys())
-
+                if(this.posgrado.inv!==undefined){
+                    return Array.from(Array(Math.ceil(this.posgrado.inv.length/this.pageSize)).keys())
+                }else{
+                    return 0;
+                }
             }
         },
         methods: {
@@ -170,7 +179,7 @@
                 this.current=1;
             },
             mostrarPosgrado(data={}){
-                
+               
                 this.posgrado = data;
             },
         },
@@ -178,8 +187,5 @@
         {
             this.list();
         },
-        mounted() {
-            console.log('Component mounted.')
-        }
     }
 </script>

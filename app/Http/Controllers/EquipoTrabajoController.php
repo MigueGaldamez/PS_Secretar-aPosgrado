@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\EquipoTrabajoRequest;
 use App\Models\EquipoTrabajo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,9 +12,10 @@ class EquipoTrabajoController extends Controller
 
     public function index(Request $request)
     {
-        return EquipoTrabajo::paginate($request->perpage);
+        $per_page= $request->per_page;
+        return EquipoTrabajo::paginate($per_page);
     }
-    public function store(Request $request)
+    public function store(EquipoTrabajoRequest $request)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -40,7 +41,7 @@ class EquipoTrabajoController extends Controller
             return "No has elejido un archivo.";
         }
     }
-    public function update(Request $request, EquipoTrabajo $equipoTrabajo)
+    public function update(EquipoTrabajoRequest $request, EquipoTrabajo $equipoTrabajo)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -84,6 +85,6 @@ class EquipoTrabajoController extends Controller
     {
         $oldUrlImagen = explode('/',$equipoTrabajo->urlImagen);
         Storage::delete('public/equipo/'.$oldUrlImagen[3]);
-        $equipoTrabajo->delete();
+        return $equipoTrabajo->delete();
     }
 }

@@ -3,8 +3,8 @@
     <div class="row ">
         <div class="col col-lg-8 col-sm-12">
             <ul class="list-unstyled mb-0">
-                <li class=" text-uppercase mb-0 tituloSuperior lh-sm">{{$titulo}}</li>
-                <li class=" text-uppercase tituloInferior lh-sm"><b>Secretaría de posgrado</b></li>
+                <li class=" text-uppercase mb-0 tituloSuperior lh-sm"><b>Secretaría de posgrado</b></li>
+                <li class=" text-uppercase tituloInferior lh-sm"><b>{{$titulo}}</b></li>
                 <li class="tetoGris texto textoSuavecito lh-sm">{{$descripcion}}</li>
             </ul>   
         </div>
@@ -13,9 +13,4 @@
         </div>
        
     </div>
-</div>
-<div class="catalogoIcono">
-<a href="{{route('catalogoC')}}">
-     <img class="img-fluid" src="{{asset('img/catalogo.svg')}}" alt="">
-</a>
 </div>

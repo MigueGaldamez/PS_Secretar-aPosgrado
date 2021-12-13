@@ -23,7 +23,6 @@ Vue.use(VueSweetalert2);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('informacion-component', require('./components/InformacionComponent.vue').default);
 Vue.component('facultades-component', require('./components/FacultadesComponent.vue').default);
 Vue.component('enlaces-component', require('./components/EnlacesComponent.vue').default);

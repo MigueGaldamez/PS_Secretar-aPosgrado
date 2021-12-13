@@ -1,26 +1,22 @@
 <template>
 <div>
-    <div class="colorGris text-center py-4 mt-4"  :style="'background-color:'+facultad.color+' !important; '">
+    <div class="colorGris text-center py-3 mt-4 stickyHeaderFacul"  :style="'background-color:'+facultad.color+' !important; '">
         <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">{{facultad.nombre}}</h1>
         <h5 class="text-light textoSuavecito">Aquí se muestran los posgrados de la facultad, tanto los ofertados como los no ofertados. </h5>
+        <a v-if="facultad.link != null" :href="facultad.link" target="_blank" class="text-light">Visitar Pagina oficial</a>
     </div>
-    <div class="row text-center mx-auto">
+        <div class="titulohr mb-2 mt-2"></div>
+    <div class="container-fluid mb-2">
+    
+        <div class="row justify-content-center text-center">
        
-         <div class="titulohr mb-2 mt-2"></div>
-          <h3 class="mt-2">Paginación</h3>
-        <div class="col-3 md-3">
-            {{posgrados.from}} - {{posgrados.to }} total: {{posgrados.total}}
-        </div>
-        <div class="col-3 md-3">
-            
-            <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="listar();">
-            <option selected>Elementos por pagina</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            </select>
-        </div>
-        <div class="col-6 md-6">
+      
+       
+        <h3>Paginación</h3>
+        <div class="col col-auto">
+           Mostrando: {{posgrados.from}} - {{posgrados.to }} de un total de: {{posgrados.total}}
+        </div>       
+        <div class="col col-auto">
 
              <nav>
                 <ul class=" pagination">
@@ -33,13 +29,23 @@
             </nav>
         
         </div>
+        <div class="col col-auto">
+            Elementos por pagina
+            <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="listar();">
+            <option selected>Elementos por pagina</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            </select>
+        </div>
+    </div>
     </div>
       <div class="titulohr mb-4"></div>
     <div class="container-fluid ps-0 mt-4  mb-4">  
        
             <div v-for="posgrado in posgrados.data" :key="posgrado.id" class="card sinBordes mb-4 ">
                 <div class="row">
-                    <div class="col col-lg-3 col-sm-12 col-12">
+                    <div class="col col-lg-3 col-sm-12 col-12 text-center">
                 
                         <img  :src="posgrado.urlImagen" class="img-fluid" alt="">
                     </div>
@@ -60,13 +66,13 @@
                                     <h5><span class="badge btn rounded-pill" :style="'background-color:'+facultad.color+' !important;'">Ver datos de contacto</span>
                                 </h5>
                                 <div class="tooltip">
-                                    <b> {{facultad.ontactoPosgrado}}
+                                    <b> {{facultad.contactoPosgrado}}
                                 </b>
                                 </div>
                             </div>
                         
                         
-                            <a v-if="posgrado.ofertado" href="#" class="btn btn-sm text-light colorRojo bottom-0">Ver detalles</a>
+                            <a v-if="posgrado.ofertado" :href="'/catalogo'" class="btn btn-sm text-light colorRojo bottom-0">Ver detalles</a>
                            
                             <a v-if="!posgrado.ofertado" href="#" class="btn btn-sm text-light colorRojo disabled bottom-0">No ofertado</a>
                             
