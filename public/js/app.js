@@ -61727,7 +61727,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "colorGris text-center py-4 mt-4 stickyHeaderFacul",
+        staticClass: "colorGris text-center py-3 mt-4 stickyHeaderFacul",
         style: "background-color:" + _vm.facultad.color + " !important; "
       },
       [
