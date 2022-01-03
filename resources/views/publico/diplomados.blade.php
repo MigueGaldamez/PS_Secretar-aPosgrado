@@ -6,7 +6,9 @@
 
 <div class="bg-dark text-center py-4 mt-4">
     <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Programas de Educación Continua UES</h1>
-    <h5 class="text-light textoSuavecito">A través de nuestros diplomados y cursos de educación continua, la UES te ofrece oportunidades para seguir tu formación académica en una gran variedad de campos de conocimiento, adquiriendo más habilidades y competencias que te otorgará las herramientas necesarias para tener un mejor desempeño profesional. </h5>
+    <div class="px-4">
+        <h5 class="text-light textoSuavecito">A través de nuestros diplomados y cursos de educación continua, la UES te ofrece oportunidades para seguir tu formación académica en una gran variedad de campos de conocimiento, adquiriendo más habilidades y competencias que te otorgará las herramientas necesarias para tener un mejor desempeño profesional. </h5>
+    </div>  
 </div>
 <div class="container mt-4 mb-4">    
     <div class="accordion" id="accordionExample">        

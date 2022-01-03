@@ -239,7 +239,6 @@
                         }
                     }
                 }
-
             },
             openModal(data={}) 
             {
