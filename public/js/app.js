@@ -10309,6 +10309,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -52334,215 +52336,207 @@ var render = function() {
         }
       },
       [
-        _c(
-          "div",
-          { staticClass: "modal-dialog modal-lg modal-dialog-scrollable" },
-          [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "staticBackdropLabel" }
-                  },
-                  [_vm._v(_vm._s(_vm.titleModal))]
-                ),
-                _vm._v(" "),
-                _c("button", {
-                  staticClass: "btn-close",
-                  attrs: {
-                    type: "button",
-                    "data-bs-dismiss": "modal",
-                    "aria-label": "Close"
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.closeModal()
-                    }
-                  }
-                })
-              ]),
-              _vm._v(" "),
+        _c("div", { staticClass: "modal-dialog modal-lg" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header" }, [
               _c(
-                "form",
+                "h5",
                 {
-                  attrs: { enctype: "multipart/form-data" },
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.save.apply(null, arguments)
-                    }
-                  }
+                  staticClass: "modal-title",
+                  attrs: { id: "staticBackdropLabel" }
                 },
-                [
-                  _c("div", { staticClass: "modal-body" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "mb-3 col-sm-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-label",
-                            attrs: { for: "formFile" }
-                          },
-                          [_vm._v("Imagen o logo de la entidad")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          ref: "urlImg",
-                          staticClass: "form-control",
-                          attrs: {
-                            accept: "image/*",
-                            type: "file",
-                            name: "urlImagen"
-                          },
-                          on: { change: _vm.obtenerImagen }
-                        }),
-                        _vm._v(" "),
-                        _vm.errores.urlImagen
-                          ? _c("span", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errores.urlImagen[0]))
-                            ])
-                          : _vm._e()
-                      ]),
+                [_vm._v(_vm._s(_vm.titleModal))]
+              ),
+              _vm._v(" "),
+              _c("button", {
+                staticClass: "btn-close",
+                attrs: {
+                  type: "button",
+                  "data-bs-dismiss": "modal",
+                  "aria-label": "Close"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.closeModal()
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "form",
+              {
+                attrs: { enctype: "multipart/form-data" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.save.apply(null, arguments)
+                  }
+                }
+              },
+              [
+                _c("div", { staticClass: "modal-body" }, [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "mb-3 col-sm-6" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "formFile" }
+                        },
+                        [_vm._v("Imagen o logo de la entidad")]
+                      ),
                       _vm._v(" "),
-                      _c("div", { staticClass: "mb-3 col-sm-6" }, [
-                        _vm.selImagen
-                          ? _c("img", {
-                              staticClass: "img-thumbnail",
-                              attrs: { src: _vm.imagen, alt: "..." }
-                            })
-                          : _vm._e()
-                      ]),
+                      _c("input", {
+                        ref: "urlImg",
+                        staticClass: "form-control",
+                        attrs: {
+                          accept: "image/*",
+                          type: "file",
+                          name: "urlImagen"
+                        },
+                        on: { change: _vm.obtenerImagen }
+                      }),
                       _vm._v(" "),
-                      _c("div", { staticClass: "mb-3 col-sm-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-label",
-                            attrs: { for: "exampleFormControlTextarea1" }
-                          },
-                          [_vm._v("Titulo del enlace")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.enlace.titulo,
-                              expression: "enlace.titulo"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            placeholder: "Título",
-                            "aria-label": "Título"
-                          },
-                          domProps: { value: _vm.enlace.titulo },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.enlace,
-                                "titulo",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.errores.titulo
-                          ? _c("span", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errores.titulo[0]))
-                            ])
-                          : _vm._e()
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "mb-3 col-sm-12" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass: "form-label",
-                            attrs: { for: "exampleFormControlTextarea1" }
-                          },
-                          [_vm._v("Enlace")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.enlace.link,
-                              expression: "enlace.link"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "url",
-                            name: "link",
-                            id: "url",
-                            placeholder: "https://ejemplo.com",
-                            pattern: "https://.*"
-                          },
-                          domProps: { value: _vm.enlace.link },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.enlace, "link", $event.target.value)
-                            }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.errores.link
-                          ? _c("span", { staticClass: "text-danger" }, [
-                              _vm._v(_vm._s(_vm.errores.link[0]))
-                            ])
-                          : _vm._e()
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "modal-footer" }, [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-success",
-                        attrs: { type: "button" },
-                        on: {
-                          click: function($event) {
-                            return _vm.save()
-                          }
-                        }
-                      },
-                      [_vm._v("Guardar")]
-                    ),
+                      _vm.errores.urlImagen
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.urlImagen[0]))
+                          ])
+                        : _vm._e()
+                    ]),
                     _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-secondary",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                    _c("div", { staticClass: "mb-3 col-sm-6" }, [
+                      _vm.selImagen
+                        ? _c("img", {
+                            staticClass: "img-thumbnail",
+                            attrs: { src: _vm.imagen, alt: "..." }
+                          })
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mb-3 col-sm-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "exampleFormControlTextarea1" }
+                        },
+                        [_vm._v("Titulo del enlace")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.enlace.titulo,
+                            expression: "enlace.titulo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          placeholder: "Título",
+                          "aria-label": "Título"
+                        },
+                        domProps: { value: _vm.enlace.titulo },
                         on: {
-                          click: function($event) {
-                            return _vm.closeModal()
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.enlace, "titulo", $event.target.value)
                           }
                         }
-                      },
-                      [_vm._v("Close")]
-                    )
+                      }),
+                      _vm._v(" "),
+                      _vm.errores.titulo
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.titulo[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mb-3 col-sm-12" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "exampleFormControlTextarea1" }
+                        },
+                        [_vm._v("Enlace")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.enlace.link,
+                            expression: "enlace.link"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "url",
+                          name: "link",
+                          id: "url",
+                          placeholder: "https://ejemplo.com",
+                          pattern: "https://.*"
+                        },
+                        domProps: { value: _vm.enlace.link },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.enlace, "link", $event.target.value)
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm.errores.link
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.link[0]))
+                          ])
+                        : _vm._e()
+                    ])
                   ])
-                ]
-              )
-            ])
-          ]
-        )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.save()
+                        }
+                      }
+                    },
+                    [_vm._v("Guardar")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      on: {
+                        click: function($event) {
+                          return _vm.closeModal()
+                        }
+                      }
+                    },
+                    [_vm._v("Close")]
+                  )
+                ])
+              ]
+            )
+          ])
+        ])
       ]
     ),
     _vm._v(" "),
@@ -59201,93 +59195,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "text-center" }, [
-      _c("div", { staticClass: "container text-center my-3" }, [
+    _c("div", { staticClass: "text-center" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "sCont" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "contN" } }, [
         _c(
           "div",
-          { staticClass: "row mx-auto my-auto justify-content-center" },
-          [
-            _c(
+          { attrs: { id: "slider-containerN" } },
+          _vm._l(_vm.facultades, function(facultad, index) {
+            return _c(
               "div",
               {
-                staticClass: "carousel slide recipeCarousel",
-                attrs: {
-                  id: "informacionPosgrado",
-                  "data-bs-interval": "false"
+                key: facultad.id,
+                staticClass: "item-containerN text-center list-unstyled",
+                class: {
+                  rojoBlanco: index % 3 == 0,
+                  grisBlanco: index % 3 == 1
                 }
               },
               [
+                _c("h5", [_vm._v(_vm._s(facultad.nombre))]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "togi",
+                  attrs: { "data-bs-toggle": "dropdown" }
+                }),
+                _vm._v(" "),
                 _c(
-                  "div",
-                  {
-                    staticClass: "carousel-inner siOv",
-                    attrs: { role: "listbox" }
-                  },
-                  _vm._l(_vm.facultades, function(facultad) {
-                    return _c(
-                      "div",
-                      { key: facultad.id, staticClass: "carousel-item active" },
-                      [
-                        _c("div", { staticClass: "col-md-3 col-6 carou" }, [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "cardOv primary-navigation",
-                              attrs: { role: "navigation" }
-                            },
-                            [
-                              _c("ul", [
-                                _c("li", [
-                                  _c("a", { attrs: { href: "#" } }, [
-                                    _vm._v(_vm._s(facultad.nombre))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "ul",
-                                    { staticClass: "dropdown" },
-                                    _vm._l(facultad.posgrados_con_inv, function(
-                                      pos
-                                    ) {
-                                      return _c("li", { key: pos.id }, [
-                                        _c(
-                                          "a",
-                                          {
-                                            attrs: {
-                                              href: "#informacionPosgrado"
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                _vm.mostrarPosgrado(pos)
-                                                _vm.mostrarFacultad(facultad)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v(_vm._s(pos.nombre))]
-                                        )
-                                      ])
-                                    }),
-                                    0
-                                  )
-                                ])
-                              ])
-                            ]
-                          )
-                        ])
-                      ]
-                    )
+                  "ul",
+                  { staticClass: "dropdown-menu" },
+                  _vm._l(facultad.posgrados_con_inv, function(pos) {
+                    return _c("li", { key: pos.id }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "#informacionPosgrado" },
+                          on: {
+                            click: function($event) {
+                              _vm.mostrarPosgrado(pos)
+                              _vm.mostrarFacultad(facultad)
+                            }
+                          }
+                        },
+                        [_vm._v(" " + _vm._s(pos.nombre))]
+                      )
+                    ])
                   }),
                   0
-                ),
-                _vm._v(" "),
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1)
+                )
               ]
             )
-          ]
+          }),
+          0
         )
-      ]),
-      _vm._v(" "),
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
       _c(
         "div",
         {
@@ -59301,7 +59270,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("h5", { staticClass: "textoSuavecito text-light" }, [
-            _vm._v("Facultad: " + _vm._s(_vm.facultad.nombre))
+            _vm._v(_vm._s(_vm.facultad.nombre))
           ])
         ]
       )
@@ -59453,25 +59422,16 @@ var render = function() {
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
-                          _vm._v("Facultad: "),
                           _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col" }, [
-                            _c("p", { staticClass: "card-text" }, [
-                              _c("small", { staticClass: "text-muted" }, [
-                                _c("a", { attrs: { href: "" + inv.link } }, [
-                                  _vm._v("Descargar")
-                                ])
-                              ])
-                            ])
-                          ]),
+                          _c("div", { staticClass: "col" }),
                           _vm._v(" "),
                           _c("div", { staticClass: "col" }, [
                             _c("p", { staticClass: "card-text text-end" }, [
                               _c("small", [
-                                _vm._v("Año de publicación: "),
+                                _vm._v("Año de investigación: "),
                                 _c("b", [_vm._v(_vm._s(inv.publicado))])
                               ])
                             ])
@@ -59512,20 +59472,11 @@ var render = function() {
                         _c("br"),
                         _vm._v(" "),
                         _c("small", [
-                          _vm._v("Facultad: "),
                           _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col" }, [
-                            _c("p", { staticClass: "card-text" }, [
-                              _c("small", { staticClass: "text-muted" }, [
-                                _c("a", { attrs: { href: "" + inv.link } }, [
-                                  _vm._v("Descargar")
-                                ])
-                              ])
-                            ])
-                          ]),
+                          _c("div", { staticClass: "col" }),
                           _vm._v(" "),
                           _c("div", { staticClass: "col" }, [
                             _c("p", { staticClass: "card-text text-end" }, [
@@ -59558,6 +59509,7 @@ var staticRenderFns = [
       {
         staticClass: "carousel-control-prev izquiInv",
         attrs: {
+          id: "left-btnN",
           href: "#informacionPosgrado",
           role: "button",
           "data-bs-slide": "prev"
@@ -59580,6 +59532,7 @@ var staticRenderFns = [
       {
         staticClass: "carousel-control-next derecInv",
         attrs: {
+          id: "right-btnN",
           href: "#informacionPosgrado",
           role: "button",
           "data-bs-slide": "next"
@@ -61757,7 +61710,7 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "colorGris text-center py-4 mt-4 stickyHeaderFacul",
+        staticClass: "colorGris text-center py-3 mt-4 stickyHeaderFacul",
         style: "background-color:" + _vm.facultad.color + " !important; "
       },
       [

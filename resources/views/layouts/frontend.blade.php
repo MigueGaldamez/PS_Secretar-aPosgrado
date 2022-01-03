@@ -87,9 +87,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="btn btn-danger text-light btn-lg">Catalogo</a>
-                                </li>
+                               
                                 {{--
                                 <li class="nav-item">
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
@@ -126,9 +124,7 @@
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('enlaces') ? 'activoNav' : '' }}" href="{{ route('enlaces') }}">Enlaces</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="btn btn-danger">Catalogo</a>
-                            </li>
+                           
                                 {{--
                             <li class="nav-item">
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('preguntasFrecuentes') ? 'activoNav' : '' }}" href="{{ route('preguntasFrecuentes') }}">Preguntas frecuentes</a>
@@ -141,7 +137,12 @@
                 <a  href="{{route('catalogoC')}}">
                     <img class="img-fluid" src="{{asset('img/catalogo/CATALOGOROJO.svg')}}" alt="">
                 </a>
-            </div>
+                </div>
+                <div class="catalogoIcono">
+                   
+                    <a href="{{route('catalogoC')}}" target="_blank" class="btn btn-danger text-light">Catálogo 2022</a>
+                    
+                </div>
             </nav>
            
             <main class="">

@@ -14,7 +14,7 @@
     <div class="row mt-4">
         <div class="col col-12">
             {{--Inicio buscar--}}
-            <h3><span>Filtrado Por Facultad y posgrado<span></h3>
+            <h3><span>Por Facultad y posgrado<span></h3>
              <div class="titulohr mb-2"></div>
             {{--Fin buscar--}}
         </div>
