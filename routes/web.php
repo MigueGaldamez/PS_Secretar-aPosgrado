@@ -20,6 +20,8 @@ use App\Http\Controllers\ReseniaHistoricaController;
 use App\Http\Controllers\NoticiaController;
 use App\Http\Controllers\TesiController;
 use App\Http\Controllers\PublicoController;
+use App\Http\Controllers\PermisoController;
+
 Route::get('/', [PublicoController::class, 'inicio'])->name('inicio');
 Route::middleware('auth')->group(function () 
 {
@@ -27,31 +29,31 @@ Route::middleware('auth')->group(function ()
     //Informacion de la secretaria
     Route::apiResource('dashboard/informacion', InformacionController::class)->except(['create', 'store', 'update', 'destroy']);
     Route::post('dashboard/informacion/{informacion}', [InformacionController::class,'update']);
-    Route::view('dashboard/informacion_secretaria', 'infoInstitucion.index')->name('Informacion');
+    Route::get('dashboard/informacion_secretaria', [PermisoController::class,'informacionIndex'])->name('Informacion');
     //Valores
     Route::apiResource('dashboard/valores', ValoresController::class)->except(['show', 'update','show']);
     Route::get('dashboard/get_valores/{informacion_id}', [ValoresController::class,'getValores']);
     //Facultades
     Route::apiResource('dashboard/facultad_api', FacultadesController::class)->except(['update', 'destroy','show']);
     Route::post('dashboard/facultad_api/{facultad}', [FacultadesController::class,'update']);
-    Route::view('dashboard/facultades', 'facultades.index')->name('Facultades');
+    Route::get('dashboard/facultades', [PermisoController::class, 'facultadesIndex'])->name('Facultades');
     Route::get('dashboard/facultades_list', [FacultadesController::class,'list']);//listBox
     //enlaces
-    Route::view('dashboard/enlaces', 'enlaces.index')->name('Enlaces');
+    Route::get('dashboard/enlaces', [PermisoController::class,'enlaceIndex'])->name('Enlaces');
     Route::apiResource('dashboard/enlaces_api', EnlaceController::class)->except(['update','show']);
     Route::post('dashboard/enlaces_api/{enlaces_api}', [EnlaceController::class,'update']);
     Route::get('dashboard/enlaces_list', [EnlaceController::class,'list']);//listBox
     //Diplomados
-    Route::view('dashboard/diplomados', 'diplomados.index')->name('Diplomados');
+    Route::get('dashboard/diplomados', [PermisoController::class,'diplomadoIndex'] )->name('Diplomados');
     Route::apiResource('dashboard/diplomados_api', DiplomadoController::class)->except(['show']);
     Route::get('dashboard/diplomados_list', [DiplomadoController::class,'list']);//listBox
     //posgrados
-    Route::view('dashboard/posgrados', 'posgrados.index')->name('Posgrados');
+    Route::get('dashboard/posgrados',  [PermisoController::class,'posgradoIndex'])->name('Posgrados');
     Route::apiResource('dashboard/posgrados_api', PosgradoController::class)->except(['show','update']);
     Route::post('dashboard/posgrados_api/{posgrados_api}', [PosgradoController::class,'update']);
     Route::get('dashboard/posgrados_list', [PosgradoController::class,'list']);//listBox
     //tesis
-    Route::view('dashboard/tesis', 'tesis.index')->name('Tesis');
+    Route::get('dashboard/tesis',  [PermisoController::class,'tesisIndex'])->name('Tesis');
     Route::apiResource('dashboard/tesis_api', TesiController::class)->except(['show']);
     Route::get('dashboard/tesis_list', [ TesiController::class,'list']);//listBox
     //Galery
@@ -60,25 +62,33 @@ Route::middleware('auth')->group(function ()
     Route::post('dashboard/galery_api/{galery_api}', [GaleryController::class,'update']);
                             //mantenimientos de tablas opciones
     //modalidad
-    Route::view('dashboard/modalidades', 'modalidades.index')->name('Modalidades');
+    Route::get('dashboard/modalidades', [PermisoController::class,'modalidadIndex'])->name('Modalidades');
     Route::apiResource('dashboard/modalidades_api', ModalidadesController::class)->except(['show']);
     //tipo duracion
-    Route::view('dashboard/tipo_duracions', 'tipoDuracion.index')->name('TipoDuracions');
+    Route::get('dashboard/tipo_duracions', [PermisoController::class,'duracionIndex'])->name('TipoDuracions');
     Route::apiResource('dashboard/tipo_duracions_api', TipoDuracionController::class)->except(['show']);
     //tipo programa
-    Route::view('dashboard/tipo_programas', 'tipoPrograma.index')->name('TipoProgramas');
+    Route::get('dashboard/tipo_programas', [PermisoController::class,'tipoProgramaIndex'])->name('TipoProgramas');
     Route::apiResource('dashboard/tipo_programas_api', TipoProgramaController::class)->except(['show']);
                             //FIN mantenimientos de tablas opciones
     //Equipo trabajo
-    Route::view('dashboard/equipo_trabajo', 'equipoTrabajo.index')->name('EquipoTrabajo');
+    Route::get('dashboard/equipo_trabajo', [PermisoController::class,'equipoTrabajoIndex'])->name('EquipoTrabajo');
     Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class)->except(['update','show']);;
     Route::post('dashboard/equipoTrabajo/{equipoTrabajo}', [EquipoTrabajoController::class,'update']);
     //Resenias Historicas
-    Route::view('dashboard/resenia_historica', 'reseniaHistorica.index')->name('ReseniaHistorica');
+    Route::get('dashboard/resenia_historica', [PermisoController::class,'reseniaIndex'])->name('ReseniaHistorica');
     Route::apiResource('dashboard/reseniaHistorica', ReseniaHistoricaController::class);
     //Noticias
-    Route::view('dashboard/noticias', 'noticias.index')->name('NoticiasGestion');
+    Route::get('dashboard/noticias', [PermisoController::class,'noticiaIndex'])->name('NoticiasGestion');
     Route::apiResource('dashboard/noticia', NoticiaController::class);
+    //Permisos
+    Route::get('dashboard/permisos', [PermisoController::class,'permisoIndex'])->name('Permisos');
+    Route::get('/dashboard/usuariosPermisos/',[PermisoController::class,'usuarioPermisos'])->name('usuarioPermisos');
+    Route::get('/dashboard/opcionesPermisos/',[PermisoController::class,'opcionesPermisos'])->name('opcionesPermisos');
+    Route::post('/dashboard/modificarPermiso/',[PermisoController::class,'cambiarPermiso'])->name('cambiarPermiso');
+    Route::post('/dashboard/crearUsuario/',[PermisoController::class,'crearUsuario'])->name('crearUsuario');
+    Route::post('/dashboard/modificarUsuario/',[PermisoController::class,'modificarUsuario'])->name('modificarUsuario');
+    Route::post('/dashboard/cambiarEstado/',[PermisoController::class,'cambiarEstado'])->name('cambiarEstado');
 });
 //publico
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');

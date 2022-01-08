@@ -23,7 +23,7 @@
                 <div class="row">
                     <nav id="sidebarMenu" class="col col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse h-100">
                         <div class="position-sticky px-3 pb-3  text-white bg-dark">
-                            <a href="/" class="align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"><span class="fs-4">Area Administrativa</span></a>
+                            <a href="{{route('dashboard')}}" class="align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"><span class="fs-4">Administración</span></a>
                             <hr>
                             <ul class="nav nav-pills flex-column mb-auto">
                                 <li class="nav-item">
@@ -58,6 +58,9 @@
                                 </li>
                                 <li>
                                     <a href="{{route('Informacion')}}" class="nav-link text-white {{ request()->routeIs('Informacion') ? 'active' : '' }}" > Información de la Secretaría</a>
+                                </li>
+                                  <li>
+                                    <a href="{{route('Permisos')}}" class="nav-link text-white {{ request()->routeIs('Permisos') ? 'active' : '' }}" >Permisos</a>
                                 </li>
                             </ul>
                             <hr>

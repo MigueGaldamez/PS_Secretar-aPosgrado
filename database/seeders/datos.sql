@@ -3,6 +3,32 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `activo`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Miguel Galdámez', 'migue.galdamez@hotmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-08 03:34:05', '2022-01-08 03:34:05'),
+(2, 'Jose', 'walter@hotmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-08 03:34:05', '2022-01-08 03:34:05'),
+(3, 'Evelyn', 'posgrados@hotmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:03:54', '2022-01-09 00:03:54'),
+(4, 'Nancy', 'nancy.orellana@gmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:11:38', '2022-01-09 00:11:38'),
+(7, 'Sandra2', 'sandra2.orellana@gmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:12:15', '2022-01-09 00:12:15'),
+(10, 'Sandra2', 'sandrix@hotmail.com', NULL, '$2y$10$D/w/8xV7fw7QjUlk9xWuZOpVTlN1EOg3jYHELMnX14ZSQ3Yu48mPS', 1, NULL, '2022-01-09 01:09:28', '2022-01-09 01:09:28');
+COMMIT;
+
+
+
+INSERT INTO `opcionPermiso` (`id`, `opcionPermiso`, `created_at`, `updated_at`) VALUES
+(1, 'Enlaces', NULL, NULL),
+(2, 'Noticias', NULL, NULL),
+(3, 'Equipo de Trabajo', NULL, NULL),
+(4, 'Facultades', NULL, NULL),
+(5, 'Diplomados', NULL, NULL),
+(6, 'Información Secretaría', NULL, NULL),
+(7, 'Modalidades', NULL, NULL),
+(8, 'Permisos', NULL, NULL),
+(9, 'Posgrados', NULL, NULL),
+(10, 'Reseña Histórica', NULL, NULL),
+(11, 'Tesis', NULL, NULL),
+(12, 'Duración', NULL, NULL),
+(13, 'Tipo Programas\r\n', NULL, NULL);
+COMMIT;
 /*
 INSERT INTO `equipotrabajos` (`id`, `nombre`, `cargo`, `descripcion`) VALUES
 (1, 'Evelin Patricia Gutierrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias\nPolíticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de\nPosgrados de la Universidad de El Salvador con el objetivo de unificar\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.', '2021-11-02 07:07:15', '2021-11-02 07:11:13'),
