@@ -22,7 +22,12 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+  
+    public function permiso()
+    {
+        return $this->hasMany(Permiso::class,'usuario_id','id');
+    }
+   
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -41,4 +46,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+   
+
 }

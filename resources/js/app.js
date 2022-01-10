@@ -41,6 +41,9 @@ Vue.component('historico-component', require('./components/HistoricoComponent.vu
 Vue.component('noticias-component', require('./components/NoticiasComponent.vue').default);
 Vue.component('ofertaFacultad', require('./components/publico/OfertaFacultad.vue').default);
 
+Vue.component('permisos-component', require('./components/PermisosComponent.vue').default);
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

@@ -3,6 +3,49 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `activo`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Miguel Galdámez', 'admin@hotmail.com', NULL, '$2y$10$cmFJOSa0NI1TR.6EGkXEgejN1BczXfESk9o4wcTfKTaUm7fQ5KuCG', 1, NULL, '2022-01-08 03:34:05', '2022-01-08 03:34:05'),
+(2, 'José Walter Pérez', 'walter@hotmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-08 03:34:05', '2022-01-08 03:34:05'),
+(3, 'Evelyn', 'posgrados@hotmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:03:54', '2022-01-09 00:03:54'),
+(4, 'Nancy', 'nancy.orellana@gmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:11:38', '2022-01-09 00:11:38'),
+(7, 'Sandra2', 'sandra2.orellana@gmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:12:15', '2022-01-09 00:12:15'),
+(10, 'Sandra2', 'sandrix@hotmail.com', NULL, '$2y$10$D/w/8xV7fw7QjUlk9xWuZOpVTlN1EOg3jYHELMnX14ZSQ3Yu48mPS', 1, NULL, '2022-01-09 01:09:28', '2022-01-09 01:09:28');
+COMMIT;
+
+
+
+INSERT INTO `opcionPermiso` (`id`, `opcionPermiso`, `created_at`, `updated_at`) VALUES
+(1, 'Enlaces', NULL, NULL),
+(2, 'Noticias', NULL, NULL),
+(3, 'Equipo de Trabajo', NULL, NULL),
+(4, 'Facultades', NULL, NULL),
+(5, 'Diplomados', NULL, NULL),
+(6, 'Información Secretaría', NULL, NULL),
+(7, 'Modalidades', NULL, NULL),
+(8, 'Permisos', NULL, NULL),
+(9, 'Posgrados', NULL, NULL),
+(10, 'Reseña Histórica', NULL, NULL),
+(11, 'Tesis', NULL, NULL),
+(12, 'Duración', NULL, NULL),
+(13, 'Tipo Programas\r\n', NULL, NULL);
+COMMIT;
+
+INSERT INTO `permiso` (`id`, `usuario_id`, `opcionPermiso_id`, `created_at`, `updated_at`) VALUES
+(21, 1, 2, '2022-01-09 03:57:41', '2022-01-09 03:57:41'),
+(23, 1, 3, '2022-01-09 04:00:01', '2022-01-09 04:00:01'),
+(26, 1, 6, '2022-01-09 04:07:13', '2022-01-09 04:07:13'),
+(27, 1, 4, '2022-01-09 04:08:57', '2022-01-09 04:08:57'),
+(28, 1, 5, '2022-01-09 04:08:59', '2022-01-09 04:08:59'),
+(29, 1, 7, '2022-01-09 04:13:35', '2022-01-09 04:13:35'),
+(30, 1, 1, '2022-01-09 04:13:43', '2022-01-09 04:13:43'),
+(31, 2, 8, '2022-01-09 04:15:51', '2022-01-09 04:15:51'),
+(32, 1, 8, '2022-01-09 04:16:41', '2022-01-09 04:16:41'),
+(33, 1, 9, '2022-01-09 04:21:59', '2022-01-09 04:21:59'),
+(34, 1, 10, '2022-01-09 04:25:39', '2022-01-09 04:25:39'),
+(35, 1, 11, '2022-01-09 04:32:10', '2022-01-09 04:32:10'),
+(36, 1, 12, '2022-01-09 04:40:38', '2022-01-09 04:40:38'),
+(37, 1, 13, '2022-01-09 04:42:11', '2022-01-09 04:42:11');
+COMMIT;
 /*
 INSERT INTO `equipotrabajos` (`id`, `nombre`, `cargo`, `descripcion`) VALUES
 (1, 'Evelin Patricia Gutierrez Castro', 'Coordinadora', 'Licenciada en Relaciones Internacionales y Maestra en Ciencias\nPolíticas, Evelin Gutiérrez, asignada para coordinar la Secretaría de\nPosgrados de la Universidad de El Salvador con el objetivo de unificar\nel sistema de Posgrados de las 12 facultades con las que cuenta este máximo centro de estudios de Educación Superior.', '2021-11-02 07:07:15', '2021-11-02 07:11:13'),
