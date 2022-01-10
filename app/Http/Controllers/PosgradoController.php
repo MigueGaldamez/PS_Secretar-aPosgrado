@@ -6,17 +6,21 @@ use App\Models\Posgrado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PosgradoRequest;
+use App\Models\Facultades;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 class PosgradoController extends Controller
 {
-    public function list()
+    public function list(Facultades $facultad)
     {
-        return Posgrado::get();
+        return Posgrado::where('facultad_id',$facultad->id)->get();
     }
     public function index(Request $request)
     {
+        $nombre  = $request->get('nombre');
+    	$facultad = $request->get('facultad');
+    	$ofertado  = $request->get('ofertado');
         $per_page= $request->per_page;
-        return Posgrado::paginate($per_page);
+        return Posgrado::orderBy('id', 'DESC')->nombre($nombre)->facultad($facultad)->ofertado($ofertado)->paginate($per_page);
     }
     public function store(PosgradoRequest $request)
     {

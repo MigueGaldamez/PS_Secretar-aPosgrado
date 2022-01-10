@@ -35,4 +35,26 @@ class Posgrado extends Model
     {
         return $this->hasMany(Tesi::class)->where('estado','=',0);
     }
+    //para filtros
+    public function scopeNombre($query, $nombre)
+    {
+        if($nombre)
+            return $query->where('nombre', 'LIKE', "%$nombre%");
+    }
+    public function scopeFacultad($query, $facultad)
+    {
+        if( $facultad)
+            return $query->where('facultad_id', '=', $facultad);
+    }
+    public function scopeOfertado($query, $ofertado)
+    {
+        if($ofertado == 1 || $ofertado == 0)
+        {
+            return $query->where('ofertado', '=', "$ofertado");
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

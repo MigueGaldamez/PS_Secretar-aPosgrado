@@ -49,7 +49,7 @@ Route::middleware('auth')->group(function ()
     Route::view('dashboard/posgrados', 'posgrados.index')->name('Posgrados');
     Route::apiResource('dashboard/posgrados_api', PosgradoController::class)->except(['show','update']);
     Route::post('dashboard/posgrados_api/{posgrados_api}', [PosgradoController::class,'update']);
-    Route::get('dashboard/posgrados_list', [PosgradoController::class,'list']);//listBox
+    Route::get('dashboard/posgrados_list/{facultad}', [PosgradoController::class,'list']);//listBox
     //tesis
     Route::view('dashboard/tesis', 'tesis.index')->name('Tesis');
     Route::apiResource('dashboard/tesis_api', TesiController::class)->except(['show']);

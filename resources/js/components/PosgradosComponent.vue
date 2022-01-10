@@ -89,7 +89,7 @@
         <div class="row mt-1 mb-1">
             <div class="col-sm-1">
                 <label  class="form-label">Mostrar:</label>
-                <select @change="list();" v-model="pagination.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <select @change="list();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Seleccione:</option>
                     <option value="4">4</option>
                     <option value="8">8</option>
@@ -98,6 +98,36 @@
                 </select>
             </div>
         </div>
+        <form @submit.prevent="list">
+            <div class="row mt-1 mb-1">
+                <div class="col-sm-4">
+                    <label  class="form-label">Facultad</label>
+                    <select v-model="filtros.facultad" class="form-select" aria-label="facultad">
+                        <option value=0 >Todas las facultades</option>
+                        <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <label  class="form-label">Nombre</label>
+                    <input v-model="filtros.nombre"  class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
+                </div>
+                <div class="col-sm-2">
+                    <label  class="form-label">Ofertado</label>
+                    <select v-model="filtros.ofertado"  class="form-select " aria-label="ofertado">
+                        <option value="none">Todo:</option>
+                        <option value="1">Ofertado</option>
+                        <option value="0">No ofertado</option>
+                    </select>
+                </div>
+                <div class="col-sm-1 align-self-end">
+                    <button @click="list();"  type="submit" class="btn btn-outline-dark">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
         <div v-for="posgrado in posgrados.data" :key="posgrado.id" class=" col-sm-6 mb-3">
             <div class="card  h-100" >
                 <div class="row g-0">
@@ -139,34 +169,34 @@
             <div class="col-sm-4 text-center">
                 <nav>
                     <ul class="pagination">
-                        <li class="page-item" :class="{disabled:pagination.page==1}" >
-                            <a class="page-link" @click="pagination.page=1, list();" href="#">
+                        <li class="page-item" :class="{disabled:filtros.page==1}" >
+                            <a class="page-link" @click="filtros.page=1, list();" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill" viewBox="0 0 16 16">
                                     <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
                                 </svg>
                             </a>
                         </li>
-                        <li class="page-item" :class="{disabled:pagination.page==1}" >
-                            <a class="page-link" @click="pagination.page--, list();" href="#">
+                        <li class="page-item" :class="{disabled:filtros.page==1}" >
+                            <a class="page-link" @click="filtros.page--, list();" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
                                     <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
                                 </svg>
                             </a>
                         </li>
-                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}">
-                            <a class="page-link" @click="pagination.page=n, list();" href="#">
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:filtros.page==n}">
+                            <a class="page-link" @click="filtros.page=n, list();" href="#">
                                 {{n}}
                             </a>
                         </li>
-                        <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" >
-                            <a class="page-link" @click="pagination.page++, list();" href="#">
+                        <li class="page-item" :class="{disabled:filtros.page==posgrados.last_page}" >
+                            <a class="page-link" @click="filtros.page++, list();" href="#">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
                                     <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
                                 </svg>
                             </a>
                         </li>
-                        <li class="page-item" :class="{disabled:pagination.page==posgrados.last_page}" >
-                            <a class="page-link" @click="pagination.page=posgrados.last_page, list();" href="#" >
+                        <li class="page-item" :class="{disabled:filtros.page==posgrados.last_page}" >
+                            <a class="page-link" @click="filtros.page=posgrados.last_page, list();" href="#" >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
                                     <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"/>
                                 </svg>
@@ -196,6 +226,14 @@ export default
                     ofertado: 0,
                     imagen: false,
                 },
+                filtros:
+                {
+                    facultad:0,
+                    ofertado:"none",
+                    nombre:null,
+                    page:1,
+                    per_page:4,
+                },
                 selImagen: false,//para cuando seleccione una imagen
                 cargando: false,
                 textOfertado: '',
@@ -208,10 +246,6 @@ export default
                 facultades: [],
                 tipo_programas: [],
                 imagenMiniatura:'',
-                pagination:{
-                    page:1,
-                    per_page:4,
-                },
                 paginas:[],
             }
         },
@@ -222,7 +256,7 @@ export default
                 try
                 {
                     this.cargando = true;
-                    const res = await axios.get('/dashboard/posgrados_api/',{params:this.pagination,});
+                    const res = await axios.get('/dashboard/posgrados_api/',{params:this.filtros});
                     this.posgrados = res.data;
                     this.listarPaginas();
                     this.cargando = false;
@@ -240,12 +274,12 @@ export default
                 
                 const n = 2;
                 let arrayN=[];
-                let ini = this.pagination.page - 2;
+                let ini = this.filtros.page - 2;
                 if(ini<1)
                 {
                     ini=1;
                 }
-                let fin = this.pagination.page + 2;
+                let fin = this.filtros.page + 2;
                 if(fin>this.posgrados.last_page)
                 {
                     fin=this.posgrados.last_page;

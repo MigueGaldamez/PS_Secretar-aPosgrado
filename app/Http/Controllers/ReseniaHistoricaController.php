@@ -9,7 +9,9 @@ class ReseniaHistoricaController extends Controller
 {
     public function index(Request $request)
     {
-        return ReseniaHistorica::paginate($request->per_page);
+        $anio  = $request->get('anio');
+        $importancia  = $request->get('importancia');
+        return ReseniaHistorica::orderBy('id', 'DESC')->anio($anio)->importancia($importancia)->paginate($request->per_page);
     }
     public function store(ReseniaHistoriaRequest $request)
     {
