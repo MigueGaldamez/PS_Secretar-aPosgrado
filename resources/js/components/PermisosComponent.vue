@@ -237,7 +237,14 @@
             async editarPermiso(idUsu,idOpcionPermi){
                 this.cambio.idUsuario = idUsu;
                 this.cambio.idOpcionPermiso = idOpcionPermi;
-                const res = await axios.post('/dashboard/modificarPermiso/',this.cambio);    
+                try{
+                    const res = await axios.post('/dashboard/modificarPermiso/',this.cambio);    
+                    alert('se guardo');
+                }catch(error){
+                    if(error){
+                        this.errores = error.response.data;
+                    }
+                }
             },
             async crearUsuario(){
                 try{
