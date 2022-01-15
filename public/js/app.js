@@ -9874,24 +9874,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
                 res = _context2.sent;
-                alert('se guardo');
-                _context2.next = 12;
+                _context2.next = 11;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](2);
 
                 if (_context2.t0) {
                   _this2.errores = _context2.t0.response.data;
                 }
 
-              case 12:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[2, 9]]);
+        }, _callee2, null, [[2, 8]]);
       }))();
     },
     crearUsuario: function crearUsuario() {
