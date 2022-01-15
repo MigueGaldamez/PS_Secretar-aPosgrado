@@ -10,30 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 class PermisoController extends Controller
 {
-    public function index()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show(Permiso $permiso)
-    {
-        //
-    }
-
-    public function update(Request $request, Permiso $permiso)
-    {
-        //
-    }
-
-    public function destroy(Permiso $permiso)
-    {
-        //
-    }
     public function usuarioPermisos(Request $request){
         //return Facultades::with('posgrados')->get();
         $usuarios = User::where('id','!=',Auth::user()->id)->with('permiso')->paginate($request->per_page);
@@ -43,7 +19,7 @@ class PermisoController extends Controller
         $opciones = OpcionPermiso::all();
         return $opciones;
     }
-    public function cambiarPermiso(Request $request){   
+    public function cambiarPermiso(Request $request){ 
         $permiso = Permiso::where('usuario_id','=',$request->idUsuario)->where('opcionPermiso_id','=',$request->idOpcionPermiso)->first();
         if($permiso){
             $permiso->delete();
@@ -52,18 +28,15 @@ class PermisoController extends Controller
             $permisoNuevo = new Permiso();
             $permisoNuevo->usuario_id = $request->idUsuario;
             $permisoNuevo->opcionPermiso_id = $request->idOpcionPermiso;
-            $permisoNuevo->save();
-            return $permisoNuevo;
+            return $permisoNuevo->save();
         }   
-       
     }
     public function crearUsuario(Request $request){
         $nuevoUsuario = new User();
         $nuevoUsuario->name = $request->nombre;
         $nuevoUsuario->email = $request->correo;
         $nuevoUsuario->password = Hash::make($request->contrasenia);
-        $nuevoUsuario->save();
-        return $nuevoUsuario;
+        return $nuevoUsuario->save();
     }
     public function modificarUsuario(Request $request){
         $usuario = User::find($request->id);

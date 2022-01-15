@@ -9814,26 +9814,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
@@ -9890,7 +9870,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   element.permiso.forEach(function (elemento) {
                     arr.push(elemento.opcionPermiso_id);
                   });
-                  console.log(arr);
                   element.permiso = arr;
                 });
 
@@ -9936,28 +9915,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.cambio.idOpcionPermiso = idOpcionPermi;
                 _context2.prev = 2;
                 _context2.next = 5;
-                return axios.post('/dashboard/modificarPermiso/', _this2.cambio);
+                return axios.post('/dashboard/modificarPermiso', _this2.cambio).then(function (response) {
+                  if (response.data == 1 || $response.data) {
+                    _this2.$swal({
+                      title: 'Exitoso',
+                      text: 'Actualizado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this2.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 5:
                 res = _context2.sent;
-                alert('se guardo');
-                _context2.next = 12;
+                _context2.next = 11;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 8:
+                _context2.prev = 8;
                 _context2.t0 = _context2["catch"](2);
 
                 if (_context2.t0) {
                   _this2.errores = _context2.t0.response.data;
                 }
 
-              case 12:
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[2, 9]]);
+        }, _callee2, null, [[2, 8]]);
       }))();
     },
     crearUsuario: function crearUsuario() {
@@ -9971,7 +9965,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios.post('/dashboard/crearUsuario/', _this3.nuevoUsuario);
+                return axios.post('/dashboard/crearUsuario', _this3.nuevoUsuario).then(function (response) {
+                  if (response.data == 1) {
+                    _this3.$swal({
+                      title: 'Exitoso',
+                      text: 'Usuario creado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this3.$swal({
+                      title: 'Error!',
+                      text: response.data,
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                });
 
               case 3:
                 res = _context3.sent;
@@ -9987,9 +9997,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
               case 9:
+                _this3.limpiar();
+
                 _this3.listar();
 
-              case 10:
+              case 11:
               case "end":
                 return _context3.stop();
             }
@@ -10008,7 +10020,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context4.prev = 0;
                 _context4.next = 3;
-                return axios.post('/dashboard/modificarUsuario/', _this4.nuevoUsuario);
+                return axios.post('/dashboard/modificarUsuario', _this4.nuevoUsuario);
 
               case 3:
                 res = _context4.sent;
@@ -10044,7 +10056,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
-                return axios.post('/dashboard/cambiarEstado/', 'id=' + id);
+                return axios.post('/dashboard/cambiarEstado', 'id=' + id);
 
               case 2:
                 res = _context5.sent;
@@ -59318,7 +59330,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", [
                       _vm._v(
-                        "\n                               Por razones de seguridad los usuarios se crean por defecto sin ningun permiso .\n                            "
+                        "Por razones de seguridad los usuarios se crean por defecto sin ningun permiso ."
                       )
                     ])
                   ]
@@ -59518,20 +59530,18 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "col-4 md-3" }, [
         _vm._v(
-          "\n                Mostrando " +
+          "\n            Mostrando " +
             _vm._s(_vm.usuarios.from) +
             " - " +
             _vm._s(_vm.usuarios.to) +
             " | total: " +
             _vm._s(_vm.usuarios.total) +
-            "\n            "
+            "\n        "
         )
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-4 md-3" }, [
-        _vm._v(
-          "      \n                Mostrar                  \n                "
-        ),
+        _vm._v("      \n            Mostrar                  \n            "),
         _c(
           "select",
           {
@@ -59621,7 +59631,7 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                                    Modificar\n                                "
+                          "\n                                Modificar\n                            "
                         )
                       ]
                     ),
@@ -59777,7 +59787,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("div", [
                                   _vm._v(
-                                    "\n                                                   No es recomendable cambiar el correo ya que podria dejar sin acceso al usuario.\n                                                "
+                                    "No es recomendable cambiar el correo ya que podria dejar sin acceso al usuario."
                                   )
                                 ])
                               ]
@@ -59967,15 +59977,7 @@ var render = function() {
                               staticClass: "form-check-label",
                               attrs: { for: "flexSwitchCheckChecked" }
                             },
-                            [
-                              _vm._v(
-                                "Modificar  " +
-                                  _vm._s(opt.opcionPermiso) +
-                                  " " +
-                                  _vm._s(opt.id) +
-                                  " "
-                              )
-                            ]
+                            [_vm._v("Modificar  " + _vm._s(opt.opcionPermiso))]
                           )
                         ])
                       ]
@@ -60146,7 +60148,7 @@ var staticRenderFns = [
             "data-bs-target": "#exampleModal"
           }
         },
-        [_vm._v("\n                    Nuevo Usuario\n                ")]
+        [_vm._v("\n                Nuevo Usuario\n            ")]
       )
     ])
   }
