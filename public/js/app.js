@@ -9870,7 +9870,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this2.cambio.idOpcionPermiso = idOpcionPermi;
                 _context2.prev = 2;
                 _context2.next = 5;
-                return axios.post('/dashboard/modificarPermiso/', _this2.cambio);
+                return axios.post('dashboard/modificarPermiso', _this2.cambio);
 
               case 5:
                 res = _context2.sent;
@@ -9905,7 +9905,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.prev = 0;
                 _context3.next = 3;
-                return axios.post('/dashboard/crearUsuario/', _this3.nuevoUsuario);
+                return axios.post('dashboard/crearUsuario', _this3.nuevoUsuario);
 
               case 3:
                 res = _context3.sent;
@@ -10617,446 +10617,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     imagen: function imagen() {
       return this.imagenMiniatura;
     }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      facultad: {},
-      posgrado: {},
-      current: 1,
-      pageSize: 5,
-      facultades: [],
-      id: 0,
-      imagenMiniatura: '',
-      mostrar: false,
-      pagination: {
-        page: 1,
-        per_page: 5
-      }
-    };
-  },
-  computed: {
-    indexStart: function indexStart() {
-      return (this.current - 1) * this.pageSize;
-    },
-    indexEnd: function indexEnd() {
-      return this.indexStart + this.pageSize;
-    },
-    paginated: function paginated() {
-      if (this.posgrado.inv !== undefined) {
-        return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
-      } else {
-        return 0;
-      }
-    },
-    paginas: function paginas() {
-      if (this.posgrado.inv !== undefined) {
-        return Array.from(Array(Math.ceil(this.posgrado.inv.length / this.pageSize)).keys());
-      } else {
-        return 0;
-      }
-    }
-  },
-  methods: {
-    list: function list() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/facultades/conInv');
-
-              case 3:
-                res = _context.sent;
-                _this.facultades = res.data;
-
-                _this.mostrarFacultad(_this.facultades[0]);
-
-                _this.mostrarPosgrado(_this.facultades[0].posgrados_con_inv[0]);
-
-                _context.next = 12;
-                break;
-
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](0);
-
-                if (_context.t0.response.data) {
-                  _this.errores = _context.t0.response.data.errors;
-                }
-
-              case 12:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 9]]);
-      }))();
-    },
-    mostrarFacultad: function mostrarFacultad() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.id = data.id;
-      this.facultad = data;
-      this.current = 1;
-    },
-    mostrarPosgrado: function mostrarPosgrado() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.posgrado = data;
-    }
-  },
-  created: function created() {
-    this.list();
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  data: function data() {
-    return {
-      facultad: [],
-      posgrado: [],
-      current: 1,
-      pageSize: 5,
-      facultades: [],
-      id: 0,
-      imagenMiniatura: '',
-      mostrar: true
-    };
-  },
-  computed: {
-    facsGroups: function facsGroups() {
-      return Array.from(Array(Math.ceil(4)).keys());
-    },
-    indexStart: function indexStart() {
-      return (this.current - 1) * this.pageSize;
-    },
-    indexEnd: function indexEnd() {
-      return this.indexStart + this.pageSize;
-    },
-    paginated: function paginated() {
-      if (this.posgrado.tesis !== undefined) {
-        return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
-      } else {
-        return 0;
-      }
-    },
-    paginas: function paginas() {
-      if (this.posgrado.tesis !== undefined) {
-        return Array.from(Array(Math.ceil(this.posgrado.tesis.length / this.pageSize)).keys());
-      } else {
-        return 0;
-      }
-    }
-  },
-  methods: {
-    list: function list() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.prev = 0;
-                _context.next = 3;
-                return axios.get('/facultades/conTesis');
-
-              case 3:
-                res = _context.sent;
-                _this.facultades = res.data;
-
-                _this.mostrarFacultad(_this.facultades[0]);
-
-                _this.mostrarPosgrado(_this.facultades[0].posgrados_con_tesis[0]);
-
-                _context.next = 12;
-                break;
-
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context["catch"](0);
-
-                if (_context.t0.response.data) {
-                  _this.errores = _context.t0.response.data.errors;
-                }
-
-              case 12:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee, null, [[0, 9]]);
-      }))();
-    },
-    mostrarPosgrado: function mostrarPosgrado() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.id = data.id;
-      this.posgrado = data;
-      this.current = 1;
-    },
-    mostrarFacultad: function mostrarFacultad() {
-      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-      this.facultad = data;
-    }
-  },
-  created: function created() {
-    this.list();
-  },
-  mounted: function mounted() {
-    console.log('Component mounted.');
   }
 });
 
@@ -12582,6 +12142,446 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OpcionesFacultades.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OpcionesFacultades.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      facultad: {},
+      posgrado: {},
+      current: 1,
+      pageSize: 5,
+      facultades: [],
+      id: 0,
+      imagenMiniatura: '',
+      mostrar: false,
+      pagination: {
+        page: 1,
+        per_page: 5
+      }
+    };
+  },
+  computed: {
+    indexStart: function indexStart() {
+      return (this.current - 1) * this.pageSize;
+    },
+    indexEnd: function indexEnd() {
+      return this.indexStart + this.pageSize;
+    },
+    paginated: function paginated() {
+      if (this.posgrado.inv !== undefined) {
+        return this.posgrado.inv.slice(this.indexStart, this.indexEnd);
+      } else {
+        return 0;
+      }
+    },
+    paginas: function paginas() {
+      if (this.posgrado.inv !== undefined) {
+        return Array.from(Array(Math.ceil(this.posgrado.inv.length / this.pageSize)).keys());
+      } else {
+        return 0;
+      }
+    }
+  },
+  methods: {
+    list: function list() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.get('/facultades/conInv');
+
+              case 3:
+                res = _context.sent;
+                _this.facultades = res.data;
+
+                _this.mostrarFacultad(_this.facultades[0]);
+
+                _this.mostrarPosgrado(_this.facultades[0].posgrados_con_inv[0]);
+
+                _context.next = 12;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.response.data) {
+                  _this.errores = _context.t0.response.data.errors;
+                }
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
+    },
+    mostrarFacultad: function mostrarFacultad() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.id = data.id;
+      this.facultad = data;
+      this.current = 1;
+    },
+    mostrarPosgrado: function mostrarPosgrado() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.posgrado = data;
+    }
+  },
+  created: function created() {
+    this.list();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/PosgradoFacultad.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      facultad: [],
+      posgrado: [],
+      current: 1,
+      pageSize: 5,
+      facultades: [],
+      id: 0,
+      imagenMiniatura: '',
+      mostrar: true
+    };
+  },
+  computed: {
+    facsGroups: function facsGroups() {
+      return Array.from(Array(Math.ceil(4)).keys());
+    },
+    indexStart: function indexStart() {
+      return (this.current - 1) * this.pageSize;
+    },
+    indexEnd: function indexEnd() {
+      return this.indexStart + this.pageSize;
+    },
+    paginated: function paginated() {
+      if (this.posgrado.tesis !== undefined) {
+        return this.posgrado.tesis.slice(this.indexStart, this.indexEnd);
+      } else {
+        return 0;
+      }
+    },
+    paginas: function paginas() {
+      if (this.posgrado.tesis !== undefined) {
+        return Array.from(Array(Math.ceil(this.posgrado.tesis.length / this.pageSize)).keys());
+      } else {
+        return 0;
+      }
+    }
+  },
+  methods: {
+    list: function list() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.prev = 0;
+                _context.next = 3;
+                return axios.get('/facultades/conTesis');
+
+              case 3:
+                res = _context.sent;
+                _this.facultades = res.data;
+
+                _this.mostrarFacultad(_this.facultades[0]);
+
+                _this.mostrarPosgrado(_this.facultades[0].posgrados_con_tesis[0]);
+
+                _context.next = 12;
+                break;
+
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context["catch"](0);
+
+                if (_context.t0.response.data) {
+                  _this.errores = _context.t0.response.data.errors;
+                }
+
+              case 12:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, null, [[0, 9]]);
+      }))();
+    },
+    mostrarPosgrado: function mostrarPosgrado() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.id = data.id;
+      this.posgrado = data;
+      this.current = 1;
+    },
+    mostrarFacultad: function mostrarFacultad() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.facultad = data;
+    }
+  },
+  created: function created() {
+    this.list();
+  },
+  mounted: function mounted() {
+    console.log('Component mounted.');
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -12619,8 +12619,8 @@ vue__WEBPACK_IMPORTED_MODULE_2__.default.use((vue_sweetalert2__WEBPACK_IMPORTED_
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('informacion-component', __webpack_require__(/*! ./components/InformacionComponent.vue */ "./resources/js/components/InformacionComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('facultades-component', __webpack_require__(/*! ./components/FacultadesComponent.vue */ "./resources/js/components/FacultadesComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('enlaces-component', __webpack_require__(/*! ./components/EnlacesComponent.vue */ "./resources/js/components/EnlacesComponent.vue").default);
-vue__WEBPACK_IMPORTED_MODULE_2__.default.component('posgradoFacultad', __webpack_require__(/*! ./components/Publico/PosgradoFacultad.vue */ "./resources/js/components/Publico/PosgradoFacultad.vue").default);
-vue__WEBPACK_IMPORTED_MODULE_2__.default.component('opcionesFacultades', __webpack_require__(/*! ./components/Publico/OpcionesFacultades.vue */ "./resources/js/components/Publico/OpcionesFacultades.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component('posgradoFacultad', __webpack_require__(/*! ./components/publico/PosgradoFacultad.vue */ "./resources/js/components/publico/PosgradoFacultad.vue").default);
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component('opcionesFacultades', __webpack_require__(/*! ./components/publico/OpcionesFacultades.vue */ "./resources/js/components/publico/OpcionesFacultades.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('modalidades-component', __webpack_require__(/*! ./components/ModalidadesComponent.vue */ "./resources/js/components/ModalidadesComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('tipo-duracions-component', __webpack_require__(/*! ./components/TipoDuracionsComponent.vue */ "./resources/js/components/TipoDuracionsComponent.vue").default);
 vue__WEBPACK_IMPORTED_MODULE_2__.default.component('tipo-programas-component', __webpack_require__(/*! ./components/TipoProgramasComponent.vue */ "./resources/js/components/TipoProgramasComponent.vue").default);
@@ -17757,7 +17757,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17781,7 +17781,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17805,7 +17805,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17829,7 +17829,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17853,7 +17853,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    \r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    \n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17877,7 +17877,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17901,7 +17901,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17925,7 +17925,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17949,7 +17949,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -17973,7 +17973,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.show\n{\n    display: list-item;\n    opacity: 1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -50814,84 +50814,6 @@ component.options.__file = "resources/js/components/PosgradosComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/Publico/OpcionesFacultades.vue":
-/*!****************************************************************!*\
-  !*** ./resources/js/components/Publico/OpcionesFacultades.vue ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OpcionesFacultades.vue?vue&type=template&id=6b84a58e& */ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&");
-/* harmony import */ var _OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OpcionesFacultades.vue?vue&type=script&lang=js& */ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.render,
-  _OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Publico/OpcionesFacultades.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/Publico/PosgradoFacultad.vue":
-/*!**************************************************************!*\
-  !*** ./resources/js/components/Publico/PosgradoFacultad.vue ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=template&id=f92b05ce& */ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&");
-/* harmony import */ var _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.render,
-  _PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/components/Publico/PosgradoFacultad.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/js/components/TesisComponent.vue":
 /*!****************************************************!*\
   !*** ./resources/js/components/TesisComponent.vue ***!
@@ -51050,6 +50972,84 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 /* hot reload */
 if (false) { var api; }
 component.options.__file = "resources/js/components/publico/OfertaFacultad.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/publico/OpcionesFacultades.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/publico/OpcionesFacultades.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _OpcionesFacultades_vue_vue_type_template_id_fdcbcd24___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./OpcionesFacultades.vue?vue&type=template&id=fdcbcd24& */ "./resources/js/components/publico/OpcionesFacultades.vue?vue&type=template&id=fdcbcd24&");
+/* harmony import */ var _OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OpcionesFacultades.vue?vue&type=script&lang=js& */ "./resources/js/components/publico/OpcionesFacultades.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _OpcionesFacultades_vue_vue_type_template_id_fdcbcd24___WEBPACK_IMPORTED_MODULE_0__.render,
+  _OpcionesFacultades_vue_vue_type_template_id_fdcbcd24___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/publico/OpcionesFacultades.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/publico/PosgradoFacultad.vue":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/publico/PosgradoFacultad.vue ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PosgradoFacultad_vue_vue_type_template_id_c4e92e0e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=template&id=c4e92e0e& */ "./resources/js/components/publico/PosgradoFacultad.vue?vue&type=template&id=c4e92e0e&");
+/* harmony import */ var _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./resources/js/components/publico/PosgradoFacultad.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _PosgradoFacultad_vue_vue_type_template_id_c4e92e0e___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PosgradoFacultad_vue_vue_type_template_id_c4e92e0e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/publico/PosgradoFacultad.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
@@ -51230,38 +51230,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js& ***!
-  \*****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OpcionesFacultades.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
-/***/ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
-
-/***/ }),
-
 /***/ "./resources/js/components/TesisComponent.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************!*\
   !*** ./resources/js/components/TesisComponent.vue?vue&type=script&lang=js& ***!
@@ -51323,6 +51291,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OfertaFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OfertaFacultad.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OfertaFacultad.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OfertaFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/publico/OpcionesFacultades.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/publico/OpcionesFacultades.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OpcionesFacultades.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OpcionesFacultades.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/publico/PosgradoFacultad.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/publico/PosgradoFacultad.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/PosgradoFacultad.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -51643,40 +51643,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e& ***!
-  \***********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_6b84a58e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OpcionesFacultades.vue?vue&type=template&id=6b84a58e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&");
-
-
-/***/ }),
-
-/***/ "./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&":
-/*!*********************************************************************************************!*\
-  !*** ./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce& ***!
-  \*********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_f92b05ce___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=template&id=f92b05ce& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&");
-
-
-/***/ }),
-
 /***/ "./resources/js/components/TesisComponent.vue?vue&type=template&id=473bd03c&":
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/TesisComponent.vue?vue&type=template&id=473bd03c& ***!
@@ -51741,6 +51707,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OfertaFacultad_vue_vue_type_template_id_6e83361d___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OfertaFacultad_vue_vue_type_template_id_6e83361d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OfertaFacultad.vue?vue&type=template&id=6e83361d& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OfertaFacultad.vue?vue&type=template&id=6e83361d&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/publico/OpcionesFacultades.vue?vue&type=template&id=fdcbcd24&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/publico/OpcionesFacultades.vue?vue&type=template&id=fdcbcd24& ***!
+  \***********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_fdcbcd24___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_fdcbcd24___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OpcionesFacultades_vue_vue_type_template_id_fdcbcd24___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OpcionesFacultades.vue?vue&type=template&id=fdcbcd24& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OpcionesFacultades.vue?vue&type=template&id=fdcbcd24&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/publico/PosgradoFacultad.vue?vue&type=template&id=c4e92e0e&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/publico/PosgradoFacultad.vue?vue&type=template&id=c4e92e0e& ***!
+  \*********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_c4e92e0e___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_c4e92e0e___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PosgradoFacultad_vue_vue_type_template_id_c4e92e0e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PosgradoFacultad.vue?vue&type=template&id=c4e92e0e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/PosgradoFacultad.vue?vue&type=template&id=c4e92e0e&");
 
 
 /***/ }),
@@ -55602,7 +55602,7 @@ var render = function() {
               }
             },
             [
-              _vm._v("\r\n                Nuevo\r\n                "),
+              _vm._v("\n                Nuevo\n                "),
               _c(
                 "svg",
                 {
@@ -55917,9 +55917,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\r\n                                " +
+                              "\n                                " +
                                 _vm._s(n) +
-                                "\r\n                            "
+                                "\n                            "
                             )
                           ]
                         )
@@ -60645,827 +60645,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e&":
-/*!**************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/OpcionesFacultades.vue?vue&type=template&id=6b84a58e& ***!
-  \**************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "text-center" }),
-    _vm._v(" "),
-    _c("div", { staticClass: "sCont" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c("div", { attrs: { id: "contN" } }, [
-        _c(
-          "div",
-          { attrs: { id: "slider-containerN" } },
-          _vm._l(_vm.facultades, function(facultad, index) {
-            return _c(
-              "div",
-              {
-                key: facultad.id,
-                staticClass: "item-containerN text-center list-unstyled",
-                class: {
-                  rojoBlanco: index % 3 == 0,
-                  grisBlanco: index % 3 == 1
-                }
-              },
-              [
-                _c("h5", [_vm._v(_vm._s(facultad.nombre))]),
-                _vm._v(" "),
-                _c("div", {
-                  staticClass: "togi",
-                  attrs: { "data-bs-toggle": "dropdown" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  { staticClass: "dropdown-menu" },
-                  _vm._l(facultad.posgrados_con_inv, function(pos) {
-                    return _c("li", { key: pos.id }, [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "dropdown-item",
-                          attrs: { href: "#informacionPosgrado" },
-                          on: {
-                            click: function($event) {
-                              _vm.mostrarPosgrado(pos)
-                              _vm.mostrarFacultad(facultad)
-                            }
-                          }
-                        },
-                        [_vm._v(" " + _vm._s(pos.nombre))]
-                      )
-                    ])
-                  }),
-                  0
-                )
-              ]
-            )
-          }),
-          0
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "text-center" }, [
-      _c(
-        "div",
-        {
-          staticClass: "colorGris mt-4 py-3 stickyHeaderFacul",
-          style: "background-color: " + _vm.facultad.color + ";",
-          attrs: { id: "titulo" }
-        },
-        [
-          _c("h3", { staticClass: "textoSuavecito text-light" }, [
-            _vm._v("Investigaciones en curso de " + _vm._s(_vm.posgrado.nombre))
-          ]),
-          _vm._v(" "),
-          _c("h5", { staticClass: "textoSuavecito text-light" }, [
-            _vm._v(_vm._s(_vm.facultad.nombre))
-          ])
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "container" },
-      [
-        _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
-          _c("nav", [
-            _c(
-              "ul",
-              { staticClass: " pagination" },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: { deactivado: _vm.current == 1 },
-                    on: {
-                      click: function($event) {
-                        _vm.current = 1
-                      }
-                    }
-                  },
-                  [_vm._m(2)]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: { deactivado: _vm.current == 1 },
-                    on: {
-                      click: function($event) {
-                        _vm.current--
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "page__link",
-                        attrs: { href: "#informacionPosgrado" }
-                      },
-                      [_vm._v("<")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.paginas, function(n) {
-                  return _c(
-                    "li",
-                    {
-                      key: n,
-                      staticClass: "page__numbers page-item",
-                      class: { active: _vm.current == n + 1 },
-                      on: {
-                        click: function($event) {
-                          _vm.current = n + 1
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page__link",
-                          attrs: { href: "#informacionPosgrado" }
-                        },
-                        [_vm._v(_vm._s(n + 1))]
-                      )
-                    ]
-                  )
-                }),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: { deactivado: _vm.current == _vm.paginas.length },
-                    on: {
-                      click: function($event) {
-                        _vm.current++
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "page__link",
-                        attrs: { href: "#informacionPosgrado" }
-                      },
-                      [_vm._v(">")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: { deactivado: _vm.current == _vm.paginas.length },
-                    on: {
-                      click: function($event) {
-                        _vm.current = _vm.paginas.length
-                      }
-                    }
-                  },
-                  [_vm._m(3)]
-                )
-              ],
-              2
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _vm._l(_vm.paginated, function(inv, index) {
-          return _c("div", { key: inv.id, staticClass: "row my-4" }, [
-            index % 2 == 0
-              ? _c("div", { staticClass: "card-containerR" }, [
-                  _c("div", { staticClass: "float-layoutR" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "cardR",
-                        style:
-                          "border-right: 10px solid " + _vm.facultad.color + ";"
-                      },
-                      [
-                        _c("h5", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-dark",
-                              attrs: { href: "" + inv.link }
-                            },
-                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("small", [
-                          _vm._v("Autor: "),
-                          _c("b", [_vm._v(_vm._s(inv.autor))])
-                        ]),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("small", [
-                          _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col" }, [
-                            _c("p", { staticClass: "card-text text-end" }, [
-                              _c("small", [
-                                _vm._v("Año de investigación: "),
-                                _c("b", [_vm._v(_vm._s(inv.publicado))])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              : _vm._e(),
-            _vm._v(" "),
-            index % 2 != 0
-              ? _c("div", { staticClass: "card-containerL" }, [
-                  _c("div", { staticClass: "float-layoutL" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "cardL",
-                        style:
-                          "border-left: 10px solid " + _vm.facultad.color + ";"
-                      },
-                      [
-                        _c("h5", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-dark",
-                              attrs: { href: "" + inv.link }
-                            },
-                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("small", [
-                          _vm._v("Autor: "),
-                          _c("b", [_vm._v(_vm._s(inv.autor))])
-                        ]),
-                        _c("br"),
-                        _vm._v(" "),
-                        _c("small", [
-                          _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col" }),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col" }, [
-                            _c("p", { staticClass: "card-text text-end" }, [
-                              _c("small", [
-                                _vm._v("Año de publicación: "),
-                                _c("b", [_vm._v(_vm._s(inv.publicado))])
-                              ])
-                            ])
-                          ])
-                        ])
-                      ]
-                    )
-                  ])
-                ])
-              : _vm._e()
-          ])
-        })
-      ],
-      2
-    )
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-prev izquiInv",
-        attrs: {
-          id: "left-btnN",
-          href: "#informacionPosgrado",
-          role: "button",
-          "data-bs-slide": "prev"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-prev-icon bg-dark",
-          attrs: { "aria-hidden": "true" }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-next derecInv",
-        attrs: {
-          id: "right-btnN",
-          href: "#informacionPosgrado",
-          role: "button",
-          "data-bs-slide": "next"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-next-icon bg-dark",
-          attrs: { "aria-hidden": "true" }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
-      [_c("span", [_vm._v("«")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
-      [_c("span", [_vm._v("»")])]
-    )
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/Publico/PosgradoFacultad.vue?vue&type=template&id=f92b05ce& ***!
-  \************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "mx-auto mt-4", attrs: { id: "wrapper-facTes" } },
-      [
-        _c("div", { attrs: { id: "carousel-facTes" } }, [
-          _c(
-            "div",
-            { attrs: { id: "content-facTes" } },
-            _vm._l(_vm.facsGroups, function(group, i) {
-              return _c(
-                "div",
-                {
-                  key: group.id,
-                  staticClass: "item-facTes col col-12 col-md-6"
-                },
-                [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "accordion",
-                      attrs: { id: "accordion" + i }
-                    },
-                    _vm._l(
-                      _vm.facultades.slice(
-                        i * (_vm.facultades.length / 4),
-                        (i + 1) * (_vm.facultades.length / 4)
-                      ),
-                      function(facultad) {
-                        return _c(
-                          "div",
-                          {
-                            key: facultad.id,
-                            staticClass: "accordion-item nolist"
-                          },
-                          [
-                            _c(
-                              "h2",
-                              {
-                                staticClass: "accordion-header",
-                                attrs: { id: "id_" + facultad.id }
-                              },
-                              [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn accordion-boton",
-                                    attrs: {
-                                      type: "button",
-                                      "data-bs-toggle": "collapse",
-                                      "data-bs-target": "#coll-" + facultad.id,
-                                      "aria-expanded": "false",
-                                      "aria-controls": "coll-" + facultad.id
-                                    }
-                                  },
-                                  [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass: "accordion-collapse collapse",
-                                attrs: {
-                                  id: "coll-" + facultad.id,
-                                  "aria-labelledby": "id_" + facultad.id,
-                                  "data-bs-parent": "#accordion" + i
-                                }
-                              },
-                              [
-                                _c(
-                                  "div",
-                                  { staticClass: "accordion-body row " },
-                                  _vm._l(facultad.posgrados_con_tesis, function(
-                                    posgrado
-                                  ) {
-                                    return _c(
-                                      "div",
-                                      {
-                                        key: posgrado.id,
-                                        staticClass: "col col-12"
-                                      },
-                                      [
-                                        _c(
-                                          "a",
-                                          {
-                                            staticClass:
-                                              "btn btn-link text-dark",
-                                            on: {
-                                              click: function($event) {
-                                                _vm.mostrar = true
-                                                _vm.mostrarPosgrado(posgrado)
-                                                _vm.mostrarFacultad(facultad)
-                                              }
-                                            }
-                                          },
-                                          [_vm._v(_vm._s(posgrado.nombre))]
-                                        )
-                                      ]
-                                    )
-                                  }),
-                                  0
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      }
-                    ),
-                    0
-                  )
-                ]
-              )
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
-        _c("button", { attrs: { id: "prev-facTes" } }, [
-          _c(
-            "svg",
-            {
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "24",
-                height: "24",
-                viewBox: "0 0 24 24"
-              }
-            },
-            [
-              _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d: "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
-                }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("button", { attrs: { id: "next-facTes" } }, [
-          _c(
-            "svg",
-            {
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "24",
-                height: "24",
-                viewBox: "0 0 24 24"
-              }
-            },
-            [
-              _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
-              _vm._v(" "),
-              _c("path", {
-                attrs: {
-                  d: "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
-                }
-              })
-            ]
-          )
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _vm.mostrar
-      ? _c("div", { attrs: { id: "informacionPosgrado" } }, [
-          _c(
-            "div",
-            {
-              staticClass: "colorGris mt-4 pb-1 py-3 stickyHeaderFacul",
-              style: "background-color: " + _vm.facultad.color + ";"
-            },
-            [
-              _c("h3", { staticClass: "text-light text-center" }, [
-                _c("span", { staticClass: "textoSuavecito" }, [
-                  _vm._v("Tesis de Posgrados de la "),
-                  _c("b", [_vm._v(_vm._s(_vm.posgrado.nombre))])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "h5",
-                { staticClass: "textoSuavecito text-light text-center" },
-                [_vm._v("En la Facultad: " + _vm._s(_vm.facultad.nombre))]
-              )
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "container" }, [
-            _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
-              _c("nav", [
-                _c(
-                  "ul",
-                  { staticClass: " pagination" },
-                  [
-                    _c(
-                      "li",
-                      {
-                        staticClass: "page__numbers page-item",
-                        class: { deactivado: _vm.current == 1 },
-                        on: {
-                          click: function($event) {
-                            _vm.current = 1
-                          }
-                        }
-                      },
-                      [_vm._m(0)]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "page__numbers page-item",
-                        class: { deactivado: _vm.current == 1 },
-                        on: {
-                          click: function($event) {
-                            _vm.current--
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page__link",
-                            attrs: { href: "#informacionPosgrado" }
-                          },
-                          [_vm._v("<")]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _vm._l(_vm.paginas, function(n) {
-                      return _c(
-                        "li",
-                        {
-                          key: n,
-                          staticClass: "page__numbers page-item",
-                          class: { active: _vm.current == n + 1 },
-                          on: {
-                            click: function($event) {
-                              _vm.current = n + 1
-                            }
-                          }
-                        },
-                        [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "page__link",
-                              attrs: { href: "#informacionPosgrado" }
-                            },
-                            [_vm._v(_vm._s(n + 1))]
-                          )
-                        ]
-                      )
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "page__numbers page-item",
-                        class: {
-                          deactivado: _vm.current == _vm.paginas.length
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.current++
-                          }
-                        }
-                      },
-                      [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "page__link",
-                            attrs: { href: "#informacionPosgrado" }
-                          },
-                          [_vm._v(">")]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "li",
-                      {
-                        staticClass: "page__numbers page-item",
-                        class: {
-                          deactivado: _vm.current == _vm.paginas.length
-                        },
-                        on: {
-                          click: function($event) {
-                            _vm.current = _vm.paginas.length
-                          }
-                        }
-                      },
-                      [_vm._m(1)]
-                    )
-                  ],
-                  2
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "row" },
-              _vm._l(_vm.paginated, function(tesis) {
-                return _c(
-                  "div",
-                  { key: tesis.id, staticClass: "card-containerR mb-1" },
-                  [
-                    _c(
-                      "div",
-                      {
-                        staticClass:
-                          " callout-right callout-right-primary row calloutTesis",
-                        style:
-                          "border-right: 10px solid " + _vm.facultad.color + ";"
-                      },
-                      [
-                        _c("div", { staticClass: "col" }, [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-dark",
-                              attrs: { href: tesis.link }
-                            },
-                            [
-                              _c("h5", { staticClass: "text-dark" }, [
-                                _c("b", [_vm._v(_vm._s(tesis.titulo))])
-                              ])
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text-uppercase" }, [
-                            _vm._v(_vm._s(_vm.posgrado.nombre))
-                          ]),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "card-text lh-sm" }, [
-                            _c("small", [
-                              _vm._v("Autor: "),
-                              _c("b", [_vm._v(_vm._s(tesis.autor))])
-                            ])
-                          ]),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "card-text lh-sm" }, [
-                            _c("small", [
-                              _vm._v("Año de publicacion: "),
-                              _c("b", [_vm._v(_vm._s(tesis.publicado))])
-                            ])
-                          ])
-                        ])
-                      ]
-                    )
-                  ]
-                )
-              }),
-              0
-            )
-          ])
-        ])
-      : _c("div", { staticClass: "mb-4" }, [_vm._m(2)])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
-      [_c("span", [_vm._v("«")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
-      [_c("span", [_vm._v("»")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
-      _c("h3", { staticClass: "text-light text-center" }, [
-        _c("span", { staticClass: "textoSuavecito" }, [
-          _vm._v("No ha seleccionado ninguna Facultad")
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TesisComponent.vue?vue&type=template&id=473bd03c&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TesisComponent.vue?vue&type=template&id=473bd03c& ***!
@@ -63212,13 +62391,13 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "col col-auto" }, [
           _vm._v(
-            "\r\n           Mostrando: " +
+            "\n           Mostrando: " +
               _vm._s(_vm.posgrados.from) +
               " - " +
               _vm._s(_vm.posgrados.to) +
               " de un total de: " +
               _vm._s(_vm.posgrados.total) +
-              "\r\n        "
+              "\n        "
           )
         ]),
         _vm._v(" "),
@@ -63339,7 +62518,7 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col col-auto" }, [
-          _vm._v("\r\n            Elementos por pagina\r\n            "),
+          _vm._v("\n            Elementos por pagina\n            "),
           _c(
             "select",
             {
@@ -63428,7 +62607,7 @@ var render = function() {
                     _c("br"),
                     _vm._v(
                       _vm._s(posgrado.descripcion) +
-                        "\r\n                            "
+                        "\n                            "
                     )
                   ]),
                   _vm._v(" "),
@@ -63464,7 +62643,7 @@ var render = function() {
                         _vm._v(
                           " " +
                             _vm._s(_vm.facultad.contactoPosgrado) +
-                            "\r\n                                "
+                            "\n                                "
                         )
                       ])
                     ])
@@ -63525,6 +62704,827 @@ var staticRenderFns = [
       { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
       [_c("span", [_vm._v("»")])]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OpcionesFacultades.vue?vue&type=template&id=fdcbcd24&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/OpcionesFacultades.vue?vue&type=template&id=fdcbcd24& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "text-center" }),
+    _vm._v(" "),
+    _c("div", { staticClass: "sCont" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "contN" } }, [
+        _c(
+          "div",
+          { attrs: { id: "slider-containerN" } },
+          _vm._l(_vm.facultades, function(facultad, index) {
+            return _c(
+              "div",
+              {
+                key: facultad.id,
+                staticClass: "item-containerN text-center list-unstyled",
+                class: {
+                  rojoBlanco: index % 3 == 0,
+                  grisBlanco: index % 3 == 1
+                }
+              },
+              [
+                _c("h5", [_vm._v(_vm._s(facultad.nombre))]),
+                _vm._v(" "),
+                _c("div", {
+                  staticClass: "togi",
+                  attrs: { "data-bs-toggle": "dropdown" }
+                }),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "dropdown-menu" },
+                  _vm._l(facultad.posgrados_con_inv, function(pos) {
+                    return _c("li", { key: pos.id }, [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "dropdown-item",
+                          attrs: { href: "#informacionPosgrado" },
+                          on: {
+                            click: function($event) {
+                              _vm.mostrarPosgrado(pos)
+                              _vm.mostrarFacultad(facultad)
+                            }
+                          }
+                        },
+                        [_vm._v(" " + _vm._s(pos.nombre))]
+                      )
+                    ])
+                  }),
+                  0
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _c(
+        "div",
+        {
+          staticClass: "colorGris mt-4 py-3 stickyHeaderFacul",
+          style: "background-color: " + _vm.facultad.color + ";",
+          attrs: { id: "titulo" }
+        },
+        [
+          _c("h3", { staticClass: "textoSuavecito text-light" }, [
+            _vm._v("Investigaciones en curso de " + _vm._s(_vm.posgrado.nombre))
+          ]),
+          _vm._v(" "),
+          _c("h5", { staticClass: "textoSuavecito text-light" }, [
+            _vm._v(_vm._s(_vm.facultad.nombre))
+          ])
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container" },
+      [
+        _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: " pagination" },
+              [
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == 1 },
+                    on: {
+                      click: function($event) {
+                        _vm.current = 1
+                      }
+                    }
+                  },
+                  [_vm._m(2)]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == 1 },
+                    on: {
+                      click: function($event) {
+                        _vm.current--
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v("<")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.paginas, function(n) {
+                  return _c(
+                    "li",
+                    {
+                      key: n,
+                      staticClass: "page__numbers page-item",
+                      class: { active: _vm.current == n + 1 },
+                      on: {
+                        click: function($event) {
+                          _vm.current = n + 1
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page__link",
+                          attrs: { href: "#informacionPosgrado" }
+                        },
+                        [_vm._v(_vm._s(n + 1))]
+                      )
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == _vm.paginas.length },
+                    on: {
+                      click: function($event) {
+                        _vm.current++
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v(">")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.current == _vm.paginas.length },
+                    on: {
+                      click: function($event) {
+                        _vm.current = _vm.paginas.length
+                      }
+                    }
+                  },
+                  [_vm._m(3)]
+                )
+              ],
+              2
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._l(_vm.paginated, function(inv, index) {
+          return _c("div", { key: inv.id, staticClass: "row my-4" }, [
+            index % 2 == 0
+              ? _c("div", { staticClass: "card-containerR" }, [
+                  _c("div", { staticClass: "float-layoutR" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "cardR",
+                        style:
+                          "border-right: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("h5", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: "" + inv.link }
+                            },
+                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v("Autor: "),
+                          _c("b", [_vm._v(_vm._s(inv.autor))])
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col" }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col" }, [
+                            _c("p", { staticClass: "card-text text-end" }, [
+                              _c("small", [
+                                _vm._v("Año de investigación: "),
+                                _c("b", [_vm._v(_vm._s(inv.publicado))])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            index % 2 != 0
+              ? _c("div", { staticClass: "card-containerL" }, [
+                  _c("div", { staticClass: "float-layoutL" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "cardL",
+                        style:
+                          "border-left: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("h5", [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: "" + inv.link }
+                            },
+                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("small", [
+                          _vm._v("Autor: "),
+                          _c("b", [_vm._v(_vm._s(inv.autor))])
+                        ]),
+                        _c("br"),
+                        _vm._v(" "),
+                        _c("small", [
+                          _c("b", [_vm._v(_vm._s(_vm.facultad.nombre))])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col" }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col" }, [
+                            _c("p", { staticClass: "card-text text-end" }, [
+                              _c("small", [
+                                _vm._v("Año de publicación: "),
+                                _c("b", [_vm._v(_vm._s(inv.publicado))])
+                              ])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              : _vm._e()
+          ])
+        })
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-prev izquiInv",
+        attrs: {
+          id: "left-btnN",
+          href: "#informacionPosgrado",
+          role: "button",
+          "data-bs-slide": "prev"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-prev-icon bg-dark",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      {
+        staticClass: "carousel-control-next derecInv",
+        attrs: {
+          id: "right-btnN",
+          href: "#informacionPosgrado",
+          role: "button",
+          "data-bs-slide": "next"
+        }
+      },
+      [
+        _c("span", {
+          staticClass: "carousel-control-next-icon bg-dark",
+          attrs: { "aria-hidden": "true" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("«")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("»")])]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/PosgradoFacultad.vue?vue&type=template&id=c4e92e0e&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/publico/PosgradoFacultad.vue?vue&type=template&id=c4e92e0e& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "mx-auto mt-4", attrs: { id: "wrapper-facTes" } },
+      [
+        _c("div", { attrs: { id: "carousel-facTes" } }, [
+          _c(
+            "div",
+            { attrs: { id: "content-facTes" } },
+            _vm._l(_vm.facsGroups, function(group, i) {
+              return _c(
+                "div",
+                {
+                  key: group.id,
+                  staticClass: "item-facTes col col-12 col-md-6"
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "accordion",
+                      attrs: { id: "accordion" + i }
+                    },
+                    _vm._l(
+                      _vm.facultades.slice(
+                        i * (_vm.facultades.length / 4),
+                        (i + 1) * (_vm.facultades.length / 4)
+                      ),
+                      function(facultad) {
+                        return _c(
+                          "div",
+                          {
+                            key: facultad.id,
+                            staticClass: "accordion-item nolist"
+                          },
+                          [
+                            _c(
+                              "h2",
+                              {
+                                staticClass: "accordion-header",
+                                attrs: { id: "id_" + facultad.id }
+                              },
+                              [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn accordion-boton",
+                                    attrs: {
+                                      type: "button",
+                                      "data-bs-toggle": "collapse",
+                                      "data-bs-target": "#coll-" + facultad.id,
+                                      "aria-expanded": "false",
+                                      "aria-controls": "coll-" + facultad.id
+                                    }
+                                  },
+                                  [_c("b", [_vm._v(_vm._s(facultad.nombre))])]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "accordion-collapse collapse",
+                                attrs: {
+                                  id: "coll-" + facultad.id,
+                                  "aria-labelledby": "id_" + facultad.id,
+                                  "data-bs-parent": "#accordion" + i
+                                }
+                              },
+                              [
+                                _c(
+                                  "div",
+                                  { staticClass: "accordion-body row " },
+                                  _vm._l(facultad.posgrados_con_tesis, function(
+                                    posgrado
+                                  ) {
+                                    return _c(
+                                      "div",
+                                      {
+                                        key: posgrado.id,
+                                        staticClass: "col col-12"
+                                      },
+                                      [
+                                        _c(
+                                          "a",
+                                          {
+                                            staticClass:
+                                              "btn btn-link text-dark",
+                                            on: {
+                                              click: function($event) {
+                                                _vm.mostrar = true
+                                                _vm.mostrarPosgrado(posgrado)
+                                                _vm.mostrarFacultad(facultad)
+                                              }
+                                            }
+                                          },
+                                          [_vm._v(_vm._s(posgrado.nombre))]
+                                        )
+                                      ]
+                                    )
+                                  }),
+                                  0
+                                )
+                              ]
+                            )
+                          ]
+                        )
+                      }
+                    ),
+                    0
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
+        _c("button", { attrs: { id: "prev-facTes" } }, [
+          _c(
+            "svg",
+            {
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24"
+              }
+            },
+            [
+              _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d: "M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
+                }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("button", { attrs: { id: "next-facTes" } }, [
+          _c(
+            "svg",
+            {
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                width: "24",
+                height: "24",
+                viewBox: "0 0 24 24"
+              }
+            },
+            [
+              _c("path", { attrs: { fill: "none", d: "M0 0h24v24H0V0z" } }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d: "M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+                }
+              })
+            ]
+          )
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _vm.mostrar
+      ? _c("div", { attrs: { id: "informacionPosgrado" } }, [
+          _c(
+            "div",
+            {
+              staticClass: "colorGris mt-4 pb-1 py-3 stickyHeaderFacul",
+              style: "background-color: " + _vm.facultad.color + ";"
+            },
+            [
+              _c("h3", { staticClass: "text-light text-center" }, [
+                _c("span", { staticClass: "textoSuavecito" }, [
+                  _vm._v("Tesis de Posgrados de la "),
+                  _c("b", [_vm._v(_vm._s(_vm.posgrado.nombre))])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "h5",
+                { staticClass: "textoSuavecito text-light text-center" },
+                [_vm._v("En la Facultad: " + _vm._s(_vm.facultad.nombre))]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "container" }, [
+            _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
+              _c("nav", [
+                _c(
+                  "ul",
+                  { staticClass: " pagination" },
+                  [
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: { deactivado: _vm.current == 1 },
+                        on: {
+                          click: function($event) {
+                            _vm.current = 1
+                          }
+                        }
+                      },
+                      [_vm._m(0)]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: { deactivado: _vm.current == 1 },
+                        on: {
+                          click: function($event) {
+                            _vm.current--
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "page__link",
+                            attrs: { href: "#informacionPosgrado" }
+                          },
+                          [_vm._v("<")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm._l(_vm.paginas, function(n) {
+                      return _c(
+                        "li",
+                        {
+                          key: n,
+                          staticClass: "page__numbers page-item",
+                          class: { active: _vm.current == n + 1 },
+                          on: {
+                            click: function($event) {
+                              _vm.current = n + 1
+                            }
+                          }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "page__link",
+                              attrs: { href: "#informacionPosgrado" }
+                            },
+                            [_vm._v(_vm._s(n + 1))]
+                          )
+                        ]
+                      )
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: {
+                          deactivado: _vm.current == _vm.paginas.length
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.current++
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "page__link",
+                            attrs: { href: "#informacionPosgrado" }
+                          },
+                          [_vm._v(">")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "li",
+                      {
+                        staticClass: "page__numbers page-item",
+                        class: {
+                          deactivado: _vm.current == _vm.paginas.length
+                        },
+                        on: {
+                          click: function($event) {
+                            _vm.current = _vm.paginas.length
+                          }
+                        }
+                      },
+                      [_vm._m(1)]
+                    )
+                  ],
+                  2
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "row" },
+              _vm._l(_vm.paginated, function(tesis) {
+                return _c(
+                  "div",
+                  { key: tesis.id, staticClass: "card-containerR mb-1" },
+                  [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          " callout-right callout-right-primary row calloutTesis",
+                        style:
+                          "border-right: 10px solid " + _vm.facultad.color + ";"
+                      },
+                      [
+                        _c("div", { staticClass: "col" }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-dark",
+                              attrs: { href: tesis.link }
+                            },
+                            [
+                              _c("h5", { staticClass: "text-dark" }, [
+                                _c("b", [_vm._v(_vm._s(tesis.titulo))])
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text-uppercase" }, [
+                            _vm._v(_vm._s(_vm.posgrado.nombre))
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "card-text lh-sm" }, [
+                            _c("small", [
+                              _vm._v("Autor: "),
+                              _c("b", [_vm._v(_vm._s(tesis.autor))])
+                            ])
+                          ]),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "card-text lh-sm" }, [
+                            _c("small", [
+                              _vm._v("Año de publicacion: "),
+                              _c("b", [_vm._v(_vm._s(tesis.publicado))])
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        ])
+      : _c("div", { staticClass: "mb-4" }, [_vm._m(2)])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("«")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("»")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "colorGris mt-4 pb-1 pt-2" }, [
+      _c("h3", { staticClass: "text-light text-center" }, [
+        _c("span", { staticClass: "textoSuavecito" }, [
+          _vm._v("No ha seleccionado ninguna Facultad")
+        ])
+      ])
+    ])
   }
 ]
 render._withStripped = true
