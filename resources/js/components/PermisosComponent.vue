@@ -204,6 +204,7 @@
         },
         methods:{
             async listar(){
+               
                 const res = await axios.get('/dashboard/usuariosPermisos/',{params:this.pagination,});
                 this.usuarios = res.data;
                 const res2 = await axios.get('/dashboard/opcionesPermisos/');
@@ -238,8 +239,8 @@
                 this.cambio.idUsuario = idUsu;
                 this.cambio.idOpcionPermiso = idOpcionPermi;
                 try{
-                const res = await axios.post('/dashboard/modificarPermiso/',this.cambio);    
-                    
+                    const res = await axios.post('dashboard/modificarPermiso',this.cambio);    
+                    alert('se guardo');
                 }catch(error){
                     if(error){
                         this.errores = error.response.data;
@@ -248,7 +249,7 @@
             },
             async crearUsuario(){
                 try{
-                    const res = await axios.post('/dashboard/crearUsuario/',this.nuevoUsuario); 
+                    const res = await axios.post('dashboard/crearUsuario',this.nuevoUsuario); 
                 }catch(error){
                     if(error){
                         this.errores = error.response.data;
