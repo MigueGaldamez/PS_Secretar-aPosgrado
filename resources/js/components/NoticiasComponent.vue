@@ -5,7 +5,6 @@
                         <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#nuevo-Modal" @click="modificar=false;abrirModal();">
                         Nuevo
                     </button>
-
                         <!-- Modal -->
                     <div class="modal fade" id="nuevo-Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">

@@ -13,6 +13,15 @@ class ReseniaHistorica extends Model
         'anio',
         'importancia',
         'descripcion',
-     
     ];
+    public function scopeImportancia($query, $importancia)
+    {
+        if($importancia == 1 ||$importancia == 2 || $importancia == 3)
+            return $query->where('importancia', '=', $importancia);
+    }
+    public function scopeAnio($query, $anio)
+    {
+        if($anio)
+            return $query->where('anio','=',"$anio");
+    } 
 }
