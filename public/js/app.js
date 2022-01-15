@@ -9934,18 +9934,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this2.cambio.idUsuario = idUsu;
                 _this2.cambio.idOpcionPermiso = idOpcionPermi;
-                _context2.next = 4;
+                _context2.prev = 2;
+                _context2.next = 5;
                 return axios.post('/dashboard/modificarPermiso/', _this2.cambio);
 
-              case 4:
-                res = _context2.sent;
-
               case 5:
+                res = _context2.sent;
+                alert('se guardo');
+                _context2.next = 12;
+                break;
+
+              case 9:
+                _context2.prev = 9;
+                _context2.t0 = _context2["catch"](2);
+
+                if (_context2.t0) {
+                  _this2.errores = _context2.t0.response.data;
+                }
+
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[2, 9]]);
       }))();
     },
     crearUsuario: function crearUsuario() {
