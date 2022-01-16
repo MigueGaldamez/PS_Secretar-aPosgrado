@@ -9814,6 +9814,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
@@ -9831,9 +9849,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       usuarios: [],
       opcionesPermisos: [],
       errores: false,
-      pagination: {
+      filtros: {
+        name: null,
         page: 1,
-        per_page: 5
+        per_page: 4
       },
       paginas: []
     };
@@ -9850,7 +9869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.get('/dashboard/usuariosPermisos/', {
-                  params: _this.pagination
+                  params: _this.filtros
                 });
 
               case 2:
@@ -9884,13 +9903,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     listarPaginas: function listarPaginas() {
       var n = 2;
       var arrayN = [];
-      var ini = this.pagination.page - 2;
+      var ini = this.filtros.page - 2;
 
       if (ini < 1) {
         ini = 1;
       }
 
-      var fin = this.pagination.page + 2;
+      var fin = this.filtros.page + 2;
 
       if (fin > this.usuarios.last_page) {
         fin = this.usuarios.last_page;
@@ -59234,8 +59253,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "row" }, [
-      _vm._m(0),
-      _vm._v(" "),
       _c(
         "div",
         {
@@ -59528,68 +59545,166 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "col-4 md-3" }, [
-        _vm._v(
-          "\n            Mostrando " +
-            _vm._s(_vm.usuarios.from) +
-            " - " +
-            _vm._s(_vm.usuarios.to) +
-            " | total: " +
-            _vm._s(_vm.usuarios.total) +
-            "\n        "
+      _c("div", { staticClass: "col-sm-4" }, [
+        _c(
+          "label",
+          { staticClass: "form-label", attrs: { for: "customRange3" } },
+          [
+            _vm._v(
+              "Mostrando: " +
+                _vm._s(_vm.usuarios.from) +
+                " - " +
+                _vm._s(_vm.usuarios.to) +
+                " | Total: " +
+                _vm._s(_vm.usuarios.total)
+            )
+          ]
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-4 md-3" }, [
-        _vm._v("      \n            Mostrar                  \n            "),
-        _c(
-          "select",
-          {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.pagination.per_page,
-                expression: "pagination.per_page"
-              }
-            ],
-            staticClass: "form-control form-select form-select-sm bg-light",
-            on: {
-              change: [
-                function($event) {
-                  var $$selectedVal = Array.prototype.filter
-                    .call($event.target.options, function(o) {
-                      return o.selected
-                    })
-                    .map(function(o) {
-                      var val = "_value" in o ? o._value : o.value
-                      return val
-                    })
-                  _vm.$set(
-                    _vm.pagination,
-                    "per_page",
-                    $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                  )
-                },
-                function($event) {
-                  return _vm.listar()
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mt-1 mb-1" }, [
+        _c("div", { staticClass: "col-sm-1" }, [
+          _c("label", { staticClass: "form-label" }, [_vm._v("Mostrar:")]),
+          _vm._v(" "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.filtros.per_page,
+                  expression: "filtros.per_page"
                 }
-              ]
+              ],
+              staticClass: "form-select form-select-sm",
+              attrs: { "aria-label": ".form-select-sm example" },
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.filtros,
+                      "per_page",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  function($event) {
+                    return _vm.listar()
+                  }
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { selected: "" } }, [
+                _vm._v("Seleccione:")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "8" } }, [_vm._v("8")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "20" } }, [_vm._v("20")])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.listar.apply(null, arguments)
             }
-          },
-          [
-            _c("option", { attrs: { selected: "" } }, [
-              _vm._v("Elementos por pagina")
+          }
+        },
+        [
+          _c("div", { staticClass: "row mt-1 mb-1" }, [
+            _c("div", { staticClass: "col-sm-6" }, [
+              _c("label", { staticClass: "form-label" }, [
+                _vm._v("Nombre o Apellidos: ")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.filtros.name,
+                    expression: "filtros.name"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  placeholder: "Nombres o Apellidos",
+                  "aria-label": "Nombre de usuario"
+                },
+                domProps: { value: _vm.filtros.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.filtros, "name", $event.target.value)
+                  }
+                }
+              })
             ]),
             _vm._v(" "),
-            _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "15" } }, [_vm._v("15")])
-          ]
-        )
-      ])
+            _c("div", { staticClass: "col-sm-1 align-self-end" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-dark",
+                  attrs: { type: "submit" },
+                  on: {
+                    click: function($event) {
+                      return _vm.listar()
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "bi bi-search",
+                      attrs: {
+                        xmlns: "http://www.w3.org/2000/svg",
+                        width: "16",
+                        height: "16",
+                        fill: "currentColor",
+                        viewBox: "0 0 16 16"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ])
+          ])
+        ]
+      )
     ]),
     _vm._v(" "),
     _c("br"),
@@ -60004,7 +60119,7 @@ var render = function() {
                 "li",
                 {
                   staticClass: "page-item",
-                  class: { disabled: _vm.pagination.page == 1 }
+                  class: { disabled: _vm.filtros.page == 1 }
                 },
                 [
                   _c(
@@ -60014,7 +60129,7 @@ var render = function() {
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {
-                          ;(_vm.pagination.page = 1), _vm.listar()
+                          ;(_vm.filtros.page = 1), _vm.listar()
                         }
                       }
                     },
@@ -60027,7 +60142,7 @@ var render = function() {
                 "li",
                 {
                   staticClass: "page-item",
-                  class: { disabled: _vm.pagination.page == 1 }
+                  class: { disabled: _vm.filtros.page == 1 }
                 },
                 [
                   _c(
@@ -60037,7 +60152,7 @@ var render = function() {
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {
-                          _vm.pagination.page--, _vm.listar()
+                          _vm.filtros.page--, _vm.listar()
                         }
                       }
                     },
@@ -60052,7 +60167,7 @@ var render = function() {
                   {
                     key: n,
                     staticClass: "page-item",
-                    class: { active: _vm.pagination.page == n }
+                    class: { active: _vm.filtros.page == n }
                   },
                   [
                     _c(
@@ -60062,7 +60177,7 @@ var render = function() {
                         attrs: { href: "#" },
                         on: {
                           click: function($event) {
-                            ;(_vm.pagination.page = n), _vm.listar()
+                            ;(_vm.filtros.page = n), _vm.listar()
                           }
                         }
                       },
@@ -60077,7 +60192,7 @@ var render = function() {
                 {
                   staticClass: "page-item",
                   class: {
-                    disabled: _vm.pagination.page == _vm.usuarios.last_page
+                    disabled: _vm.filtros.page == _vm.usuarios.last_page
                   }
                 },
                 [
@@ -60088,7 +60203,7 @@ var render = function() {
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {
-                          _vm.pagination.page++, _vm.listar()
+                          _vm.filtros.page++, _vm.listar()
                         }
                       }
                     },
@@ -60102,7 +60217,7 @@ var render = function() {
                 {
                   staticClass: "page-item",
                   class: {
-                    disabled: _vm.pagination.page == _vm.usuarios.last_page
+                    disabled: _vm.filtros.page == _vm.usuarios.last_page
                   }
                 },
                 [
@@ -60113,7 +60228,7 @@ var render = function() {
                       attrs: { href: "#" },
                       on: {
                         click: function($event) {
-                          ;(_vm.pagination.page = _vm.usuarios.last_page),
+                          ;(_vm.filtros.page = _vm.usuarios.last_page),
                             _vm.listar()
                         }
                       }
@@ -60137,7 +60252,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-4 md-3" }, [
+    return _c("div", { staticClass: "col-sm-12" }, [
       _c(
         "button",
         {
@@ -60148,7 +60263,7 @@ var staticRenderFns = [
             "data-bs-target": "#exampleModal"
           }
         },
-        [_vm._v("\n                Nuevo Usuario\n            ")]
+        [_vm._v("\n            Nuevo Usuario\n        ")]
       )
     ])
   }

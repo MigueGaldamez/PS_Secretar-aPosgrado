@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Hash;
 class PermisoController extends Controller
 {
     public function usuarioPermisos(Request $request){
+        $name  = $request->get('name');
         //return Facultades::with('posgrados')->get();
-        $usuarios = User::where('id','!=',Auth::user()->id)->with('permiso')->paginate($request->per_page);
+        $usuarios = User::where('id','!=',Auth::user()->id)->with('permiso')->name($name)->paginate($request->per_page);
         return $usuarios;
     }
     public function opcionesPermisos(){

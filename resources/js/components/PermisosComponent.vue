@@ -1,11 +1,6 @@
 <template>
     <div>  
         <div class="row">
-            <div class="col-4 md-3">
-                <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Nuevo Usuario
-                </button>
-            </div>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -51,18 +46,41 @@
                 </div>
             </div>
             <!-- Modal -->            
-            <div class="col-4 md-3">
-                Mostrando {{usuarios.from}} - {{usuarios.to }} | total: {{usuarios.total}}
+        <div class="col-sm-4">
+            <label for="customRange3" class="form-label">Mostrando: {{usuarios.from}} - {{usuarios.to }} | Total: {{usuarios.total}}</label>
+        </div>
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Nuevo Usuario
+            </button>
+        </div>
+            <div class="row mt-1 mb-1">
+                <div class="col-sm-1">
+                    <label  class="form-label">Mostrar:</label>
+                    <select @change="listar();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                        <option selected>Seleccione:</option>
+                        <option value="4">4</option>
+                        <option value="8">8</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-4 md-3">      
-                Mostrar                  
-                <select class="form-control form-select form-select-sm bg-light" v-model="pagination.per_page" @change="listar();">
-                <option selected>Elementos por pagina</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                </select>
-            </div>
+            <form @submit.prevent="listar">
+                <div class="row mt-1 mb-1">
+                    <div class="col-sm-6">
+                        <label  class="form-label">Nombre o Apellidos: </label>
+                        <input v-model="filtros.name"  class="form-control" type="text" placeholder="Nombres o Apellidos" aria-label="Nombre de usuario">
+                    </div>
+                    <div class="col-sm-1 align-self-end">
+                        <button @click="listar();"  type="submit" class="btn btn-outline-dark">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </form>
         </div>
         <br>
         <div class="row">
@@ -143,11 +161,11 @@
             <div class="col-6 md-6 text-center">
                 <nav>
                     <ul class="pagination">
-                        <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page=1, listar();" href="#"><span>&laquo;</span></a></li>
-                        <li class="page-item" :class="{disabled:pagination.page==1}" ><a class="page-link" @click="pagination.page--, listar();" href="#">&#60;</a></li>
-                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:pagination.page==n}"><a class="page-link" @click="pagination.page=n, listar();" href="#">{{n}}</a></li>
-                        <li class="page-item" :class="{disabled:pagination.page==usuarios.last_page}"><a class="page-link" @click="pagination.page++, listar();" href="#">&#62;</a></li>
-                        <li class="page-item" :class="{disabled:pagination.page==usuarios.last_page}"><a class="page-link" @click="pagination.page=usuarios.last_page,listar();" href="#" ><span >&raquo;</span></a></li>
+                        <li class="page-item" :class="{disabled:filtros.page==1}" ><a class="page-link" @click="filtros.page=1, listar();" href="#"><span>&laquo;</span></a></li>
+                        <li class="page-item" :class="{disabled:filtros.page==1}" ><a class="page-link" @click="filtros.page--, listar();" href="#">&#60;</a></li>
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:filtros.page==n}"><a class="page-link" @click="filtros.page=n, listar();" href="#">{{n}}</a></li>
+                        <li class="page-item" :class="{disabled:filtros.page==usuarios.last_page}"><a class="page-link" @click="filtros.page++, listar();" href="#">&#62;</a></li>
+                        <li class="page-item" :class="{disabled:filtros.page==usuarios.last_page}"><a class="page-link" @click="filtros.page=usuarios.last_page,listar();" href="#" ><span >&raquo;</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -175,16 +193,17 @@
                 usuarios:[],
                 opcionesPermisos:[],
                 errores:false,
-                pagination:{
+                filtros:{
+                    name: null,
                     page:1,
-                    per_page:5,
+                    per_page:4,
                 },
                 paginas:[],
             }
         },
         methods:{
             async listar(){
-                const res = await axios.get('/dashboard/usuariosPermisos/',{params:this.pagination,});
+                const res = await axios.get('/dashboard/usuariosPermisos/',{params:this.filtros,});
                 this.usuarios = res.data;
                 const res2 = await axios.get('/dashboard/opcionesPermisos/');
                 this.opcionesPermisos = res2.data;
@@ -201,11 +220,11 @@
             listarPaginas(){
                 const n = 2;
                 let arrayN=[];
-                let ini = this.pagination.page - 2;
+                let ini = this.filtros.page - 2;
                 if(ini<1){
                     ini=1;
                 }
-                let fin = this.pagination.page + 2;
+                let fin = this.filtros.page + 2;
                 if(fin>this.usuarios.last_page){
                     fin=this.usuarios.last_page;
                 }

@@ -15,4 +15,5 @@ class Permiso extends Model
     {
         return $this->BelongsTo(opcionPermiso::class,'opcionPermiso_id','id');
     }
+
 }
