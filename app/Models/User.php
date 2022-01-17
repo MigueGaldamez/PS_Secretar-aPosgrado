@@ -27,6 +27,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Permiso::class,'usuario_id','id');
     }
+    //para filtros
+    public function scopeName($query, $name)
+    {
+        if($name)
+            return $query->where('name', 'LIKE', "%$name%");
+    }
    
     /**
      * The attributes that should be hidden for serialization.

@@ -550,3 +550,7 @@
       transform: translateY(0px);
     }
   }
+
+  .floating-label .subir{
+    top:20px !important;
+  }
