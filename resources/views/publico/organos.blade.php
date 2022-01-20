@@ -5,6 +5,9 @@
 @include('publico.cabecera',['titulo' => 'Órganos de gobierno','descripcion'=>''])
 
 <div class="colorGris mt-4 pb-1 pt-2">
+    <h3 class="text-light text-center"><span class="textoSuavecito2">Misión y Visión de la Universidad de El Salvador</span></h3>
+</div>
+<div class="colorGris mt-4 pb-1 pt-2">
     <h3 class="text-light text-center"><span class="textoSuavecito2">Órganos de gobierno de la Universidad de El Salvador</span></h3>
 </div>
 <div class="container"> 

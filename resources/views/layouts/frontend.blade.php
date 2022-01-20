@@ -158,7 +158,7 @@
                             <a class="brand" href="index.html"><img class="brand-logo-light"  src="{{asset('img/ues_logo3.svg')}}" alt="" width="80"  srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
                         </div>
                     </div> 
-                    <div class="col-md-7">
+                    <div class="col-md-6">
                         <ul class="list-unstyled mb-0">
                             <li class="lh-sm">  2021 Universidad de El Salvador.</li>
                             <li class="lh-sm"> Ciudad Universitaria "Dr. Fabio Castillo Figueroa",</li>
@@ -166,9 +166,11 @@
                             <li class="lh-sm"> El Salvador, América Central. Teléfonos: +(503) 2511-2000. Todos los derechos reservados.</li>
                         </ul>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <ul class="list-unstyled mb-0">
                             <li class="lh-sm"> Secretaría de Posgrado.</li>
+                            <li class="lh-sm"> Contacto: +(503) 2511-2000 ext. 3084/2046.</li>
+                            
                             <li class="lh-sm"> Universidad de El Salvador</li>
                         </ul>
                     </div>

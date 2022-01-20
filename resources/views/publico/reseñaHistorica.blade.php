@@ -1,7 +1,7 @@
 @extends('layouts.frontend',['subtitulo' => 'Reseña'])
 
 @section('content')
-@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'y la Universidad de El Salvador'])
+@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'de la Universidad de El Salvador'])
 
 <div class="colorGris mt-2">
     <div class="container-fluid col-11" >
@@ -16,23 +16,22 @@
                 <div class="carousel-item active">
                 <img src="https://i.imgur.com/x2fjApo.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
-                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
+                   {{-- <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
+                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>--}}
                 </div>
                 </div>
                 <div class="carousel-item">
                 <img src="https://i.imgur.com/7MPUaV4.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
-                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
-                </div>
+                   {{-- <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
+                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>--}} </div>
                 </div>
                 <div class="carousel-item">
                 <img src="https://i.imgur.com/QQUI3P6.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                     <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
-                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
-                </div>
+                   {{-- <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
+                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>--}}
+                                    </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">

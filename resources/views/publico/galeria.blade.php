@@ -1,7 +1,7 @@
 @extends('layouts.frontend',['subtitulo' => 'Galeria'])
 
 @section('content')
-@include('publico.cabecera',['titulo' => 'Galeria','descripcion'=>'De las zonas de la Universidad'])
+@include('publico.cabecera',['titulo' => 'Galeria Fotográfica','descripcion'=>'del campus de la Universidad'])
 
 <div class="colorGris mt-2">
     <div class="container-fluid col-11 py-2">
