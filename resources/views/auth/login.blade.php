@@ -4,7 +4,7 @@
 <div class="container">
     
 </div>
-<div class="container mt-4 InicioSesion">
+<div class="container mt-3 InicioSesion">
   <div class="session">
     <div class="left">
       
@@ -16,8 +16,9 @@
       <p>Bienvenid@, este apartado del sitio es privado asi que si has llegado aqui por error te recomendamos regresar al inicio.</p>
       
       <div class="floating-label">
+        
         <input placeholder="Correo" class="@error('email') is-invalid @enderror" type="email" name="email" id="email" autocomplete="email" required  value="{{ old('email') }}" >
-        <label for="email">Correo:</label>
+        <label for="email"  class="@error('email') subir @enderror">Correo:</label>
         @error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>

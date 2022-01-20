@@ -40,7 +40,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  @click="limpiar()">Descartar</button>
-                        <button type="button" class="btn btn-primary text-light" @click="crearUsuario(), limpiar()">Crear Usuario</button>
+                        <button type="button" class="btn btn-primary text-light" data-bs-dismiss="modal" @click="crearUsuario(), limpiar()">Crear Usuario</button>
                     </div>
                     </div>
                 </div>

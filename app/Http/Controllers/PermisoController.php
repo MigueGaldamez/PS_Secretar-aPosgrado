@@ -9,7 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use PHPUnit\Framework\Error\Notice;
+
 
 class PermisoController extends Controller
 {
@@ -184,4 +184,17 @@ class PermisoController extends Controller
         return view('noticias.detalle', compact('noticia_id'));
     }
     
+    public function perfilIndex(){
+        $usuario = User::find(Auth::user()->id);
+        return view('perfil.index')->with('usuario');
+    }
+    public function permisoUsuarioP(){
+        $usuario = User::find(Auth::user()->id);
+        $permisos = Permiso::where('usuario_id','=',$usuario->id)->with('opcionPermiso')->get();
+        return $permisos;
+    }
+    public function perfilUsuarioP(){
+        $usuario = User::find(Auth::user()->id);
+        return $usuario;
+    }
 }
