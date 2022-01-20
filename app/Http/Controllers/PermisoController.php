@@ -176,4 +176,18 @@ class PermisoController extends Controller
             return view('errores.E404');
         }
     }
+    public function perfilIndex(){
+        $usuario = User::find(Auth::user()->id);
+        return view('perfil.index')->with('usuario');
+       
+    }
+    public function permisoUsuarioP(){
+        $usuario = User::find(Auth::user()->id);
+        $permisos = Permiso::where('usuario_id','=',$usuario->id)->with('opcionPermiso')->get();
+        return $permisos;
+    }
+    public function perfilUsuarioP(){
+        $usuario = User::find(Auth::user()->id);
+        return $usuario;
+    }
 }

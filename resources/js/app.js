@@ -40,6 +40,7 @@ Vue.component('galery-component', require('./components/GaleryComponent.vue').de
 Vue.component('historico-component', require('./components/HistoricoComponent.vue').default);
 Vue.component('noticias-component', require('./components/NoticiasComponent.vue').default);
 Vue.component('ofertaFacultad', require('./components/publico/OfertaFacultad.vue').default);
+Vue.component('perfil-component', require('./components/PerfilComponent.vue').default);
 
 Vue.component('permisos-component', require('./components/PermisosComponent.vue').default);
 
