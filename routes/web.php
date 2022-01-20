@@ -80,7 +80,10 @@ Route::middleware('auth')->group(function ()
     Route::apiResource('dashboard/reseniaHistorica', ReseniaHistoricaController::class);
     //Noticias
     Route::get('dashboard/noticias', [PermisoController::class,'noticiaIndex'])->name('NoticiasGestion');
-    Route::apiResource('dashboard/noticia', NoticiaController::class);
+    Route::get('dashboard/noticia/{noticia_id}/detalle',[PermisoController::class,'noticiaDetalleIndex'])->name('NoticiaDetalle');
+    Route::apiResource('dashboard/noticia_api', NoticiaController::class)->except(['update','show']);
+    Route::post('dashboard/noticia_api/{noticia_api}', [NoticiaController::class,'update']);
+    Route::put('dashboard/noticia/{noticia_id}/detalle', [NoticiaController::class,'detalleNoticiaGuardar'])->name('detalleNoticiaGuardar');
     //Permisos
     Route::get('dashboard/permisos', [PermisoController::class,'permisoIndex'])->name('Permisos');
     Route::get('dashboard/usuariosPermisos/',[PermisoController::class,'usuarioPermisos'])->name('usuarioPermisos');

@@ -10,13 +10,20 @@ class Noticia extends Model
     use HasFactory;
     protected $table = 'noticias';
     protected $fillable = [
+        'urlImagen',
         'titulo',
-        'fechaPublicacion',
-        'autor',    
+        'publicado',
+        'cuerpo',    
     ];
-
-    public function detallenoticia()
+    //para filtros
+    public function scopeTitulo($query, $titulo)
     {
-        return $this->hasMany(DetalleNoticia::class,'id','noticia_id');
+        if($titulo)
+            return $query->where('titulo', 'LIKE', "%$titulo%");
+    }
+    public function scopePublicado($query, $publicado)
+    {
+        if($publicado == 1 || $publicado == 0)
+            return $query->where('publicado', '=', "$publicado");
     }
 }

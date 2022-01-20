@@ -5,5 +5,4 @@
         <h1> Gestion de las Noticias</h1>
         <noticias-component/>
     </div>
-    <div id="summernote"><p>Hello Summernote</p></div>
 @endsection

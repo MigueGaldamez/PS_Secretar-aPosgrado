@@ -4,90 +4,89 @@ namespace App\Http\Controllers;
 
 use App\Models\Noticia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index(Request $request)
     {
-        //
-        return Noticia::paginate($request->perpage);
+        $titulo  = $request->get('titulo');
+    	$publicado = $request->get('publicado');
+        $per_page= $request->per_page;
+        return Noticia::orderBy('id', 'DESC')->titulo($titulo)->publicado($publicado)->paginate($per_page);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
-        try
-        {          
-            $noticia = new Noticia();
-       
-            $noticia->titulo = $request->titulo;
-            $noticia->fechaPublicacion = $request->fechaPublicacion;
-            $noticia->autor = $request->autor;
-
-            return $noticia->save();
-        }
-        catch (\Exception $e) 
+        if($request->hasFile('urlImagen'))
         {
-
-            return $e->getMessage();
+            try
+            {
+                $fileImagen=$request->file('urlImagen')->store('public/noticias');
+                $url = Storage::url($fileImagen);
+                $noticia = new Noticia();
+                $urlImagen =  $url;
+                $noticia->urlImagen = $urlImagen;
+                $noticia->titulo = $request->titulo;
+                $noticia->publicado = $request->publicado;
+                return $noticia->save();
+            }
+            catch (\Exception $e) 
+            {
+                return $e->getMessage();
+            }
         }
-
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Noticia $noticia)
-    {
-        //
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Noticia $noticia)
-    {
-        //
-       
-        try
-        {   
-            $noticiaE = Noticia::find($request->id);
-            $noticiaE->update($request->all());
-        }
-        catch (\Exception $e) 
+        else
         {
-
-            return $e->getMessage();
+            return "No has elejido un archivo.";
         }
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Noticia  $noticia
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Noticia $noticia)
+    public function update(Request $request, Noticia $noticia_api)
     {
-        //
+        if($request->hasFile('urlImagen'))
+        {
+            try
+            {
+                $fileImagen=$request->file('urlImagen')->store('public/noticias');
+                $url= Storage::url($fileImagen);
+                $urlImagen =  $url;
+                $noticia_api = Noticia::find($request->id);
+                $oldUrlImagen = explode('/',$noticia_api->urlImagen);
+                Storage::delete('public/noticias/'.$oldUrlImagen[3]);
+                $noticia_api->urlImagen = $urlImagen;
+                $noticia_api->titulo = $request->titulo;
+                $noticia_api->publicado = $request->publicado;
+                return $noticia_api->save();
+            }
+            catch (\Exception $e) 
+            {
+                return $e->getMessage();
+            }
+        }
+        else
+        {
+            try
+            {
+                $noticia_api = Noticia::find($request->id);
+                $noticia_api->titulo = $request->titulo;
+                $noticia_api->publicado = $request->publicado;
+                return $noticia_api->save();
+            }
+            catch (\Exception $e) 
+            {
+                return $e->getMessage();
+            }
+        }  
+    }
+    public function destroy(Noticia $noticia_api)
+    {
+        $oldUrlImagen = explode('/',$noticia_api->urlImagen);
+        Storage::delete('public/noticias/'.$oldUrlImagen[3]);
+        return $noticia_api->delete();
+    }
+    public function detalleNoticiaGuardar(Request $request, Noticia $noticia_id)
+    {
+        $noticia_id->cuerpo = $request->cuerpo;
+        $noticia_id->save();
+        return redirect()->route('NoticiasGestion');
     }
 }

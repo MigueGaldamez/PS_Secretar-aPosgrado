@@ -6,16 +6,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <link rel="shortcut icon" href="{{asset('img/favico/favicon.ico')}}">
-
         <title>Secretaria Posgrado | {{@$titulo}}</title>
-        
-        <!-- include libraries(jQuery, bootstrap) -->
-       
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-        <script src="{{ asset('js/summernote.js') }}" defer></script>
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
         <script src="{{ asset('js/mainBack.js') }}" defer></script>
@@ -25,11 +16,11 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
-
-
-
-
-
+        <!-- include summernote css/js-->
+        <script defer type="text/javascript" src="{{ asset('js\summernote\jquery-3.6.0.min.js') }}"></script>
+        <link href="{{ asset('css\summernote\summernote-lite.min.css') }}" rel="stylesheet">
+        <script defer src="{{ asset('js\summernote\summernote-lite.min.js') }}"></script>
+        <script src="{{ asset('js/summernote.js') }}" defer></script>
     </head>
     <body>
         <div id="app" class="wrapper">
@@ -157,6 +148,6 @@
                 </div>
             </div>
         </div>
-        
+
     </body>
 </html>

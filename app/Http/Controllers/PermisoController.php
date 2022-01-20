@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Noticia;
 use App\Models\OpcionPermiso;
 use App\Models\Permiso;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use PHPUnit\Framework\Error\Notice;
+
 class PermisoController extends Controller
 {
     public function usuarioPermisos(Request $request){
@@ -176,4 +179,9 @@ class PermisoController extends Controller
             return view('errores.E404');
         }
     }
+    public function noticiaDetalleIndex(Noticia $noticia_id)
+    {
+        return view('noticias.detalle', compact('noticia_id'));
+    }
+    
 }
