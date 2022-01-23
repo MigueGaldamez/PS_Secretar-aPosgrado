@@ -49,6 +49,7 @@
                                 <div class="mb-3 col-sm-6">
                                     <input class="form-check-input" v-model="tesi.estado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label"  for="flexSwitchCheckDefault">Terminado</label>
+                                    <br><small>Una vez cambie el estado a "Terminado" este cambiará del apartado de investigaciones al apartado de tesis</small>
                                     <span class="text-danger" v-if="errores.estado">{{errores.estado[0]}}</span>
                                 </div> 
                             </div>           

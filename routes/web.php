@@ -100,6 +100,7 @@ Route::middleware('auth')->group(function ()
     
 });
 //publico
+Route::get('/publicaciones', [App\Http\Controllers\PublicoController::class, 'publicaciones'])->name('publicaciones');
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
 Route::get('/ofertaFacultad/{id}', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
 Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'])->name('reseña');
@@ -116,6 +117,7 @@ Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 't
 Route::get('/catalogo', [App\Http\Controllers\PublicoController::class, 'catalogo'])->name('catalogo');
 Route::get('/galeria', [App\Http\Controllers\PublicoController::class, 'galeria'])->name('galeria');
 Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
+Route::get('/descargar/catalogo/',[App\Http\Controllers\PublicoController::class, 'descargarCatalogo'])->name('descargar.catalogo');
 Auth::routes();
 Route::get('/facultades/conTesis', [FacultadesController::class, 'facultadesConTesis'])->name('fac.con.tesis');
 Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv'])->name('fac.con.inv');

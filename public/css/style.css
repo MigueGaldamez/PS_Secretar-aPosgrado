@@ -1329,9 +1329,6 @@
 }
 
 /*GALERIA*/
-
-
-
 .swiper-container {
   overflow: hidden;
   width: 100%;
@@ -1435,6 +1432,7 @@
 }
 .gallery-thumbs .swiper-slide {
   width: 25%;
+  background-color: #007bb6;
   flex-flow: row nowrap;
   height: 100%;
   opacity: 0.75;

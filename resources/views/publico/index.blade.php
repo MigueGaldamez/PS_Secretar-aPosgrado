@@ -34,7 +34,7 @@
                     </div>         
                 </div>
             </a>
-             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
+             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('publicaciones')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                        <div class="col-3">

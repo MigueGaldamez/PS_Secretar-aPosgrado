@@ -11349,6 +11349,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -62975,6 +62976,13 @@ var render = function() {
                           },
                           [_vm._v("Terminado")]
                         ),
+                        _vm._v(" "),
+                        _c("br"),
+                        _c("small", [
+                          _vm._v(
+                            'Una vez cambie el estado a "Terminado" este cambiará del apartado de investigaciones al apartado de tesis'
+                          )
+                        ]),
                         _vm._v(" "),
                         _vm.errores.estado
                           ? _c("span", { staticClass: "text-danger" }, [

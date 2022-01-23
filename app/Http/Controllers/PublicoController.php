@@ -22,6 +22,11 @@ class PublicoController extends Controller
         $resenias = ReseniaHistorica::all();
         return view('publico.reseñaHistorica',compact('resenias'));
     }
+    public function publicaciones()
+    {
+     
+        return view('publico.publicaciones');
+    }
     public function oferta()
     {
         $facultadesF = Facultades::with('posgrados')->where('multidis','=',0)->get();
@@ -72,5 +77,14 @@ class PublicoController extends Controller
     }
     public function catalogoC(){
         return view('publico.catalogo');
+    }
+    public function descargarCatalogo()
+    {
+        
+        $filePath =  public_path('catalogos/Catalogo Posgrados UES - 2022.pdf');
+        $headers = ['Content-Type: application/pdf'];
+        $fileName ='Catalogo Posgrados UES - 2022.pdf';
+        return response()->download($filePath, $fileName, $headers);
+        
     }
 }
