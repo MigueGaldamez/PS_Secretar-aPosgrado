@@ -107,7 +107,7 @@
                                     <!-- Right Side Of Navbar -->
                                     <ul class="navbar-nav me-auto">
                                         <a class="navbar-brand" href="{{ url('/') }}">
-                                            Secretaría de Pogrado UES
+                                            Secretaría de Posgrado UES
                                         </a>
                                     </ul>
                                     <!-- Left Side Of Navbar -->
