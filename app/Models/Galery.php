@@ -14,5 +14,6 @@ class Galery extends Model
         'urlImagen',
         'titulo',
         'subtitulo',
+        'orden',
     ];
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class GaleryRequest extends FormRequest
+class NoticiaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -17,25 +16,26 @@ class GaleryRequest extends FormRequest
         return true;
     }
 
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
     public function rules()
     {
-        $input = [
-            'orden' => ["1","2","3","4"],
-        ];
         return [
             'urlImagen'=>'exclude_if:imagen,false|image|max:1024',
-            'titulo'=>'required|max:100',
-            'subtitulo'=>'required|max:150',
-            'orden'=>'required|in:1,2,3,4',
+            'titulo'=>'required|max:255',
+            'publicado'=>'required|in:0,1',
         ];
     }
     public function messages()
     {
         return [
             'urlImagen.*'=>'Ingrese un archivo de tipo imagen, maximo de tamaño de 1 MB',
-            'titulo.*'=>'Ingrese un título valido, no mayor a 100 caracteres',
-            'subtitulo.*'=>'Ingrese un subtítulo valido, no mayor a 150 caracteres',
-            'orden.*'=>'Ingrese una categoría válida',
+            'titulo.*'=>'Ingrese un título valido, no mayor a 255 caracteres',
+            'publicado.*'=>'Ingresa un dato válido',
         ];
     }
+
 }

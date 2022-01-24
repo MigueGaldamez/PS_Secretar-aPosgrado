@@ -81,6 +81,7 @@ Route::middleware('auth')->group(function ()
     //Noticias
     Route::get('dashboard/noticias', [PermisoController::class,'noticiaIndex'])->name('NoticiasGestion');
     Route::get('dashboard/noticia/{noticia_id}/detalle',[PermisoController::class,'noticiaDetalleIndex'])->name('NoticiaDetalle');
+    Route::get('dashboard/noticia/{noticia_id}',[PermisoController::class,'noticiaCompleta'])->name('NoticiaCompleta');
     Route::apiResource('dashboard/noticia_api', NoticiaController::class)->except(['update','show']);
     Route::post('dashboard/noticia_api/{noticia_api}', [NoticiaController::class,'update']);
     Route::put('dashboard/noticia/{noticia_id}/detalle', [NoticiaController::class,'detalleNoticiaGuardar'])->name('detalleNoticiaGuardar');
@@ -105,8 +106,11 @@ Route::get('/ofertaFacultad/{id}', [App\Http\Controllers\PublicoController::clas
 Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'])->name('reseña');
 Route::get('/enlaces', [App\Http\Controllers\PublicoController::class, 'enlaces'])->name('enlaces');
 Route::get('/preguntasFrecuentes', [App\Http\Controllers\PublicoController::class, 'preguntasFrecuentes'])->name('preguntasFrecuentes');
+
 Route::get('/noticias', [App\Http\Controllers\PublicoController::class, 'noticias'])->name('noticias');
-Route::get('/noticia', [App\Http\Controllers\PublicoController::class, 'noticia'])->name('noticia');
+Route::get('/noticias_todas', [App\Http\Controllers\PublicoController::class, 'noticiasTodas'])->name('noticiasTodas');
+Route::get('/noticia/{slug}', [App\Http\Controllers\PublicoController::class, 'noticia'])->name('noticia');
+
 Route::get('/diplomados', [App\Http\Controllers\PublicoController::class, 'diplomados'])->name('diplomados');
 Route::get('/investigaciones', [App\Http\Controllers\PublicoController::class, 'investigaciones'])->name('investigaciones');
 Route::get('/organosGobierno', [App\Http\Controllers\PublicoController::class, 'organos'])->name('organos');

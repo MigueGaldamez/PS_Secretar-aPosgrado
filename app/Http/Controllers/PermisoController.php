@@ -179,9 +179,13 @@ class PermisoController extends Controller
             return view('errores.E404');
         }
     }
-    public function noticiaDetalleIndex(Noticia $noticia_id)
+    public function noticiaDetalleIndex(Noticia $noticia_id)//editar la noticia
     {
         return view('noticias.detalle', compact('noticia_id'));
+    }
+    public function noticiaCompleta(Noticia $noticia_id)//mostrar la noticia en sitio privado
+    {
+        return view('noticias.noticiaCompleta', compact('noticia_id'));
     }
     
     public function perfilIndex(){

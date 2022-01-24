@@ -7,6 +7,7 @@ use App\Models\EquipoTrabajo;
 use Illuminate\Http\Request;
 use App\Models\Facultades;
 use App\Models\Informacion;
+use App\Models\Noticia;
 use App\Models\Posgrado;
 use App\Models\ReseniaHistorica;
 class PublicoController extends Controller
@@ -45,9 +46,22 @@ class PublicoController extends Controller
         $enlaces = Enlace::all();
         return view('publico.enlacesImportantes',compact('enlaces','enlacesMas'));
     }
-    public function noticias()
+    public function noticias()//para vista de todas las noticias
     {
-        return view('publico.noticias');
+        $noticias = Noticia::where('publicado',1)->where('destacado',1)->latest()->take(4)->get();
+        return view('publico.noticias',compact('noticias'));
+    }
+    public function noticiasTodas(Request $request)//para api
+    {
+        $per_page= $request->per_page;
+        $noticias = Noticia::where('publicado',1)->latest()->paginate($per_page);
+        return $noticias;
+    }
+    public function noticia($slug)//para ver 1 noticia
+    {
+        $noticias = Noticia::where('publicado',1)->where('destacado',1)->latest()->take(4)->get();
+        $noticia= Noticia::where('slug','=', $slug)->where('publicado',1)->firstOrFail();
+        return view('publico.noticiaDetalle',compact('noticia','noticias'));
     }
     public function investigaciones(){
         return view('publico.investigaciones');
@@ -56,9 +70,7 @@ class PublicoController extends Controller
         $equipoTrabajo = EquipoTrabajo::all();
         return view('publico.organos',compact('equipoTrabajo'));
     }
-    public function noticia(){
-        return view('publico.noticiaDetalle');
-    }
+
     public function diplomados(){
         $facultades = Facultades::all();
         return view('publico.diplomados',compact('facultades'));
