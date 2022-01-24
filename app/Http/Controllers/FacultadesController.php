@@ -7,7 +7,7 @@ use App\Models\Posgrado;
 use Illuminate\Http\Request;
 use App\Http\Requests\FacultadRequest;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str as Str;
 use App\Models\Tesi;
 class FacultadesController extends Controller
 {
@@ -43,6 +43,7 @@ class FacultadesController extends Controller
                 $facultad->contactoDiplomado = $request->contactoDiplomado;
                 $facultad->contactoPosgrado = $request->contactoPosgrado;
                 $facultad->color = $request->color;
+                $facultad->slug = Str::slug($request->nombre);
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
                 
@@ -77,6 +78,7 @@ class FacultadesController extends Controller
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
+                $facultad->slug = Str::slug($request->nombre);
                 
                 return $facultad->save();
             }
@@ -96,6 +98,7 @@ class FacultadesController extends Controller
                 $facultad->color = $request->color;
                 $facultad->multidis = $request->multidis;
                 $facultad->descripcion = $request->descripcion;
+                $facultad->slug = Str::slug($request->nombre);
                 return $facultad->save();
             }
             catch (\Exception $e) 

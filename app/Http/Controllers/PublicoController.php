@@ -30,10 +30,9 @@ class PublicoController extends Controller
         //$facultades = Facultades::all();
         return view('publico.ofertaAcademica',compact('facultadesF','facultadesS'));
     }
-    public function ofertaFacultad($id)
+    public function ofertaFacultad($slug)
     {
-        $facultad = Facultades::findorFail($id);
-        //$posgrados = Posgrado::where()
+        $facultad = Facultades::where('slug','=', $slug)->firstOrFail();
         return view('publico.ofertaAcademicaFacultad',compact('facultad'));
     }
     public function preguntasFrecuentes()

@@ -13,7 +13,8 @@ class Noticia extends Model
         'urlImagen',
         'titulo',
         'publicado',
-        'cuerpo',    
+        'cuerpo',  
+        'slug',
     ];
     //para filtros
     public function scopeTitulo($query, $titulo)
