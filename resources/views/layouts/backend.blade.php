@@ -98,18 +98,19 @@
                         </div>
                     </nav>
                     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm bg mt-2 sticky-top">
+                        <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm bg mt-2 sticky-top">
                             <div class="container">
+                               <ul class="navbar-nav me-auto">
+                                        <a class="navbar-brand" href="{{ url('/dashboard/') }}">
+                                            Secretaría de Posgrado UES
+                                        </a>
+                                    </ul>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                                     <!-- Right Side Of Navbar -->
-                                    <ul class="navbar-nav me-auto">
-                                        <a class="navbar-brand" href="{{ url('/') }}">
-                                            Secretaría de Posgrado UES
-                                        </a>
-                                    </ul>
+                                 
                                     <!-- Left Side Of Navbar -->
                                     <ul class="navbar-nav ms-auto">
                                         <!-- Authentication Links -->

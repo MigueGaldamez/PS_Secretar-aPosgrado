@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('publico.cabecera',['titulo' => 'Detalle noticia','descripcion'=>''])
+@include('publico.cabecera',['titulo' => "$noticia->titulo",'descripcion'=>''])
 <div class="container">
     <div class="row">
         <div class="col">
@@ -10,9 +10,9 @@
     </div>
     <div class="row">
         <div class="col col-sm-7">
-            <h2 class="textoGris mb-0 ps-0 mt-4">Noticia</h2>
+            <h2 class="textoGris mb-0 ps-0 mt-4">Contenido</h2>
             <div class="titulohr mb-4"></div>
-            <h3>{{$noticia->titulo}}</h3>
+            
             <p class="card-text"><small class="text-muted">Publicado: </small><b>{{$noticia->created_at}}</b></p>
                 {!!$noticia->cuerpo!!}   
         </div>
@@ -29,7 +29,7 @@
                     <div class="card-body  paddinNoticias ps-2">
                         <b><a href="{{route('noticia',['slug'=>$item->slug])}}" class="text-dark"><h5 class="card-title">{{$item->titulo}}</h5></a></b>
                         
-                    <p class="card-text"><small class="text-muted">Publicado </small><b>{{$item->created_at}}</b></p>
+                        <p class="card-text"><small class="text-muted">Publicado </small><b>{{$item->created_at}}</b></p>
                     </div>
                     </div>
                 </div>

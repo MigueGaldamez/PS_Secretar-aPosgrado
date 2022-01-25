@@ -1,5 +1,6 @@
 <template>
 <div>
+      
     <div class="row">
         <!-- Modal -->
         <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -51,6 +52,7 @@
                 </div>
             </div>
         </div>
+     
         <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
             <strong>Cargando Datos...</strong>
             <div class="">
@@ -86,7 +88,7 @@
         </div>
         <div class="col-sm-3" v-for="galery in galeries.data" :key="galery.id">
             <div class="card p-2 h-100" >
-                <img :src="galery.urlImagen" class="card-img-top h-50" alt="...">
+                <img :src="galery.urlImagen" class="card-img-top h-50 imagenView" alt="...">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{galery.titulo}}</h5>
                         <p class="card-text ">{{galery.subtitulo}}</p>
@@ -147,6 +149,10 @@
             </div>
         </div>
     </div>
+     <div id="visorImagen">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="full-image">
+        </div>
 </div>
 </template>
 <script>

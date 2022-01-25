@@ -7635,6 +7635,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -57046,7 +57052,7 @@ var render = function() {
           return _c("div", { key: galery.id, staticClass: "col-sm-3" }, [
             _c("div", { staticClass: "card p-2 h-100" }, [
               _c("img", {
-                staticClass: "card-img-top h-50",
+                staticClass: "card-img-top h-50 imagenView",
                 attrs: { src: galery.urlImagen, alt: "..." }
               }),
               _vm._v(" "),
@@ -57377,7 +57383,9 @@ var render = function() {
         ])
       ],
       2
-    )
+    ),
+    _vm._v(" "),
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
@@ -57400,6 +57408,16 @@ var staticRenderFns = [
         staticClass: "spinner-grow text-info",
         attrs: { role: "status" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "visorImagen" } }, [
+      _c("span", { staticClass: "close" }, [_vm._v("×")]),
+      _vm._v(" "),
+      _c("img", { staticClass: "modal-content", attrs: { id: "full-image" } })
     ])
   }
 ]
