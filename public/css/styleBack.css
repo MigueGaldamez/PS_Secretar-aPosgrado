@@ -608,3 +608,87 @@
       width: 100%;
   }
 }
+/*CONTADORES*/
+.contador{
+  color: #fff;
+  background: linear-gradient(to right bottom, #FFD81B, #f9b12a);
+
+  text-align: center;
+  width: 155px;
+  height: 110px;
+  padding: 20px 9px 9px;
+  margin: 0 auto;
+  border-radius: 10px 50px 10px 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+.contador:after{
+  content: '';
+  background-color: #f9b12a;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+.contador .counter-value{
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 40px;
+  margin: 0 0 15px;
+  display: block;
+}
+.contador h3{
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 20px;
+}
+.contador.red{background: linear-gradient(to right bottom, #ff0313,#d0232f);}
+.contador.red:after{ background: #d0232f; }
+.contador.green{ background: linear-gradient(to right bottom, #a9dd23, #52C242); }
+.contador.green:after{ background: #52C242; }
+.contador.cgreen{ background: linear-gradient(to right bottom, #01AD9F, #008888); }
+.contador.cgreen:after{ background: #008888; }
+.contador.blue{ background: linear-gradient(to right bottom, #00C5EF, #0092f4); }
+.contador.blue:after{ background: #0092f4; }
+@media screen and (max-width:990px){
+  .counter{ margin-bottom: 40px; }
+}
+.contador:hover {
+	animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
