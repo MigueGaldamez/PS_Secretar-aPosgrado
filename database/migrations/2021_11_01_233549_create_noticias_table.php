@@ -19,6 +19,8 @@ class CreateNoticiasTable extends Migration
             $table->string('titulo');
             $table->text('cuerpo')->nullable(true);
             $table->boolean('publicado');
+            $table->boolean('destacado');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

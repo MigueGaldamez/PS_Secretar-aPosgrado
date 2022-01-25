@@ -21,7 +21,7 @@
                                 </div>
                                 <div class="mb-3 col-sm-12">
                                     <label for="nombreDiplomado" class="form-label">Nombre del Diplomado</label>
-                                    <textarea v-model="diplomado.nombre" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <input v-model="diplomado.nombre" class="form-control" >
                                     <span class="text-danger" v-if="errores.nombre">{{errores.nombre[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-4">

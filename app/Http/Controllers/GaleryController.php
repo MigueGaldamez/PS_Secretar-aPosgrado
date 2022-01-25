@@ -25,6 +25,7 @@ class GaleryController extends Controller
                 $galery->urlImagen = $urlImagen;
                 $galery->titulo = $request->titulo;
                 $galery->subtitulo = $request->subtitulo;
+                $galery->orden = $request->orden;
                 return $galery->save();
             }
             catch (\Exception $e) 
@@ -46,12 +47,13 @@ class GaleryController extends Controller
                 $fileImagen=$request->file('urlImagen')->store('public/galery');
                 $url= Storage::url($fileImagen);
                 $urlImagen =  $url;
-                $galery_api = Galery::find($request->id);
+                //$galery_api = Galery::find($request->id);
                 $oldUrlImagen = explode('/',$galery_api->urlImagen);
                 Storage::delete('public/galery/'.$oldUrlImagen[3]);
                 $galery_api->urlImagen = $urlImagen;
                 $galery_api->titulo = $request->titulo;
                 $galery_api->subtitulo = $request->subtitulo;
+                $galery_api->orden = $request->orden;
                 
                 return $galery_api->save();
             }
@@ -67,6 +69,7 @@ class GaleryController extends Controller
                 $galery_api = Galery::find($request->id);
                 $galery_api->titulo = $request->titulo;
                 $galery_api->subtitulo = $request->subtitulo;
+                $galery_api->orden = $request->orden;
                 return $galery_api->save();
             }
             catch (\Exception $e) 

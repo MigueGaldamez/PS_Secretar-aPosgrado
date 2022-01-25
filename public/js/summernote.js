@@ -1,13 +1,12 @@
 $('#summernote').summernote({
-  placeholder: 'Hello stand alone ui',
+  placeholder: 'Descripción de la noticia.',
   tabsize: 2,
   toolbar: [
-    ['style', ['style']],
+    ['view', [, 'undo', 'redo']],
+    ['style', ['style','fontname']],
     ['font', ['bold', 'underline', 'clear']],
     ['color', ['color']],
     ['para', ['ul', 'ol', 'paragraph']],
-    ['table', ['table']],
     ['insert', ['link', 'picture', 'video']],
-    ['view', ['fullscreen', 'codeview', 'help']]
   ]
 });

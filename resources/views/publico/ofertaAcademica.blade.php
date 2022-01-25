@@ -35,7 +35,7 @@
                 <img class="card-img" src="{{$item->urlImagen}}" alt="Card image">
                 <div class="card-img-overlay">
                     <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">{{$item->nombre}}</span></h5>
-                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->id)}}">Ver mas</a>
+                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver mas</a>
                 </div>
             </div>
             <p class="textoFacu"><span >{{$item->descripcion}}</span></p>
@@ -55,7 +55,7 @@
                 <img class="card-img" src="{{$item->urlImagen}}" alt="Card image">
                 <div class="card-img-overlay">
                     <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">{{$item->nombre}}</span></h5>
-                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->id)}}">Ver mas</a>
+                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver mas</a>
                 </div>
             </div>
             <p class="textoFacu"><span >{{$item->descripcion}}</span></p>

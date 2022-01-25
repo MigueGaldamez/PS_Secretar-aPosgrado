@@ -28,7 +28,12 @@
                                     <input class="form-check-input" @change="publicado(noticia.publicado)" v-model="noticia.publicado" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
                                     <label class="form-check-label"  for="flexSwitchCheckDefault">{{textPublicado}}</label>
                                     <span class="text-danger" v-if="errores.publicado">{{errores.publicado[0]}}</span>
-                                </div>  
+                                </div>
+                                <div class="mb-3 col-sm-6 form-check form-switch">
+                                    <input class="form-check-input" v-model="noticia.destacado " true-value="1" false-value="0" id="flexSwitchCheckDefault" type="checkbox" role="switch">
+                                    <label class="form-check-label"  for="flexSwitchCheckDefault">Destacado</label>
+                                    <span class="text-danger" v-if="errores.destacado">{{errores.destacado[0]}}</span>
+                                </div>   
                             </div>         
                         </div>
                         <div class="modal-footer">
@@ -66,8 +71,8 @@
                 <select @change="listar();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Seleccione:</option>
                     <option value="4">4</option>
-                    <option value="1">1</option>
-                    <option value="15">15</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
                     <option value="20">20</option>
                 </select>
             </div>
@@ -100,8 +105,8 @@
                 <tr>
                     <th scope="col">Imagen</th>
                     <th scope="col">Titulo</th>
-                    <th scope="col">publicado</th>
-                    <th scope="col">creado</th>
+                    <th scope="col">Publicado/Destacado</th>
+                    <th scope="col">Creado</th>
                     <th scope="col">Detalle de la Noticia</th>                                
                     <th scope="col"  class="text-center">Acciones</th>                           
                 </tr>
@@ -111,21 +116,44 @@
                     <td><img :src="noti.urlImagen" class="img-thumbnail" ></td>
                     <td>{{noti.titulo}}</td>
                     <td>
-                        <p v-if="noti.publicado ==1"> Publicado</p>
-                        <p v-else>No Publicado</p>
+                            <div v-if="noti.publicado ==1" class="text-success"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                    <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                    <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                </svg>
+                            </div>
+                            <div v-else class="text-danger">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                                    <path d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7.029 7.029 0 0 0 2.79-.588zM5.21 3.088A7.028 7.028 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474L5.21 3.089z"/>
+                                    <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"/>
+                                </svg>
+                            </div>
+                            <div v-if="noti.destacado ==1"> 
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class=" text-warning bi bi-star-fill" viewBox="0 0 16 16">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                            </div>
                     </td>
-                    <td>{{cambiarFecha(noti.created_at)}}</td>
+                    <td>{{noti.created_at}}</td>
                     <td>
-                        <a role="button" :href="'noticia/'+noti.id+'/detalle'"   class="btn btn-outline-danger btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Agrega un Detalle " >
+                        <a role="button" :href="'noticia/'+noti.id+'/detalle'"   class="btn btn-success btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Agrega un Detalle " >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-plus" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z"/>
                                 <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
                                 <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
                             </svg>
                         </a>
+                        <a role="button" :href="'noticia/'+noti.id"   class="btn btn-info btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver Noticia Completa " >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-richtext" viewBox="0 0 16 16">
+                                <path d="M7.5 3.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047L11 4.75V7a.5.5 0 0 1-.5.5h-5A.5.5 0 0 1 5 7v-.5s1.54-1.274 1.639-1.208zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z"/>
+                                <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                                <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                            </svg>
+                        </a>
+                        
                     </td>
-                    <td  class="text-center ">   
-                        <button type="button" class="btn btn-warning btn-sm"  @click="modificar=true; abrirModal(noti);">
+                    <td  class="text-center ">
+                        <button  type="button" class="btn btn-primary mb-1"  @click="modificar=true; abrirModal(noti);">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                 <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                             </svg>
@@ -194,7 +222,7 @@
                     titulo:'',
                     publicado: 0,
                     imagen: false,
-                    
+                    destacado: 0,
                 },
                 filtros:
                 {
@@ -364,17 +392,6 @@
                     }
                 }
             },
-            cambiarFecha(fecha)
-            {
-                const f = new Date(fecha);
-                const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre",];
-                const dias = ["Domingo","Lunes","Martes","Miércoles","Jueves","Viernes","Sábado"];
-                
-                var dia = dias[f.getDay()] + " " + f.getDate();
-                var mes = meses[f.getMonth()];
-                const fechaFinal = dia + " " + mes + ", del "+ f.getFullYear();
-                return fechaFinal;
-            },
             abrirModal(data={})
             {
                 this.modal=1;
@@ -385,6 +402,7 @@
                     this.noticia.titulo=data.titulo;
                     this.noticia.urlImagen = data.urlImagen;
                     this.noticia.publicado = data.publicado;
+                    this.noticia.destacado = data.destacado;
                     this.noticia.imagen = false;
                     this.publicado(data.publicado);
                 }
@@ -395,6 +413,7 @@
                     this.noticia.titulo='';
                     this.noticia.urlImagen = null;
                     this.noticia.publicado = 0;
+                    this.noticia.destacado = 0;
                     this.publicado(data.publicado);
                     this.noticia.imagen = true;
                 }

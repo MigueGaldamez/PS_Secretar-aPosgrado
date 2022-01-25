@@ -18,7 +18,7 @@
                                     <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <img :src="imagen" class="img-thumbnail" alt="...">
+                                    <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label  class="form-label">Título</label>
@@ -29,6 +29,17 @@
                                     <label  class="form-label">Subtítulo</label>
                                     <input v-model="galery.subtitulo" class="form-control" type="text" placeholder="Subtítulo" aria-label="Subtitulo de la imagen">
                                     <span class="text-danger" v-if="errores.subtitulo">{{errores.subtitulo[0]}}</span>
+                                </div>
+                                <div class="mb-3 col-sm-4" >
+                                    <label  class="form-label">Categoría</label>
+                                    <select  v-model="galery.orden" class="form-select" aria-label="Default select example" id="Orden">
+                                        <option value="0" selected>Seleccione La Categoría</option>
+                                        <option value="1">Campus</option>
+                                        <option value="2">Arte, Cultura y Deporte</option>
+                                        <option value="3">Eventos académicos</option>
+                                        <option value="4">Investigación y Proyección Social</option>
+                                    </select> 
+                                    <span class="text-danger" v-if="errores.orden">{{errores.orden[0]}}</span>                               
                                 </div>
                             </div>
                             <button @click="save();" type="button" class="btn btn-success">Guardar</button>          
@@ -149,6 +160,7 @@ export default {
                 titulo: '',
                 subtitulo: '',
                 imagen: false,
+                orden: '',
             },
             cargando: false,
             selImagen: false,//para cuando seleccione una imagen
@@ -325,6 +337,7 @@ export default {
                 this.galery.titulo = data.titulo;
                 this.galery.subtitulo = data.subtitulo;
                 this.galery.imagen = false;
+                this.galery.orden = data.orden;
             }
             else
             {
@@ -334,6 +347,7 @@ export default {
                 this.galery.titulo = '';
                 this.galery.subtitulo = '';
                 this.galery.imagen = true;
+                this.galery.orden = 0;
             }
         },
         closeModal() {
@@ -377,6 +391,7 @@ export default {
 .show
 {
     display: list-item;
+    background: rgba(0, 0, 0, 0.76); 
     opacity: 1;
 }
 </style>
