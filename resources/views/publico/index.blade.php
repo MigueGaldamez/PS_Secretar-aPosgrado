@@ -158,56 +158,18 @@
             <div class="col col-12 col-lg-4 col-sm-12 p-4 p-md-0">
                 <h3 class="text-center tituloSuperior text-uppercase  textoDuro mt-4"><span>Noticias Relevantes</span></h3>
                 <div class="titulohr mb-2 mt-2"></div>
+                @foreach ($noticias as $item)
                 <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
                     <div class="col">
-                        <a href="" class="text-dark">
-                            <span><b>UES: 179 años promoviendo el arte y la cultura.</b></span>
-                        </a>
+                        <b><a href="{{route('noticia',['slug'=>$item->slug])}}" class="text-dark"><h5 class="card-title">{{$item->titulo}}</h5></a></b>
                         <br>
-                        <span class=""><small >Martes 31 de agosto de 2021</small></span>
+                        <p class="card-text"><small class="text-muted">Publicado </small><b>{{$item->created_at}}</b></p>
                     </div>
                     <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset('img/facultades/tres.jpg')}}" alt="">
+                        <img class="img-fluid " src="{{asset($item->urlImagen)}}" alt="">
                     </div>
                 </div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
-                    <div class="col">
-                        <a href="" class="text-dark">
-                        <span><b>Exponen raíces de la desigualdad en las sociedades actuales de Latinoamérica.</b></span>
-                        </a>
-                        <br>
-                        <span class=""><small >Martes 31 de agosto de 2021</small></span>
-                    </div>
-                    <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset('img/facultades/tres.jpg')}}" alt="">
-                    </div>
-                </div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
-                    <div class="col">
-                        <a href="" class="text-dark">
-                        <span><b>Convocan a todos los profesores de la UES a publicar libros de texto e investigaciones.</b></span>
-                        </a>
-                        <br>
-                        <span class=""><small >Martes 31 de agosto de 2021</small></span>
-                    </div>
-                    <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset('img/facultades/tres.jpg')}}" alt="">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="box col-11 mt-4 mx-auto  bg-griscito">
-                        <h1 class="textoGris text-uppercase textoDuro">Acreditación</h1>
-                        <div class="titulohr mb-4"></div>
-                        <p>Universidad de El Salvador, única institución pública de educación superior de la República de El Salvador con reconocimiento en la excelencia académica.</p>
-                        <img class="img-fluid mt-1 mb-3" src="{{asset('img/acreditacion/ranking.png')}}" alt="">
-                        <p>
-                        Acreditada en 2019 por el Instituto de Alto Consejo de la Evaluación de la Investigación de la Educación Superior (Hcéres-Francia)
-                        </p>
-                        <div class="text-center">
-                            <img class="mx-auto" src="{{asset('img/acreditacion/hceres.png')}}" alt="" height="150px">
-                        </div>
-                    </div>   
-                </div>   
+                @endforeach    
             </div>
         </div>
     </div>

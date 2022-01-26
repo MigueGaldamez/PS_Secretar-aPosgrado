@@ -15,8 +15,9 @@ class PublicoController extends Controller
     //
     public function inicio()
     {
+        $noticias = Noticia::where('publicado',1)->where('destacado',1)->latest()->take(4)->get();
         $informacion = Informacion::first();
-        return view('publico.index',compact('informacion'));
+        return view('publico.index',compact('informacion','noticias'));
     }
     public function reseña()
     {

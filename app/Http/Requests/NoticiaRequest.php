@@ -24,7 +24,7 @@ class NoticiaRequest extends FormRequest
     public function rules()
     {
         return [
-            'urlImagen'=>'exclude_if:imagen,false|image|max:1024',
+            'urlImagen'=>'exclude_if:imagen,false|image|max:1536',
             'titulo'=>'required|max:255',
             'publicado'=>'required|in:0,1',
         ];
@@ -32,7 +32,7 @@ class NoticiaRequest extends FormRequest
     public function messages()
     {
         return [
-            'urlImagen.*'=>'Ingrese un archivo de tipo imagen, maximo de tamaño de 1 MB',
+            'urlImagen.*'=>'Ingrese un archivo de tipo imagen, maximo de tamaño de 1.5 MB',
             'titulo.*'=>'Ingrese un título valido, no mayor a 255 caracteres',
             'publicado.*'=>'Ingresa un dato válido',
         ];

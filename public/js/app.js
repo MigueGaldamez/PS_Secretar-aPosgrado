@@ -18557,7 +18557,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18581,7 +18581,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18605,7 +18605,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18629,7 +18629,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    background: rgba(0, 0, 0, 0.76); \r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    background: rgba(0, 0, 0, 0.76); \r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18653,7 +18653,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    \r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    \r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18677,7 +18677,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18701,7 +18701,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18749,7 +18749,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18773,7 +18773,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -18797,7 +18797,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.show\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.ver\r\n{\r\n    display: list-item;\r\n    opacity: 1;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -52779,13 +52779,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -53277,7 +53276,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -53699,7 +53702,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-outline-info btn-sm",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.update = true
@@ -54079,13 +54086,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -54326,7 +54332,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -54458,7 +54468,11 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-info card-link",
-                  attrs: { type: "button" },
+                  attrs: {
+                    type: "button",
+                    "data-bs-toggle": "modal",
+                    "data-bs-target": "#exampleModal"
+                  },
                   on: {
                     click: function($event) {
                       _vm.update = true
@@ -54818,10 +54832,11 @@ var render = function() {
         "div",
         {
           staticClass: "modal fade",
-          class: { show: _vm.modal },
           attrs: {
-            id: "nuevo-Modal",
+            id: "exampleModal",
             tabindex: "-1",
+            "data-bs-backdrop": "static",
+            "data-bs-keyboard": "false",
             "aria-labelledby": "exampleModalLabel",
             "aria-hidden": "true"
           }
@@ -55111,7 +55126,11 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-success ",
-            attrs: { type: "button" },
+            attrs: {
+              "data-bs-toggle": "modal",
+              "data-bs-target": "#exampleModal",
+              type: "button"
+            },
             on: {
               click: function($event) {
                 _vm.modificar = false
@@ -55246,7 +55265,11 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-info",
-                          attrs: { type: "button" },
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            "data-bs-target": "#exampleModal"
+                          },
                           on: {
                             click: function($event) {
                               _vm.modificar = true
@@ -55609,13 +55632,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -56078,7 +56100,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -56230,7 +56256,11 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-info",
-                      attrs: { type: "button" },
+                      attrs: {
+                        type: "button",
+                        "data-bs-toggle": "modal",
+                        "data-bs-target": "#exampleModal"
+                      },
                       on: {
                         click: function($event) {
                           _vm.update = true
@@ -56587,13 +56617,12 @@ var render = function() {
           "div",
           {
             staticClass: "modal fade",
-            class: { show: _vm.modal },
             attrs: {
-              id: "staticBackdrop",
+              id: "exampleModal",
+              tabindex: "-1",
               "data-bs-backdrop": "static",
               "data-bs-keyboard": "false",
-              tabindex: "-1",
-              "aria-labelledby": "staticBackdropLabel",
+              "aria-labelledby": "exampleModalLabel",
               "aria-hidden": "true"
             }
           },
@@ -56909,7 +56938,11 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-success ",
-              attrs: { type: "button" },
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#exampleModal",
+                type: "button"
+              },
               on: {
                 click: function($event) {
                   _vm.update = false
@@ -57038,7 +57071,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-info",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.update = true
@@ -57398,10 +57435,11 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "nuevo-Modal",
+          id: "exampleModal",
           tabindex: "-1",
+          "data-bs-backdrop": "static",
+          "data-bs-keyboard": "false",
           "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
@@ -57672,7 +57710,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.modificar = false
@@ -57951,7 +57993,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-outline-info btn-sm",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.modificar = true
@@ -58333,13 +58379,12 @@ var render = function() {
         "div",
         {
           staticClass: "modal fade",
-          class: { show: _vm.modal },
           attrs: {
-            id: "staticBackdrop",
+            id: "exampleModal",
+            tabindex: "-1",
             "data-bs-backdrop": "static",
             "data-bs-keyboard": "false",
-            tabindex: "-1",
-            "aria-labelledby": "staticBackdropLabel",
+            "aria-labelledby": "exampleModalLabel",
             "aria-hidden": "true"
           }
         },
@@ -58886,6 +58931,10 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-info",
+              attrs: {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#exampleModal"
+              },
               on: {
                 click: function($event) {
                   return _vm.openModal(info)
@@ -58928,13 +58977,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -59164,7 +59212,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -59234,7 +59286,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-outline-info btn-sm",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.update = true
@@ -59400,13 +59456,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -59749,7 +59804,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.modificar = false
@@ -60195,7 +60254,11 @@ var render = function() {
                   "button",
                   {
                     staticClass: "btn btn-primary mb-1",
-                    attrs: { type: "button" },
+                    attrs: {
+                      type: "button",
+                      "data-bs-toggle": "modal",
+                      "data-bs-target": "#exampleModal"
+                    },
                     on: {
                       click: function($event) {
                         _vm.modificar = true
@@ -61834,13 +61897,12 @@ var render = function() {
         "div",
         {
           staticClass: "modal fade",
-          class: { show: _vm.modal },
           attrs: {
-            id: "staticBackdrop",
+            id: "exampleModal",
+            tabindex: "-1",
             "data-bs-backdrop": "static",
             "data-bs-keyboard": "false",
-            tabindex: "-1",
-            "aria-labelledby": "staticBackdropLabel",
+            "aria-labelledby": "exampleModalLabel",
             "aria-hidden": "true"
           }
         },
@@ -62351,7 +62413,11 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-success ",
-            attrs: { type: "button" },
+            attrs: {
+              type: "button",
+              "data-bs-toggle": "modal",
+              "data-bs-target": "#exampleModal"
+            },
             on: {
               click: function($event) {
                 _vm.update = false
@@ -62731,7 +62797,11 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-info",
-                          attrs: { type: "button" },
+                          attrs: {
+                            type: "button",
+                            "data-bs-toggle": "modal",
+                            "data-bs-target": "#exampleModal"
+                          },
                           on: {
                             click: function($event) {
                               _vm.update = true
@@ -63091,13 +63161,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -63572,7 +63641,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -63983,7 +64056,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-outline-info btn-sm",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.update = true
@@ -64360,13 +64437,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -64515,7 +64591,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -64579,7 +64659,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-outline-info btn-sm",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.update = true
@@ -64728,13 +64812,12 @@ var render = function() {
       "div",
       {
         staticClass: "modal fade",
-        class: { show: _vm.modal },
         attrs: {
-          id: "staticBackdrop",
+          id: "exampleModal",
+          tabindex: "-1",
           "data-bs-backdrop": "static",
           "data-bs-keyboard": "false",
-          tabindex: "-1",
-          "aria-labelledby": "staticBackdropLabel",
+          "aria-labelledby": "exampleModalLabel",
           "aria-hidden": "true"
         }
       },
@@ -64883,7 +64966,11 @@ var render = function() {
         "button",
         {
           staticClass: "btn btn-success ",
-          attrs: { type: "button" },
+          attrs: {
+            "data-bs-toggle": "modal",
+            "data-bs-target": "#exampleModal",
+            type: "button"
+          },
           on: {
             click: function($event) {
               _vm.update = false
@@ -64947,7 +65034,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-outline-info btn-sm",
-                        attrs: { type: "button" },
+                        attrs: {
+                          type: "button",
+                          "data-bs-toggle": "modal",
+                          "data-bs-target": "#exampleModal"
+                        },
                         on: {
                           click: function($event) {
                             _vm.update = true
