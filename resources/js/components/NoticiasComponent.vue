@@ -113,7 +113,7 @@
             </thead>
             <tbody>
                 <tr v-for="noti in noticias.data" :key="noti.id">
-                    <td><img :src="noti.urlImagen" class="img-thumbnail" ></td>
+                    <td><img :src="noti.urlImagen" class="img-thumbnail imagenTabla" ></td>
                     <td>{{noti.titulo}}</td>
                     <td>
                             <div v-if="noti.publicado ==1" class="text-success"> 

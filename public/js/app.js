@@ -56220,7 +56220,7 @@ var render = function() {
         return _c("div", { key: facultad.id, staticClass: "col-sm-3" }, [
           _c("div", { staticClass: "card p-2 h-100  mb-1 " }, [
             _c("img", {
-              staticClass: "card-img-top h-50",
+              staticClass: "card-img-top h-50 imagenFacultad",
               attrs: { src: facultad.urlImagen, alt: "..." }
             }),
             _vm._v(" "),
@@ -60037,7 +60037,7 @@ var render = function() {
             return _c("tr", { key: noti.id }, [
               _c("td", [
                 _c("img", {
-                  staticClass: "img-thumbnail",
+                  staticClass: "img-thumbnail imagenTabla",
                   attrs: { src: noti.urlImagen }
                 })
               ]),
@@ -65230,7 +65230,7 @@ var render = function() {
           [
             _c("div", { staticClass: "card sinBordes" }, [
               _c("img", {
-                staticClass: "card-img-top",
+                staticClass: "card-img-top imagenNotiPrin",
                 attrs: { src: noti.urlImagen, alt: "..." }
               }),
               _vm._v(" "),

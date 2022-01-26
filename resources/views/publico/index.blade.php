@@ -7,7 +7,7 @@
             
         </div> 
     </div>
-
+  
     <div class="container px-0 col-10">
         <div class="row negativoBanner">          
             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('oferta')}}">
@@ -158,42 +158,21 @@
             <div class="col col-12 col-lg-4 col-sm-12 p-4 p-md-0">
                 <h3 class="text-center tituloSuperior text-uppercase  textoDuro mt-4"><span>Noticias Relevantes</span></h3>
                 <div class="titulohr mb-2 mt-2"></div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
-                    <div class="col">
-                        <a href="" class="text-dark">
-                            <span><b>UES: 179 años promoviendo el arte y la cultura.</b></span>
-                        </a>
-                        <br>
-                        <span class=""><small >Martes 31 de agosto de 2021</small></span>
+                
+                @foreach ($noticias as $item)
+                    <div class="calloutIL calloutIL-info row overflow-hidden  bg-griscito">
+                        <div class="col col-8">
+                            <a href="{{route('noticia',['slug'=>$item->slug])}}" class="text-dark">
+                            <span><b>{{$item->titulo}}</b></span>
+                            </a>
+                            <br>
+                            <span class=""><small ><b>Publicado </b>{{$item->created_at}}</small></span>
+                        </div>
+                        <div class="col-4 imagenNoticiaIndex text-end px-0">
+                            <img class="img-fluid imagenNotiDesta" src="{{asset($item->urlImagen)}}" alt="">
+                        </div>
                     </div>
-                    <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset('img/facultades/tres.jpg')}}" alt="">
-                    </div>
-                </div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
-                    <div class="col">
-                        <a href="" class="text-dark">
-                        <span><b>Exponen raíces de la desigualdad en las sociedades actuales de Latinoamérica.</b></span>
-                        </a>
-                        <br>
-                        <span class=""><small >Martes 31 de agosto de 2021</small></span>
-                    </div>
-                    <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset('img/facultades/tres.jpg')}}" alt="">
-                    </div>
-                </div>
-                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
-                    <div class="col">
-                        <a href="" class="text-dark">
-                        <span><b>Convocan a todos los profesores de la UES a publicar libros de texto e investigaciones.</b></span>
-                        </a>
-                        <br>
-                        <span class=""><small >Martes 31 de agosto de 2021</small></span>
-                    </div>
-                    <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset('img/facultades/tres.jpg')}}" alt="">
-                    </div>
-                </div>
+                @endforeach
                 <div class="row">
                     <div class="box col-11 mt-4 mx-auto  bg-griscito">
                         <h1 class="textoGris text-uppercase textoDuro">Acreditación</h1>

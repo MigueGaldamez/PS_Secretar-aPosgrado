@@ -2583,3 +2583,16 @@
 .botoncitoRojo:hover:active {
   transform: scale(0.99);
 }
+
+/*Tamaño noticias*/
+.imagenNotiDesta{
+  margin-right:-22px !important;
+  height: 100px !important;
+}
+.imagenNotiDestaDet{
+  height: 130px !important;
+}
+.imagenNotiPrin{
+  height: 200px !important;
+  border-radius: 10px;
+}

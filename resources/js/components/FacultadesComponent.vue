@@ -104,7 +104,7 @@
         <div class="row mt-1 mb-1">
             <div class="col-sm-3" v-for="facultad in facultades.data" :key="facultad.id">
                 <div class="card p-2 h-100  mb-1 " >
-                    <img :src="facultad.urlImagen" class="card-img-top h-50" alt="...">
+                    <img :src="facultad.urlImagen" class="card-img-top h-50 imagenFacultad" alt="...">
                     <div class="card-body text-center">
                         <h5 class="card-title">Facultad de {{facultad.nombre}}</h5>
                             <p class="card-text ">{{facultad.descripcion}}</p>

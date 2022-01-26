@@ -12,7 +12,7 @@
         </div>
         <div v-for="noti in this.noticias.data" :key="noti.id" class="col col-lg-6 col-sm-12 col-12 mb-4">
             <div  class="card sinBordes">
-                <img :src="noti.urlImagen" class="card-img-top" alt="...">
+                <img :src="noti.urlImagen" class="card-img-top imagenNotiPrin" alt="...">
                     <div class="card-body paddinNoticias">
                         <b><a :href="'/noticia/'+noti.slug" class="text-dark"><h5 class="card-title">{{noti.titulo}}</h5></a></b>
                         <p class="card-text mt-n2"><small class="text-muted">Publicado: </small><b>{{noti.created_at}}</b></p>
