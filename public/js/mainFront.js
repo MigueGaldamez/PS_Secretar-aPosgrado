@@ -60,10 +60,10 @@ if(next2 && prev2 && content2){
   window.addEventListener("resize", e => (width2 = carousel2.offsetWidth));
   
 }
-
+/*FOTOS 1 */
 
 $(function() {
-  var galleryThumbs = new Swiper(".gallery-thumbs", {
+  var galleryThumbs = new Swiper("#galeria1Tu", {
     centeredSlides: true,
     centeredSlidesBounds: true, 
     direction: "horizontal",
@@ -80,16 +80,16 @@ $(function() {
       }
     }
   });
-  var galleryTop = new Swiper(".gallery-top", {
+  var galleryTop = new Swiper("#galeria1To", {
     direction: "horizontal",
     spaceBetween: 10,
     navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
+      nextEl: "#galeria1sig",
+      prevEl: "#galeria1prev"
     },
     thumbs: {
       swiper: galleryThumbs
-    },
+    }, 
   });
   galleryTop.on('slideChangeTransitionStart', function() {
     galleryThumbs.slideTo(galleryTop.activeIndex);
@@ -98,8 +98,123 @@ $(function() {
     galleryTop.slideTo(galleryThumbs.activeIndex);
   });
 });
+/*FOTOS 2*/ 
 
+$(function() {
+  var galleryThumbs = new Swiper("#galeria2Tu", {
+    centeredSlides: true,
+    centeredSlidesBounds: true, 
+    direction: "horizontal",
+    spaceBetween: 10,
+    slidesPerView: 3,
+    freeMode: false,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    watchOverflow: true,
+    breakpoints: {
+      480: {
+        direction: "vertical",
+        slidesPerView: 3,
+      }
+    }
+  });
+  var galleryTop = new Swiper("#galeria2To", {
+    direction: "horizontal",
+    spaceBetween: 10,
+    navigation: {
+      nextEl: "#galeria2sig",
+      prevEl: "#galeria2prev"
+    },
+    thumbs: {
+      swiper: galleryThumbs
+    }, 
+  });
+  galleryTop.on('slideChangeTransitionStart', function() {
+    galleryThumbs.slideTo(galleryTop.activeIndex);
+  });
+  galleryThumbs.on('transitionStart', function() {
+    galleryTop.slideTo(galleryThumbs.activeIndex);
+  });
+});
+/**/ 
+/*FOTOS 3*/ 
 
+$(function() {
+  var galleryThumbs = new Swiper("#galeria3Tu", {
+    centeredSlides: true,
+    centeredSlidesBounds: true, 
+    direction: "horizontal",
+    spaceBetween: 10,
+    slidesPerView: 3,
+    freeMode: false,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    watchOverflow: true,
+    breakpoints: {
+      480: {
+        direction: "vertical",
+        slidesPerView: 3,
+      }
+    }
+  });
+  var galleryTop = new Swiper("#galeria3To", {
+    direction: "horizontal",
+    spaceBetween: 10,
+    navigation: {
+      nextEl: "#galeria3sig",
+      prevEl: "#galeria3prev"
+    },
+    thumbs: {
+      swiper: galleryThumbs
+    }, 
+  });
+  galleryTop.on('slideChangeTransitionStart', function() {
+    galleryThumbs.slideTo(galleryTop.activeIndex);
+  });
+  galleryThumbs.on('transitionStart', function() {
+    galleryTop.slideTo(galleryThumbs.activeIndex);
+  });
+});
+/**/ 
+/*FOTOS 4*/ 
+
+$(function() {
+  var galleryThumbs = new Swiper("#galeria4Tu", {
+    centeredSlides: true,
+    centeredSlidesBounds: true, 
+    direction: "horizontal",
+    spaceBetween: 10,
+    slidesPerView: 3,
+    freeMode: false,
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+    watchOverflow: true,
+    breakpoints: {
+      480: {
+        direction: "vertical",
+        slidesPerView: 3,
+      }
+    }
+  });
+  var galleryTop = new Swiper("#galeria4To", {
+    direction: "horizontal",
+    spaceBetween: 10,
+    navigation: {
+      nextEl: "#galeria4sig",
+      prevEl: "#galeria4prev"
+    },
+    thumbs: {
+      swiper: galleryThumbs
+    }, 
+  });
+  galleryTop.on('slideChangeTransitionStart', function() {
+    galleryThumbs.slideTo(galleryTop.activeIndex);
+  });
+  galleryThumbs.on('transitionStart', function() {
+    galleryTop.slideTo(galleryThumbs.activeIndex);
+  });
+});
+/**/ 
 $(function() {
   
   $('.slide:not(:first) .layer').hide();

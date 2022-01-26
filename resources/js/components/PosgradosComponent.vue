@@ -1,5 +1,20 @@
 <template >
     <div class="row">
+        <div class="row">
+            <div class="col-auto">
+                 <h1>Posgrados</h1>
+            </div>
+            <div class="col">
+                  <button @click="update=false; openModal();" type="button" class="btn btn-success ">
+            Nuevo
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+            </svg> 
+        </button>
+            </div>
+        </div>
+       
         <!-- Modal -->
         <div  class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg ">
@@ -74,47 +89,55 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
-        <div class="col-sm-4">
-            <label for="customRange3" class="form-label">Mostrando: {{posgrados.from}} - {{posgrados.to }} | Total: {{posgrados.total}}</label>
-        </div>
-        <div class="col-sm-12">
-            <button @click="update=false; openModal();" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-success ">
-                Nuevo
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                </svg> 
-            </button>
-        </div>
-        <div class="row mt-1 mb-1">
-            <div class="col-sm-1">
-                <label  class="form-label">Mostrar:</label>
-                <select @change="list();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
-                    <option selected>Seleccione:</option>
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                </select>
+        <div class="col-4 mb-2">
+            <div class="card border-dark">
+                <div class="card-body row">
+                   
+                    <!---->
+                     <div class="col col-6">
+                        <label for="customRange3" class="form-label">Mostrando: {{posgrados.from}} - {{posgrados.to }} | Total: {{posgrados.total}}</label>
+                    </div>
+                   
+                    <div class="col col-6">
+                    
+                            <label  class="form-label">Mostrar:</label>
+                            <select @change="list();" v-model="filtros.per_page" class="form-select form-select-sm" placeholder="Mostrar elementos">
+                                <option value="4">4 Registros</option>
+                                <option value="8">8 Registros</option>
+                                <option value="15">15 Registros</option>
+                                <option value="20">20 Registros</option>
+                            </select> 
+                    
+                    </div>
+                    
+                    <!---->
+                </div>
             </div>
         </div>
-        <form @submit.prevent="list">
+        <div id="visorImagen">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="full-image">
+        </div>
+         <div class="col-8 mb-2">
+            <div class="card border-dark">
+                <div class="card-body">
+                    <form @submit.prevent="list">
             <div class="row mt-1 mb-1">
                 <div class="col-sm-4">
                     <label  class="form-label">Facultad</label>
-                    <select v-model="filtros.facultad" class="form-select" aria-label="facultad">
+                    <select v-model="filtros.facultad" class="form-select form-select-sm" aria-label="facultad">
                         <option value=0 >Todas las facultades</option>
                         <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
                     </select>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <label  class="form-label">Nombre</label>
-                    <input v-model="filtros.nombre"  class="form-control" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
+                    <input v-model="filtros.nombre"  class="form-control form-control-sm" type="text" placeholder="Nombre" aria-label="Nombre de la facultad">
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <label  class="form-label">Ofertado</label>
-                    <select v-model="filtros.ofertado"  class="form-select " aria-label="ofertado">
-                        <option value="none">Todo:</option>
+                    <select v-model="filtros.ofertado"  class="form-select form-select-sm" aria-label="ofertado">
+                        <option value="none">Todo</option>
                         <option value="1">Ofertado</option>
                         <option value="0">No ofertado</option>
                     </select>
@@ -128,11 +151,19 @@
                 </div>
             </div>
         </form>
+                </div>
+            </div>
+        </div>
+     
+        
+       
+
+        
         <div v-for="posgrado in posgrados.data" :key="posgrado.id" class=" col-sm-6 mb-3">
             <div class="card  h-100" >
                 <div class="row g-0">
                     <div class="col-sm-4 rounded mx-auto d-block text-center">
-                        <img :src="posgrado.urlImagen" class="img-fluid rounded-start" alt="">
+                        <img :src="posgrado.urlImagen" class="img-fluid rounded-start imagenView" alt="">
                     </div>
                     <div class="col-sm-8">
                         <div class="card-body">

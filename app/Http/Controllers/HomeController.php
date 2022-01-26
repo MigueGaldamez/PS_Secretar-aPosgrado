@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diplomado;
+use App\Models\Noticia;
+use App\Models\Posgrado;
+use App\Models\Tesi;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $cantPosgrados = Posgrado::count();
+        $cantDiplomados = Diplomado::count();
+        $cantTesis = Tesi::where('estado','=',1)->count();
+        $cantInvestigaciones = Tesi::where('estado','=',0)->count();
+        $cantNoticias = Noticia::count();
+        return view('home', compact('cantPosgrados','cantDiplomados','cantTesis','cantInvestigaciones','cantNoticias'));
     }
 }

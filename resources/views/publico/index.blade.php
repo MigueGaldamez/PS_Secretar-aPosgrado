@@ -7,7 +7,7 @@
             
         </div> 
     </div>
-
+  
     <div class="container px-0 col-10">
         <div class="row negativoBanner">          
             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('oferta')}}">
@@ -34,7 +34,7 @@
                     </div>         
                 </div>
             </a>
-             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
+             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('publicaciones')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
                        <div class="col-3">
@@ -158,18 +158,35 @@
             <div class="col col-12 col-lg-4 col-sm-12 p-4 p-md-0">
                 <h3 class="text-center tituloSuperior text-uppercase  textoDuro mt-4"><span>Noticias Relevantes</span></h3>
                 <div class="titulohr mb-2 mt-2"></div>
+                
                 @foreach ($noticias as $item)
-                <div class=" calloutIL calloutIL-info row overflow-hidden  bg-griscito">
-                    <div class="col">
-                        <b><a href="{{route('noticia',['slug'=>$item->slug])}}" class="text-dark"><h5 class="card-title">{{$item->titulo}}</h5></a></b>
-                        <br>
-                        <p class="card-text"><small class="text-muted">Publicado </small><b>{{$item->created_at}}</b></p>
+                    <div class="calloutIL calloutIL-info row overflow-hidden  bg-griscito">
+                        <div class="col col-8">
+                            <a href="{{route('noticia',['slug'=>$item->slug])}}" class="text-dark">
+                            <span><b>{{$item->titulo}}</b></span>
+                            </a>
+                            <br>
+                            <span class=""><small ><b>Publicado </b>{{$item->created_at}}</small></span>
+                        </div>
+                        <div class="col-4 imagenNoticiaIndex text-end px-0">
+                            <img class="img-fluid imagenNotiDesta" src="{{asset($item->urlImagen)}}" alt="">
+                        </div>
                     </div>
-                    <div class="col imagenNoticiaIndex">
-                        <img class="img-fluid " src="{{asset($item->urlImagen)}}" alt="">
-                    </div>
-                </div>
-                @endforeach    
+                @endforeach
+                <div class="row">
+                    <div class="box col-11 mt-4 mx-auto  bg-griscito">
+                        <h1 class="textoGris text-uppercase textoDuro">Acreditación</h1>
+                        <div class="titulohr mb-4"></div>
+                        <p>Universidad de El Salvador, única institución pública de educación superior de la República de El Salvador con reconocimiento en la excelencia académica.</p>
+                        <img class="img-fluid mt-1 mb-3" src="{{asset('img/acreditacion/ranking.png')}}" alt="">
+                        <p>
+                        Acreditada en 2019 por el Instituto de Alto Consejo de la Evaluación de la Investigación de la Educación Superior (Hcéres-Francia)
+                        </p>
+                        <div class="text-center">
+                            <img class="mx-auto" src="{{asset('img/acreditacion/hceres.png')}}" alt="" height="150px">
+                        </div>
+                    </div>   
+                </div>   
             </div>
         </div>
     </div>

@@ -815,3 +815,18 @@ INSERT INTO `tesis` (`id`, `posgrado_id`, `publicado`, `titulo`, `autor`, `link`
 (526, 54, 2021, 'Costo-beneficio  de la colangiopancreatografia retrograda endoscopia (cpre)y exploración de vías biliares en pacientes con coledocolitiasis en el Hospital Nacional San Juan de Dios de San Miguel, Enero 2018 a Diciembre de 2020 ', 'Dr. Castillo Hernández, Oscar Mario , Dr. Campos Maravilla, Ever Orlando  ', '-', 0),
 (527, 53, 2021, 'Caracterización clínica-epidemiológica y evolución de pacientes con sepsis materna en el Hospital Nacional San Juan de Dios de San Miguel, Julio 2016- Diciembre 2020  ', 'Dra. Medina Rivera, Linda Veronica , Dra. Hernández de Avalos, Flor Azucena  ', '-', 0);
 COMMIT;
+
+INSERT INTO `galeries` (`id`, `urlImagen`, `titulo`, `subtitulo`, `orden`) VALUES
+(1, '/storage/galery/NVFJrSEzbYwZfjAyW7ngBKRBfA6nrf3XK9996bSu.jpg', 'Campus de la Universidad', 'Desde las alturas', 1),
+(2, '/storage/galery/oZDtgNvB1pggJwUTYTLTTGJJLW8bLfOWpqu8Zpql.jpg', 'Grandes Presentaciones', 'Solo en la UES', 2),
+(3, '/storage/galery/NEj3Q74bUbssJU2mcaCxObsFxKkdf57NRgllzeT2.jpg', 'Capacitaciones de los mas informados', 'dentro del campus', 3),
+(4, '/storage/galery/yDOD1vuNACqsdFBu6a21FKzunWwfbUbxxj1P7DL4.jpg', 'Proyección Social', 'subtitulo', 4),
+(5, '/storage/galery/K0urq0uvGroz6ucsKXZD3YBMTF0E6PD6ulziB1IL.jpg', 'Facultad de Ingeniería y Arquitectura', 'La Famosa FIA', 1),
+(6, '/storage/galery/Zfu0i2CB579QneLsLBjduYmqUNtQN5iX2tXEsqbB.jpg', 'Teatro de la UES', 'Lugar de grandes presentaciones', 1),
+(7, '/storage/galery/G9CpIzhlqIcrmzABdeQWQzWxE8nmzRyBKDv6CE6J.jpg', 'Grandes Atletas', 'En nuestro polideportivo', 2),
+(8, '/storage/galery/UgWyBBKUgx4AXJF2lpFFh9cyHNdVBRtl7sIa7m8Z.jpg', 'La antorcha', 'Campeonatos entre facultades', 2),
+(9, '/storage/galery/N2Y03ftfBPpdnA6WAokiaVaquUWWBHBODnUkRo03.jpg', 'Titulo', 'Subtitulo', 3),
+(10, '/storage/galery/KuJFNqzd6wPYUPTE1lviDBVymn8aRPtoTvtcMAov.jpg', 'Titulo', 'Subtitulo', 3),
+(11, '/storage/galery/h7JCBFyS6almKvJY8U5GIiJgyuGTcKaZQlbI1MyT.jpg', 'Titulo', 'Subtitulo', 4),
+(12, '/storage/galery/2Xsl4xm7gJiJ2ICk9UeVar6hyMpu4tUi5mILZmr0.jpg', 'Titulo', 'Subtitulo', 4);
+COMMIT;

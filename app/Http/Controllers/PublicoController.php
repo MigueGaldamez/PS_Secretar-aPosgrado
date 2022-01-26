@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Facultades;
 use App\Models\Informacion;
 use App\Models\Noticia;
+use App\Models\Galery;
 use App\Models\Posgrado;
 use App\Models\ReseniaHistorica;
 class PublicoController extends Controller
@@ -23,6 +24,11 @@ class PublicoController extends Controller
     {
         $resenias = ReseniaHistorica::all();
         return view('publico.reseñaHistorica',compact('resenias'));
+    }
+    public function publicaciones()
+    {
+     
+        return view('publico.publicaciones');
     }
     public function oferta()
     {
@@ -76,7 +82,11 @@ class PublicoController extends Controller
         return view('publico.diplomados',compact('facultades'));
     } 
     public function galeria(){
-        return view('publico.galeria');
+        $fotos1 = Galery::where('orden','=',1)->get();
+        $fotos2 = Galery::where('orden','=',2)->get();
+        $fotos3 = Galery::where('orden','=',3)->get();
+        $fotos4 = Galery::where('orden','=',4)->get();
+        return view('publico.galeria',compact('fotos1','fotos2','fotos3','fotos4'));
     } 
     public function tesisPosgrados(){
         $facultades = Facultades::all();
@@ -84,5 +94,14 @@ class PublicoController extends Controller
     }
     public function catalogoC(){
         return view('publico.catalogo');
+    }
+    public function descargarCatalogo()
+    {
+        
+        $filePath =  public_path('catalogos/Catalogo Posgrados UES - 2022.pdf');
+        $headers = ['Content-Type: application/pdf'];
+        $fileName ='Catalogo Posgrados UES - 2022.pdf';
+        return response()->download($filePath, $fileName, $headers);
+        
     }
 }
