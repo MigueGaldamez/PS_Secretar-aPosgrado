@@ -56075,7 +56075,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button" },
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
                       on: {
                         click: function($event) {
                           return _vm.save()
@@ -56906,7 +56906,7 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-success",
-                          attrs: { type: "button" },
+                          attrs: { type: "button", "data-bs-dismiss": "modal" },
                           on: {
                             click: function($event) {
                               return _vm.save()
@@ -58906,7 +58906,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -59215,7 +59215,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -59791,7 +59791,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button" },
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
                       on: {
                         click: function($event) {
                           return _vm.guardar()
@@ -62446,7 +62446,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -62492,153 +62492,10 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-<<<<<<< HEAD
-      _c("div", { staticClass: "col-sm-4" }, [
-        _c(
-          "label",
-          { staticClass: "form-label", attrs: { for: "customRange3" } },
-          [
-            _vm._v(
-              "Mostrando: " +
-                _vm._s(_vm.posgrados.from) +
-                " - " +
-                _vm._s(_vm.posgrados.to) +
-                " | Total: " +
-                _vm._s(_vm.posgrados.total)
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-12" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-success ",
-            attrs: {
-              type: "button",
-              "data-bs-toggle": "modal",
-              "data-bs-target": "#exampleModal"
-            },
-            on: {
-              click: function($event) {
-                _vm.update = false
-                _vm.openModal()
-              }
-            }
-          },
-          [
-            _vm._v("\n            Nuevo\n            "),
-            _c(
-              "svg",
-              {
-                staticClass: "bi bi-plus-circle",
-                attrs: {
-                  xmlns: "http://www.w3.org/2000/svg",
-                  width: "16",
-                  height: "16",
-                  fill: "currentColor",
-                  viewBox: "0 0 16 16"
-                }
-              },
-              [
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                  }
-                }),
-                _vm._v(" "),
-                _c("path", {
-                  attrs: {
-                    d:
-                      "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                  }
-                })
-              ]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mt-1 mb-1" }, [
-        _c("div", { staticClass: "col-sm-1" }, [
-          _c("label", { staticClass: "form-label" }, [_vm._v("Mostrar:")]),
-          _vm._v(" "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.filtros.per_page,
-                  expression: "filtros.per_page"
-                }
-              ],
-              staticClass: "form-select form-select-sm",
-              attrs: { "aria-label": ".form-select-sm example" },
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.filtros,
-                      "per_page",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
-                  function($event) {
-                    return _vm.list()
-                  }
-                ]
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "" } }, [
-                _vm._v("Seleccione:")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "4" } }, [_vm._v("4")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "8" } }, [_vm._v("8")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "15" } }, [_vm._v("15")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "20" } }, [_vm._v("20")])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "form",
-        {
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.list.apply(null, arguments)
-            }
-          }
-        },
-        [
-          _c("div", { staticClass: "row mt-1 mb-1" }, [
-            _c("div", { staticClass: "col-sm-4" }, [
-              _c("label", { staticClass: "form-label" }, [_vm._v("Facultad")]),
-              _vm._v(" "),
-=======
       _c("div", { staticClass: "col-4 mb-2" }, [
         _c("div", { staticClass: "card border-dark" }, [
           _c("div", { staticClass: "card-body row" }, [
             _c("div", { staticClass: "col col-6" }, [
->>>>>>> 5841f0da3a7eb5ac8cfcd7de8c3b6666d4f66c33
               _c(
                 "label",
                 { staticClass: "form-label", attrs: { for: "customRange3" } },
@@ -63827,7 +63684,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button" },
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
                       on: {
                         click: function($event) {
                           return _vm.save()
@@ -64793,7 +64650,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -65168,7 +65025,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             return _vm.save()

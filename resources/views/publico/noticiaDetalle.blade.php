@@ -2,14 +2,16 @@
 
 @section('content')
 
-@include('publico.cabecera',['titulo' => "$noticia->titulo",'descripcion'=>''])
+@include('publico.cabecera',['titulo' => "Noticiero",'descripcion'=>''])
 <div class="container">
     <div class="row">
         <div class="col">
+           
         </div>
     </div>
     <div class="row">
-        <div class="col col-sm-8 pe-md-5">
+        <div class="col col-sm-8 pe-md-5 overflow-hidden">
+            <h2 class="textoGris">{{$noticia->titulo}}</h2>
             <h2 class="textoGris mb-0 ps-0 mt-4">Contenido</h2>
             <div class="titulohr mb-4"></div>
             

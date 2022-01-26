@@ -120,24 +120,22 @@
                                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                                 </li>
                                             @endif
-                                            @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                </li>
-                                            @endif
                                             @else
                                             <li class="nav-item dropdown">
+                                                <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none {{ request()->routeIs('dashboard') ? 'active' : '' }}" >Inicio</a>
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="{{ route('Perfil') }}" > {{ __('Perfil') }} </a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Cerrar Sesión') }} </a>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                         @csrf
                                                     </form>
-                                                     <a class="dropdown-item" href="{{ route('Perfil') }}" > {{ __('Perfil') }} </a>
+                                                 
                                                    
                                                 </div>
+
                                             </li>
                                         @endguest
                                     </ul>
