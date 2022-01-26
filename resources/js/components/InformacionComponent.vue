@@ -68,7 +68,7 @@
                         </div>
                         <div class="modal-footer">
                             <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>
+                            <button @click="save();" type="button" class="btn btn-success" data-bs-dismiss="modal">Guardar</button>
                         </div>
                     </form>
                 </div>

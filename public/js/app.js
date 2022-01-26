@@ -53212,7 +53212,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button" },
+                        attrs: { type: "button", "data-bs-dismiss": "modal" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -54269,7 +54269,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button" },
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
                       on: {
                         click: function($event) {
                           return _vm.save()
@@ -55057,7 +55057,7 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-primary",
-                          attrs: { type: "button" },
+                          attrs: { type: "button", "data-bs-dismiss": "modal" },
                           on: {
                             click: function($event) {
                               return _vm.guardar()

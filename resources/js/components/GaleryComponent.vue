@@ -42,7 +42,7 @@
                                     <span class="text-danger" v-if="errores.orden">{{errores.orden[0]}}</span>                               
                                 </div>
                             </div>
-                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>          
+                            <button @click="save();" type="button" class="btn btn-success" data-bs-dismiss="modal">Guardar</button>          
                         </div>
                         <div class="modal-footer">
                             <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
