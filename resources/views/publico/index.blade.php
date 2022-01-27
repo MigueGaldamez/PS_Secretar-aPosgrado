@@ -137,7 +137,7 @@
                         <div class="titulohr mb-0"></div>
                         <p class="my-0">No te olvides de seguirnos en nuestras redes</p>
                         <div class="effect cinna container-fluid text-start px-0 mx-0">
-                            <div class="buttons row bg-danger">
+                            <div class="buttons row">
                                 <div class="col col-12 col-md-auto">
                                     <a href="https://www.facebook.com/posgradosUES" target="_blank" class="fb" title="@PosgradosUES"><i class="fa fa-facebook" aria-hidden="true"></i></a>
                                 </div>

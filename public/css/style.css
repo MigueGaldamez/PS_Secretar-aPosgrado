@@ -1924,8 +1924,7 @@
 .effect .buttons {
   display: flex;
   justify-content: center;
-  visibility: hidden;
-
+  /*visibility: hidden;*/
 }
 .effect a {
   text-decoration: none !important;
@@ -2054,7 +2053,42 @@
     display: flex;
 }
 /*Telefonos */
+@media (max-width: 400px) {
+  .effect .buttons{
+    margin-top:0px !important;
+    margin-left: -30px !important;
+    margin-right: -30px !important;
+    padding-left: 0px;
+   
+  }
+  .tituloInferior{
+    font-size: 38px;
+    margin-top: 0px;
+    line-height: 38px !important;
+  }
+  .tituloSuperior{
+    font-size: 20px;
+    line-height: -25px !important;
+  }
+  .carrouselHistoria{
+    height: 35vh;
+  }
+  .carrouselHistoria img{
+    height: 35vh !important;
+    object-fit: cover;
+  }
+}
+@media (max-width: 768px) and (min-width:400) {
+  .effect .buttons{
+    margin-top:0px !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    padding-left: 0px;
+   
+  }
+}
 @media (max-width: 768px) {
+
   .effect a {
     text-decoration: none !important;
     color: #fff;

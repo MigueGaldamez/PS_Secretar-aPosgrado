@@ -186,7 +186,6 @@
 
   /* I N I C I O   D E   S E S I O N */
   .InicioSesion h1 {
-  
     font-weight: 600;
     color: #000;
     opacity: 0.85;
@@ -424,8 +423,15 @@
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
-   
+   @media(max-width:400px){
+    .InicioSesion form input[type=text], 
+    .InicioSesion form input[type=password], 
+    .InicioSesion form input[type=email]  {
+      width: 220px;
+    }
+   }
   @media (max-width: 767.98px) {
+
     .InicioSesion .left {
       width:0px;
       height: auto;
@@ -443,6 +449,7 @@
       height: auto;
       margin: auto auto;
       background: #ffffff;
+      background: #a9dd23;
       border-radius: 4px;
       box-shadow: 0px 2px 6px -1px rgba(0, 0, 0, 0.12);
     }
@@ -612,7 +619,6 @@
 .contador{
   color: #fff;
   background: linear-gradient(to right bottom, #FFD81B, #f9b12a);
-
   text-align: center;
   width: 155px;
   height: 110px;
