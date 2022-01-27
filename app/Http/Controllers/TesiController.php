@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TesisRequest;
 use App\Models\Tesi;
+use App\Models\Facultades;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\FuncCall;
 
 class TesiController extends Controller
 {
@@ -14,8 +17,13 @@ class TesiController extends Controller
     }
     public function index(Request $request)
     {
+        $facultad = $request->get('facultad');
+    	$posgrado = $request->get('posgrado');
+    	$titulo  = $request->get('titulo');
+        $publicado  = $request->get('publicado');
+        $estado   = $request->get('estado');
         $per_page= $request->per_page;
-        return Tesi::with('posgrado')->paginate($per_page);
+        return Tesi::with('posgrado')->facultad($facultad)->posgrados($posgrado)->titulo($titulo)->publicado($publicado)->estado($estado)->paginate($per_page);
     }
     public function store(TesisRequest $request)
     {

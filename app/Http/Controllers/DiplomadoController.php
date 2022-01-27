@@ -15,8 +15,12 @@ class DiplomadoController extends Controller
     }
     public function index(Request $request)
     {
+        $nombre  = $request->get('nombre');
+    	$facultad = $request->get('facultad');
+    	$ofertado  = $request->get('ofertado');
+        $modadlidad = $request->get('modalidad');
         $per_page= $request->per_page;
-        return Diplomado::paginate($per_page);
+        return Diplomado::orderBy('id', 'DESC')->nombre($nombre)->facultad($facultad)->ofertado($ofertado)->modalidad($modadlidad)->paginate($per_page);
     }
     public function store(DiplomadoRequest $request)
     {

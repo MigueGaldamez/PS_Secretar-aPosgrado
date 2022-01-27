@@ -16,6 +16,11 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
+        <!-- include summernote css/js-->
+        <script defer type="text/javascript" src="{{ asset('js\summernote\jquery-3.6.0.min.js') }}"></script>
+        <link href="{{ asset('css\summernote\summernote-lite.min.css') }}" rel="stylesheet">
+        <script defer src="{{ asset('js\summernote\summernote-lite.min.js') }}"></script>
+        <script src="{{ asset('js/summernote.js') }}" defer></script>
     </head>
     <body>
         <div id="app" class="wrapper">
@@ -23,7 +28,7 @@
                 <div class="row">
                     <nav id="sidebarMenu" class="col col-md-3 col-lg-2 d-md-block bg-dark sidebar collapse h-100">
                         <div class="position-sticky px-3 pb-3  text-white bg-dark">
-                            <a href="/" class="align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"><span class="fs-4">Area Administrativa</span></a>
+                            <a href="{{route('dashboard')}}" class="align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"><span class="fs-4">Administración</span></a>
                             <hr>
                             <ul class="nav nav-pills flex-column mb-auto">
                                 <li class="nav-item">
@@ -59,6 +64,9 @@
                                 <li>
                                     <a href="{{route('Informacion')}}" class="nav-link text-white {{ request()->routeIs('Informacion') ? 'active' : '' }}" > Información de la Secretaría</a>
                                 </li>
+                                  <li>
+                                    <a href="{{route('Permisos')}}" class="nav-link text-white {{ request()->routeIs('Permisos') ? 'active' : '' }}" >Permisos</a>
+                                </li>
                             </ul>
                             <hr>
                             <ul class="nav nav-pills flex-column mb-auto">
@@ -90,18 +98,19 @@
                         </div>
                     </nav>
                     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm bg mt-2 sticky-top">
+                        <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm bg mt-2 sticky-top">
                             <div class="container">
+                               <ul class="navbar-nav me-auto">
+                                        <a class="navbar-brand" href="{{ url('/dashboard/') }}">
+                                            Secretaría de Posgrado UES
+                                        </a>
+                                    </ul>
                                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                                     <!-- Right Side Of Navbar -->
-                                    <ul class="navbar-nav me-auto">
-                                        <a class="navbar-brand" href="{{ url('/') }}">
-                                            Secretaría de Pogrado UES
-                                        </a>
-                                    </ul>
+                                 
                                     <!-- Left Side Of Navbar -->
                                     <ul class="navbar-nav ms-auto">
                                         <!-- Authentication Links -->
@@ -111,22 +120,53 @@
                                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                                 </li>
                                             @endif
-                                            @if (Route::has('register'))
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                                </li>
-                                            @endif
                                             @else
+                                             <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none" >Inicio</a>
+                                             <a href="{{route('Informacion')}}" class="nav-link text-dark d-md-none" > Información de la Secretaría</a>
+                                          
                                             <li class="nav-item dropdown">
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    Posgrados, Diplomados e Investigaciones
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a href="{{route('Posgrados')}}" class="dropdown-item text-dark d-md-none" >Posgrados</a>
+                                                    <a href="{{route('Diplomados')}}" class="dropdown-item text-dark d-md-none" >Diplomados</a>
+                                                    <a href="{{route('Tesis')}}" class="dropdown-item text-dark d-md-none" >Tesis/investigaciones</a>
+                                                </div>
+                                               
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                   Galeria, Noticias y Reseña
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galery</a>
+                                                    <a href="{{route('NoticiasGestion')}}" class="dropdown-item text-dark d-md-none" > Noticias Gestión</a>
+                                                    <a href="{{route('ReseniaHistorica')}}" class="dropdown-item text-dark d-md-none" >Reseña Historica</a>
+                                                </div>
+                                                
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    Facultades, Enlaces y Equipo de Trabajo
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a href="{{route('Facultades')}}" class="dropdown-item text-dark d-md-none" >Facultades</a>
+                                                    <a href="{{route('Enlaces')}}" class="dropdown-item text-dark d-md-none" >Enlaces</a>
+                                                    <a href="{{route('EquipoTrabajo')}}" class="dropdown-item text-dark d-md-none" >Equipo de Trabajo</a>
+                                                </div>
+                                               
+                                                <a href="{{route('Permisos')}}" class="nav-link text-dark d-md-none" >Permisos</a>
+                                                
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }}
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a class="dropdown-item" href="{{ route('Perfil') }}" > {{ __('Perfil') }} </a>
                                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> {{ __('Cerrar Sesión') }} </a>
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                         @csrf
                                                     </form>
+                                                 
+                                                   
                                                 </div>
+
                                             </li>
                                         @endguest
                                     </ul>
@@ -140,5 +180,6 @@
                 </div>
             </div>
         </div>
+
     </body>
 </html>

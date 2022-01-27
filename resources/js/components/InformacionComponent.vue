@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- Modal -->
-        <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div  class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -68,7 +68,7 @@
                         </div>
                         <div class="modal-footer">
                             <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>
+                            <button @click="save();" type="button" class="btn btn-success" data-bs-dismiss="modal">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -100,7 +100,7 @@
             <dd class="col-sm-9">
                 <p>{{info.quienesSomos}}</p>
             </dd>
-            <button @click="openModal(info);" class="btn btn-info">Editar Informacion</button>
+            <button @click="openModal(info);" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Editar Informacion</button>
         </dl>
     </div>
 </template>
@@ -281,7 +281,7 @@ export default {
 }
 </script>
 <style >
-.show
+.ver
 {
     display: list-item;
     

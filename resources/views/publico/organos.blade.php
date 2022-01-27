@@ -5,6 +5,39 @@
 @include('publico.cabecera',['titulo' => 'Órganos de gobierno','descripcion'=>''])
 
 <div class="colorGris mt-4 pb-1 pt-2">
+    <h3 class="text-light text-center"><span class="textoSuavecito2">Misión y Visión de la Universidad de El Salvador</span></h3>
+</div>
+<div class="container"> 
+        <div class="row my-3 my-sm-3 my-lg-1 my-md-1">
+           
+           
+            <div class="col col-lg-6 col-md-6 col-sm-12 col-12  my-1  my-md-5  my-lg-4">
+                <div class=" callout callout-danger row shadow-lg">
+                    <div class="col col-12 ">
+                    
+                       <h3><span><b>MISIÓN INSTITUCIONAL</b></span></h3>
+                        <span>La Universidad de El Salvador es una institución pública y autónoma de Educación Superior; científica, crítica, participativa, democrática y comprometida con el desarrollo nacional integral, con la formación de profesionales de alta calidad humana, científica, tecnológica y con el ambiental y la vida, en todas sus formas y manifestaciones, así como, con la producción y aplicación contextuada del conocimiento, a través de la praxis integrada de la docencia, la investigación y la proyección social.</span>
+                            
+                    </div>
+                  
+                </div>
+            </div>
+             <div class="col col-lg-6 col-md-6 col-sm-12 col-12  my-1  my-md-5  my-lg-4">
+                <div class=" callout callout-danger row shadow-lg">
+                    <div class="col col-12 ">
+                    
+                        <h3><span><b>VISIÓN INSTITUCIONAL</b></span></h3>
+                       
+                        <span>Ser la universidad pública y autónoma, rectora de la educación superior en el país cuyo liderazgo educativo nacional e internacional en la formación innovadora de profesionales emprendedores de la más alta calidad y en la producción de conocimientos científicos y tecnológicos que la posibiliten para ser autora y actora democrática y crítica de los cambios socio-educativos, que conlleven a la construcción de una sociedad desarrollada, más justa, educada, sostenible, científica y segura.</span>
+                            
+                    </div>
+                   
+                </div>
+            </div>
+        
+    </div>
+</div>
+<div class="colorGris mt-4 pb-1 pt-2">
     <h3 class="text-light text-center"><span class="textoSuavecito2">Órganos de gobierno de la Universidad de El Salvador</span></h3>
 </div>
 <div class="container"> 

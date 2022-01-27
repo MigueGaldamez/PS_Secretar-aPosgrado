@@ -1,8 +1,9 @@
 <template>
 <div>
+      
     <div class="row">
         <!-- Modal -->
-        <div  class="modal fade" :class="{show:modal}" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div  class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -18,7 +19,7 @@
                                     <span class="text-danger" v-if="errores.urlImagen">{{errores.urlImagen[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <img :src="imagen" class="img-thumbnail" alt="...">
+                                    <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label  class="form-label">Título</label>
@@ -30,8 +31,19 @@
                                     <input v-model="galery.subtitulo" class="form-control" type="text" placeholder="Subtítulo" aria-label="Subtitulo de la imagen">
                                     <span class="text-danger" v-if="errores.subtitulo">{{errores.subtitulo[0]}}</span>
                                 </div>
+                                <div class="mb-3 col-sm-4" >
+                                    <label  class="form-label">Categoría</label>
+                                    <select  v-model="galery.orden" class="form-select" aria-label="Default select example" id="Orden">
+                                        <option value="0" selected>Seleccione La Categoría</option>
+                                        <option value="1">Campus</option>
+                                        <option value="2">Arte, Cultura y Deporte</option>
+                                        <option value="3">Eventos académicos</option>
+                                        <option value="4">Investigación y Proyección Social</option>
+                                    </select> 
+                                    <span class="text-danger" v-if="errores.orden">{{errores.orden[0]}}</span>                               
+                                </div>
                             </div>
-                            <button @click="save();" type="button" class="btn btn-success">Guardar</button>          
+                            <button @click="save();" type="button" class="btn btn-success" data-bs-dismiss="modal">Guardar</button>          
                         </div>
                         <div class="modal-footer">
                             <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -40,6 +52,7 @@
                 </div>
             </div>
         </div>
+     
         <div v-if="cargando" class="d-flex align-items-center justify-content-center m-3">
             <strong>Cargando Datos...</strong>
             <div class="">
@@ -53,7 +66,7 @@
         </div>
             <!-- Button trigger modal -->
         <div class="col-sm-12">
-            <button @click="update=false; openModal();" type="button" class="btn btn-success ">
+            <button @click="update=false; openModal();" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success ">
                 Nuevo
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -75,12 +88,12 @@
         </div>
         <div class="col-sm-3" v-for="galery in galeries.data" :key="galery.id">
             <div class="card p-2 h-100" >
-                <img :src="galery.urlImagen" class="card-img-top h-50" alt="...">
+                <img :src="galery.urlImagen" class="card-img-top h-50 imagenView" alt="...">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{galery.titulo}}</h5>
                         <p class="card-text ">{{galery.subtitulo}}</p>
                     <div class="position-relative bottom-0 start-50 translate-middle-x mb-1 ">
-                        <button type="button"  @click="update=true; openModal(galery);" class="btn btn-info">
+                        <button type="button"  @click="update=true; openModal(galery);" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                 <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                             </svg>
@@ -136,6 +149,10 @@
             </div>
         </div>
     </div>
+     <div id="visorImagen">
+            <span class="close">&times;</span>
+            <img class="modal-content" id="full-image">
+        </div>
 </div>
 </template>
 <script>
@@ -149,6 +166,7 @@ export default {
                 titulo: '',
                 subtitulo: '',
                 imagen: false,
+                orden: '',
             },
             cargando: false,
             selImagen: false,//para cuando seleccione una imagen
@@ -325,6 +343,7 @@ export default {
                 this.galery.titulo = data.titulo;
                 this.galery.subtitulo = data.subtitulo;
                 this.galery.imagen = false;
+                this.galery.orden = data.orden;
             }
             else
             {
@@ -334,6 +353,7 @@ export default {
                 this.galery.titulo = '';
                 this.galery.subtitulo = '';
                 this.galery.imagen = true;
+                this.galery.orden = 0;
             }
         },
         closeModal() {
@@ -374,9 +394,10 @@ export default {
 }
 </script>
 <style>
-.show
+.ver
 {
     display: list-item;
+    background: rgba(0, 0, 0, 0.76); 
     opacity: 1;
 }
 </style>

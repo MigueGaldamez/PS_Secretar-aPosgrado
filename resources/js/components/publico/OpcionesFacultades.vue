@@ -93,7 +93,7 @@
                                    
                                 </div>
                                 <div class="col">
-                                    <p class="card-text text-end"><small >Año de publicación: <b>{{inv.publicado}}</b> </small></p>
+                                    <p class="card-text text-end"><small >Año de investigación: <b>{{inv.publicado}}</b> </small></p>
                                 </div>
                             </div>
                         </div>

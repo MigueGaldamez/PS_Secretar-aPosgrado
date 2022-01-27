@@ -26,8 +26,8 @@ Vue.use(VueSweetalert2);
 Vue.component('informacion-component', require('./components/InformacionComponent.vue').default);
 Vue.component('facultades-component', require('./components/FacultadesComponent.vue').default);
 Vue.component('enlaces-component', require('./components/EnlacesComponent.vue').default);
-Vue.component('posgradoFacultad', require('./components/Publico/PosgradoFacultad.vue').default);
-Vue.component('opcionesFacultades', require('./components/Publico/OpcionesFacultades.vue').default);
+Vue.component('posgradoFacultad', require('./components/publico/PosgradoFacultad.vue').default);
+Vue.component('opcionesFacultades', require('./components/publico/OpcionesFacultades.vue').default);
 
 Vue.component('modalidades-component', require('./components/ModalidadesComponent.vue').default);
 Vue.component('tipo-duracions-component', require('./components/TipoDuracionsComponent.vue').default);
@@ -38,8 +38,12 @@ Vue.component('tesis-component', require('./components/TesisComponent.vue').defa
 Vue.component('equipo-trabajo-component', require('./components/EquipoTrabajoComponent.vue').default);
 Vue.component('galery-component', require('./components/GaleryComponent.vue').default);
 Vue.component('historico-component', require('./components/HistoricoComponent.vue').default);
-Vue.component('noticias-component', require('./components/NoticiasComponent.vue').default);
+Vue.component('noticias-priv-component', require('./components/NoticiasComponent.vue').default);
 Vue.component('ofertaFacultad', require('./components/publico/OfertaFacultad.vue').default);
+Vue.component('perfil-component', require('./components/PerfilComponent.vue').default);
+
+Vue.component('permisos-component', require('./components/PermisosComponent.vue').default);
+Vue.component('noticias-component', require('./components/publico/Noticias.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

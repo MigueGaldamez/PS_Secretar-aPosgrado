@@ -22,6 +22,7 @@ class CreateFacultadesTable extends Migration
             $table->char('color',7);
             $table->boolean('multidis');
             $table->string('link')->nullable($value=true);
+            $table->string('slug')->unique();
             $table->tinyText('descripcion')->nullable($value = false);
         });
     }

@@ -1,38 +1,37 @@
 @extends('layouts.frontend',['subtitulo' => 'Reseña'])
 
 @section('content')
-@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'y la Universidad de El Salvador'])
+@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'de la Universidad de El Salvador'])
 
 <div class="colorGris mt-2">
     <div class="container-fluid col-11" >
     {{--inicio carousel--}}
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" >
+        <div id="carouselExampleCaptions" class="carousel slide carrouselHistoria" data-bs-ride="carousel" >
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-                <div class="carousel-item active">
+                <div class="carousel-item active carrouselHistoria">
                 <img src="https://i.imgur.com/x2fjApo.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
-                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
+                   {{-- <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
+                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>--}}
                 </div>
                 </div>
-                <div class="carousel-item">
+                <div class="carousel-item carrouselHistoria">
                 <img src="https://i.imgur.com/7MPUaV4.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                  <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
-                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
+                   {{-- <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
+                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>--}} </div>
                 </div>
-                </div>
-                <div class="carousel-item">
+                <div class="carousel-item carrouselHistoria">
                 <img src="https://i.imgur.com/QQUI3P6.jpg" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                     <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
-                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>
-                </div>
+                   {{-- <h5 ><span class="fondoNegroT py-1 px-3">First slide label</span></h5>
+                    <p ><span class="fondoNegroT py-1 px-3">Some representative placeholder content for the first slide.</span> </p>--}}
+                                    </div>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -52,7 +51,7 @@
   <div class="container col-12 mt-4 mb-4">
          {{--inicio cards--}}
         <div class="row">
-            <div class="col historia">
+            <div class="col col-12 col-md-6 historia">
                 <h3 class="textoDuro  lh-sm "><b>Acerca de la Universidad de El Salvador</b></h3>
                 {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
                 <p class="has-dropcap textoSuavecito2 parrafo"> A lo largo de su existencia la Universidad de El Salvador ha sido testigo y protagonista de importantes cambios políticos y sociales del país, ha superado daños en infraestructuras causados por terremotos, ocupaciones militares que prolongaron el cierre del campus en varias ocasiones, represión y persecución política de sus estudiantes y trabajadores en un contexto de guerra civil.
@@ -62,7 +61,7 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
 
                    </p>
             </div>
-            <div class="col historia">
+            <div class="col ol-12 col-md-6 historia">
                 <h3 class="textoDuro  lh-sm"><b>Secretaría de Posgrado</b></h3>
                 {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
                 <p class="has-dropcap textoSuavecito2">La Secretaría de Posgrado de la Universidad de El Salvador es una dependencia administrativa de la Vicerrectoría Académica, cuya finalidad principal es contribuir al fortalecimiento del sistema de posgrado y atender las necesidades de formación y educación avanzada en la UES.

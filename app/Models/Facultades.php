@@ -19,6 +19,7 @@ class Facultades extends Model
         'color',
         'multidis', 
         'descripcion',
+        'slug',
     ];
     
     public function diplomados()

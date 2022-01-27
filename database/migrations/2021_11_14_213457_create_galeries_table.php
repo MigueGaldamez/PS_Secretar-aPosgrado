@@ -18,6 +18,7 @@ class CreateGaleriesTable extends Migration
             $table->string('urlImagen');
             $table->string('titulo',100);
             $table->string('subtitulo',150);
+            $table->tinyInteger('orden');
         });
     }
 

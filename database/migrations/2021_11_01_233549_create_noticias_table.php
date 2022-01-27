@@ -17,9 +17,11 @@ class CreateNoticiasTable extends Migration
             $table->bigIncrements('id');
             $table->string('urlImagen');
             $table->string('titulo');
-            $table->string('subtitulo');
-            $table->date('creado');
+            $table->text('cuerpo')->nullable(true);
             $table->boolean('publicado');
+            $table->boolean('destacado');
+            $table->string('slug')->unique();
+            $table->timestamps();
         });
     }
 
