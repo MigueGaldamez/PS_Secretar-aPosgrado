@@ -16,41 +16,48 @@
                     <div class="col col-12 ">
                     
                        <h3><span><b>Encontrar Publicaciones</b></span></h3>
-                        <span>Estes es un texto de prueba y sirve para ver si el tamaño, la fuente y la intensidad son correctos. No hay que preocuparse ya que este texto luego sera remplazado por el de su preferencia.</span>
+                        <span>	BUSCA en la Red de Bibliotecas Virtuales de la Universidad de El Salvador</span>
                         <form class="mt-4" >
                             <div class="row">
                                 <div class="form-group col">
                                     <label for="exampleInputEmail1">Que contengan esta palabra</label>
-                                    <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa una palabra">
+                                    <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingrese una palabra">
                                     <small id="emailHelp" class="form-text text-muted">Trata de ingresar palabras completas y con acentos.</small>
                                 </div>
                                 <div class="form-group col">
                                     <label for="exampleInputPassword1">Campo de la ciencia</label>
                                     <select class="form-select form-select-sm" aria-label="Default select example">
-                                        <option selected>Seleccione</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>Todas las publicaciones</option>
+                                        <option value="1">Documentos de trabajo</option>
+                                        <option value="2">Libros y capítulos</option>
+                                        <option value="3">Ponencias</option>
+                                        <option value="2">Revistas y Artículos</option>
+                                        <option value="3">Multimedia</option>
                                     </select>
                                 </div>
                                 <div class="w-100 mt-4"></div>
                                    <div class="form-group col">
-                                    <label for="exampleInputEmail1">Que contengan esta palabra</label>
-                                    <input type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa una palabra">
-                                    <small id="emailHelp" class="form-text text-muted">Trata de ingresar palabras completas y con acentos.</small>
-                                </div>
-                                <div class="form-group col">
                                     <label for="exampleInputPassword1">Campo de la ciencia</label>
                                     <select class="form-select form-select-sm" aria-label="Default select example">
-                                        <option selected>Seleccione</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
+                                        <option selected>Todas las colecciones</option>
+                                        <option value="1">Colección 1</option>
+                                        <option value="2">Colección 2</option>
+                                        <option value="3">Colección 3</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col">
+                                    <label for="exampleInputPassword1">Indice por</label>
+                                    <select class="form-select form-select-sm" aria-label="Default select example">
+                                        <option selected>Texto Completo</option>
+                                        <option value="1">Título</option>
+                                        <option value="2">Tema</option>
+                                        <option value="3">Autor</option>
+                                         <option value="4">Resumen</option>
                                     </select>
                                 </div>
                                 <div class="w-100"></div>
                             </div>
-                            <button class="mt-4 botoncitoRojo">Buscar</button>
+                            <button class="mt-4 botoncitoRojo">Buscar en la biblioteca</button>
                         </form> 
                     </div>
                   
