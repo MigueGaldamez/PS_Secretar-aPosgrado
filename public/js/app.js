@@ -62492,7 +62492,7 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("div", { staticClass: "col-4 mb-2" }, [
+      _c("div", { staticClass: "col-12 col-md-4 mb-2" }, [
         _c("div", { staticClass: "card border-dark" }, [
           _c("div", { staticClass: "card-body row" }, [
             _c("div", { staticClass: "col col-6" }, [
@@ -62578,7 +62578,7 @@ var render = function() {
       _vm._v(" "),
       _vm._m(2),
       _vm._v(" "),
-      _c("div", { staticClass: "col-8 mb-2" }, [
+      _c("div", { staticClass: "col-12 col-md-8 mb-2" }, [
         _c("div", { staticClass: "card border-dark" }, [
           _c("div", { staticClass: "card-body" }, [
             _c(

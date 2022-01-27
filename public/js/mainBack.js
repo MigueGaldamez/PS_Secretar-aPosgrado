@@ -4,7 +4,6 @@ $(document).ready(function () {
   $(".imagenView").click(function(){
     $("#full-image").attr("src", $(this).attr("src"));
     $('#visorImagen').show();
-    alert('sip');
   });
   
   $("#visorImagen .close").click(function(){
@@ -33,6 +32,6 @@ $(document).ready(function () {
 
 document.querySelectorAll('.imagenView').forEach(item => {
   item.addEventListener('click', event => {
-    alert('que pedo')
+
   })
 })

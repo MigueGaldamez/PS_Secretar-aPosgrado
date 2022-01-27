@@ -121,8 +121,39 @@
                                                 </li>
                                             @endif
                                             @else
+                                             <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none" >Inicio</a>
+                                             <a href="{{route('Informacion')}}" class="nav-link text-dark d-md-none" > Información de la Secretaría</a>
+                                          
                                             <li class="nav-item dropdown">
-                                                <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none {{ request()->routeIs('dashboard') ? 'active' : '' }}" >Inicio</a>
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    Posgrados, Diplomados e Investigaciones
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a href="{{route('Posgrados')}}" class="dropdown-item text-dark d-md-none" >Posgrados</a>
+                                                    <a href="{{route('Diplomados')}}" class="dropdown-item text-dark d-md-none" >Diplomados</a>
+                                                    <a href="{{route('Tesis')}}" class="dropdown-item text-dark d-md-none" >Tesis/investigaciones</a>
+                                                </div>
+                                               
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                   Galeria, Noticias y Reseña
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galery</a>
+                                                    <a href="{{route('NoticiasGestion')}}" class="dropdown-item text-dark d-md-none" > Noticias Gestión</a>
+                                                    <a href="{{route('ReseniaHistorica')}}" class="dropdown-item text-dark d-md-none" >Reseña Historica</a>
+                                                </div>
+                                                
+                                                <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                    Facultades, Enlaces y Equipo de Trabajo
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                                    <a href="{{route('Facultades')}}" class="dropdown-item text-dark d-md-none" >Facultades</a>
+                                                    <a href="{{route('Enlaces')}}" class="dropdown-item text-dark d-md-none" >Enlaces</a>
+                                                    <a href="{{route('EquipoTrabajo')}}" class="dropdown-item text-dark d-md-none" >Equipo de Trabajo</a>
+                                                </div>
+                                               
+                                                <a href="{{route('Permisos')}}" class="nav-link text-dark d-md-none" >Permisos</a>
+                                                
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     {{ Auth::user()->name }}
                                                 </a>

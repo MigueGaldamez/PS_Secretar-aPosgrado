@@ -89,7 +89,7 @@
                 <div class="spinner-grow text-info" role="status"></div>
             </div>
         </div>
-        <div class="col-4 mb-2">
+        <div class="col-12 col-md-4 mb-2">
             <div class="card border-dark">
                 <div class="card-body row">
                    
@@ -118,7 +118,7 @@
             <span class="close">&times;</span>
             <img class="modal-content" id="full-image">
         </div>
-         <div class="col-8 mb-2">
+         <div class="col-12 col-md-8 mb-2">
             <div class="card border-dark">
                 <div class="card-body">
                     <form @submit.prevent="list">
