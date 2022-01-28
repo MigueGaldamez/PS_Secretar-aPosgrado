@@ -71,7 +71,7 @@
                 <div v-for="tesis in paginated" :key="tesis.id" class="card-containerR mb-1">
                        <div class=" callout-right callout-right-primary row calloutTesis"  :style="'border-right: 10px solid '+facultad.color+';'">
                             <div class="col">                          
-                            <a :href="tesis.link" class="text-dark" ><h5 class="text-dark"><b>{{tesis.titulo}}</b></h5></a>
+                            <a :href="tesis.link" target="_blank" class="text-dark" ><h5 class="text-dark"><b>{{tesis.titulo}}</b></h5></a>
                             <span class="text-uppercase">{{posgrado.nombre}}</span><br>
                             <span class="card-text lh-sm"><small >Autor: <b>{{tesis.autor}}</b> </small></span><br>
                             <span class="card-text lh-sm"><small >Año de publicación: <b>{{tesis.publicado}}</b> </small></span>  

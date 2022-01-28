@@ -66214,14 +66214,9 @@ var render = function() {
                       },
                       [
                         _c("h5", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-dark",
-                              attrs: { href: "" + inv.link }
-                            },
-                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
-                          )
+                          _c("a", { staticClass: "text-dark" }, [
+                            _c("b", [_vm._v(_vm._s(inv.titulo))])
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("small", [
@@ -66264,14 +66259,9 @@ var render = function() {
                       },
                       [
                         _c("h5", [
-                          _c(
-                            "a",
-                            {
-                              staticClass: "text-dark",
-                              attrs: { href: "" + inv.link }
-                            },
-                            [_c("b", [_vm._v(_vm._s(inv.titulo))])]
-                          )
+                          _c("a", { staticClass: "text-dark" }, [
+                            _c("b", [_vm._v(_vm._s(inv.titulo))])
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("small", [
@@ -66727,7 +66717,7 @@ var render = function() {
                             "a",
                             {
                               staticClass: "text-dark",
-                              attrs: { href: tesis.link }
+                              attrs: { href: tesis.link, target: "_blank" }
                             },
                             [
                               _c("h5", { staticClass: "text-dark" }, [

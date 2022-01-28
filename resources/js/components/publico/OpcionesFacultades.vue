@@ -63,7 +63,7 @@
                 <div class="float-layoutR">
                 
                         <div class="cardR"  :style="'border-right: 10px solid '+facultad.color+';'">
-                            <h5><a :href="''+inv.link" class="text-dark"><b>{{inv.titulo}}</b></a></h5>
+                            <h5><a class="text-dark"><b>{{inv.titulo}}</b></a></h5>
                             
                             <small>Autor: <b>{{inv.autor}}</b></small><br>
                             <small> <b>{{facultad.nombre}}</b></small>
@@ -84,7 +84,7 @@
                     
                 
                         <div class="cardL" :style="'border-left: 10px solid '+facultad.color+';'">
-                             <h5><a :href="''+inv.link" class="text-dark"><b>{{inv.titulo}}</b></a></h5>
+                             <h5><a class="text-dark"><b>{{inv.titulo}}</b></a></h5>
                             
                             <small>Autor: <b>{{inv.autor}}</b></small><br>
                             <small><b>{{facultad.nombre}}</b></small>
