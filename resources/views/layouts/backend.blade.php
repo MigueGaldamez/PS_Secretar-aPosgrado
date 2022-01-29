@@ -64,7 +64,7 @@
                                 <li>
                                     <a href="{{route('Informacion')}}" class="nav-link text-white {{ request()->routeIs('Informacion') ? 'active' : '' }}" > Información de la Secretaría</a>
                                 </li>
-                                  <li>
+                                <li>
                                     <a href="{{route('Permisos')}}" class="nav-link text-white {{ request()->routeIs('Permisos') ? 'active' : '' }}" >Permisos</a>
                                 </li>
                             </ul>

@@ -1,7 +1,7 @@
 .sidebar {
     position: fixed;
     top: 0;
-
+    overflow-y: auto;
     bottom: 0;
     /* rtl:remove */
     left: 0;
@@ -701,4 +701,13 @@
 }
 img:hover{
   opacity: 0.7;
+}
+/* para modals priv */
+.show
+{
+    display: list-item;
+}
+.ver 
+{
+    background: rgba(0, 0, 0, 0.76);
 }

@@ -18,7 +18,7 @@ class InfoSecretariaRequest extends FormRequest
     public function rules()
     {
         return [
-            'urlLogo'=>'exclude_if:imagen,false|image|max:1024',
+            'urlLogo'=>'exclude_if:imagen,false|image|max:1024|mimes:svg',
             'quienesSomos'=>'required|max:1000',
             'mision'=>'required|max:1000',
             'vision'=>'required|max:1000',

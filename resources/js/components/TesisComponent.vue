@@ -1,12 +1,12 @@
 <template>
     <div class="row">
         <!-- Modal -->
-        <div  class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div  class="modal fade" :class="{show:modal, ver:modal}" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg ">
                 <div class="modal-content modal-lg">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
-                        <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button @click="closeModal();" type="button" class="btn-close"  aria-label="Close"></button>
                     </div>
                     <form v-on:submit.prevent="save" enctype="multipart/form-data">
                         <div class="modal-body">
@@ -55,8 +55,8 @@
                             </div>           
                         </div>
                         <div class="modal-footer">
-                            <button @click="save();" type="button" class="btn btn-success" data-bs-dismiss="modal">Guardar</button>
-                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button @click="save();" type="button" class="btn btn-success" >Guardar</button>
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" >Close</button>
                         </div>
                     </form>
                 </div>
@@ -75,7 +75,7 @@
             <label for="customRange3" class="form-label">Mostrando: {{tesis.from}} - {{tesis.to }} | Total: {{tesis.total}}</label>
         </div>
         <div class="col-xm-12">
-            <button @click="update=false; openModal();" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success ">
+            <button @click="update=false; openModal();"  type="button" class="btn btn-success ">
                 Nuevo
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -86,7 +86,7 @@
         <div class="row mt-1 mb-1">
             <div class="col-sm-1">
                 <label  class="form-label">Mostrar:</label>
-                <select @change="list();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <select @change=" filtros.page=1; list();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Seleccione:</option>
                     <option value="4">4</option>
                     <option value="8">8</option>
@@ -99,7 +99,7 @@
             <div class="row mt-1 mb-1">
                 <div class="col-sm-3">
                     <label  class="form-label">Facultad</label>
-                    <select @change="listPosgradoFiltro();" v-model="filtros.facultad" class="form-select" aria-label="facultad">
+                    <select @change="listPosgradoFiltro(); " v-model="filtros.facultad" class="form-select" aria-label="facultad">
                         <option value=0 >Todas las facultades</option>
                         <option v-for="facultad in facultades" :key="facultad.id" v-bind:value="facultad.id"> {{facultad.nombre}}</option>
                     </select>
@@ -128,7 +128,7 @@
                     </select>
                 </div>
                 <div class="col-sm-1 align-self-end">
-                    <button @click="list();"  type="submit" class="btn btn-outline-dark">
+                    <button @click="list(); filtros.page=1;"  type="submit" class="btn btn-outline-dark">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                         </svg>
@@ -161,7 +161,7 @@
                                 <a class="btn btn-primary" :href="tesi.link" role="button">Link</a>
                             </td>
                             <td>
-                                <button type="button" @click="update=true; openModal(tesi);" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-info btn-sm">
+                                <button type="button" @click="update=true; openModal(tesi);"  class="btn btn-outline-info btn-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                         <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                                     </svg>
@@ -515,10 +515,3 @@
         }
     }
 </script>
-<style>
-.ver
-{
-    display: list-item;
-    opacity: 1;
-}
-</style>
