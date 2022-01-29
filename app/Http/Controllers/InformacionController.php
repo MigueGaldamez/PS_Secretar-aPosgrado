@@ -30,14 +30,15 @@ class InformacionController extends Controller
         {
             $fileImagen=$request->file('urlLogo')->store('public/info');
             $url = Storage::url($fileImagen);
-            $urlLogo=asset($url);
             $informacion = Informacion::find($request->id);
+            $oldUrlImagen = explode('/',$informacion->urlLogo);
+            Storage::delete('public/info/'.$oldUrlImagen[3]);
             $informacion->horarioAtencion  =$request->horarioAtencion;
             $informacion->correo=$request->correo;
             $informacion->mision=$request->mision;
             $informacion->vision=$request->vision;
             $informacion->quienesSomos=$request->quienesSomos;
-            $informacion->urlLogo=$urlLogo;
+            $informacion->urlLogo=$url;
             return $informacion->save();
         }
         else

@@ -57,7 +57,7 @@
             <div class="row mt-1 mb-1">
                 <div class="col-sm-1">
                     <label  class="form-label">Mostrar:</label>
-                    <select @change="listar();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <select @change="filtros.page=1; listar();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
                         <option selected>Seleccione:</option>
                         <option value="4">4</option>
                         <option value="8">8</option>
@@ -73,7 +73,7 @@
                         <input v-model="filtros.name"  class="form-control" type="text" placeholder="Nombres o Apellidos" aria-label="Nombre de usuario">
                     </div>
                     <div class="col-sm-1 align-self-end">
-                        <button @click="listar();"  type="submit" class="btn btn-outline-dark">
+                        <button @click="listar(); filtros.page=1;"  type="submit" class="btn btn-outline-dark">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
@@ -161,11 +161,39 @@
             <div class="col-6 md-6 text-center">
                 <nav>
                     <ul class="pagination">
-                        <li class="page-item" :class="{disabled:filtros.page==1}" ><a class="page-link" @click="filtros.page=1, listar();" href="#"><span>&laquo;</span></a></li>
-                        <li class="page-item" :class="{disabled:filtros.page==1}" ><a class="page-link" @click="filtros.page--, listar();" href="#">&#60;</a></li>
-                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:filtros.page==n}"><a class="page-link" @click="filtros.page=n, listar();" href="#">{{n}}</a></li>
-                        <li class="page-item" :class="{disabled:filtros.page==usuarios.last_page}"><a class="page-link" @click="filtros.page++, listar();" href="#">&#62;</a></li>
-                        <li class="page-item" :class="{disabled:filtros.page==usuarios.last_page}"><a class="page-link" @click="filtros.page=usuarios.last_page,listar();" href="#" ><span >&raquo;</span></a></li>
+                        <li class="page-item" :class="{disabled:filtros.page==1}" >
+                            <a class="page-link" @click="filtros.page=1, listar();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-backward-fill" viewBox="0 0 16 16">
+                                    <path d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V8.753l6.267 3.636c.54.313 1.233-.066 1.233-.697v-2.94l6.267 3.636c.54.314 1.233-.065 1.233-.696V4.308c0-.63-.693-1.01-1.233-.696L8.5 7.248v-2.94c0-.63-.692-1.01-1.233-.696L1 7.248V4a.5.5 0 0 0-.5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:filtros.page==1}" >
+                            <a class="page-link" @click="filtros.page--, listar();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                    <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" v-for="n in paginas" :key="n" :class="{active:filtros.page==n}">
+                            <a class="page-link" @click="filtros.page=n, listar();" href="#">
+                                {{n}}
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:filtros.page==usuarios.last_page}" >
+                            <a class="page-link" @click="filtros.page++, listar();" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                </svg>
+                            </a>
+                        </li>
+                        <li class="page-item" :class="{disabled:filtros.page==usuarios.last_page}" >
+                            <a class="page-link" @click="filtros.page=usuarios.last_page, listar();" href="#" >
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-skip-forward-fill" viewBox="0 0 16 16">
+                                    <path d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V8.753l-6.267 3.636c-.54.313-1.233-.066-1.233-.697v-2.94l-6.267 3.636C.693 12.703 0 12.324 0 11.693V4.308c0-.63.693-1.01 1.233-.696L7.5 7.248v-2.94c0-.63.693-1.01 1.233-.696L15 7.248V4a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

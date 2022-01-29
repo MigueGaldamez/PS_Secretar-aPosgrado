@@ -1,18 +1,18 @@
 <template>
     <div>
         <!-- Modal -->
-        <div  class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div  class="modal fade" :class="{show:modal, ver:modal}" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">{{titleModal}}</h5>
-                        <button @click="closeModal();" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button @click="closeModal();" type="button" class="btn-close"  aria-label="Close"></button>
                     </div>
                     <form v-on:submit.prevent="save" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Logo de la Secretaría de Posgrado</label>
-                                <input accept="image/*" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
+                                <input  ref="urlImg" accept=".svg" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
                                 <span class="text-danger" v-if="errores.urlLogo">{{errores.urlLogo[0]}}</span>
                                 <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>
@@ -67,8 +67,8 @@
                             
                         </div>
                         <div class="modal-footer">
-                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button @click="save();" type="button" class="btn btn-success" data-bs-dismiss="modal">Guardar</button>
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" >Close</button>
+                            <button @click="save();" type="button" class="btn btn-success" >Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -100,7 +100,7 @@
             <dd class="col-sm-9">
                 <p>{{info.quienesSomos}}</p>
             </dd>
-            <button @click="openModal(info);" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-info">Editar Informacion</button>
+            <button @click="openModal(info);"  class="btn btn-info">Editar Informacion</button>
         </dl>
     </div>
 </template>
@@ -245,8 +245,12 @@ export default {
         this.info.quienesSomos = data.quienesSomos;
         },
         closeModal() {
+            this.errores = {};
             this.modal=0
-            this.errores = {},
+            this.selImagen = false;
+            this.$refs.urlImg.value=null;
+            this.info.urlLogo = null;
+            this.imagenMiniatura='';
             this.selImagen = false;
         },
         obtenerImagen(e)
@@ -276,17 +280,6 @@ export default {
         {
             return this.imagenMiniatura;
         },
-
     }
 }
 </script>
-<style >
-.ver
-{
-    display: list-item;
-    
-    opacity: 1;
-    
-
-}
-</style>
