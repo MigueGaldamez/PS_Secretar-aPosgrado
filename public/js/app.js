@@ -55300,7 +55300,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      attrs: { type: "button" },
                       on: {
                         click: function($event) {
                           return _vm.save()
@@ -56090,7 +56090,7 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-success",
-                          attrs: { type: "button", "data-bs-dismiss": "modal" },
+                          attrs: { type: "button" },
                           on: {
                             click: function($event) {
                               return _vm.save()
@@ -58072,7 +58072,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -58374,7 +58374,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -58939,7 +58939,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      attrs: { type: "button" },
                       on: {
                         click: function($event) {
                           return _vm.guardar()
@@ -61680,7 +61680,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -61726,11 +61726,7 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-<<<<<<< HEAD
       _c("div", { staticClass: "col-12 col-md-4 mb-2" }, [
-=======
-      _c("div", { staticClass: "col-4 mb-2" }, [
->>>>>>> e94ddae6d074d63d602e2ce0f70edbfed9f2f996
         _c("div", { staticClass: "card border-dark" }, [
           _c("div", { staticClass: "card-body row" }, [
             _c("div", { staticClass: "col col-6" }, [
@@ -62917,7 +62913,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success",
-                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      attrs: { type: "button" },
                       on: {
                         click: function($event) {
                           return _vm.save()
@@ -63874,7 +63870,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.save()
@@ -64238,7 +64234,7 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success",
-                        attrs: { type: "button", "data-bs-dismiss": "modal" },
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
                             return _vm.save()
