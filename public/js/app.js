@@ -5724,7 +5724,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'No puede ser Eliminado',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6246,7 +6246,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6286,8 +6286,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.enlace) {
                   fields.append(key, _this4.enlace[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.post('/dashboard/enlaces_api/' + _this4.id, fields).then(function (response) {
@@ -6336,8 +6335,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this4.enlace) {
                   _fields.append(_key, _this4.enlace[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/enlaces_api', _fields).then(function (response) {
@@ -6732,7 +6730,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6798,7 +6796,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7295,7 +7293,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7330,8 +7328,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this3.facultad) {
                   _fields.append(_key, _this3.facultad[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/facultad_api', _fields).then(function (response) {
@@ -7345,7 +7342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: "error",
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7808,8 +7805,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.galery) {
                   fields.append(key, _this4.galery[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.post('/dashboard/galery_api/' + _this4.id, fields).then(function (response) {
@@ -7823,7 +7819,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7873,7 +7869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: "error",
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8285,7 +8281,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8592,11 +8588,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       info: {
         id: 0,
+        urlCatalogo: '',
         urlLogo: null,
         horarioAtencion: '',
         correo: '',
@@ -8780,8 +8783,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this5.info) {
                   fields.append(key, _this5.info[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context5.next = 5;
                 return axios.post('/dashboard/informacion/' + _this5.id, fields).then(function (response) {
@@ -8795,7 +8797,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this5.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8835,6 +8837,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.info.id = data.id;
       this.titleModal = "Modificar información publica";
       this.info.urlLogo = data.urlLogo;
+      this.info.urlCatalogo = data.urlCatalogo;
       this.info.horarioAtencion = data.horarioAtencion;
       this.info.correo = data.correo;
       this.info.mision = data.mision;
@@ -9120,7 +9123,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9172,8 +9175,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.modalidad) {
                   fields.append(key, _this4.modalidad[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.put('/dashboard/modalidades_api/' + _this4.id, _this4.modalidad).then(function (response) {
@@ -9187,7 +9189,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9222,8 +9224,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this4.modalidad) {
                   _fields.append(_key, _this4.modalidad[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/modalidades_api', _fields).then(function (response) {
@@ -9674,7 +9675,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9742,7 +9743,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9790,7 +9791,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9907,10 +9908,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
 //
 //
 //
@@ -10372,7 +10369,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this2.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -10422,7 +10419,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -10960,7 +10957,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11018,8 +11015,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this5.posgrado) {
                   fields.append(key, _this5.posgrado[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context4.next = 6;
                 return axios.post('/dashboard/posgrados_api/' + _this5.id, fields).then(function (response) {
@@ -11033,7 +11029,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this5.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11666,7 +11662,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this6.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11732,7 +11728,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this7.$swal({
                       title: 'Error!',
-                      text: console.log(response.data),
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12068,7 +12064,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12452,7 +12448,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12519,7 +12515,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -57686,6 +57682,70 @@ var render = function() {
                           staticClass: "form-label",
                           attrs: { for: "exampleFormControlTextarea1" }
                         },
+                        [_vm._v("Enlace")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.urlCatalogo,
+                            expression: "info.urlCatalogo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "url",
+                          name: "link",
+                          id: "url",
+                          placeholder: "https://ejemplo.com",
+                          pattern: "https://.*"
+                        },
+                        domProps: { value: _vm.info.urlCatalogo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.info,
+                              "urlCatalogo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "Recuerda que el link de Drive debe estar publico y solo lectura "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "text-reset",
+                            attrs: { href: _vm.info.urlCatalogo }
+                          },
+                          [_vm._v("Probar")]
+                        ),
+                        _vm._v(".")
+                      ]),
+                      _vm._v(" "),
+                      _vm.errores.urlCatalogo
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.urlCatalogo[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mb-3" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "exampleFormControlTextarea1" }
+                        },
                         [_vm._v("Horario de atención")]
                       ),
                       _vm._v(" "),
@@ -59865,9 +59925,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\r\n                                " +
+                          "\n                                " +
                             _vm._s(permi.opcion_permiso.opcionPermiso) +
-                            "\r\n                            "
+                            "\n                            "
                         )
                       ]
                     )

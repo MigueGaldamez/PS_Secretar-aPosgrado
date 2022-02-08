@@ -17,6 +17,12 @@
                                 <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>
                             <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Enlace</label>
+                                <input class="form-control" type="url" v-model="info.urlCatalogo" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
+                                <p class="text-muted">Recuerda que el link de Drive debe estar publico y solo lectura <a :href="info.urlCatalogo" class="text-reset">Probar</a>.</p>
+                                <span class="text-danger" v-if="errores.urlCatalogo">{{errores.urlCatalogo[0]}}</span>
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Horario de atención</label>
                                 <textarea v-model="info.horarioAtencion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 <span class="text-danger" v-if="errores.horarioAtencion">{{errores.horarioAtencion[0]}}</span>
@@ -111,6 +117,7 @@ export default {
         return{
             info: {
                 id:0,
+                urlCatalogo: '',
                 urlLogo: null,
                 horarioAtencion:'',
                 correo:'',
@@ -205,7 +212,6 @@ export default {
                 {
                     fields.append(key,this.info[key]);
                 }
-                //.then(response=>{console.log(response.data)})
                 const res = await axios.post('/dashboard/informacion/'+ this.id, fields)
                 .then(response=>
                 {
@@ -215,7 +221,7 @@ export default {
                     }
                     else
                     {
-                        this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
+                        this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                     }
                 }); 
                 this.closeModal();
@@ -231,18 +237,19 @@ export default {
 
         },
         openModal(data={}) {
-        this.modal=1
-        this.id=data.id;
-        this.info.id=data.id;
-        this.titleModal = "Modificar información publica";
-        this.info.urlLogo= data.urlLogo;
-        this.info.horarioAtencion=data.horarioAtencion;
-        this.info.correo= data.correo;
-        this.info.mision= data.mision;
-        this.info.vision = data.vision
-        this.info.valores = data.valores;
-        this.info.imagen = false;  
-        this.info.quienesSomos = data.quienesSomos;
+            this.modal=1
+            this.id=data.id;
+            this.info.id=data.id;
+            this.titleModal = "Modificar información publica";
+            this.info.urlLogo= data.urlLogo;
+            this.info.urlCatalogo= data.urlCatalogo;
+            this.info.horarioAtencion=data.horarioAtencion;
+            this.info.correo= data.correo;
+            this.info.mision= data.mision;
+            this.info.vision = data.vision
+            this.info.valores = data.valores;
+            this.info.imagen = false;  
+            this.info.quienesSomos = data.quienesSomos;
         },
         closeModal() {
             this.errores = {};
@@ -268,7 +275,7 @@ export default {
                 this.imagenMiniatura =e.target.result;
             }
             reader.readAsDataURL(file);
-        }
+        },
     },
     created() 
     {

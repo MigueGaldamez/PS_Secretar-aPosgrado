@@ -8,7 +8,7 @@
     <h3 class="text-light text-center"><span class="textoSuavecito2">Catalogo de Posgrados</span></h3>
 </div>
 <div class="container"> 
-     <a href="{{route('descargar.catalogo')}}" class="btn btn-danger mt-2 text-light" type="button">Descargar catalogo</a>
+     <a href="{{$informacion->urlCatalogo}}" class="btn btn-danger mt-2 text-light" type="button">Descargar catalogo</a>
     <div class="row my-3 my-sm-3 my-lg-1 my-md-1">
    
         <iframe height="550px" width="100%" src="{{URL::to('/')}}/catalogos/index.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" >

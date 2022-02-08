@@ -346,7 +346,7 @@
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: 'No puede ser Eliminado' ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                 }

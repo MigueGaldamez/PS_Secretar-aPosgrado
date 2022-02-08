@@ -269,7 +269,7 @@ export default {
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                     this.closeModal();
@@ -293,7 +293,6 @@ export default {
                         fields.append(key,this.facultad[key]);
                         
                     }
-                    //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/facultad_api', fields)
                     .then(response=>{
                         if(response.data==1)
@@ -302,7 +301,7 @@ export default {
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: "error" ,icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                     this.closeModal();
