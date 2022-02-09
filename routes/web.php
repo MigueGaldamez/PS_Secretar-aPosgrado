@@ -98,6 +98,9 @@ Route::middleware('auth')->group(function ()
     Route::get('dashboard/perfil', [PermisoController::class,'perfilIndex'])->name('Perfil');
     Route::get('dashboard/permisoUsuarioP', [PermisoController::class,'permisoUsuarioP'])->name('permisoUsuarioP');
     Route::get('dashboard/perfilUsuarioP', [PermisoController::class,'perfilUsuarioP'])->name('perfilUsuarioP');
+
+    Route::post('dashboard/cambiarNombre', [PermisoController::class,'cambiarNombre'])->name('cambiar.nombre');
+    Route::post('dashboard/cambiarPass', [PermisoController::class,'cambiarPass'])->name('cambiar.pass');
     
 });
 //publico

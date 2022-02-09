@@ -22,16 +22,12 @@
                 <div class="card-body">
                     <h4>Cambiar Nombre</h4>
                     <small>Nombre actual: <strong>{{usuario.name}}</strong></small>
-                    <form>
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                            <div id="emailHelp" class="form-text">Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico.</div>
+                            <label class="form-label">Nuevo Nombre</label>
+                            <input type="text" v-model="usu.nombre" class="form-control">
+                            <div class="form-text">Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico.</div>
                         </div>
- 
-                    <button type="submit" class="btn btn-primary text-light">Cambiar nombre</button>
-                    </form>
-                   
+                    <button class="btn btn-primary text-light" @click="cambiarNombre();">Cambiar nombre</button>
                 </div>
             </div>
         </div>
@@ -40,23 +36,23 @@
                 <div class="card-body">
                     <h4>Cambiar Contraseña</h4>
                     
-                    <form>
+                 
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Antigua contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1" >
+                            <input v-model="pass.ant" type="password" class="form-control" id="exampleInputEmail1" >
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Nueva contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1" >
+                            <input v-model="pass.nue" type="password" class="form-control" id="exampleInputEmail1" >
                             <div id="emailHelp" class="form-text">Asegurese de ingresar mayusculas, minusculas y numeros para garantizar su seguridad.</div>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Confirmar contraseña</label>
-                            <input type="password" class="form-control" id="exampleInputEmail1" >
+                            <input v-model="pass.conf" type="password" class="form-control" id="exampleInputEmail1" >
                         </div>
  
-                    <button type="submit" class="btn btn-primary text-light">Cambiar Contraseña</button>
-                    </form>
+                    <button class="btn btn-primary text-light" @click="cambiarContrasenia();">Cambiar Contraseña</button>
+                    
                 </div>
             </div>
         </div>
@@ -70,15 +66,21 @@
         props:['facultad'],
         data(){
             return{
+                usu:{
+                    nombre:'',
+                    id:'',
+                },
+                pass:{
+                    ant:'',
+                    nue:'',
+                    conf:'',
+                },
                 usuario:[],
                 permisos:[],
                 permisosUsuario:[],
                 errors:[],
                 paginas:[],
             }
-        },
-        computed: {
-          
         },
         methods: {
              async listar()
@@ -100,9 +102,32 @@
                 }
 
             },
+            async cambiarNombre(){
+                this.usu.id = this.usuario.id;
+                try{
+                    const res = await axios.post('/dashboard/cambiarNombre',this.usu);
+                }
+                catch(error){
+                    if(error.response.data){
+                        this.errores = error.response.data.errors;
+                    }
+                }
+            },
+            async cambiarContrasenia(){
+                this.usu.id = this.usuario.id;
+                try{
+                    const res = await axios.post('/dashboard/cambiarPass',this.pass);
+                }
+                catch(error){
+                    if(error.response.data){
+                        this.errores = error.response.data.errors;
+                    }
+                }
+            },
            
          
         },
+        
         created() 
         {
             this.listar();

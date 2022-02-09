@@ -9970,14 +9970,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['facultad'],
   data: function data() {
     return {
+      usu: {
+        nombre: '',
+        id: ''
+      },
+      pass: {
+        ant: '',
+        nue: '',
+        conf: ''
+      },
       usuario: [],
       permisos: [],
       permisosUsuario: [],
@@ -9985,7 +9990,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       paginas: []
     };
   },
-  computed: {},
   methods: {
     listar: function listar() {
       var _this = this;
@@ -10026,6 +10030,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    cambiarNombre: function cambiarNombre() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.usu.id = _this2.usuario.id;
+                _context2.prev = 1;
+                _context2.next = 4;
+                return axios.post('/dashboard/cambiarNombre', _this2.usu);
+
+              case 4:
+                res = _context2.sent;
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](1);
+
+                if (_context2.t0.response.data) {
+                  _this2.errores = _context2.t0.response.data.errors;
+                }
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 7]]);
+      }))();
+    },
+    cambiarContrasenia: function cambiarContrasenia() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.usu.id = _this3.usuario.id;
+                _context3.prev = 1;
+                _context3.next = 4;
+                return axios.post('/dashboard/cambiarPass', _this3.pass);
+
+              case 4:
+                res = _context3.sent;
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](1);
+
+                if (_context3.t0.response.data) {
+                  _this3.errores = _context3.t0.response.data.errors;
+                }
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[1, 7]]);
       }))();
     }
   },
@@ -59890,64 +59964,61 @@ var render = function() {
               _c("strong", [_vm._v(_vm._s(_vm.usuario.name))])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "mb-3" }, [
+              _c("label", { staticClass: "form-label" }, [
+                _vm._v("Nuevo Nombre")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.usu.nombre,
+                    expression: "usu.nombre"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.usu.nombre },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.usu, "nombre", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-text" }, [
+                _vm._v(
+                  "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary text-light",
+                on: {
+                  click: function($event) {
+                    return _vm.cambiarNombre()
+                  }
+                }
+              },
+              [_vm._v("Cambiar nombre")]
+            )
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label", attrs: { for: "exampleInputEmail1" } },
-          [_vm._v("Nombre")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "email",
-            id: "exampleInputEmail1",
-            "aria-describedby": "emailHelp"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-text", attrs: { id: "emailHelp" } }, [
-          _vm._v(
-            "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary text-light",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Cambiar nombre")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-6 my-4" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h4", [_vm._v("Cambiar Contraseña")]),
-          _vm._v(" "),
-          _c("form", [
+      _c("div", { staticClass: "col col-6 my-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v("Cambiar Contraseña")]),
+            _vm._v(" "),
             _c("div", { staticClass: "mb-3" }, [
               _c(
                 "label",
@@ -59959,8 +60030,25 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.ant,
+                    expression: "pass.ant"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" }
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.ant },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "ant", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -59975,8 +60063,25 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.nue,
+                    expression: "pass.nue"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" }
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.nue },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "nue", $event.target.value)
+                  }
+                }
               }),
               _vm._v(" "),
               _c(
@@ -60001,8 +60106,25 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.conf,
+                    expression: "pass.conf"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" }
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.conf },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "conf", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -60010,7 +60132,11 @@ var staticRenderFns = [
               "button",
               {
                 staticClass: "btn btn-primary text-light",
-                attrs: { type: "submit" }
+                on: {
+                  click: function($event) {
+                    return _vm.cambiarContrasenia()
+                  }
+                }
               },
               [_vm._v("Cambiar Contraseña")]
             )
@@ -60018,8 +60144,9 @@ var staticRenderFns = [
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
