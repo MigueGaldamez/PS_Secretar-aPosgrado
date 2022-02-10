@@ -109,26 +109,14 @@
                             <img class="imgMVV"  src="{{asset('img/iconos/valores.png ')}}" alt="" height="90">
                             <div class="row">
                                 <div class="col">
-                                    <ul>
-                                        <li> Responsabilidad</li>
-                                        <li> Equidad</li>
-                                        <li> Solidaridad</li>
-                                        <li> Ética</li>
-                                        <li> Respeto</li>
-                                        <li> Excelencia en el desempeño</li>
+                                    <ul class="row col col-md-10 col-12 mx-auto">
+                                    
+                                    @foreach ($informacion->valores as $valor)
+                                        <li class="col col-md-6 col-12 "> {{$valor->nombre}}</li>
+                                    @endforeach      
                                     </ul>
                                 </div>
-                                <div class="col">
-                                    <ul>
-                                        <li> Visión de Futuro</li>
-                                        <li> Trabajador responsable</li>
-                                        <li> Compromiso social</li>
-                                        <li> Excelencia académica</li>
-                                        <li> Profesionalismo</li>
-                                        <li> Creatividad</li>
-                                        <li> Multidisciplinariedad</li>
-                                    </ul>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -142,16 +130,16 @@
                         <div class="effect cinna container-fluid text-start px-0 mx-0">
                             <div class="buttons row">
                                 <div class="col col-12 col-md-auto">
-                                    <a href="https://www.facebook.com/posgradosUES" target="_blank" class="fb" title="@PosgradosUES"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                    <a href="https://www.facebook.com/posgradosUES" target="_blank" class="fb" title="@PosgradosUES"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="col col-12 col-md-auto">
-                                    <a href="https://instagram.com/posgradosues" target="_blank" class="insta" title="@posgradosues"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="https://instagram.com/posgradosues" target="_blank" class="insta" title="@posgradosues"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="col col-12 col-md-auto">    
                                     <a href="#" class="in" title="secretaria.posgrado@ues.edu.sv"><i class="fa fa-envelope-square" aria-hidden="true"></i></a>
                                 </div>
                                 <div class="col col-12 col-md-auto">    
-                                    <a class="youtube" target="_blank" href="https://www.youtube.com/channel/UC7jidcsLyjpLAfMhT1GPa2A/videos" class="in" title="PosgradosUES"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                    <a class="youtube" target="_blank" href="https://www.youtube.com/channel/UC7jidcsLyjpLAfMhT1GPa2A/videos" class="in" title="PosgradosUES"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>

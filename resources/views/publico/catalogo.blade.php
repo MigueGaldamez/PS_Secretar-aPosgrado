@@ -8,7 +8,9 @@
     <h3 class="text-light text-center"><span class="textoSuavecito2">Catálogo de Posgrados</span></h3>
 </div>
 <div class="container"> 
-     <a href="{{$informacion->urlCatalogo}}" class="btn btn-danger mt-2 text-light" type="button">Descargar catálogo</a>
+{{$informacion->urlCatalogo}}
+     <a href="{{route('descargar.catalogo')}}" class="btn btn-danger mt-2 text-light" type="button"><i class="fa-solid fa-file-arrow-down"></i> Descargar catálogo</a>
+       <a href="{{$informacion->urlCatalogo}}" class="btn btn-success mt-2 text-light colorDrive" type="button"><i class="fa-brands fa-google-drive"></i> Ver en Drive</a>
     <div class="row my-3 my-sm-3 my-lg-1 my-md-1">
    
         <iframe height="550px" width="100%" src="{{URL::to('/')}}/catalogos/index.html" name="targetframe" allowTransparency="true" scrolling="no" frameborder="0" >

@@ -98,12 +98,13 @@ class PublicoController extends Controller
     }
     public function descargarCatalogo()
     {
-        $informacion = Informacion::first();
+        //$informacion = Informacion::first();
 
-        // $filePath =  public_path('catalogos/Catalogo Posgrados UES - 2022.pdf');
-        // $headers = ['Content-Type: application/pdf'];
-        // $fileName ='Catalogo Posgrados UES - 2022.pdf';
-        return response($informacion->urlCatalogo);
+        $filePath =  public_path('catalogos/Catalogo Posgrados UES - 2022.pdf');
+        $headers = ['Content-Type: application/pdf'];
+        $fileName ='Catalogo Posgrados UES - 2022.pdf';
+        return response()->download($filePath, $fileName, $headers);
+        //return response($informacion->urlCatalogo);
         
     }
 }

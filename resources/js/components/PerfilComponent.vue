@@ -18,6 +18,7 @@
                 </div>
             </div>
         </div>
+        <div class="row">
         <div class="col col-6 mt-4">
             <div class="card">
                 <div class="card-body">
@@ -52,6 +53,7 @@
                     <button class="btn btn-primary text-light" @click="cambiarContrasenia();">Cambiar Contraseña</button>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </template>

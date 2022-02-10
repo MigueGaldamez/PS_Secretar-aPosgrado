@@ -8594,6 +8594,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -9908,6 +9912,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -58016,7 +58022,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "row " }, [
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "label",
                         {
@@ -58110,76 +58116,82 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "row " },
+                      { staticClass: "row" },
                       _vm._l(_vm.info.valores, function(valor) {
                         return _c(
                           "div",
-                          {
-                            key: valor.id,
-                            staticClass: "input-group mb-3 col-sm-4"
-                          },
+                          { key: valor.id, staticClass: "col mb-3 col-6" },
                           [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                attrs: { type: "button", id: "button-addon1" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.eliminarValor(valor.id)
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass: "bi bi-trash-fill",
-                                    attrs: {
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      width: "20",
-                                      height: "20",
-                                      fill: "currentColor",
-                                      viewBox: "0 0 16 16"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
+                            _c("div", { staticClass: " input-group" }, [
+                              _c(
+                                "button",
                                 {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: valor.nombre,
-                                  expression: "valor.nombre"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                disabled: "",
-                                "aria-describedby": "button-addon1"
-                              },
-                              domProps: { value: valor.nombre },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                                  staticClass: "btn btn-danger",
+                                  attrs: {
+                                    type: "button",
+                                    id: "button-addon1"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarValor(valor.id)
+                                    }
                                   }
-                                  _vm.$set(valor, "nombre", $event.target.value)
+                                },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass: "bi bi-trash-fill",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "20",
+                                        height: "20",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 16 16"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d:
+                                            "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: valor.nombre,
+                                    expression: "valor.nombre"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  disabled: "",
+                                  "aria-describedby": "button-addon1"
+                                },
+                                domProps: { value: valor.nombre },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      valor,
+                                      "nombre",
+                                      $event.target.value
+                                    )
+                                  }
                                 }
-                              }
-                            })
+                              })
+                            ])
                           ]
                         )
                       }),
@@ -58240,7 +58252,11 @@ var render = function() {
           _vm._v(" "),
           _c("dd", { staticClass: "col-sm-9" }, [
             _vm._v(
-              "\n            " + _vm._s(info.horarioAtencion) + "\n        "
+              "\n            " +
+                _vm._s(info.horarioAtencion) +
+                " y  " +
+                _vm._s(info.urlLogo) +
+                "\n        "
             )
           ]),
           _vm._v(" "),
@@ -58264,9 +58280,11 @@ var render = function() {
           _vm._v(" "),
           _c(
             "dd",
-            { staticClass: "col-sm-9" },
+            { staticClass: "col-sm-9 row" },
             _vm._l(info.valores, function(valor) {
-              return _c("li", { key: valor.id }, [_vm._v(_vm._s(valor.nombre))])
+              return _c("li", { key: valor.id, staticClass: "col-6" }, [
+                _vm._v(_vm._s(valor.nombre))
+              ])
             }),
             0
           ),
@@ -60015,192 +60033,194 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col col-6 mt-4" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h4", [_vm._v("Cambiar Nombre")]),
-          _vm._v(" "),
-          _c("small", [
-            _vm._v("Nombre actual: "),
-            _c("strong", [_vm._v(_vm._s(_vm.usuario.name))])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c("label", { staticClass: "form-label" }, [
-              _vm._v("Nuevo Nombre")
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col col-6 mt-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v("Cambiar Nombre")]),
+            _vm._v(" "),
+            _c("small", [
+              _vm._v("Nombre actual: "),
+              _c("strong", [_vm._v(_vm._s(_vm.usuario.name))])
             ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.usu.nombre,
-                  expression: "usu.nombre"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.usu.nombre },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("div", { staticClass: "mb-3" }, [
+              _c("label", { staticClass: "form-label" }, [
+                _vm._v("Nuevo Nombre")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.usu.nombre,
+                    expression: "usu.nombre"
                   }
-                  _vm.$set(_vm.usu, "nombre", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-text" }, [
-              _vm._v(
-                "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary text-light",
-              on: {
-                click: function($event) {
-                  return _vm.cambiarNombre()
-                }
-              }
-            },
-            [_vm._v("Cambiar nombre")]
-          )
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "col col-6 my-4" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h4", [_vm._v("Cambiar Contraseña")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleInputEmail1" }
-              },
-              [_vm._v("Antigua contraseña")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pass.ant,
-                  expression: "pass.ant"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "password", id: "exampleInputEmail1" },
-              domProps: { value: _vm.pass.ant },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.usu.nombre },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.usu, "nombre", $event.target.value)
                   }
-                  _vm.$set(_vm.pass, "ant", $event.target.value)
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleInputEmail1" }
-              },
-              [_vm._v("Nueva contraseña")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pass.nue,
-                  expression: "pass.nue"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "password", id: "exampleInputEmail1" },
-              domProps: { value: _vm.pass.nue },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.pass, "nue", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "form-text", attrs: { id: "emailHelp" } },
-              [
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-text" }, [
                 _vm._v(
-                  "Asegurese de ingresar mayusculas, minusculas y numeros para garantizar su seguridad."
+                  "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
                 )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "mb-3" }, [
-            _c(
-              "label",
-              {
-                staticClass: "form-label",
-                attrs: { for: "exampleInputEmail1" }
-              },
-              [_vm._v("Confirmar contraseña")]
-            ),
+              ])
+            ]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pass.conf,
-                  expression: "pass.conf"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "password", id: "exampleInputEmail1" },
-              domProps: { value: _vm.pass.conf },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary text-light",
+                on: {
+                  click: function($event) {
+                    return _vm.cambiarNombre()
                   }
-                  _vm.$set(_vm.pass, "conf", $event.target.value)
                 }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary text-light",
-              on: {
-                click: function($event) {
-                  return _vm.cambiarContrasenia()
+              },
+              [_vm._v("Cambiar nombre")]
+            )
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col col-6 my-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v("Cambiar Contraseña")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputEmail1" }
+                },
+                [_vm._v("Antigua contraseña")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.ant,
+                    expression: "pass.ant"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.ant },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "ant", $event.target.value)
+                  }
                 }
-              }
-            },
-            [_vm._v("Cambiar Contraseña")]
-          )
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputEmail1" }
+                },
+                [_vm._v("Nueva contraseña")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.nue,
+                    expression: "pass.nue"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.nue },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "nue", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-text", attrs: { id: "emailHelp" } },
+                [
+                  _vm._v(
+                    "Asegurese de ingresar mayusculas, minusculas y numeros para garantizar su seguridad."
+                  )
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputEmail1" }
+                },
+                [_vm._v("Confirmar contraseña")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.conf,
+                    expression: "pass.conf"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.conf },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "conf", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary text-light",
+                on: {
+                  click: function($event) {
+                    return _vm.cambiarContrasenia()
+                  }
+                }
+              },
+              [_vm._v("Cambiar Contraseña")]
+            )
+          ])
         ])
       ])
     ])
