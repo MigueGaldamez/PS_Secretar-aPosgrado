@@ -5724,7 +5724,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'No puede ser Eliminado',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6246,7 +6246,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6286,8 +6286,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.enlace) {
                   fields.append(key, _this4.enlace[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.post('/dashboard/enlaces_api/' + _this4.id, fields).then(function (response) {
@@ -6336,8 +6335,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this4.enlace) {
                   _fields.append(_key, _this4.enlace[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/enlaces_api', _fields).then(function (response) {
@@ -6732,7 +6730,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6798,7 +6796,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7295,7 +7293,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7330,8 +7328,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this3.facultad) {
                   _fields.append(_key, _this3.facultad[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/facultad_api', _fields).then(function (response) {
@@ -7345,7 +7342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: "error",
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7808,8 +7805,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.galery) {
                   fields.append(key, _this4.galery[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.post('/dashboard/galery_api/' + _this4.id, fields).then(function (response) {
@@ -7823,7 +7819,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7873,7 +7869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: "error",
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8285,7 +8281,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8592,11 +8588,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       info: {
         id: 0,
+        urlCatalogo: '',
         urlLogo: null,
         horarioAtencion: '',
         correo: '',
@@ -8780,8 +8783,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this5.info) {
                   fields.append(key, _this5.info[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context5.next = 5;
                 return axios.post('/dashboard/informacion/' + _this5.id, fields).then(function (response) {
@@ -8795,7 +8797,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this5.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8835,6 +8837,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.info.id = data.id;
       this.titleModal = "Modificar información publica";
       this.info.urlLogo = data.urlLogo;
+      this.info.urlCatalogo = data.urlCatalogo;
       this.info.horarioAtencion = data.horarioAtencion;
       this.info.correo = data.correo;
       this.info.mision = data.mision;
@@ -9120,7 +9123,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9172,8 +9175,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.modalidad) {
                   fields.append(key, _this4.modalidad[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.put('/dashboard/modalidades_api/' + _this4.id, _this4.modalidad).then(function (response) {
@@ -9187,7 +9189,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9222,8 +9224,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this4.modalidad) {
                   _fields.append(_key, _this4.modalidad[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/modalidades_api', _fields).then(function (response) {
@@ -9674,7 +9675,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9742,7 +9743,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9790,7 +9791,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9965,11 +9966,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['facultad'],
   data: function data() {
@@ -9990,6 +9986,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       paginas: []
     };
   },
+  computed: {},
   methods: {
     listar: function listar() {
       var _this = this;
@@ -10446,7 +10443,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this2.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -10496,7 +10493,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11034,7 +11031,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11092,8 +11089,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this5.posgrado) {
                   fields.append(key, _this5.posgrado[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context4.next = 6;
                 return axios.post('/dashboard/posgrados_api/' + _this5.id, fields).then(function (response) {
@@ -11107,7 +11103,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this5.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11740,7 +11736,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this6.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11806,7 +11802,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this7.$swal({
                       title: 'Error!',
-                      text: console.log(response.data),
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12142,7 +12138,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12526,7 +12522,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12593,7 +12589,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -57760,6 +57756,70 @@ var render = function() {
                           staticClass: "form-label",
                           attrs: { for: "exampleFormControlTextarea1" }
                         },
+                        [_vm._v("Enlace")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.urlCatalogo,
+                            expression: "info.urlCatalogo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "url",
+                          name: "link",
+                          id: "url",
+                          placeholder: "https://ejemplo.com",
+                          pattern: "https://.*"
+                        },
+                        domProps: { value: _vm.info.urlCatalogo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.info,
+                              "urlCatalogo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "Recuerda que el link de Drive debe estar publico y solo lectura "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "text-reset",
+                            attrs: { href: _vm.info.urlCatalogo }
+                          },
+                          [_vm._v("Probar")]
+                        ),
+                        _vm._v(".")
+                      ]),
+                      _vm._v(" "),
+                      _vm.errores.urlCatalogo
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.urlCatalogo[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mb-3" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "exampleFormControlTextarea1" }
+                        },
                         [_vm._v("Horario de atención")]
                       ),
                       _vm._v(" "),
@@ -59939,9 +59999,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\r\n                                " +
+                          "\n                                " +
                             _vm._s(permi.opcion_permiso.opcionPermiso) +
-                            "\r\n                            "
+                            "\n                            "
                         )
                       ]
                     )
@@ -59952,195 +60012,195 @@ var render = function() {
             )
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col col-6 mt-4" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", [_vm._v("Cambiar Nombre")]),
-            _vm._v(" "),
-            _c("small", [
-              _vm._v("Nombre actual: "),
-              _c("strong", [_vm._v(_vm._s(_vm.usuario.name))])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col col-6 mt-4" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h4", [_vm._v("Cambiar Nombre")]),
+          _vm._v(" "),
+          _c("small", [
+            _vm._v("Nombre actual: "),
+            _c("strong", [_vm._v(_vm._s(_vm.usuario.name))])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c("label", { staticClass: "form-label" }, [
+              _vm._v("Nuevo Nombre")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "mb-3" }, [
-              _c("label", { staticClass: "form-label" }, [
-                _vm._v("Nuevo Nombre")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.usu.nombre,
-                    expression: "usu.nombre"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: _vm.usu.nombre },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.usu, "nombre", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-text" }, [
-                _vm._v(
-                  "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-primary text-light",
-                on: {
-                  click: function($event) {
-                    return _vm.cambiarNombre()
-                  }
-                }
-              },
-              [_vm._v("Cambiar nombre")]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col col-6 my-4" }, [
-        _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-body" }, [
-            _c("h4", [_vm._v("Cambiar Contraseña")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-3" }, [
-              _c(
-                "label",
+            _c("input", {
+              directives: [
                 {
-                  staticClass: "form-label",
-                  attrs: { for: "exampleInputEmail1" }
-                },
-                [_vm._v("Antigua contraseña")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.pass.ant,
-                    expression: "pass.ant"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" },
-                domProps: { value: _vm.pass.ant },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.pass, "ant", $event.target.value)
-                  }
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.usu.nombre,
+                  expression: "usu.nombre"
                 }
-              })
-            ]),
+              ],
+              staticClass: "form-control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.usu.nombre },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.usu, "nombre", $event.target.value)
+                }
+              }
+            }),
             _vm._v(" "),
-            _c("div", { staticClass: "mb-3" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "form-label",
-                  attrs: { for: "exampleInputEmail1" }
-                },
-                [_vm._v("Nueva contraseña")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.pass.nue,
-                    expression: "pass.nue"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" },
-                domProps: { value: _vm.pass.nue },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.pass, "nue", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "form-text", attrs: { id: "emailHelp" } },
-                [
-                  _vm._v(
-                    "Asegurese de ingresar mayusculas, minusculas y numeros para garantizar su seguridad."
-                  )
-                ]
+            _c("div", { staticClass: "form-text" }, [
+              _vm._v(
+                "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
               )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "mb-3" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "form-label",
-                  attrs: { for: "exampleInputEmail1" }
-                },
-                [_vm._v("Confirmar contraseña")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.pass.conf,
-                    expression: "pass.conf"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" },
-                domProps: { value: _vm.pass.conf },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.pass, "conf", $event.target.value)
-                  }
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary text-light",
+              on: {
+                click: function($event) {
+                  return _vm.cambiarNombre()
                 }
-              })
-            ]),
+              }
+            },
+            [_vm._v("Cambiar nombre")]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "col col-6 my-4" }, [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h4", [_vm._v("Cambiar Contraseña")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              {
+                staticClass: "form-label",
+                attrs: { for: "exampleInputEmail1" }
+              },
+              [_vm._v("Antigua contraseña")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pass.ant,
+                  expression: "pass.ant"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "password", id: "exampleInputEmail1" },
+              domProps: { value: _vm.pass.ant },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.pass, "ant", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              {
+                staticClass: "form-label",
+                attrs: { for: "exampleInputEmail1" }
+              },
+              [_vm._v("Nueva contraseña")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pass.nue,
+                  expression: "pass.nue"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "password", id: "exampleInputEmail1" },
+              domProps: { value: _vm.pass.nue },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.pass, "nue", $event.target.value)
+                }
+              }
+            }),
             _vm._v(" "),
             _c(
-              "button",
-              {
-                staticClass: "btn btn-primary text-light",
-                on: {
-                  click: function($event) {
-                    return _vm.cambiarContrasenia()
-                  }
-                }
-              },
-              [_vm._v("Cambiar Contraseña")]
+              "div",
+              { staticClass: "form-text", attrs: { id: "emailHelp" } },
+              [
+                _vm._v(
+                  "Asegurese de ingresar mayusculas, minusculas y numeros para garantizar su seguridad."
+                )
+              ]
             )
-          ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "mb-3" }, [
+            _c(
+              "label",
+              {
+                staticClass: "form-label",
+                attrs: { for: "exampleInputEmail1" }
+              },
+              [_vm._v("Confirmar contraseña")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pass.conf,
+                  expression: "pass.conf"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "password", id: "exampleInputEmail1" },
+              domProps: { value: _vm.pass.conf },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.pass, "conf", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary text-light",
+              on: {
+                click: function($event) {
+                  return _vm.cambiarContrasenia()
+                }
+              }
+            },
+            [_vm._v("Cambiar Contraseña")]
+          )
         ])
       ])
     ])
@@ -65181,7 +65241,7 @@ var render = function() {
       _vm._l(_vm.posgrados.data, function(posgrado) {
         return _c(
           "div",
-          { key: posgrado.id, staticClass: "card sinBordes mb-4 " },
+          { key: posgrado.id, staticClass: "card sinBordes mb-4 cardFacu" },
           [
             _c("div", { staticClass: "row" }, [
               _c(
@@ -65221,8 +65281,6 @@ var render = function() {
                   _c("h3", { staticClass: "card-title textoSuavecito mb-0" }, [
                     _c("b", [_vm._v(_vm._s(posgrado.titulo))])
                   ]),
-                  _vm._v(" "),
-                  _c("small", [_vm._v("Ofertado en: ")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "wrapper-tol" }, [
                     _c("input", { attrs: { type: "checkbox" } }),

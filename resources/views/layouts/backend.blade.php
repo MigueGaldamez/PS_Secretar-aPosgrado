@@ -16,6 +16,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
         <!-- include summernote css/js-->
         <script defer type="text/javascript" src="{{ asset('js\summernote\jquery-3.6.0.min.js') }}"></script>
         <link href="{{ asset('css\summernote\summernote-lite.min.css') }}" rel="stylesheet">
@@ -161,6 +163,8 @@
                             </div>
                         </nav>
                         <div class="my-4">
+                            <a class="btn btn-primary btn-sm FABpriv" href="{{route('inicio')}}" target="_blank" role="button">
+                            <i class="fa-solid fa-house-chimney"></i> Visitar el sitio publico</a>
                             @yield('content')
                         </div>
                     </main>

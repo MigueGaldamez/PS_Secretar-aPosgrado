@@ -22,6 +22,30 @@
                     </div>         
                 </div>
             </a>
+              <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
+                <div class="card-body py-0 px-1">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{asset('img/iconos/principal3.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-start  textoDuro3"><b>Tesis de Posgrados</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a>  
+             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('diplomados')}}">
+                <div class="card-body py-0 px-1">
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{asset('img/iconos/principal2.png')}}" class="imagenIconoIni">
+                        </div>
+                        <div class="col-8">
+                            <h4 class="text-start   textoDuro3"><b>Educación Continua</b></h4>
+                        </div>
+                    </div>         
+                </div>
+            </a> 
             <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('investigaciones')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
@@ -34,6 +58,7 @@
                     </div>         
                 </div>
             </a>
+            
              <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('publicaciones')}}">
                 <div class="card-body py-0 px-1">
                     <div class="row">
@@ -46,30 +71,8 @@
                     </div>         
                 </div>
             </a>   
-            <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('diplomados')}}">
-                <div class="card-body py-0 px-1">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="{{asset('img/iconos/principal2.png')}}" class="imagenIconoIni">
-                        </div>
-                        <div class="col-8">
-                            <h4 class="text-start   textoDuro3"><b>Educación Continua</b></h4>
-                        </div>
-                    </div>         
-                </div>
-            </a>
-            <a class="col col-lg-2 col-md-6 col-sm-6 col-6 btn card button-container h-100" href="{{route('tesisPosgrados')}}">
-                <div class="card-body py-0 px-1">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="{{asset('img/iconos/principal3.png')}}" class="imagenIconoIni">
-                        </div>
-                        <div class="col-8">
-                            <h4 class="text-start  textoDuro3"><b>Tesis de Posgrados</b></h4>
-                        </div>
-                    </div>         
-                </div>
-            </a>   
+           
+          
               
         </div>
     </div>

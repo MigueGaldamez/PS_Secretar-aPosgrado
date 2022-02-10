@@ -43,7 +43,7 @@
       <div class="titulohr mb-4"></div>
     <div class="container-fluid ps-0 mt-4  mb-4">  
        
-            <div v-for="posgrado in posgrados.data" :key="posgrado.id" class="card sinBordes mb-4 ">
+            <div v-for="posgrado in posgrados.data" :key="posgrado.id" class="card sinBordes mb-4 cardFacu">
                 <div class="row">
                     <div class="col col-lg-3 col-sm-12 col-12 text-center">
                 
@@ -58,7 +58,7 @@
                             <h4 class="card-title textoSuavecito mb-0">Titulo a otorgar:</h4>
                             <h3 class="card-title textoSuavecito mb-0"><b>{{posgrado.titulo}}</b></h3>
                             
-                            <small >Ofertado en: </small>
+                          
                             <div class="wrapper-tol">
                             
                                 <input type="checkbox" />

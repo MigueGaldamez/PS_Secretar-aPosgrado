@@ -245,7 +245,7 @@ export default {
                 }
                 else
                 {
-                    this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                    this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                 }
             });
             this.list();
@@ -261,7 +261,6 @@ export default {
                         fields.append(key,this.enlace[key]);
                         
                     }
-                    //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/enlaces_api/'+this.id, fields)
                     .then(response=>{
                         if(response.data==1)
@@ -294,7 +293,6 @@ export default {
                         fields.append(key,this.enlace[key]);
                         
                     }
-                    //.then(response=>{console.log(response.data)})
                     const res = await axios.post('/dashboard/enlaces_api', fields)
                     .then(response=>{
                         if(response.data==1)

@@ -33,7 +33,9 @@ class InformacionController extends Controller
             $informacion = Informacion::find($request->id);
             $oldUrlImagen = explode('/',$informacion->urlLogo);
             Storage::delete('public/info/'.$oldUrlImagen[3]);
+
             $informacion->horarioAtencion  =$request->horarioAtencion;
+            $informacion->urlCatalogo=$request->urlCatalogo;
             $informacion->correo=$request->correo;
             $informacion->mision=$request->mision;
             $informacion->vision=$request->vision;
@@ -45,6 +47,7 @@ class InformacionController extends Controller
         {
             $informacion = Informacion::find($request->id);
             $informacion->horarioAtencion  =$request->horarioAtencion;
+            $informacion->urlCatalogo=$request->urlCatalogo;
             $informacion->correo=$request->correo;
             $informacion->mision=$request->mision;
             $informacion->vision=$request->vision;

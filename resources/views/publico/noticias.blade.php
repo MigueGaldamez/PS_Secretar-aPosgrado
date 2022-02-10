@@ -2,7 +2,7 @@
 
 @section('content')
 
-@include('publico.cabecera',['titulo' => 'Noticias','descripcion'=>'Toda la actualidad de la UES aqui'])
+@include('publico.cabecera',['titulo' => 'Noticias','descripcion'=>'Toda la actualidad de Posgrados UES aquí'])
 <div class="container pb-4">
   {{--
      <div class="row mb-4">
@@ -38,10 +38,10 @@
             @foreach ($noticias as $item)
             <div class="card mb-3 p-2">
                 <div class="row g-0">
-                    <div class="col-md-4">
+                    <div class="col-12 text-center">
                     <img src="{{asset($item->urlImagen)}}" class="img-fluid fullAlto imagenNotiDestaDet" alt="...">
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-12">
                     <div class="card-body  paddinNoticias ps-2">
                         <b><a href="{{route('noticia',['slug'=>$item->slug])}}" class="text-dark"><h5 class="card-title">{{$item->titulo}}</h5></a></b>
                         

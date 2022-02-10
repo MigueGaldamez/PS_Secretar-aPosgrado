@@ -215,7 +215,7 @@ class PermisoController extends Controller
                  'password' => Hash::make($request->nue)
                  ])->save();
              } else {
-                 $request->session()->flash('error', 'Password does not match');
+                return false;
              }
         }  
         return true; 

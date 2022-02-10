@@ -32,10 +32,10 @@
         @foreach ($facultadesF as $item)
         <div class="col col-lg-4 col-sm-12 mb-4 col-12 col-md-6">
             <div class="card text-white cardsFacuPad">
-                <img class="card-img" src="{{$item->urlImagen}}" alt="Card image">
+                <img class="card-img" src="{{$item->urlImagen}}" alt="Card image" style="height:200px">
                 <div class="card-img-overlay">
                     <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">{{$item->nombre}}</span></h5>
-                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver mas</a>
+                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver oferta</a>
                 </div>
             </div>
             <p class="textoFacu"><span >{{$item->descripcion}}</span></p>
@@ -52,7 +52,7 @@
         @foreach ($facultadesS as $item)
         <div class="col col-lg-4 col-sm-12 mb-4 col-12 col-md-6">
             <div class="card text-white cardsFacuPad">
-                <img class="card-img" src="{{$item->urlImagen}}" alt="Card image">
+                <img class="card-img" src="{{$item->urlImagen}}" alt="Card image" style="height:200px">
                 <div class="card-img-overlay">
                     <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">{{$item->nombre}}</span></h5>
                     <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver mas</a>
