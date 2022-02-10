@@ -157,7 +157,7 @@
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                 }
@@ -191,7 +191,7 @@
                             }
                             else
                             {
-                                this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
+                                this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                             }
                             });
                             this.closeModal();

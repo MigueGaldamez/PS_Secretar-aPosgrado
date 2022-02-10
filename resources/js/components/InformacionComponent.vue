@@ -17,6 +17,12 @@
                                 <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>
                             <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Enlace</label>
+                                <input class="form-control" type="url" v-model="info.urlCatalogo" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
+                                <p class="text-muted">Recuerda que el link de Drive debe estar publico y solo lectura <a :href="info.urlCatalogo" class="text-reset">Probar</a>.</p>
+                                <span class="text-danger" v-if="errores.urlCatalogo">{{errores.urlCatalogo[0]}}</span>
+                            </div>
+                            <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Horario de atención</label>
                                 <textarea v-model="info.horarioAtencion" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 <span class="text-danger" v-if="errores.horarioAtencion">{{errores.horarioAtencion[0]}}</span>
@@ -41,7 +47,7 @@
                                 <textarea v-model="info.quienesSomos" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 <span class="text-danger" v-if="errores.quienesSomos">{{errores.quienesSomos[0]}}</span>
                             </div>
-                            <div class="row ">
+                            <div class="row">
                                 <label for="exampleFormControlTextarea1" class="form-label">Valores </label>
                                 <div class="input-group mb-3 col-sm-4">
                                     <button @click="saveValor();" class="btn  btn-success" type="button" id="button-addon1">
@@ -54,14 +60,16 @@
                                 </div>
                                 <span class="text-danger" v-if="v_errores.nombre">{{v_errores.nombre[0]}}</span>
                             </div>
-                            <div class="row ">
-                                <div v-for="valor in info.valores" :key="valor.id" class="input-group mb-3 col-sm-4">
+                            <div class="row">
+                                <div v-for="valor in info.valores" :key="valor.id" class="col mb-3 col-6">
+                                    <div class=" input-group">
                                     <button @click="eliminarValor(valor.id)" class="btn btn-danger" type="button" id="button-addon1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                                             <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                         </svg>
                                     </button>
                                     <input v-model="valor.nombre" type="text" class="form-control"  disabled aria-describedby="button-addon1">
+                                    </div>
                                 </div>
                             </div>
                             
@@ -76,13 +84,15 @@
         </div>
         <dl class="row" v-for="info in infos" :key="info.id">
             <dt class="col-sm-3">Logo Institucion</dt>
+           
                 <dd class="col-sm-9"> <img :src="info.urlLogo" class="img-thumbnail" alt="..."></dd>
             <dt class="col-sm-3">Horario de Atención</dt>
             <dd class="col-sm-9">
-                {{info.horarioAtencion}}
+                {{info.horarioAtencion}} y  {{info.urlLogo}}
             </dd>
             <dt class="col-sm-3">Contacto</dt>
                 <dd class="col-sm-9">{{info.correo}}</dd>
+                
             <dt class="col-sm-3">Misión</dt>
             <dd class="col-sm-9">
                 <p>{{info.mision}}</p>
@@ -93,8 +103,8 @@
             </dd>
             <dt class="col-sm-3">Valores</dt>
 
-            <dd class="col-sm-9">
-                <li v-for="valor in info.valores" :key="valor.id">{{valor.nombre}}</li>
+            <dd class="col-sm-9 row">
+                <li class="col-6" v-for="valor in info.valores" :key="valor.id">{{valor.nombre}}</li>
             </dd>
             <dt class="col-sm-3">¿Quiénes Somos?</dt>
             <dd class="col-sm-9">
@@ -111,6 +121,7 @@ export default {
         return{
             info: {
                 id:0,
+                urlCatalogo: '',
                 urlLogo: null,
                 horarioAtencion:'',
                 correo:'',
@@ -205,7 +216,6 @@ export default {
                 {
                     fields.append(key,this.info[key]);
                 }
-                //.then(response=>{console.log(response.data)})
                 const res = await axios.post('/dashboard/informacion/'+ this.id, fields)
                 .then(response=>
                 {
@@ -215,7 +225,7 @@ export default {
                     }
                     else
                     {
-                        this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
+                        this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                     }
                 }); 
                 this.closeModal();
@@ -231,18 +241,19 @@ export default {
 
         },
         openModal(data={}) {
-        this.modal=1
-        this.id=data.id;
-        this.info.id=data.id;
-        this.titleModal = "Modificar información publica";
-        this.info.urlLogo= data.urlLogo;
-        this.info.horarioAtencion=data.horarioAtencion;
-        this.info.correo= data.correo;
-        this.info.mision= data.mision;
-        this.info.vision = data.vision
-        this.info.valores = data.valores;
-        this.info.imagen = false;  
-        this.info.quienesSomos = data.quienesSomos;
+            this.modal=1
+            this.id=data.id;
+            this.info.id=data.id;
+            this.titleModal = "Modificar información publica";
+            this.info.urlLogo= data.urlLogo;
+            this.info.urlCatalogo= data.urlCatalogo;
+            this.info.horarioAtencion=data.horarioAtencion;
+            this.info.correo= data.correo;
+            this.info.mision= data.mision;
+            this.info.vision = data.vision
+            this.info.valores = data.valores;
+            this.info.imagen = false;  
+            this.info.quienesSomos = data.quienesSomos;
         },
         closeModal() {
             this.errores = {};
@@ -268,7 +279,7 @@ export default {
                 this.imagenMiniatura =e.target.result;
             }
             reader.readAsDataURL(file);
-        }
+        },
     },
     created() 
     {

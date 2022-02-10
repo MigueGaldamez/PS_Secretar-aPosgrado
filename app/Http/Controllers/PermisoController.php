@@ -201,4 +201,23 @@ class PermisoController extends Controller
         $usuario = User::find(Auth::user()->id);
         return $usuario;
     }
+    public function cambiarNombre(Request $request){
+        $usuario = User::find($request->id);
+        $usuario->name = $request->nombre;
+        $usuario->save();
+        return true;
+    }
+    public function cambiarPass(Request $request){
+        $usuario = User::find($request->id);
+        if($request->nue==$request->conf){
+            if (Hash::check($request->ant, $usuario->password)) { 
+                $usuario->fill([
+                 'password' => Hash::make($request->nue)
+                 ])->save();
+             } else {
+                return false;
+             }
+        }  
+        return true; 
+    }
 }

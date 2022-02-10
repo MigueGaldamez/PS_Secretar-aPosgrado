@@ -207,7 +207,7 @@
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                 }
@@ -233,7 +233,6 @@
                         {
                             fields.append(key,this.modalidad[key]);
                         }
-                        //.then(response=>{console.log(response.data)})
                         const res = await axios.put('/dashboard/modalidades_api/'+this.id, this.modalidad)
                         .then(response=>{
                             if(response.data==1)
@@ -242,7 +241,7 @@
                             }
                             else
                             {
-                                this.$swal({title: 'Error!',text: 'Do you want to continue',icon: 'error',confirmButtonText: 'Ok'});
+                                this.$swal({title: 'Error!',text: 'Ha ocurrido un error',icon: 'error',confirmButtonText: 'Ok'});
                             }
                             });
                             this.closeModal();
@@ -265,7 +264,6 @@
                         {
                             fields.append(key,this.modalidad[key]);
                         }
-                        //.then(response=>{console.log(response.data)})
                         const res = await axios.post('/dashboard/modalidades_api', fields)
                         .then(response=>
                         {

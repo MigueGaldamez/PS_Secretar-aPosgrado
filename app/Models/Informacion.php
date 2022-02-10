@@ -16,6 +16,7 @@ class Informacion extends Model
         'vision',
         'correo',
         'horarioAtencion',
+        'urlCatalogo',
     ];
     public function valores()
     {

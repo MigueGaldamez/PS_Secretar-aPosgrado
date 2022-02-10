@@ -73,7 +73,7 @@ Route::middleware('auth')->group(function ()
                             //FIN mantenimientos de tablas opciones
     //Equipo trabajo
     Route::get('dashboard/equipo_trabajo', [PermisoController::class,'equipoTrabajoIndex'])->name('EquipoTrabajo');
-    Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class)->except(['update','show']);;
+    Route::apiResource('dashboard/equipoTrabajo', EquipoTrabajoController::class)->except(['update','show']);
     Route::post('dashboard/equipoTrabajo/{equipoTrabajo}', [EquipoTrabajoController::class,'update']);
     //Resenias Historicas
     Route::get('dashboard/resenia_historica', [PermisoController::class,'reseniaIndex'])->name('ReseniaHistorica');
@@ -98,6 +98,9 @@ Route::middleware('auth')->group(function ()
     Route::get('dashboard/perfil', [PermisoController::class,'perfilIndex'])->name('Perfil');
     Route::get('dashboard/permisoUsuarioP', [PermisoController::class,'permisoUsuarioP'])->name('permisoUsuarioP');
     Route::get('dashboard/perfilUsuarioP', [PermisoController::class,'perfilUsuarioP'])->name('perfilUsuarioP');
+
+    Route::post('dashboard/cambiarNombre', [PermisoController::class,'cambiarNombre'])->name('cambiar.nombre');
+    Route::post('dashboard/cambiarPass', [PermisoController::class,'cambiarPass'])->name('cambiar.pass');
     
 });
 //publico
@@ -122,10 +125,21 @@ Route::get('/catalogo', [App\Http\Controllers\PublicoController::class, 'catalog
 Route::get('/galeria', [App\Http\Controllers\PublicoController::class, 'galeria'])->name('galeria');
 Route::get('/tesisPosgrados', [App\Http\Controllers\PublicoController::class, 'tesisPosgrados'])->name('tesisPosgrados');
 Route::get('/descargar/catalogo/',[App\Http\Controllers\PublicoController::class, 'descargarCatalogo'])->name('descargar.catalogo');
-Auth::routes();
 Route::get('/facultades/conTesis', [FacultadesController::class, 'facultadesConTesis'])->name('fac.con.tesis');
 Route::get('/facultades/conInv', [FacultadesController::class, 'facultadesConInv'])->name('fac.con.inv');
 Route::get('/facultades/fac', [FacultadesController::class, 'facultadesF'])->name('fac.fac');
 Route::get('/facultades/sed', [FacultadesController::class, 'facultadesS'])->name('fac.sed');
 Route::get('/catalogo', [PublicoController::class, 'catalogoC'])->name('catalogoC');
 Route::get('/ObtenerFacultad/Oferta', [FacultadesController::class, 'getFacultadbyId'])->name('fac.by.id');
+
+// Authentication Routes...
+Route::get('login', 'App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'App\Http\Controllers\Auth\LoginController@login');
+Route::post('logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+// Password Reset Routes...
+Route::get('password/confirm','App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
+Route::post('password/confirm','App\Http\Controllers\Auth\ConfirmPasswordController@confirm');
+Route::post('password/email', 'App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+Route::get('password/reset', 'App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+Route::post('password/reset', 'App\Http\Controllers\Auth\ResetPasswordController@reset')->name('password.update');
+Route::get('password/reset/{token}', 'App\Http\Controllers\Auth\ResetPasswordController@showResetForm')->name('password.reset');

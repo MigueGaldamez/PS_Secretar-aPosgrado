@@ -16,6 +16,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+        
         <!-- include summernote css/js-->
         <script defer type="text/javascript" src="{{ asset('js\summernote\jquery-3.6.0.min.js') }}"></script>
         <link href="{{ asset('css\summernote\summernote-lite.min.css') }}" rel="stylesheet">
@@ -82,19 +84,6 @@
                                 </li>
                             </ul>
                             <hr>
-                            <div class="dropdown">
-                                <a href="#" class="text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="https://avatars.githubusercontent.com/u/25284452?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-                                    <strong>Puede servir</strong>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </nav>
                     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -174,6 +163,8 @@
                             </div>
                         </nav>
                         <div class="my-4">
+                            <a class="btn-sm FABpriv" href="{{route('inicio')}}" target="_blank" role="button">
+                            <i class="fa-solid fa-house-chimney"></i> Visitar el sitio publico</a>
                             @yield('content')
                         </div>
                     </main>

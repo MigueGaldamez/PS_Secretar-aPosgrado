@@ -830,3 +830,19 @@ INSERT INTO `galeries` (`id`, `urlImagen`, `titulo`, `subtitulo`, `orden`) VALUE
 (11, '/storage/galery/h7JCBFyS6almKvJY8U5GIiJgyuGTcKaZQlbI1MyT.jpg', 'Titulo', 'Subtitulo', 4),
 (12, '/storage/galery/2Xsl4xm7gJiJ2ICk9UeVar6hyMpu4tUi5mILZmr0.jpg', 'Titulo', 'Subtitulo', 4);
 COMMIT;
+
+INSERT INTO `valores` (`id`, `nombre`, `informacion_id`) VALUES
+(1, 'Responsabilidad', 1),
+(2, 'Equidad', 1),
+(3, 'Solidaridad', 1),
+(4, 'Ética', 1),
+(5, 'Respeto', 1),
+(6, 'Excelencia en el desempeño', 1),
+(7, 'Visión de Futuro', 1),
+(8, 'Trabajador responsable', 1),
+(9, 'Compromiso social', 1),
+(10, 'Excelencia académica', 1),
+(11, 'Profesionalismo', 1),
+(12, 'Creatividad', 1),
+(13, 'Multidisciplinariedad', 1);
+COMMIT;

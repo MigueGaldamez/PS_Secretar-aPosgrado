@@ -5724,7 +5724,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'No puede ser Eliminado',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6246,7 +6246,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6286,8 +6286,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.enlace) {
                   fields.append(key, _this4.enlace[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.post('/dashboard/enlaces_api/' + _this4.id, fields).then(function (response) {
@@ -6336,8 +6335,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this4.enlace) {
                   _fields.append(_key, _this4.enlace[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/enlaces_api', _fields).then(function (response) {
@@ -6732,7 +6730,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -6798,7 +6796,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7295,7 +7293,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7330,8 +7328,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this3.facultad) {
                   _fields.append(_key, _this3.facultad[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/facultad_api', _fields).then(function (response) {
@@ -7345,7 +7342,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: "error",
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7808,8 +7805,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.galery) {
                   fields.append(key, _this4.galery[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.post('/dashboard/galery_api/' + _this4.id, fields).then(function (response) {
@@ -7823,7 +7819,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -7873,7 +7869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: "error",
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8285,7 +8281,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8592,11 +8588,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       info: {
         id: 0,
+        urlCatalogo: '',
         urlLogo: null,
         horarioAtencion: '',
         correo: '',
@@ -8780,8 +8787,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this5.info) {
                   fields.append(key, _this5.info[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context5.next = 5;
                 return axios.post('/dashboard/informacion/' + _this5.id, fields).then(function (response) {
@@ -8795,7 +8801,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this5.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -8835,6 +8841,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.info.id = data.id;
       this.titleModal = "Modificar información publica";
       this.info.urlLogo = data.urlLogo;
+      this.info.urlCatalogo = data.urlCatalogo;
       this.info.horarioAtencion = data.horarioAtencion;
       this.info.correo = data.correo;
       this.info.mision = data.mision;
@@ -9120,7 +9127,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9172,8 +9179,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this4.modalidad) {
                   fields.append(key, _this4.modalidad[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 6;
                 return axios.put('/dashboard/modalidades_api/' + _this4.id, _this4.modalidad).then(function (response) {
@@ -9187,7 +9193,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9222,8 +9228,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (_key in _this4.modalidad) {
                   _fields.append(_key, _this4.modalidad[_key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context3.next = 21;
                 return axios.post('/dashboard/modalidades_api', _fields).then(function (response) {
@@ -9674,7 +9679,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9742,7 +9747,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9790,7 +9795,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -9967,17 +9972,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['facultad'],
   data: function data() {
     return {
+      usu: {
+        nombre: '',
+        id: ''
+      },
+      pass: {
+        ant: '',
+        nue: '',
+        conf: ''
+      },
       usuario: [],
       permisos: [],
       permisosUsuario: [],
@@ -10026,6 +10033,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee, null, [[0, 11]]);
+      }))();
+    },
+    cambiarNombre: function cambiarNombre() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _this2.usu.id = _this2.usuario.id;
+                _context2.prev = 1;
+                _context2.next = 4;
+                return axios.post('/dashboard/cambiarNombre', _this2.usu);
+
+              case 4:
+                res = _context2.sent;
+                _context2.next = 10;
+                break;
+
+              case 7:
+                _context2.prev = 7;
+                _context2.t0 = _context2["catch"](1);
+
+                if (_context2.t0.response.data) {
+                  _this2.errores = _context2.t0.response.data.errors;
+                }
+
+              case 10:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[1, 7]]);
+      }))();
+    },
+    cambiarContrasenia: function cambiarContrasenia() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _this3.usu.id = _this3.usuario.id;
+                _context3.prev = 1;
+                _context3.next = 4;
+                return axios.post('/dashboard/cambiarPass', _this3.pass);
+
+              case 4:
+                res = _context3.sent;
+                _context3.next = 10;
+                break;
+
+              case 7:
+                _context3.prev = 7;
+                _context3.t0 = _context3["catch"](1);
+
+                if (_context3.t0.response.data) {
+                  _this3.errores = _context3.t0.response.data.errors;
+                }
+
+              case 10:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, null, [[1, 7]]);
       }))();
     }
   },
@@ -10372,7 +10449,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this2.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -10422,7 +10499,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -10960,7 +11037,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11018,8 +11095,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (key in _this5.posgrado) {
                   fields.append(key, _this5.posgrado[key]);
-                } //.then(response=>{console.log(response.data)})
-
+                }
 
                 _context4.next = 6;
                 return axios.post('/dashboard/posgrados_api/' + _this5.id, fields).then(function (response) {
@@ -11033,7 +11109,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this5.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11666,7 +11742,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this6.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -11732,7 +11808,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this7.$swal({
                       title: 'Error!',
-                      text: console.log(response.data),
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12068,7 +12144,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12452,7 +12528,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this3.$swal({
                       title: 'Error!',
-                      text: response.data,
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -12519,7 +12595,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Do you want to continue',
+                      text: 'Ha ocurrido un error',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -57686,6 +57762,70 @@ var render = function() {
                           staticClass: "form-label",
                           attrs: { for: "exampleFormControlTextarea1" }
                         },
+                        [_vm._v("Enlace")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.info.urlCatalogo,
+                            expression: "info.urlCatalogo"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "url",
+                          name: "link",
+                          id: "url",
+                          placeholder: "https://ejemplo.com",
+                          pattern: "https://.*"
+                        },
+                        domProps: { value: _vm.info.urlCatalogo },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.info,
+                              "urlCatalogo",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("p", { staticClass: "text-muted" }, [
+                        _vm._v(
+                          "Recuerda que el link de Drive debe estar publico y solo lectura "
+                        ),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "text-reset",
+                            attrs: { href: _vm.info.urlCatalogo }
+                          },
+                          [_vm._v("Probar")]
+                        ),
+                        _vm._v(".")
+                      ]),
+                      _vm._v(" "),
+                      _vm.errores.urlCatalogo
+                        ? _c("span", { staticClass: "text-danger" }, [
+                            _vm._v(_vm._s(_vm.errores.urlCatalogo[0]))
+                          ])
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mb-3" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "exampleFormControlTextarea1" }
+                        },
                         [_vm._v("Horario de atención")]
                       ),
                       _vm._v(" "),
@@ -57882,7 +58022,7 @@ var render = function() {
                         : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "row " }, [
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "label",
                         {
@@ -57976,76 +58116,82 @@ var render = function() {
                     _vm._v(" "),
                     _c(
                       "div",
-                      { staticClass: "row " },
+                      { staticClass: "row" },
                       _vm._l(_vm.info.valores, function(valor) {
                         return _c(
                           "div",
-                          {
-                            key: valor.id,
-                            staticClass: "input-group mb-3 col-sm-4"
-                          },
+                          { key: valor.id, staticClass: "col mb-3 col-6" },
                           [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-danger",
-                                attrs: { type: "button", id: "button-addon1" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.eliminarValor(valor.id)
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass: "bi bi-trash-fill",
-                                    attrs: {
-                                      xmlns: "http://www.w3.org/2000/svg",
-                                      width: "20",
-                                      height: "20",
-                                      fill: "currentColor",
-                                      viewBox: "0 0 16 16"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
+                            _c("div", { staticClass: " input-group" }, [
+                              _c(
+                                "button",
                                 {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: valor.nombre,
-                                  expression: "valor.nombre"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: {
-                                type: "text",
-                                disabled: "",
-                                "aria-describedby": "button-addon1"
-                              },
-                              domProps: { value: valor.nombre },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                                  staticClass: "btn btn-danger",
+                                  attrs: {
+                                    type: "button",
+                                    id: "button-addon1"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.eliminarValor(valor.id)
+                                    }
                                   }
-                                  _vm.$set(valor, "nombre", $event.target.value)
+                                },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass: "bi bi-trash-fill",
+                                      attrs: {
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        width: "20",
+                                        height: "20",
+                                        fill: "currentColor",
+                                        viewBox: "0 0 16 16"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d:
+                                            "M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: valor.nombre,
+                                    expression: "valor.nombre"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "text",
+                                  disabled: "",
+                                  "aria-describedby": "button-addon1"
+                                },
+                                domProps: { value: valor.nombre },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      valor,
+                                      "nombre",
+                                      $event.target.value
+                                    )
+                                  }
                                 }
-                              }
-                            })
+                              })
+                            ])
                           ]
                         )
                       }),
@@ -58106,7 +58252,11 @@ var render = function() {
           _vm._v(" "),
           _c("dd", { staticClass: "col-sm-9" }, [
             _vm._v(
-              "\n            " + _vm._s(info.horarioAtencion) + "\n        "
+              "\n            " +
+                _vm._s(info.horarioAtencion) +
+                " y  " +
+                _vm._s(info.urlLogo) +
+                "\n        "
             )
           ]),
           _vm._v(" "),
@@ -58130,9 +58280,11 @@ var render = function() {
           _vm._v(" "),
           _c(
             "dd",
-            { staticClass: "col-sm-9" },
+            { staticClass: "col-sm-9 row" },
             _vm._l(info.valores, function(valor) {
-              return _c("li", { key: valor.id }, [_vm._v(_vm._s(valor.nombre))])
+              return _c("li", { key: valor.id, staticClass: "col-6" }, [
+                _vm._v(_vm._s(valor.nombre))
+              ])
             }),
             0
           ),
@@ -59878,8 +60030,10 @@ var render = function() {
             )
           ])
         ])
-      ]),
-      _vm._v(" "),
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col col-6 mt-4" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-body" }, [
@@ -59890,64 +60044,61 @@ var render = function() {
               _c("strong", [_vm._v(_vm._s(_vm.usuario.name))])
             ]),
             _vm._v(" "),
-            _vm._m(0)
+            _c("div", { staticClass: "mb-3" }, [
+              _c("label", { staticClass: "form-label" }, [
+                _vm._v("Nuevo Nombre")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.usu.nombre,
+                    expression: "usu.nombre"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: _vm.usu.nombre },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.usu, "nombre", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-text" }, [
+                _vm._v(
+                  "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary text-light",
+                on: {
+                  click: function($event) {
+                    return _vm.cambiarNombre()
+                  }
+                }
+              },
+              [_vm._v("Cambiar nombre")]
+            )
           ])
         ])
       ]),
       _vm._v(" "),
-      _vm._m(1)
-    ])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("form", [
-      _c("div", { staticClass: "mb-3" }, [
-        _c(
-          "label",
-          { staticClass: "form-label", attrs: { for: "exampleInputEmail1" } },
-          [_vm._v("Nombre")]
-        ),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "email",
-            id: "exampleInputEmail1",
-            "aria-describedby": "emailHelp"
-          }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "form-text", attrs: { id: "emailHelp" } }, [
-          _vm._v(
-            "Este solo es su nombre de usuario, seguira iniciando sesion con su correo electronico."
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-primary text-light",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("Cambiar nombre")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col col-6 my-4" }, [
-      _c("div", { staticClass: "card" }, [
-        _c("div", { staticClass: "card-body" }, [
-          _c("h4", [_vm._v("Cambiar Contraseña")]),
-          _vm._v(" "),
-          _c("form", [
+      _c("div", { staticClass: "col col-6 my-4" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("h4", [_vm._v("Cambiar Contraseña")]),
+            _vm._v(" "),
             _c("div", { staticClass: "mb-3" }, [
               _c(
                 "label",
@@ -59959,8 +60110,25 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.ant,
+                    expression: "pass.ant"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" }
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.ant },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "ant", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -59975,8 +60143,25 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.nue,
+                    expression: "pass.nue"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" }
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.nue },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "nue", $event.target.value)
+                  }
+                }
               }),
               _vm._v(" "),
               _c(
@@ -60001,8 +60186,25 @@ var staticRenderFns = [
               ),
               _vm._v(" "),
               _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.pass.conf,
+                    expression: "pass.conf"
+                  }
+                ],
                 staticClass: "form-control",
-                attrs: { type: "password", id: "exampleInputEmail1" }
+                attrs: { type: "password", id: "exampleInputEmail1" },
+                domProps: { value: _vm.pass.conf },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.pass, "conf", $event.target.value)
+                  }
+                }
               })
             ]),
             _vm._v(" "),
@@ -60010,7 +60212,11 @@ var staticRenderFns = [
               "button",
               {
                 staticClass: "btn btn-primary text-light",
-                attrs: { type: "submit" }
+                on: {
+                  click: function($event) {
+                    return _vm.cambiarContrasenia()
+                  }
+                }
               },
               [_vm._v("Cambiar Contraseña")]
             )
@@ -60018,8 +60224,9 @@ var staticRenderFns = [
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -65054,7 +65261,7 @@ var render = function() {
       _vm._l(_vm.posgrados.data, function(posgrado) {
         return _c(
           "div",
-          { key: posgrado.id, staticClass: "card sinBordes mb-4 " },
+          { key: posgrado.id, staticClass: "card sinBordes mb-4 cardFacu" },
           [
             _c("div", { staticClass: "row" }, [
               _c(
@@ -65094,8 +65301,6 @@ var render = function() {
                   _c("h3", { staticClass: "card-title textoSuavecito mb-0" }, [
                     _c("b", [_vm._v(_vm._s(posgrado.titulo))])
                   ]),
-                  _vm._v(" "),
-                  _c("small", [_vm._v("Ofertado en: ")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "wrapper-tol" }, [
                     _c("input", { attrs: { type: "checkbox" } }),
