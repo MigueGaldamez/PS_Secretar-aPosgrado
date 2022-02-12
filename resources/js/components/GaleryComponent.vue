@@ -42,11 +42,11 @@
                                     </select> 
                                     <span class="text-danger" v-if="errores.orden">{{errores.orden[0]}}</span>                               
                                 </div>
-                            </div>
-                            <button @click="save();" type="button" class="btn btn-success" >Guardar</button>          
+                            </div>         
                         </div>
                         <div class="modal-footer">
-                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" >Close</button>
+                            <button @click="save();" type="button" class="btn btn-success" >Guardar</button> 
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" >Cerrar</button>
                         </div>
                     </form> 
                 </div>

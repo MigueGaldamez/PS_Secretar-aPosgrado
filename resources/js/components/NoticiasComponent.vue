@@ -38,7 +38,7 @@
                         </div>
                         <div class="modal-footer">
                             <button @click="guardar();" type="button" class="btn btn-success" >Guardar</button>
-                            <button v-on:click="cerrarModal();" type="button" class="btn btn-secondary" >Close</button>
+                            <button v-on:click="cerrarModal();" type="button" class="btn btn-secondary" >Cerrar</button>
                         </div>
                     </form>
                 </div>
