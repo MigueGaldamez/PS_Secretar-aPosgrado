@@ -54,8 +54,9 @@ class PublicoController extends Controller
     }
     public function noticias()//para vista de todas las noticias
     {
+        $galeria = Galery::where('orden','=',4)->get();
         $noticias = Noticia::where('publicado',1)->where('destacado',1)->latest()->take(4)->get();
-        return view('publico.noticias',compact('noticias'));
+        return view('publico.noticias',compact('noticias','galeria'));
     }
     public function noticiasTodas(Request $request)//para api
     {

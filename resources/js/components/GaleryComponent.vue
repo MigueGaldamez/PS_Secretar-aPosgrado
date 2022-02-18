@@ -39,6 +39,8 @@
                                         <option value="2">Arte, Cultura y Deporte</option>
                                         <option value="3">Eventos académicos</option>
                                         <option value="4">Investigación y Proyección Social</option>
+                                        <option value="5">Apartado de noticias</option>
+                                        
                                     </select> 
                                     <span class="text-danger" v-if="errores.orden">{{errores.orden[0]}}</span>                               
                                 </div>
