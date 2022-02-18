@@ -38,7 +38,7 @@
                     <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver oferta</a>
                 </div>
             </div>
-            <p class="textoFacu"><span >{{$item->descripcion}}</span></p>
+            <p class="textoFacu d-none"><span >{{$item->descripcion}}</span></p>
         </div>
        
         @endforeach
@@ -58,7 +58,7 @@
                     <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver mas</a>
                 </div>
             </div>
-            <p class="textoFacu"><span >{{$item->descripcion}}</span></p>
+            <p class="textoFacu d-none"><span >{{$item->descripcion}}</span></p>
         </div>
        
         @endforeach
