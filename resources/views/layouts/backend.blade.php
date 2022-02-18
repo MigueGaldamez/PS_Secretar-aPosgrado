@@ -46,7 +46,7 @@
                                     <a href="{{route('Tesis')}}" class="nav-link text-white {{ request()->routeIs('Tesis') ? 'active' : '' }}" >Tesis/investigaciones</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('Galery')}}" class="nav-link text-white {{ request()->routeIs('Galery') ? 'active' : '' }}" >Galery</a>
+                                    <a href="{{route('Galery')}}" class="nav-link text-white {{ request()->routeIs('Galery') ? 'active' : '' }}" >Galería</a>
                                 </li>
                                 <li>
                                     <a href="{{route('NoticiasGestion')}}" class="nav-link text-white {{ request()->routeIs('NoticiasGestion') ? 'active' : '' }}" > Noticias Gestión</a>
@@ -127,7 +127,7 @@
                                                    Galeria, Noticias y Reseña
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                    <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galery</a>
+                                                    <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galería</a>
                                                     <a href="{{route('NoticiasGestion')}}" class="dropdown-item text-dark d-md-none" > Noticias Gestión</a>
                                                     <a href="{{route('ReseniaHistorica')}}" class="dropdown-item text-dark d-md-none" >Reseña Historica</a>
                                                 </div>

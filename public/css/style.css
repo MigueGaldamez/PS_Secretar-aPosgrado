@@ -2652,3 +2652,10 @@
 .colorDrive{
   background-color: #1FA463;
 }
+.fotoChiquita{
+  height: 120px;
+  float: left;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px !important;
+}

@@ -12,7 +12,7 @@
                 </ul>
                  <ul class="list-unstyled mb-0 pt-3 text-white font-weight-light text-start pe-0">
                   
-                    <li class="lh-sm  paddingBotonInicio  pb-3 fondoRojizo divConAnimadoR"><span class="slide">Animate a la experiencia UES</span></li>
+                    <li class="lh-sm  paddingBotonInicio  pb-3 fondoRojizo divConAnimadoR"><span class="slide">Animaté a la experiencia UES</span></li>
                 </ul>
             </div>
             <div class="col-4  offset-lg-2 d-none d-md-block position-relative">

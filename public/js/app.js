@@ -12982,6 +12982,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['facultad'],
   data: function data() {
@@ -61718,7 +61752,7 @@ var render = function() {
                           attrs: {
                             type: "text",
                             placeholder: "Titulo",
-                            "aria-label": "Titulo del posgrado"
+                            "aria-label": "Título del posgrado"
                           },
                           domProps: { value: _vm.posgrado.titulo },
                           on: {
@@ -65301,7 +65335,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("h4", { staticClass: "card-title textoSuavecito mb-0" }, [
-                    _vm._v("Titulo a otorgar:")
+                    _vm._v("Título a otorgar:")
                   ]),
                   _vm._v(" "),
                   _c("h3", { staticClass: "card-title textoSuavecito mb-0" }, [
@@ -65368,10 +65402,215 @@ var render = function() {
         )
       }),
       0
-    )
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "container-fluid mb-4" }, [
+      _c("div", { staticClass: "row justify-content-center text-center" }, [
+        _c("h3", [_vm._v("Paginación")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-auto" }, [
+          _vm._v(
+            "\n           Mostrando: " +
+              _vm._s(_vm.posgrados.from) +
+              " - " +
+              _vm._s(_vm.posgrados.to) +
+              " de un total de: " +
+              _vm._s(_vm.posgrados.total) +
+              "\n        "
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-auto" }, [
+          _c("nav", [
+            _c(
+              "ul",
+              { staticClass: " pagination" },
+              [
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.pagination.page == 1 },
+                    on: {
+                      click: function($event) {
+                        ;(_vm.pagination.page = 1), _vm.listar()
+                      }
+                    }
+                  },
+                  [_vm._m(2)]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: { deactivado: _vm.pagination.page == 1 },
+                    on: {
+                      click: function($event) {
+                        _vm.pagination.page--, _vm.listar()
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v("<")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.paginas, function(n) {
+                  return _c(
+                    "li",
+                    {
+                      key: n,
+                      staticClass: "page__numbers page-item",
+                      class: { active: _vm.pagination.page == n },
+                      on: {
+                        click: function($event) {
+                          ;(_vm.pagination.page = n), _vm.listar()
+                        }
+                      }
+                    },
+                    [
+                      _c(
+                        "a",
+                        {
+                          staticClass: "page__link",
+                          attrs: { href: "#informacionPosgrado" }
+                        },
+                        [_vm._v(_vm._s(n))]
+                      )
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: {
+                      deactivado: _vm.pagination.page == _vm.posgrados.last_page
+                    },
+                    on: {
+                      click: function($event) {
+                        _vm.pagination.page++, _vm.listar()
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v(">")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "li",
+                  {
+                    staticClass: "page__numbers page-item",
+                    class: {
+                      deactivado: _vm.pagination.page == _vm.posgrados.last_page
+                    },
+                    on: {
+                      click: function($event) {
+                        ;(_vm.pagination.page = _vm.posgrados.last_page),
+                          _vm.listar()
+                      }
+                    }
+                  },
+                  [_vm._m(3)]
+                )
+              ],
+              2
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col col-auto" }, [
+          _vm._v("\n            Elementos por pagina\n            "),
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.pagination.per_page,
+                  expression: "pagination.per_page"
+                }
+              ],
+              staticClass: " form-control form-select form-select-sm",
+              on: {
+                change: [
+                  function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.pagination,
+                      "per_page",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  },
+                  function($event) {
+                    return _vm.listar()
+                  }
+                ]
+              }
+            },
+            [
+              _c("option", { attrs: { selected: "" } }, [
+                _vm._v("Elementos por pagina")
+              ]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "15" } }, [_vm._v("15")])
+            ]
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("«")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("»")])]
+    )
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

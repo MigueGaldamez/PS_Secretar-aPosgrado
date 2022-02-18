@@ -55,7 +55,7 @@
                             <h1 class="card-title textoSuavecito mb-2"><p class="card-text"><span class="bordeBajo">{{posgrado.nombre}}</span></p></h1>
                             <p><b>Descripción:</b><br>{{posgrado.descripcion}}
                             </p>
-                            <h4 class="card-title textoSuavecito mb-0">Titulo a otorgar:</h4>
+                            <h4 class="card-title textoSuavecito mb-0">Título a otorgar:</h4>
                             <h3 class="card-title textoSuavecito mb-0"><b>{{posgrado.titulo}}</b></h3>
                             
                           
@@ -86,7 +86,7 @@
       
        
     </div>
-     <div class="container-fluid mb-2">
+     <div class="container-fluid mb-4">
     
         <div class="row justify-content-center text-center">
        

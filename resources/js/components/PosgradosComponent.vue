@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="mb-3 col-sm-12" >
                                     <label for="tituloPosgrado" class="form-label">Titulo</label>
-                                    <input v-model="posgrado.titulo" class="form-control" type="text" placeholder="Titulo" aria-label="Titulo del posgrado">
+                                    <input v-model="posgrado.titulo" class="form-control" type="text" placeholder="Titulo" aria-label="Título del posgrado">
                                     <span class="text-danger" v-if="errores.titulo">{{errores.titulo[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-4">
