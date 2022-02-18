@@ -13457,6 +13457,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -66152,6 +66166,9 @@ var render = function() {
                                           {
                                             staticClass:
                                               "btn btn-link text-dark",
+                                            attrs: {
+                                              href: "#informacionPosgrado"
+                                            },
                                             on: {
                                               click: function($event) {
                                                 _vm.mostrar = true
@@ -66430,7 +66447,120 @@ var render = function() {
             )
           ])
         ])
-      : _c("div", { staticClass: "mb-4" }, [_vm._m(2)])
+      : _c("div", { staticClass: "mb-4" }, [_vm._m(2)]),
+    _vm._v(" "),
+    _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "col-12 md-12 text-center mt-2" }, [
+        _c("nav", [
+          _c(
+            "ul",
+            { staticClass: " pagination" },
+            [
+              _c(
+                "li",
+                {
+                  staticClass: "page__numbers page-item",
+                  class: { deactivado: _vm.current == 1 },
+                  on: {
+                    click: function($event) {
+                      _vm.current = 1
+                    }
+                  }
+                },
+                [_vm._m(3)]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page__numbers page-item",
+                  class: { deactivado: _vm.current == 1 },
+                  on: {
+                    click: function($event) {
+                      _vm.current--
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page__link",
+                      attrs: { href: "#informacionPosgrado" }
+                    },
+                    [_vm._v("<")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.paginas, function(n) {
+                return _c(
+                  "li",
+                  {
+                    key: n,
+                    staticClass: "page__numbers page-item",
+                    class: { active: _vm.current == n + 1 },
+                    on: {
+                      click: function($event) {
+                        _vm.current = n + 1
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "page__link",
+                        attrs: { href: "#informacionPosgrado" }
+                      },
+                      [_vm._v(_vm._s(n + 1))]
+                    )
+                  ]
+                )
+              }),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page__numbers page-item",
+                  class: { deactivado: _vm.current == _vm.paginas.length },
+                  on: {
+                    click: function($event) {
+                      _vm.current++
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "page__link",
+                      attrs: { href: "#informacionPosgrado" }
+                    },
+                    [_vm._v(">")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  staticClass: "page__numbers page-item",
+                  class: { deactivado: _vm.current == _vm.paginas.length },
+                  on: {
+                    click: function($event) {
+                      _vm.current = _vm.paginas.length
+                    }
+                  }
+                },
+                [_vm._m(4)]
+              )
+            ],
+            2
+          )
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = [
@@ -66465,6 +66595,26 @@ var staticRenderFns = [
         ])
       ])
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("«")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "a",
+      { staticClass: "page__link", attrs: { href: "#informacionPosgrado" } },
+      [_c("span", [_vm._v("»")])]
+    )
   }
 ]
 render._withStripped = true
