@@ -86,6 +86,40 @@
       
        
     </div>
+     <div class="container-fluid mb-2">
+    
+        <div class="row justify-content-center text-center">
+       
+      
+       
+        <h3>Paginación</h3>
+        <div class="col col-auto">
+           Mostrando: {{posgrados.from}} - {{posgrados.to }} de un total de: {{posgrados.total}}
+        </div>       
+        <div class="col col-auto">
+
+             <nav>
+                <ul class=" pagination">
+                    <li class="page__numbers page-item"  :class="{deactivado:pagination.page==1}"  @click="pagination.page=1, listar();"><a class="page__link" href="#informacionPosgrado"><span>&laquo;</span></a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:pagination.page==1}"  @click="pagination.page--, listar();"><a class="page__link"  href="#informacionPosgrado">&#60;</a></li>
+                    <li class="page__numbers page-item"  v-for="n in paginas" :key="n" :class="{active:pagination.page==n}"  @click="pagination.page=n, listar();"><a class="page__link" href="#informacionPosgrado">{{n}}</a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:pagination.page==posgrados.last_page}"  @click="pagination.page++, listar();"><a class="page__link"   href="#informacionPosgrado">&#62;</a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:pagination.page==posgrados.last_page}"  @click="pagination.page=posgrados.last_page, listar();"><a class="page__link"  href="#informacionPosgrado" ><span >&raquo;</span></a></li>
+                </ul>
+            </nav>
+        
+        </div>
+        <div class="col col-auto">
+            Elementos por pagina
+            <select class=" form-control form-select form-select-sm" v-model="pagination.per_page" @change="listar();">
+            <option selected>Elementos por pagina</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            </select>
+        </div>
+    </div>
+    </div>
 </div>
 </template>
 
