@@ -33,7 +33,7 @@
             <noticias-component></noticias-component>
         </div>
         <div class="col-lg-4 mt-4 pe-md-0">
-            <h2 class="text-dark mb-0 ps-0 textoGris  ">Galeria de Posgrados</h2>  
+            <h2 class="text-dark mb-0 ps-0 textoGris  ">Galería de Posgrados</h2>  
             <div class="titulohr mb-4"></div>
             @foreach ($galeria as $item)
             <div class="card mb-3 p-2">

@@ -23,7 +23,8 @@ class TesisRequest extends FormRequest
             'publicado'=>'required|numeric|min:1800|max:3000',
             'titulo'=>'required|max:350',
             'autor'=>'required|max:255',
-            'link'=>'required|url|max:255',
+            'link'=>'required|max:255',
+            //'link'=>'required|url|max:255',
             'estado'=>'required|boolean'
         ];
     }

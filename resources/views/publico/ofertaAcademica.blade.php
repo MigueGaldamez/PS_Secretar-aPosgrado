@@ -12,7 +12,7 @@
                 </ul>
                  <ul class="list-unstyled mb-0 pt-3 text-white font-weight-light text-start pe-0">
                   
-                    <li class="lh-sm  paddingBotonInicio  pb-3 fondoRojizo divConAnimadoR"><span class="slide">Animaté a la experiencia UES</span></li>
+                    <li class="lh-sm  paddingBotonInicio  pb-3 fondoRojizo divConAnimadoR"><span class="slide">Anímate a la experiencia UES</span></li>
                 </ul>
             </div>
             <div class="col-4  offset-lg-2 d-none d-md-block position-relative">
@@ -59,6 +59,27 @@
                 </div>
             </div>
             <p class="textoFacu d-none"><span >{{$item->descripcion}}</span></p>
+        </div>
+       
+        @endforeach
+    </div>
+</div>
+<div class="colorGris text-center py-4 ">
+    <h1 class=" text-uppercase mb-0 tituloFacu lh-sm">Posgrados en Linea</h1>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        @foreach ($facultadesE as $item)
+        <div class="mx-auto col col-lg-4 col-sm-12 mb-4 col-12 col-md-6">
+            <div class="card text-white cardsFacuPad ">
+                <img class="card-img" src="{{$item->urlImagen}}" alt="Card image" style="height:290px">
+                <div class="card-img-overlay">
+                    <h5 class="card-title"><span class=" tituloCardFacu text-uppercase">{{$item->nombre}}</span></h5>
+                    <a class="btn btn-danger text-white botonCardFacu" href="{{route('ofertaFacultad',$item->slug)}}">Ver mas</a>
+                    <h5 class="card-title"><span class=" text-uppercase subtituloCardFacu">{{$item->descripcion}}</span></h5>
+                </div>
+            </div>
+            
         </div>
        
         @endforeach

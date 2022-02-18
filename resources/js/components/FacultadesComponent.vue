@@ -54,8 +54,14 @@
                                     <span class="text-danger" v-if="errores.color">{{errores.conlor[0]}}</span>
                                 </div>
                                 <div class="mb-3 col-sm-6">
-                                    <input class="form-check-input" v-model="facultad.multidis" true-value="1" false-value="0" type="checkbox" id="flexSwitchCheckDefault">
-                                    <label class="form-check-label"  for="flexSwitchCheckDefault">Multi-Disciplinaria</label>
+                                    
+                                    <select  v-model="facultad.multidis"  class="form-select" aria-label="Default select example">
+                                       
+                                       <option value="0"  selected>Cede Central</option>
+                                        <option value="1">Multidiciplinaria</option>
+                                        <option value="2">En Linea</option>
+                                    </select>
+                                   
                                     <span class="text-danger" v-if="errores.multidis">{{errores.multidis[0]}}</span>
                                 </div> 
                             </div>           

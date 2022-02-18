@@ -1,7 +1,7 @@
 @extends('layouts.frontend',['subtitulo' => 'Reseña'])
 
 @section('content')
-@include('publico.cabecera',['titulo' => 'Reseña Historica','descripcion'=>'de la Universidad de El Salvador'])
+@include('publico.cabecera',['titulo' => 'Reseña Histórica','descripcion'=>'de la Universidad de El Salvador'])
 
 <div class="colorGris mt-2">
     <div class="container-fluid col-11" >

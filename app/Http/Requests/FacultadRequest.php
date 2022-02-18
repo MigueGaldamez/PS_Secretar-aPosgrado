@@ -23,7 +23,7 @@ class FacultadRequest extends FormRequest
             'contactoDiplomado'=>'required|max:120',
             'contactoPosgrado'=>'required|max:120',
             'color'=>'required|max:7',
-            'multidis'=>'required|boolean',
+            'multidis'=>'required',
             'descripcion'=>'required|max:255',
         ];
     }
