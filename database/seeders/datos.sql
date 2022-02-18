@@ -5,9 +5,9 @@ SET time_zone = "+00:00";
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `activo`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Miguel Galdámez', 'secretaria.posgrado@ues.edu.sv', NULL, '$2y$10$cmFJOSa0NI1TR.6EGkXEgejN1BczXfESk9o4wcTfKTaUm7fQ5KuCG', 1, NULL, '2022-01-08 03:34:05', '2022-01-08 03:34:05'),
-(3, 'Evelyn', 'posgrados@hotmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:03:54', '2022-01-09 00:03:54'),
-(4, 'Nancy', 'nancy.orellana@gmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:11:38', '2022-01-09 00:11:38'),
-(7, 'Sandra', 'sandra@gmail.com', NULL, '$2y$10$CeGfmrGDFdJlEc4/rYlwAu7hAHbG5NRuabTBJ4jMf6YA2uukh/n0m', 1, NULL, '2022-01-09 00:12:15', '2022-01-09 00:12:15'),
+(3, 'Evelyn', 'posgrados@hotmail.com', NULL, '$2y$10$cmFJOSa0NI1TR.6EGkXEgejN1BczXfESk9o4wcTfKTaUm7fQ5KuCG', 1, NULL, '2022-01-09 00:03:54', '2022-01-09 00:03:54'),
+(4, 'Nancy', 'nancy.orellana@gmail.com', NULL, '$2y$10$cmFJOSa0NI1TR.6EGkXEgejN1BczXfESk9o4wcTfKTaUm7fQ5KuCG', 1, NULL, '2022-01-09 00:11:38', '2022-01-09 00:11:38'),
+(7, 'Sandra', 'sandra@gmail.com', NULL, '$2y$10$cmFJOSa0NI1TR.6EGkXEgejN1BczXfESk9o4wcTfKTaUm7fQ5KuCG', 1, NULL, '2022-01-09 00:12:15', '2022-01-09 00:12:15'),
 COMMIT;
 
 
