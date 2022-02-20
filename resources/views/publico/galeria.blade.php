@@ -25,8 +25,8 @@
                         </div>
                     @endforeach    
                 </div>
-                <div class="swiper-button-next" id="galeria1sig"></div>
-                <div class="swiper-button-prev" id="galeria1prev"></div>
+                <div class="swiper-button-next flechitas" id="galeria1sig"></div>
+                <div class="swiper-button-prev flechitas" id="galeria1prev"></div>
             </div>
             
             <div class="swiper-container gallery-thumbs" id="galeria1Tu">                 
@@ -66,8 +66,8 @@
                         </div>
                     @endforeach    
                 </div>
-                <div class="swiper-button-next" id="galeria2sig"></div>
-                <div class="swiper-button-prev" id="galeria2prev"></div>
+                <div class="swiper-button-next flechitas" id="galeria2sig"></div>
+                <div class="swiper-button-prev flechitas" id="galeria2prev"></div>
             </div>
             
             <div class="swiper-container gallery-thumbs" id="galeria2Tu">                 
@@ -108,8 +108,8 @@ La Universidad de El Salvador promueve la investigación científica desde los d
                         </div>
                     @endforeach    
                 </div>
-                <div class="swiper-button-next" id="galeria3sig"></div>
-                <div class="swiper-button-prev" id="galeria3prev"></div>
+                <div class="swiper-button-next flechitas" id="galeria3sig"></div>
+                <div class="swiper-button-prev flechitas" id="galeria3prev"></div>
             </div>
             
             <div class="swiper-container gallery-thumbs" id="galeria3Tu">                 
@@ -150,8 +150,8 @@ La Universidad de El Salvador promueve la investigación científica desde los d
                         </div>
                     @endforeach    
                 </div>
-                <div class="swiper-button-next" id="galeria4sig"></div>
-                <div class="swiper-button-prev" id="galeria4prev"></div>
+                <div class="swiper-button-next flechitas" id="galeria4sig"></div>
+                <div class="swiper-button-prev flechitas" id="galeria4prev"></div>
             </div>
             
             <div class="swiper-container gallery-thumbs" id="galeria4Tu">                 

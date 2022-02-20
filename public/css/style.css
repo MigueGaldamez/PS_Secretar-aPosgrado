@@ -2673,3 +2673,9 @@
   left: -8px;
   font-size: 14px;
 }
+.flechitas{
+background-color: rgba(0, 0, 0, 0.7);
+padding: 40px 20px;
+border-radius: 20%;
+color:white;
+}
