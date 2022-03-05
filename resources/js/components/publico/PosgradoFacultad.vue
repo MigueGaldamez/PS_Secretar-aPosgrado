@@ -14,7 +14,7 @@
                                 <div :id="'coll-'+facultad.id" class="accordion-collapse collapse" :aria-labelledby="'id_'+facultad.id" :data-bs-parent="'#accordion'+i">
                                     <div class="accordion-body row ">
                                         <div class="col col-12" v-for="posgrado in facultad.posgrados_con_tesis" :key="posgrado.id">
-                                            <a class="btn btn-link text-dark" @click="mostrar=true; mostrarPosgrado(posgrado); mostrarFacultad(facultad);">{{posgrado.nombre}}</a>
+                                            <a href="#informacionPosgrado" class="btn btn-link text-dark" @click="mostrar=true; mostrarPosgrado(posgrado); mostrarFacultad(facultad);">{{posgrado.nombre}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +87,21 @@
          <div class="colorGris mt-4 pb-1 pt-2">
                 <h3 class="text-light text-center"><span class="textoSuavecito">No ha seleccionado ninguna Facultad</span></h3>
         </div>
+    </div>
+    <div class="container">
+    <div class="col-12 md-12 text-center mt-2">
+             <nav>
+                <ul class=" pagination">
+                    <li class="page__numbers page-item"  :class="{deactivado:current==1}"  @click="current=1"><a class="page__link" href="#informacionPosgrado"><span>&laquo;</span></a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:current==1}" @click="current--" ><a class="page__link"  href="#informacionPosgrado">&#60;</a></li>
+                    <li class="page__numbers page-item"  v-for="n in paginas" :key="n" :class="{active:current==n+1}" @click="current=n+1" ><a class="page__link" href="#informacionPosgrado">{{n+1}}</a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:current==paginas.length}" @click="current++" ><a class="page__link"   href="#informacionPosgrado">&#62;</a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:current==paginas.length}"  @click="current=paginas.length"><a class="page__link"  href="#informacionPosgrado" ><span >&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
     </div>    
+    
 </div>
 </template>
 

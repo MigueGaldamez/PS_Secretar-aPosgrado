@@ -34,8 +34,9 @@ class PublicoController extends Controller
     {
         $facultadesF = Facultades::with('posgrados')->where('multidis','=',0)->get();
         $facultadesS = Facultades::with('posgrados')->where('multidis','=',1)->get();
+        $facultadesE = Facultades::with('posgrados')->where('multidis','=',2)->get();
         //$facultades = Facultades::all();
-        return view('publico.ofertaAcademica',compact('facultadesF','facultadesS'));
+        return view('publico.ofertaAcademica',compact('facultadesF','facultadesS','facultadesE'));
     }
     public function ofertaFacultad($slug)
     {

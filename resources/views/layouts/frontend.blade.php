@@ -110,7 +110,7 @@
                                     Sobre Nosotros
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
+                                    <a class="dropdown-item" href="{{route('reseña')}}">Reseña Histórica</a>
                                     <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>

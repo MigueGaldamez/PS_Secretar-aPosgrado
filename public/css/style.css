@@ -2652,3 +2652,30 @@
 .colorDrive{
   background-color: #1FA463;
 }
+.fotoChiquita{
+  height: 120px;
+  float: left;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px !important;
+}
+.cardLinea{
+  height: 350px !important;
+}
+.subtituloCardFacu{
+  background-color: #3a4043;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  position: absolute;
+  bottom: -13px;
+  left: -8px;
+  font-size: 14px;
+}
+.flechitas{
+background-color: rgba(0, 0, 0, 0.7);
+padding: 40px 20px;
+border-radius: 20%;
+color:white;
+}

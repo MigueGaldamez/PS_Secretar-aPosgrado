@@ -6,7 +6,12 @@
         <a v-if="facultad.link != null" :href="facultad.link" target="_blank" class="text-light">Visitar Pagina oficial</a>
     </div>
         <div class="titulohr mb-2 mt-2"></div>
-    <div class="container-fluid mb-2">
+     <div v-if="facultad.multidis==2" :class="row">
+        <div class="col col-8 mx-auto">
+     <img :src="'/img/contruccion.svg'" style="height:400px">
+     </div>
+     </div> 
+    <div v-if="facultad.multidis!=2"  class="container-fluid mb-2">
     
         <div class="row justify-content-center text-center">
        
@@ -55,7 +60,7 @@
                             <h1 class="card-title textoSuavecito mb-2"><p class="card-text"><span class="bordeBajo">{{posgrado.nombre}}</span></p></h1>
                             <p><b>Descripción:</b><br>{{posgrado.descripcion}}
                             </p>
-                            <h4 class="card-title textoSuavecito mb-0">Titulo a otorgar:</h4>
+                            <h4 class="card-title textoSuavecito mb-0">Título a otorgar:</h4>
                             <h3 class="card-title textoSuavecito mb-0"><b>{{posgrado.titulo}}</b></h3>
                             
                           
@@ -86,7 +91,7 @@
       
        
     </div>
-     <div class="container-fluid mb-2">
+     <div v-if="facultad.multidis!=2" class="container-fluid mb-4">
     
         <div class="row justify-content-center text-center">
        
