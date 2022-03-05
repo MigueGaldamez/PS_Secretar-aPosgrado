@@ -54,7 +54,7 @@
                         </div>
                         <div class="modal-footer">
                             <button @click="save();" type="button"  class="btn btn-success">Guardar</button>
-                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" >Close</button>
+                            <button v-on:click="closeModal();" type="button" class="btn btn-secondary" >Cerrar</button>
                         </div>
                     </form>
                 </div>
@@ -465,7 +465,6 @@
                         }
                     }
                 }
-
             },
             openModal(data={}) 
             {

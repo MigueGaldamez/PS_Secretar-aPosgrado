@@ -16,7 +16,7 @@ class CreateInformacionsTable extends Migration
         Schema::create('informacions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->tinyText('urlLogo');
-            $table->string('urlCatalogo')->nullable($value=true);
+            $table->string('urlCatalogo');
             $table->text('quienesSomos');
             $table->text('mision');
             $table->text('vision');
