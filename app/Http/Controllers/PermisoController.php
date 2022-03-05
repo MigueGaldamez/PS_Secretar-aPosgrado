@@ -207,17 +207,30 @@ class PermisoController extends Controller
         $usuario->save();
         return true;
     }
-    public function cambiarPass(Request $request){
-        $usuario = User::find($request->id);
-        if($request->nue==$request->conf){
-            if (Hash::check($request->ant, $usuario->password)) { 
-                $usuario->fill([
-                 'password' => Hash::make($request->nue)
-                 ])->save();
-             } else {
-                return false;
-             }
-        }  
-        return true; 
+    public function cambiarPass(Request $request)
+    {
+        try
+        {
+            $usuario = User::find($request->id);
+            if($request->nue==$request->conf){
+                if (Hash::check($request->ant, $usuario->password)) 
+                { 
+                    return $usuario->fill(['password' => Hash::make($request->nue)])->save();
+                } else 
+                {
+                    return 2;
+                }
+            }
+            else
+            {
+                return 3; 
+            }  
+        }
+        catch(\Exception $e)
+        {
+            return $e->getMessage();
+        }
+
+        
     }
 }

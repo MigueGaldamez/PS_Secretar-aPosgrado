@@ -88,7 +88,7 @@
                 <dd class="col-sm-9"> <img :src="info.urlLogo" class="img-thumbnail" alt="..."></dd>
             <dt class="col-sm-3">Horario de Atención</dt>
             <dd class="col-sm-9">
-                {{info.horarioAtencion}} y  {{info.urlLogo}}
+                {{info.horarioAtencion}}
             </dd>
             <dt class="col-sm-3">Contacto</dt>
                 <dd class="col-sm-9">{{info.correo}}</dd>

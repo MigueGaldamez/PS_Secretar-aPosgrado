@@ -68,6 +68,7 @@
                     id:'',
                 },
                 pass:{
+                    id:'',
                     ant:'',
                     nue:'',
                     conf:'',
@@ -102,7 +103,19 @@
             async cambiarNombre(){
                 this.usu.id = this.usuario.id;
                 try{
-                    const res = await axios.post('/dashboard/cambiarNombre',this.usu);
+                    const res = await axios.post('/dashboard/cambiarNombre',this.usu)
+                    .then(response=>{
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Nombre actualizado con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: 'Ha ocurrido un error',icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                    });
+                    this.listar();
+                    this.usu.nombre ="";
                 }
                 catch(error){
                     if(error.response.data){
@@ -111,9 +124,31 @@
                 }
             },
             async cambiarContrasenia(){
-                this.usu.id = this.usuario.id;
+                this.pass.id = this.usuario.id;
                 try{
-                    const res = await axios.post('/dashboard/cambiarPass',this.pass);
+                    const res = await axios.post('/dashboard/cambiarPass',this.pass)
+                    .then(response=>{
+                        if(response.data==1)
+                        {
+                            this.$swal({title: 'Exitoso',text: 'Contraseña actualizada con éxito',icon: 'success',confirmButtonText: 'Ok'});
+                        }
+                        else if(response.data==2)
+                        {
+                            this.$swal({title: 'Error!',text: 'La contraseña actual es incorrecta' ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                        else if(response.data==3)
+                        {
+                            this.$swal({title: 'Error!',text: 'Error al repetir la nueva contraseña' ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                        else
+                        {
+                            this.$swal({title: 'Error!',text: 'ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
+                        }
+                    });
+                    this.pass.ant =""; 
+                    this.pass.nue ="";
+                    this.pass.conf ="";  
+                    
                 }
                 catch(error){
                     if(error.response.data){
