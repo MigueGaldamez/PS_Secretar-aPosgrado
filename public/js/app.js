@@ -9972,24 +9972,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['facultad'],
   data: function data() {
     return {
       usu: {
-        nombre: '',
+        perfil: true,
+        name: '',
         id: ''
       },
       pass: {
         id: '',
         ant: '',
         nue: '',
-        conf: ''
+        nue_confirmation: ''
       },
       usuario: [],
       permisos: [],
       permisosUsuario: [],
-      errors: [],
+      errores: [],
       paginas: []
     };
   },
@@ -10071,24 +10076,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 _this2.listar();
 
-                _this2.usu.nombre = "";
-                _context2.next = 12;
+                _this2.usu.name = "";
+                _this2.errores = {};
+                _context2.next = 13;
                 break;
 
-              case 9:
-                _context2.prev = 9;
+              case 10:
+                _context2.prev = 10;
                 _context2.t0 = _context2["catch"](1);
 
                 if (_context2.t0.response.data) {
                   _this2.errores = _context2.t0.response.data.errors;
                 }
 
-              case 12:
+              case 13:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[1, 9]]);
+        }, _callee2, null, [[1, 10]]);
       }))();
     },
     cambiarContrasenia: function cambiarContrasenia() {
@@ -10111,20 +10117,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                       icon: 'success',
                       confirmButtonText: 'Ok'
                     });
-                  } else if (response.data == 2) {
-                    _this3.$swal({
-                      title: 'Error!',
-                      text: 'La contraseña actual es incorrecta',
-                      icon: 'error',
-                      confirmButtonText: 'Ok'
-                    });
-                  } else if (response.data == 3) {
-                    _this3.$swal({
-                      title: 'Error!',
-                      text: 'Error al repetir la nueva contraseña',
-                      icon: 'error',
-                      confirmButtonText: 'Ok'
-                    });
                   } else {
                     _this3.$swal({
                       title: 'Error!',
@@ -10139,24 +10131,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context3.sent;
                 _this3.pass.ant = "";
                 _this3.pass.nue = "";
-                _this3.pass.conf = "";
-                _context3.next = 13;
+                _this3.pass.nue_confirmation = "";
+                _this3.errores = {};
+                _context3.next = 14;
                 break;
 
-              case 10:
-                _context3.prev = 10;
+              case 11:
+                _context3.prev = 11;
                 _context3.t0 = _context3["catch"](1);
 
                 if (_context3.t0.response.data) {
                   _this3.errores = _context3.t0.response.data.errors;
                 }
 
-              case 13:
+              case 14:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[1, 10]]);
+        }, _callee3, null, [[1, 11]]);
       }))();
     }
   },
@@ -10366,30 +10359,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
@@ -10398,15 +10367,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         idUsuario: 0,
         idOpcionPermiso: 0
       },
-      nuevoUsuario: {
-        nombre: '',
+      usuario: {
+        id: 0,
+        name: null,
         correo: '',
         contrasenia: ''
       },
+      update: true,
+      modal: 0,
+      titleModal: '',
       usuarioActual: [],
       usuarios: [],
       opcionesPermisos: [],
-      errores: false,
+      errores: {},
       filtros: {
         name: null,
         page: 1,
@@ -10479,21 +10452,62 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       this.paginas = arrayN;
     },
-    editarPermiso: function editarPermiso(idUsu, idOpcionPermi) {
+    openModal: function openModal() {
+      var data = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+      this.modal = 1;
+
+      try {
+        if (this.update) {
+          this.titleModal = "Modificar Usuario";
+          this.id = data.id;
+          this.usuario.name = data.name;
+          this.usuario.correo = data.email;
+          this.usuario.id = data.id;
+        } else {
+          this.titleModal = "Agregar Usuario";
+          this.id = 0;
+          this.usuario.name = '';
+          this.usuario.correo = '';
+          this.usuario.contrasenia = '';
+          this.usuario.id = 0;
+        }
+      } catch (error) {
+        if (error.response.data) {
+          this.errores = error.response.data.errors;
+          console.log(this.errores);
+        }
+      }
+    },
+    closeModal: function closeModal() {
+      this.errores = {};
+      this.modal = 0;
+      this.textOfertado = '';
+    },
+    save: function save() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var res;
+        var fields, key, res, _fields, _key, _res;
+
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this2.cambio.idUsuario = idUsu;
-                _this2.cambio.idOpcionPermiso = idOpcionPermi;
-                _context2.prev = 2;
-                _context2.next = 5;
-                return axios.post('/dashboard/modificarPermiso', _this2.cambio).then(function (response) {
-                  if (response.data == 1 || $response.data) {
+                if (!_this2.update) {
+                  _context2.next = 16;
+                  break;
+                }
+
+                _context2.prev = 1;
+                fields = new FormData();
+
+                for (key in _this2.usuario) {
+                  fields.append(key, _this2.usuario[key]);
+                }
+
+                _context2.next = 6;
+                return axios.post('/dashboard/modificarUsuario', fields).then(function (response) {
+                  if (response.data == 1) {
                     _this2.$swal({
                       title: 'Exitoso',
                       text: 'Actualizado con éxito',
@@ -10503,35 +10517,93 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this2.$swal({
                       title: 'Error!',
-                      text: 'Ha ocurrido un error',
+                      text: 'Ha ocurrrido algo...',
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
                   }
+                })["finally"](function () {
+                  console.log('Experiment completed');
                 });
 
-              case 5:
+              case 6:
                 res = _context2.sent;
-                _context2.next = 11;
+
+                _this2.closeModal();
+
+                _this2.listar();
+
+                _context2.next = 14;
                 break;
 
-              case 8:
-                _context2.prev = 8;
-                _context2.t0 = _context2["catch"](2);
+              case 11:
+                _context2.prev = 11;
+                _context2.t0 = _context2["catch"](1);
 
-                if (_context2.t0) {
-                  _this2.errores = _context2.t0.response.data;
+                if (_context2.t0.response.data) {
+                  _this2.errores = _context2.t0.response.data.errors;
                 }
 
-              case 11:
+              case 14:
+                _context2.next = 29;
+                break;
+
+              case 16:
+                _context2.prev = 16;
+                _fields = new FormData();
+
+                for (_key in _this2.usuario) {
+                  _fields.append(_key, _this2.usuario[_key]);
+                }
+
+                _context2.next = 21;
+                return axios.post('/dashboard/crearUsuario', _fields).then(function (response) {
+                  if (response.data == 1) {
+                    _this2.$swal({
+                      title: 'Exitoso',
+                      text: 'Guardado con éxito',
+                      icon: 'success',
+                      confirmButtonText: 'Ok'
+                    });
+                  } else {
+                    _this2.$swal({
+                      title: 'Error!',
+                      text: 'Ha ocurrrido algo...',
+                      icon: 'error',
+                      confirmButtonText: 'Ok'
+                    });
+                  }
+                })["finally"](function () {
+                  console.log('Experiment completed');
+                });
+
+              case 21:
+                _res = _context2.sent;
+
+                _this2.closeModal();
+
+                _this2.listar();
+
+                _context2.next = 29;
+                break;
+
+              case 26:
+                _context2.prev = 26;
+                _context2.t1 = _context2["catch"](16);
+
+                if (_context2.t1.response.data) {
+                  _this2.errores = _context2.t1.response.data.errors;
+                }
+
+              case 29:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, null, [[2, 8]]);
+        }, _callee2, null, [[1, 11], [16, 26]]);
       }))();
     },
-    crearUsuario: function crearUsuario() {
+    editarPermiso: function editarPermiso(idUsu, idOpcionPermi) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
@@ -10540,13 +10612,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.prev = 0;
-                _context3.next = 3;
-                return axios.post('/dashboard/crearUsuario', _this3.nuevoUsuario).then(function (response) {
-                  if (response.data == 1) {
+                _this3.cambio.idUsuario = idUsu;
+                _this3.cambio.idOpcionPermiso = idOpcionPermi;
+                _context3.prev = 2;
+                _context3.next = 5;
+                return axios.post('/dashboard/modificarPermiso', _this3.cambio).then(function (response) {
+                  if (response.data == 1 || $response.data) {
                     _this3.$swal({
                       title: 'Exitoso',
-                      text: 'Usuario creado con éxito',
+                      text: 'Actualizado con éxito',
                       icon: 'success',
                       confirmButtonText: 'Ok'
                     });
@@ -10560,33 +10634,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 });
 
-              case 3:
+              case 5:
                 res = _context3.sent;
-                _context3.next = 9;
+                _context3.next = 11;
                 break;
 
-              case 6:
-                _context3.prev = 6;
-                _context3.t0 = _context3["catch"](0);
+              case 8:
+                _context3.prev = 8;
+                _context3.t0 = _context3["catch"](2);
 
                 if (_context3.t0) {
-                  _this3.errores = _context3.t0.response.data;
+                  _this3.errores = _context3.t0.response.data.errors;
                 }
-
-              case 9:
-                _this3.limpiar();
-
-                _this3.listar();
 
               case 11:
               case "end":
                 return _context3.stop();
             }
           }
-        }, _callee3, null, [[0, 6]]);
+        }, _callee3, null, [[2, 8]]);
       }))();
     },
-    modificarUsuario: function modificarUsuario(usu) {
+    cambiarEstado: function cambiarEstado(id) {
       var _this4 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
@@ -10595,70 +10664,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.prev = 0;
-                _context4.next = 3;
-                return axios.post('/dashboard/modificarUsuario', _this4.nuevoUsuario);
+                _context4.next = 2;
+                return axios.post('/dashboard/cambiarEstado', 'id=' + id);
 
-              case 3:
+              case 2:
                 res = _context4.sent;
-                _context4.next = 9;
-                break;
 
-              case 6:
-                _context4.prev = 6;
-                _context4.t0 = _context4["catch"](0);
-
-                if (_context4.t0) {
-                  _this4.errores = _context4.t0.response.data;
-                }
-
-              case 9:
                 _this4.listar();
 
-              case 10:
+              case 4:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4, null, [[0, 6]]);
+        }, _callee4);
       }))();
-    },
-    cambiarEstado: function cambiarEstado(id) {
-      var _this5 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
-        var res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
-          while (1) {
-            switch (_context5.prev = _context5.next) {
-              case 0:
-                _context5.next = 2;
-                return axios.post('/dashboard/cambiarEstado', 'id=' + id);
-
-              case 2:
-                res = _context5.sent;
-
-                _this5.listar();
-
-              case 4:
-              case "end":
-                return _context5.stop();
-            }
-          }
-        }, _callee5);
-      }))();
-    },
-    limpiar: function limpiar() {
-      this.nuevoUsuario.nombre = '';
-      this.nuevoUsuario.correo = '';
-      this.nuevoUsuario.contrasenia = '';
-      this.nuevoUsuario.id = '';
-      this.errores = false;
-    },
-    cargarUsuario: function cargarUsuario(usu) {
-      this.nuevoUsuario.nombre = usu.name;
-      this.nuevoUsuario.correo = usu.email;
-      this.nuevoUsuario.id = usu.id;
     }
   },
   created: function created() {
@@ -60104,22 +60124,28 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.usu.nombre,
-                    expression: "usu.nombre"
+                    value: _vm.usu.name,
+                    expression: "usu.name"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: _vm.usu.nombre },
+                domProps: { value: _vm.usu.name },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.usu, "nombre", $event.target.value)
+                    _vm.$set(_vm.usu, "name", $event.target.value)
                   }
                 }
               }),
+              _vm._v(" "),
+              _vm.errores.name
+                ? _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errores.name[0]))
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "form-text" }, [
                 _vm._v(
@@ -60179,7 +60205,13 @@ var render = function() {
                     _vm.$set(_vm.pass, "ant", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errores.ant
+                ? _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errores.ant[0]))
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "mb-3" }, [
@@ -60197,22 +60229,28 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.pass.nue,
-                    expression: "pass.nue"
+                    value: _vm.pass.nue_confirmation,
+                    expression: "pass.nue_confirmation"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "password", id: "exampleInputEmail1" },
-                domProps: { value: _vm.pass.nue },
+                domProps: { value: _vm.pass.nue_confirmation },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.pass, "nue", $event.target.value)
+                    _vm.$set(_vm.pass, "nue_confirmation", $event.target.value)
                   }
                 }
               }),
+              _vm._v(" "),
+              _vm.errores.nue_confirmation
+                ? _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errores.nue_confirmation[0]))
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "div",
@@ -60240,22 +60278,28 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: _vm.pass.conf,
-                    expression: "pass.conf"
+                    value: _vm.pass.nue,
+                    expression: "pass.nue"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "password", id: "exampleInputEmail1" },
-                domProps: { value: _vm.pass.conf },
+                domProps: { value: _vm.pass.nue },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(_vm.pass, "conf", $event.target.value)
+                    _vm.$set(_vm.pass, "nue", $event.target.value)
                   }
                 }
-              })
+              }),
+              _vm._v(" "),
+              _vm.errores.nue
+                ? _c("span", { staticClass: "text-danger" }, [
+                    _vm._v(_vm._s(_vm.errores.nue[0]))
+                  ])
+                : _vm._e()
             ]),
             _vm._v(" "),
             _c(
@@ -60305,6 +60349,7 @@ var render = function() {
         "div",
         {
           staticClass: "modal fade",
+          class: { show: _vm.modal, ver: _vm.modal },
           attrs: {
             id: "exampleModal",
             tabindex: "-1",
@@ -60315,281 +60360,405 @@ var render = function() {
           }
         },
         [
-          _c("div", { staticClass: "modal-dialog" }, [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c(
-                  "h5",
-                  {
-                    staticClass: "modal-title",
-                    attrs: { id: "exampleModalLabel" }
-                  },
-                  [_vm._v("Crear Usuario")]
-                ),
-                _vm._v(" "),
-                _c("button", {
-                  staticClass: "btn-close",
-                  attrs: {
-                    type: "button",
-                    "data-bs-dismiss": "modal",
-                    "aria-label": "Close"
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.limpiar()
+          _c(
+            "div",
+            { staticClass: "modal-dialog modal-lg modal-dialog-scrollable" },
+            [
+              _c("div", { staticClass: "modal-content" }, [
+                _c("div", { staticClass: "modal-header" }, [
+                  _c(
+                    "h5",
+                    {
+                      staticClass: "modal-title",
+                      attrs: { id: "staticBackdropLabel" }
+                    },
+                    [_vm._v(_vm._s(_vm.titleModal))]
+                  ),
+                  _vm._v(" "),
+                  _c("button", {
+                    staticClass: "btn-close",
+                    attrs: { type: "button", "aria-label": "Close" },
+                    on: {
+                      click: function($event) {
+                        return _vm.closeModal()
+                      }
                     }
-                  }
-                })
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "svg",
-                  {
-                    staticStyle: { display: "none" },
-                    attrs: { xmlns: "http://www.w3.org/2000/svg" }
-                  },
-                  [
-                    _c(
-                      "symbol",
-                      {
-                        attrs: {
-                          id: "info-fill",
-                          fill: "currentColor",
-                          viewBox: "0 0 16 16"
-                        }
-                      },
-                      [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
-                          }
-                        })
-                      ]
-                    )
-                  ]
-                ),
+                  })
+                ]),
                 _vm._v(" "),
                 _c(
-                  "div",
+                  "form",
                   {
-                    staticClass:
-                      "alert alert-primary d-flex align-items-center",
-                    attrs: { role: "alert" }
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.save.apply(null, arguments)
+                      }
+                    }
                   },
                   [
-                    _c(
-                      "svg",
-                      {
-                        staticClass: "bi flex-shrink-0 me-2",
-                        attrs: {
-                          width: "24",
-                          height: "24",
-                          role: "img",
-                          "aria-label": "Info:"
-                        }
-                      },
-                      [_c("use", { attrs: { "xlink:href": "#info-fill" } })]
-                    ),
+                    _c("div", { staticClass: "modal-body" }, [
+                      !_vm.update
+                        ? _c(
+                            "svg",
+                            {
+                              staticStyle: { display: "none" },
+                              attrs: { xmlns: "http://www.w3.org/2000/svg" }
+                            },
+                            [
+                              _c(
+                                "symbol",
+                                {
+                                  attrs: {
+                                    id: "info-fill",
+                                    fill: "currentColor",
+                                    viewBox: "0 0 16 16"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      !_vm.update
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "alert alert-primary d-flex align-items-center",
+                              attrs: { role: "alert" }
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "bi flex-shrink-0 me-2",
+                                  attrs: {
+                                    width: "24",
+                                    height: "24",
+                                    role: "img",
+                                    "aria-label": "Info:"
+                                  }
+                                },
+                                [
+                                  _c("use", {
+                                    attrs: { "xlink:href": "#info-fill" }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("div", [
+                                _vm._v(
+                                  "Por razones de seguridad los usuarios se crean por defecto sin ningun permiso ."
+                                )
+                              ])
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "mb-3 col-sm-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-label",
+                              attrs: { for: "name" }
+                            },
+                            [_vm._v("Nombre")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.usuario.name,
+                                expression: "usuario.name"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.usuario.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.usuario,
+                                  "name",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "form-text",
+                              attrs: { id: "emailHelp" }
+                            },
+                            [
+                              _vm._v(
+                                "Este es su identificador, de preferencia poner nombres completos."
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _vm.errores.name
+                            ? _c("span", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errores.name[0]))
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _vm.update
+                          ? _c(
+                              "svg",
+                              {
+                                staticStyle: { display: "none" },
+                                attrs: { xmlns: "http://www.w3.org/2000/svg" }
+                              },
+                              [
+                                _c(
+                                  "symbol",
+                                  {
+                                    attrs: {
+                                      id: "info-fill",
+                                      fill: "currentColor",
+                                      viewBox: "0 0 16 16"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "symbol",
+                                  {
+                                    attrs: {
+                                      id: "exclamation-triangle-fill",
+                                      fill: "currentColor",
+                                      viewBox: "0 0 16 16"
+                                    }
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d:
+                                          "M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
+                                      }
+                                    })
+                                  ]
+                                )
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.update
+                          ? _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "alert alert-warning d-flex align-items-center",
+                                attrs: { role: "alert" }
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass: "bi flex-shrink-0 me-2",
+                                    attrs: {
+                                      width: "24",
+                                      height: "24",
+                                      role: "img",
+                                      "aria-label": "Warning:"
+                                    }
+                                  },
+                                  [
+                                    _c("use", {
+                                      attrs: {
+                                        "xlink:href":
+                                          "#exclamation-triangle-fill"
+                                      }
+                                    })
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _vm._v(
+                                    "No es recomendable cambiar el correo ya que podria dejar sin acceso al usuario."
+                                  )
+                                ])
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "mb-3 col-sm-12" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass: "form-label",
+                              attrs: { for: "exampleInputEmail1" }
+                            },
+                            [_vm._v("Correo")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.usuario.correo,
+                                expression: "usuario.correo"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "email",
+                              id: "exampleInputEmail1",
+                              "aria-describedby": "emailHelp"
+                            },
+                            domProps: { value: _vm.usuario.correo },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.usuario,
+                                  "correo",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              staticClass: "form-text",
+                              attrs: { id: "emailHelp" }
+                            },
+                            [_vm._v("Con este correo podrá iniciar sesión.")]
+                          ),
+                          _vm._v(" "),
+                          _vm.errores.correo
+                            ? _c("span", { staticClass: "text-danger" }, [
+                                _vm._v(_vm._s(_vm.errores.correo[0]))
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        !_vm.update
+                          ? _c("div", { staticClass: "mb-3 col-sm-12" }, [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "form-label",
+                                  attrs: { for: "password" }
+                                },
+                                [_vm._v("Contraseña")]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.usuario.contrasenia,
+                                    expression: "usuario.contrasenia"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "password" },
+                                domProps: { value: _vm.usuario.contrasenia },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.usuario,
+                                      "contrasenia",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "form-text",
+                                  attrs: { id: "emailHelp" }
+                                },
+                                [
+                                  _vm._v(
+                                    "Luego sera necesario compartirle la contraseña."
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _vm.errores.contrasenia
+                                ? _c("span", { staticClass: "text-danger" }, [
+                                    _vm._v(_vm._s(_vm.errores.contrasenia[0]))
+                                  ])
+                                : _vm._e()
+                            ])
+                          : _vm._e()
+                      ])
+                    ]),
                     _vm._v(" "),
-                    _c("div", [
-                      _vm._v(
-                        "Por razones de seguridad los usuarios se crean por defecto sin ningun permiso ."
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-success",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.save()
+                            }
+                          }
+                        },
+                        [_vm._v("Guardar")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-secondary",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.closeModal()
+                            }
+                          }
+                        },
+                        [_vm._v("Cerrar")]
                       )
                     ])
                   ]
-                ),
-                _vm._v(" "),
-                _c("form", [
-                  _c("div", { staticClass: "mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "exampleInputEmail1" }
-                      },
-                      [_vm._v("Nombre")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.nuevoUsuario.nombre,
-                          expression: "nuevoUsuario.nombre"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "exampleInputEmail1",
-                        "aria-describedby": "emailHelp"
-                      },
-                      domProps: { value: _vm.nuevoUsuario.nombre },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.nuevoUsuario,
-                            "nombre",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-text", attrs: { id: "emailHelp" } },
-                      [
-                        _vm._v(
-                          "Este es su identificador, de preferencia poner nombres completos."
-                        )
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "exampleInputEmail1" }
-                      },
-                      [_vm._v("Correo")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.nuevoUsuario.correo,
-                          expression: "nuevoUsuario.correo"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "email",
-                        id: "exampleInputEmail1",
-                        "aria-describedby": "emailHelp"
-                      },
-                      domProps: { value: _vm.nuevoUsuario.correo },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.nuevoUsuario,
-                            "correo",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-text", attrs: { id: "emailHelp" } },
-                      [_vm._v("Con este correo podrá iniciar sesión.")]
-                    ),
-                    _vm._v(" "),
-                    _vm.errores
-                      ? _c("span", { staticClass: "text-danger" }, [
-                          _c("strong", [_vm._v("Correo en uso")])
-                        ])
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "mb-3" }, [
-                    _c(
-                      "label",
-                      {
-                        staticClass: "form-label",
-                        attrs: { for: "exampleInputEmail1" }
-                      },
-                      [_vm._v("Contraseña")]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.nuevoUsuario.contrasenia,
-                          expression: "nuevoUsuario.contrasenia"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "password",
-                        id: "exampleInputEmail1",
-                        "aria-describedby": "emailHelp"
-                      },
-                      domProps: { value: _vm.nuevoUsuario.contrasenia },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(
-                            _vm.nuevoUsuario,
-                            "contrasenia",
-                            $event.target.value
-                          )
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-text", attrs: { id: "emailHelp" } },
-                      [
-                        _vm._v(
-                          "Luego sera necesario compartirle la contraseña."
-                        )
-                      ]
-                    )
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        return _vm.limpiar()
-                      }
-                    }
-                  },
-                  [_vm._v("Descartar")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary text-light",
-                    attrs: { type: "button", "data-bs-dismiss": "modal" },
-                    on: {
-                      click: function($event) {
-                        _vm.crearUsuario(), _vm.limpiar()
-                      }
-                    }
-                  },
-                  [_vm._v("Crear Usuario")]
                 )
               ])
-            ])
-          ])
+            ]
+          )
         ]
       ),
       _vm._v(" "),
@@ -60610,7 +60779,52 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "col-xm-12" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success ",
+            attrs: { type: "button" },
+            on: {
+              click: function($event) {
+                _vm.update = false
+                _vm.openModal()
+              }
+            }
+          },
+          [
+            _vm._v("\n            Nuevo\n            "),
+            _c(
+              "svg",
+              {
+                staticClass: "bi bi-plus-circle",
+                attrs: {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "16",
+                  height: "16",
+                  fill: "currentColor",
+                  viewBox: "0 0 16 16"
+                }
+              },
+              [
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d:
+                      "M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  }
+                })
+              ]
+            )
+          ]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "row mt-1 mb-1" }, [
         _c("div", { staticClass: "col-sm-1" }, [
@@ -60783,14 +60997,11 @@ var render = function() {
                       "button",
                       {
                         staticClass: "btn btn-success text-light btn-sm",
-                        attrs: {
-                          type: "button",
-                          "data-bs-toggle": "modal",
-                          "data-bs-target": "#modalUsuario"
-                        },
+                        attrs: { type: "button" },
                         on: {
                           click: function($event) {
-                            return _vm.cargarUsuario(usu)
+                            _vm.update = true
+                            _vm.openModal(usu)
                           }
                         }
                       },
@@ -60830,284 +61041,7 @@ var render = function() {
                           [_vm._v("Activar")]
                         )
                       : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "modal fade",
-                      attrs: {
-                        id: "modalUsuario",
-                        tabindex: "-1",
-                        "data-bs-backdrop": "static",
-                        "data-bs-keyboard": "false",
-                        "aria-labelledby": "exampleModalLabel",
-                        "aria-hidden": "true"
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "modal-dialog" }, [
-                        _c("div", { staticClass: "modal-content" }, [
-                          _c("div", { staticClass: "modal-header" }, [
-                            _c(
-                              "h5",
-                              {
-                                staticClass: "modal-title",
-                                attrs: { id: "exampleModalLabel" }
-                              },
-                              [_vm._v("Modificar Usuario")]
-                            ),
-                            _vm._v(" "),
-                            _c("button", {
-                              staticClass: "btn-close",
-                              attrs: {
-                                type: "button",
-                                "data-bs-dismiss": "modal",
-                                "aria-label": "Close"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.limpiar()
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "modal-body" }, [
-                            _c(
-                              "svg",
-                              {
-                                staticStyle: { display: "none" },
-                                attrs: { xmlns: "http://www.w3.org/2000/svg" }
-                              },
-                              [
-                                _c(
-                                  "symbol",
-                                  {
-                                    attrs: {
-                                      id: "info-fill",
-                                      fill: "currentColor",
-                                      viewBox: "0 0 16 16"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "symbol",
-                                  {
-                                    attrs: {
-                                      id: "exclamation-triangle-fill",
-                                      fill: "currentColor",
-                                      viewBox: "0 0 16 16"
-                                    }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        d:
-                                          "M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "alert alert-warning d-flex align-items-center",
-                                attrs: { role: "alert" }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass: "bi flex-shrink-0 me-2",
-                                    attrs: {
-                                      width: "24",
-                                      height: "24",
-                                      role: "img",
-                                      "aria-label": "Warning:"
-                                    }
-                                  },
-                                  [
-                                    _c("use", {
-                                      attrs: {
-                                        "xlink:href":
-                                          "#exclamation-triangle-fill"
-                                      }
-                                    })
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c("div", [
-                                  _vm._v(
-                                    "No es recomendable cambiar el correo ya que podria dejar sin acceso al usuario."
-                                  )
-                                ])
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("form", [
-                              _c("div", { staticClass: "mb-3" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "form-label",
-                                    attrs: { for: "exampleInputEmail1" }
-                                  },
-                                  [_vm._v("Nombre")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.nuevoUsuario.nombre,
-                                      expression: "nuevoUsuario.nombre"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    type: "text",
-                                    id: "exampleInputEmail1",
-                                    "aria-describedby": "emailHelp"
-                                  },
-                                  domProps: { value: _vm.nuevoUsuario.nombre },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.nuevoUsuario,
-                                        "nombre",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "form-text",
-                                    attrs: { id: "emailHelp" }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "Este es su identificador, de preferencia poner nombres completos."
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "mb-3" }, [
-                                _c(
-                                  "label",
-                                  {
-                                    staticClass: "form-label",
-                                    attrs: { for: "exampleInputEmail1" }
-                                  },
-                                  [_vm._v("Correo")]
-                                ),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.nuevoUsuario.correo,
-                                      expression: "nuevoUsuario.correo"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: {
-                                    type: "email",
-                                    id: "exampleInputEmail1",
-                                    "aria-describedby": "emailHelp"
-                                  },
-                                  domProps: { value: _vm.nuevoUsuario.correo },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.$set(
-                                        _vm.nuevoUsuario,
-                                        "correo",
-                                        $event.target.value
-                                      )
-                                    }
-                                  }
-                                }),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: "form-text",
-                                    attrs: { id: "emailHelp" }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "Con este correo podrá iniciar sesión."
-                                    )
-                                  ]
-                                )
-                              ])
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "modal-footer" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-secondary",
-                                attrs: {
-                                  type: "button",
-                                  "data-bs-dismiss": "modal"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.limpiar()
-                                  }
-                                }
-                              },
-                              [_vm._v("Descartar")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-success text-light",
-                                attrs: {
-                                  type: "button",
-                                  "data-bs-dismiss": "modal"
-                                },
-                                on: {
-                                  click: function($event) {
-                                    _vm.modificarUsuario(usu), _vm.limpiar()
-                                  }
-                                }
-                              },
-                              [_vm._v("Modificar")]
-                            )
-                          ])
-                        ])
-                      ])
-                    ]
-                  )
+                  ])
                 ]),
                 _vm._v(" "),
                 _c(
@@ -61391,27 +61325,7 @@ var render = function() {
     _c("hr")
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-sm-12" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-info",
-          attrs: {
-            type: "button",
-            "data-bs-toggle": "modal",
-            "data-bs-target": "#exampleModal"
-          }
-        },
-        [_vm._v("\n            Nuevo Usuario\n        ")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

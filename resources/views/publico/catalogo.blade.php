@@ -28,7 +28,7 @@
            <p>La UES cuenta con la acreditación del Instituto del Alto Consejo de Evaluación de la Investigación de la Educación Superior (Hcéres-Francia).</p>
         </div>
         <div class="col razon">
-            <p>La UES cuenta con mayor acceso a oportunidades de desarrollo académico y de investigación para sus estudiantes, docentes y personal.</p>
+            <p>La UES cuenta con mayor acceso a oportunidades de desarrollo académico y de investigación para sus estudiantes, docentes y personal administrativo.</p>
         </div>
     </div>
     

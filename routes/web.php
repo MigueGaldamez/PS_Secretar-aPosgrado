@@ -89,9 +89,9 @@ Route::middleware('auth')->group(function ()
     Route::get('dashboard/permisos', [PermisoController::class,'permisoIndex'])->name('Permisos');
     Route::get('dashboard/usuariosPermisos/',[PermisoController::class,'usuarioPermisos'])->name('usuarioPermisos');
     Route::get('dashboard/opcionesPermisos/',[PermisoController::class,'opcionesPermisos'])->name('opcionesPermisos');
-    Route::post('dashboard/modificarPermiso/',[PermisoController::class,'cambiarPermiso'])->name('cambiarPermiso');
-    Route::post('dashboard/crearUsuario/',[PermisoController::class,'crearUsuario'])->name('crearUsuario');
-    Route::post('dashboard/modificarUsuario/',[PermisoController::class,'modificarUsuario'])->name('modificarUsuario');
+    Route::post('dashboard/modificarPermiso',[PermisoController::class,'cambiarPermiso'])->name('cambiarPermiso');
+    Route::post('dashboard/crearUsuario',[PermisoController::class,'crearUsuario'])->name('crearUsuario');
+    Route::post('dashboard/modificarUsuario',[PermisoController::class,'modificarUsuario'])->name('modificarUsuario');
     Route::post('dashboard/cambiarEstado/',[PermisoController::class,'cambiarEstado'])->name('cambiarEstado');
 
     //Perfil

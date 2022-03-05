@@ -465,7 +465,6 @@
                         }
                     }
                 }
-
             },
             openModal(data={}) 
             {

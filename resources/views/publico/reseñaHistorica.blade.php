@@ -55,7 +55,7 @@
                 <h3 class="textoDuro  lh-sm "><b>Acerca de la Universidad de El Salvador</b></h3>
                 {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
                 <p class="has-dropcap textoSuavecito2 parrafo"> A lo largo de su existencia la Universidad de El Salvador ha sido testigo y protagonista de importantes cambios políticos y sociales del país, ha superado daños en infraestructuras causados por terremotos, ocupaciones militares que prolongaron el cierre del campus en varias ocasiones, represión y persecución política de sus estudiantes y trabajadores en un contexto de guerra civil.
-Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carreras en modalidad presencial y 7 a distancia; 71 maestrías, 9 doctorados, 27 especialidades médicas y 44 diplomados como parte de la educación continua.
+Actualmente, la UES ha logrado ampliar la oferta académica: 79 carreras en modalidad presencial y 7 a distancia; 80 maestrías, 8 doctorados, 27 especialidades médicas y 65 diplomados como parte de la educación continua.
 
                   
 
@@ -64,8 +64,8 @@ Actualmente, la UES ha logrado ampliar la oferta académica de Posgrado: 79 carr
             <div class="col ol-12 col-md-6 historia">
                 <h3 class="textoDuro  lh-sm"><b>Secretaría de Posgrado</b></h3>
                 {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
-                <p class="has-dropcap textoSuavecito2">La Secretaría de Posgrado de la Universidad de El Salvador es una dependencia administrativa de la Vicerrectoría Académica, cuya finalidad principal es contribuir al fortalecimiento del sistema de posgrado y atender las necesidades de formación y educación avanzada en la UES.
-                Coordina y promueve las actividades académicas y administrativas del Sistema de Estudios de Posgrados (SEP) encaminadas hacia la excelencia académica, también, ejecuta políticas que rigen los sistemas de Estudio de posgrado.
+                <p class="has-dropcap textoSuavecito2">La Secretaría de Posgrado de la Universidad de El Salvador es una dependencia administrativa de la Vicerrectoría Académica, cuya finalidad principal es contribuir al fortalecimiento del Sistema de Posgrado y atender las necesidades de formación y educación avanzada en la UES.
+                Coordina y promueve las actividades académicas y administrativas del Sistema de Estudios de Posgrados (SEP) encaminadas hacia la excelencia académica, también, ejecuta políticas que rigen los sistemas de Estudio de Posgrado.
                 </p>
             </div>
              
