@@ -195,8 +195,6 @@
     <h3 class="text-light text-center"><span class="textoSuavecito2">Equipo de Trabajo de la Secretaría de Posgrado </span></h3>
 </div>
 <div class="container mt-2">
-    <h2 class="textoGris"><span class="textoSuavecito2">Equipo de Trabajo de la Secretaría de Posgrado</span></h2>
-      <div class="titulohr mb-4"></div>
     @php
         $contador = 1;
     @endphp

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PerfilPasswordUpdateRequest;
+use App\Http\Requests\UsuarioRequest;
+use App\Http\Requests\UsuarioUpdateRequest;
 use App\Models\Noticia;
 use App\Models\OpcionPermiso;
 use App\Models\Permiso;
@@ -9,7 +12,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
+use Laravel\Ui\Presets\React;
 
 class PermisoController extends Controller
 {
@@ -23,44 +26,79 @@ class PermisoController extends Controller
         $opciones = OpcionPermiso::all();
         return $opciones;
     }
-    public function cambiarPermiso(Request $request){ 
-        $permiso = Permiso::where('usuario_id','=',$request->idUsuario)->where('opcionPermiso_id','=',$request->idOpcionPermiso)->first();
-        if($permiso){
-            $permiso->delete();
-            return true;
-        }else{
-            $permisoNuevo = new Permiso();
-            $permisoNuevo->usuario_id = $request->idUsuario;
-            $permisoNuevo->opcionPermiso_id = $request->idOpcionPermiso;
-            return $permisoNuevo->save();
-        }   
+    public function cambiarPermiso(Request $request)
+    {
+        try
+        {
+            $permiso = Permiso::where('usuario_id','=',$request->idUsuario)->where('opcionPermiso_id','=',$request->idOpcionPermiso)->first();
+            if($permiso)
+            {
+                $permiso->delete();
+                return true;
+            }
+            else
+            {
+                $permisoNuevo = new Permiso();
+                $permisoNuevo->usuario_id = $request->idUsuario;
+                $permisoNuevo->opcionPermiso_id = $request->idOpcionPermiso;
+                return $permisoNuevo->save();
+            }  
+        }
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        } 
     }
-    public function crearUsuario(Request $request){
-        $nuevoUsuario = new User();
-        $nuevoUsuario->name = $request->nombre;
-        $nuevoUsuario->email = $request->correo;
-        $nuevoUsuario->password = Hash::make($request->contrasenia);
-        return $nuevoUsuario->save();
+    public function crearUsuario(UsuarioRequest $request)
+    {
+        try
+        {
+            $nuevoUsuario = new User();
+            $nuevoUsuario->email = $request->correo;
+            $nuevoUsuario->name = $request->name;
+            $nuevoUsuario->password = Hash::make($request->contrasenia);
+            return $nuevoUsuario->save(); 
+        }
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
+
     }
-    public function modificarUsuario(Request $request){
-        $usuario = User::find($request->id);
-        $usuario->name = $request->nombre;
-        $validar = User::where('email','=',$request->correo)->first();
-        if(!$validar){
+    public function modificarUsuario(UsuarioUpdateRequest $request)
+    {
+        try
+        {
+            $usuario = User::find($request->id);
+            $usuario->name = $request->name;
             $usuario->email = $request->correo;
+            return $usuario->save(); 
         }
-        $usuario->save(); 
-        return $request;
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
+ 
     }
-    public function cambiarEstado(Request $request){
-        $usuario = User::find($request->id);
-        if($usuario->activo==0){
-            $usuario->activo=1;
-        }else if($usuario->activo==1){
-            $usuario->activo=0;
+    public function cambiarEstado(Request $request)
+    {
+        try
+        {
+            $usuario = User::find($request->id);
+            if($usuario->activo==0)
+            {
+                $usuario->activo=1;
+            }
+            else if($usuario->activo==1)
+            {
+                $usuario->activo=0;
+            }
+            return $usuario->save();
         }
-        $usuario->save();
-        return $request;
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
     }
     public function enlaceIndex(){
         $usuario = User::find(Auth::user()->id);
@@ -201,30 +239,26 @@ class PermisoController extends Controller
         $usuario = User::find(Auth::user()->id);
         return $usuario;
     }
-    public function cambiarNombre(Request $request){
-        $usuario = User::find($request->id);
-        $usuario->name = $request->nombre;
-        $usuario->save();
-        return true;
-    }
-    public function cambiarPass(Request $request)
+    public function cambiarNombre(UsuarioUpdateRequest $request)
     {
         try
         {
             $usuario = User::find($request->id);
-            if($request->nue==$request->conf){
-                if (Hash::check($request->ant, $usuario->password)) 
-                { 
-                    return $usuario->fill(['password' => Hash::make($request->nue)])->save();
-                } else 
-                {
-                    return 2;
-                }
-            }
-            else
-            {
-                return 3; 
-            }  
+            $usuario->name = $request->name;
+            return $usuario->save();
+        }
+        catch(\Exception $e)
+        {
+            return $e->getMessage();
+        }
+
+    }
+    public function cambiarPass(PerfilPasswordUpdateRequest $request)
+    {
+        try
+        {
+            $usuario = User::find($request->id);
+            return $usuario->fill(['password' => Hash::make($request->nue)])->save();
         }
         catch(\Exception $e)
         {
