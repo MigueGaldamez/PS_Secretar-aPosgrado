@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container-fluid cardImagenBanner mt-n4 bodyClaro">       
-        <img src="{{asset('/img/Portada FB-01.svg')}}" class="w-100 imgBannerInicio">
+        <img src="{{asset('/img/Portada.svg')}}" class="w-100 imgBannerInicio">
         <div class="row pt-4 imagenFondo bodyClaro">
             
         </div> 
