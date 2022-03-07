@@ -58,7 +58,6 @@ class PosgradoController extends Controller
             {
                 $fileImagen=$request->file('urlImagen')->store('public/posgrados');
                 $urlImagen = Storage::url($fileImagen);
-                $posgrados_api = Posgrado::find($request->id);
                 $oldUrlImagen = explode('/',$posgrados_api->urlImagen);
                 Storage::delete('public/posgrados/'.$oldUrlImagen[3]);
                 $posgrados_api->urlImagen = $urlImagen;
@@ -98,6 +97,8 @@ class PosgradoController extends Controller
     {
         try
         {
+            $oldUrlImagen = explode('/',$posgrados_api->urlImagen);
+            Storage::delete('public/posgrados/'.$oldUrlImagen[3]);
             return $posgrados_api->delete();
         }
         catch (\Exception $e) 

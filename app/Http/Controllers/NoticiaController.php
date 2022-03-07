@@ -87,9 +87,17 @@ class NoticiaController extends Controller
     }
     public function destroy(Noticia $noticia_api)
     {
-        $oldUrlImagen = explode('/',$noticia_api->urlImagen);
-        Storage::delete('public/noticias/'.$oldUrlImagen[3]);
-        return $noticia_api->delete();
+        try
+        {
+            $oldUrlImagen = explode('/',$noticia_api->urlImagen);
+            Storage::delete('public/noticias/'.$oldUrlImagen[3]);
+            return $noticia_api->delete();
+        }
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
+
     }
     public function detalleNoticiaGuardar(Request $request, Noticia $noticia_id)
     {
