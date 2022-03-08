@@ -42,7 +42,7 @@
                     @if(request()->routeIs('inicio'))
                         <a class="navbar-brand" href="{{ url('/') }}">
                          
-                            <img class="float-start tamañoLogoLateral" src="{{asset('img/logolateral3.svg')}}">
+                            <img class="float-start tamañoLogoLateral invisible" src="{{asset('img/logolateral3.svg')}}">
                         </a>      
                     @endif      
                     @if (!request()->routeIs('inicio'))               
