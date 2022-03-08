@@ -88,6 +88,16 @@ class EnlaceController extends Controller
 
     public function destroy(Enlace $enlaces_api)
     {
-        return $enlaces_api->delete();
+        try
+        {
+            $oldUrlImagen = explode('/',$enlaces_api->urlImagen);
+            Storage::delete('public/enlace/'.$oldUrlImagen[3]);
+            return $enlaces_api->delete();
+        }
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
+
     }
 }
