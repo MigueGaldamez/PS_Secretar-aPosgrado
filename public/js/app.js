@@ -6300,7 +6300,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   } else {
                     _this4.$swal({
                       title: 'Error!',
-                      text: 'Ha ocurrrido algo...',
+                      text: console.log(response.data),
                       icon: 'error',
                       confirmButtonText: 'Ok'
                     });
@@ -13096,14 +13096,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-<<<<<<< HEAD
-=======
 //
 //
 //
 //
 //
->>>>>>> f64532a2831d9e270693be8470917626a23ce01d
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['facultad'],
   data: function data() {
@@ -56377,7 +56374,7 @@ var render = function() {
               }
             },
             [
-              _vm._v("\n                Nuevo\n                "),
+              _vm._v("\r\n                Nuevo\r\n                "),
               _c(
                 "svg",
                 {
@@ -56693,9 +56690,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                                " +
+                              "\r\n                                " +
                                 _vm._s(n) +
-                                "\n                            "
+                                "\r\n                            "
                             )
                           ]
                         )
@@ -65108,13 +65105,13 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col col-auto" }, [
               _vm._v(
-                "\n           Mostrando: " +
+                "\r\n           Mostrando: " +
                   _vm._s(_vm.posgrados.from) +
                   " - " +
                   _vm._s(_vm.posgrados.to) +
                   " de un total de: " +
                   _vm._s(_vm.posgrados.total) +
-                  "\n        "
+                  "\r\n        "
               )
             ]),
             _vm._v(" "),
@@ -65237,7 +65234,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col col-auto" }, [
-              _vm._v("\n            Elementos por pagina\n            "),
+              _vm._v("\r\n            Elementos por pagina\r\n            "),
               _c(
                 "select",
                 {
@@ -65329,7 +65326,7 @@ var render = function() {
                     _c("br"),
                     _vm._v(
                       _vm._s(posgrado.descripcion) +
-                        "\n                            "
+                        "\r\n                            "
                     )
                   ]),
                   _vm._v(" "),
@@ -65363,7 +65360,7 @@ var render = function() {
                         _vm._v(
                           " " +
                             _vm._s(_vm.facultad.contactoPosgrado) +
-                            "\n                                "
+                            "\r\n                                "
                         )
                       ])
                     ])
@@ -65403,192 +65400,6 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-<<<<<<< HEAD
-    _c("div", { staticClass: "container-fluid mb-2" }, [
-      _c("div", { staticClass: "row justify-content-center text-center" }, [
-        _c("h3", [_vm._v("Paginación")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col col-auto" }, [
-          _vm._v(
-            "\r\n           Mostrando: " +
-              _vm._s(_vm.posgrados.from) +
-              " - " +
-              _vm._s(_vm.posgrados.to) +
-              " de un total de: " +
-              _vm._s(_vm.posgrados.total) +
-              "\r\n        "
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col col-auto" }, [
-          _c("nav", [
-            _c(
-              "ul",
-              { staticClass: " pagination" },
-              [
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: { deactivado: _vm.pagination.page == 1 },
-                    on: {
-                      click: function($event) {
-                        ;(_vm.pagination.page = 1), _vm.listar()
-                      }
-                    }
-                  },
-                  [_vm._m(2)]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: { deactivado: _vm.pagination.page == 1 },
-                    on: {
-                      click: function($event) {
-                        _vm.pagination.page--, _vm.listar()
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "page__link",
-                        attrs: { href: "#informacionPosgrado" }
-                      },
-                      [_vm._v("<")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _vm._l(_vm.paginas, function(n) {
-                  return _c(
-                    "li",
-                    {
-                      key: n,
-                      staticClass: "page__numbers page-item",
-                      class: { active: _vm.pagination.page == n },
-                      on: {
-                        click: function($event) {
-                          ;(_vm.pagination.page = n), _vm.listar()
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "a",
-                        {
-                          staticClass: "page__link",
-                          attrs: { href: "#informacionPosgrado" }
-                        },
-                        [_vm._v(_vm._s(n))]
-                      )
-                    ]
-                  )
-                }),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: {
-                      deactivado: _vm.pagination.page == _vm.posgrados.last_page
-                    },
-                    on: {
-                      click: function($event) {
-                        _vm.pagination.page++, _vm.listar()
-                      }
-                    }
-                  },
-                  [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "page__link",
-                        attrs: { href: "#informacionPosgrado" }
-                      },
-                      [_vm._v(">")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "li",
-                  {
-                    staticClass: "page__numbers page-item",
-                    class: {
-                      deactivado: _vm.pagination.page == _vm.posgrados.last_page
-                    },
-                    on: {
-                      click: function($event) {
-                        ;(_vm.pagination.page = _vm.posgrados.last_page),
-                          _vm.listar()
-                      }
-                    }
-                  },
-                  [_vm._m(3)]
-                )
-              ],
-              2
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col col-auto" }, [
-          _vm._v("\r\n            Elementos por pagina\r\n            "),
-          _c(
-            "select",
-            {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.pagination.per_page,
-                  expression: "pagination.per_page"
-                }
-              ],
-              staticClass: " form-control form-select form-select-sm",
-              on: {
-                change: [
-                  function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.pagination,
-                      "per_page",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  },
-                  function($event) {
-                    return _vm.listar()
-                  }
-                ]
-              }
-            },
-            [
-              _c("option", { attrs: { selected: "" } }, [
-                _vm._v("Elementos por pagina")
-              ]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "5" } }, [_vm._v("5")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "10" } }, [_vm._v("10")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "15" } }, [_vm._v("15")])
-            ]
-          )
-        ])
-      ])
-    ])
-=======
     _vm.facultad.multidis != 2
       ? _c("div", { staticClass: "container-fluid mb-4" }, [
           _c("div", { staticClass: "row justify-content-center text-center" }, [
@@ -65596,13 +65407,13 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col col-auto" }, [
               _vm._v(
-                "\n           Mostrando: " +
+                "\r\n           Mostrando: " +
                   _vm._s(_vm.posgrados.from) +
                   " - " +
                   _vm._s(_vm.posgrados.to) +
                   " de un total de: " +
                   _vm._s(_vm.posgrados.total) +
-                  "\n        "
+                  "\r\n        "
               )
             ]),
             _vm._v(" "),
@@ -65725,7 +65536,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col col-auto" }, [
-              _vm._v("\n            Elementos por pagina\n            "),
+              _vm._v("\r\n            Elementos por pagina\r\n            "),
               _c(
                 "select",
                 {
@@ -65779,7 +65590,6 @@ var render = function() {
           ])
         ])
       : _vm._e()
->>>>>>> f64532a2831d9e270693be8470917626a23ce01d
   ])
 }
 var staticRenderFns = [

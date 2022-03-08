@@ -269,7 +269,7 @@ export default {
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: 'Ha ocurrrido algo...',icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: console.log(response.data),icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                     this.closeModal();
