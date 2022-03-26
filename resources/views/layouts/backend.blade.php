@@ -89,7 +89,7 @@
                     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                         <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm bg mt-2 sticky-top">
                             <div class="container">
-                               <ul class="navbar-nav me-auto">
+                                <ul class="navbar-nav me-auto">
                                         <a class="navbar-brand" href="{{ url('/dashboard/') }}">
                                             Secretaría de Posgrado UES
                                         </a>
@@ -99,7 +99,6 @@
                                 </button>
                                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                                     <!-- Right Side Of Navbar -->
-                                 
                                     <!-- Left Side Of Navbar -->
                                     <ul class="navbar-nav ms-auto">
                                         <!-- Authentication Links -->
@@ -110,9 +109,8 @@
                                                 </li>
                                             @endif
                                             @else
-                                             <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none" >Inicio</a>
-                                             <a href="{{route('Informacion')}}" class="nav-link text-dark d-md-none" > Información de la Secretaría</a>
-                                          
+                                            <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none" >Inicio</a>
+                                            <a href="{{route('Informacion')}}" class="nav-link text-dark d-md-none" > Información de la Secretaría</a>
                                             <li class="nav-item dropdown">
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     Posgrados, Diplomados e Investigaciones
@@ -122,16 +120,14 @@
                                                     <a href="{{route('Diplomados')}}" class="dropdown-item text-dark d-md-none" >Diplomados</a>
                                                     <a href="{{route('Tesis')}}" class="dropdown-item text-dark d-md-none" >Tesis/investigaciones</a>
                                                 </div>
-                                               
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                   Galeria, Noticias y Reseña
+                                                    Galeria, Noticias y Reseña
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                                     <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galería</a>
                                                     <a href="{{route('NoticiasGestion')}}" class="dropdown-item text-dark d-md-none" > Noticias Gestión</a>
                                                     <a href="{{route('ReseniaHistorica')}}" class="dropdown-item text-dark d-md-none" >Reseña Historica</a>
                                                 </div>
-                                                
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     Facultades, Enlaces y Equipo de Trabajo
                                                 </a>
@@ -140,7 +136,6 @@
                                                     <a href="{{route('Enlaces')}}" class="dropdown-item text-dark d-md-none" >Enlaces</a>
                                                     <a href="{{route('EquipoTrabajo')}}" class="dropdown-item text-dark d-md-none" >Equipo de Trabajo</a>
                                                 </div>
-                                               
                                                 <a href="{{route('Permisos')}}" class="nav-link text-dark d-md-none" >Permisos</a>
                                                 
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -152,10 +147,7 @@
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                         @csrf
                                                     </form>
-                                                 
-                                                   
                                                 </div>
-
                                             </li>
                                         @endguest
                                     </ul>
@@ -171,6 +163,5 @@
                 </div>
             </div>
         </div>
-
     </body>
 </html>

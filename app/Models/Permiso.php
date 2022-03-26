@@ -13,7 +13,7 @@ class Permiso extends Model
     
     public function opcionPermiso()
     {
-        return $this->BelongsTo(opcionPermiso::class,'opcionPermiso_id','id');
+        return $this->BelongsTo(OpcionPermiso::class,'opcionPermiso_id','id');
     }
 
 }
