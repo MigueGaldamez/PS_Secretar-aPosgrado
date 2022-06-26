@@ -45,7 +45,7 @@ class Tesi extends Model
     } 
     public function scopeEstado($query, $estado)
     {
-        if($estado == 1 || $estado == 0)
+        if($estado == 1 || $estado == 0 || $estado  !="none")
             return $query->where('estado', '=', "$estado");
     }
     public function scopePublicado($query, $publicado)

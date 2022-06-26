@@ -107,7 +107,7 @@ Route::middleware('auth')->group(function ()
 Route::get('/publicaciones', [App\Http\Controllers\PublicoController::class, 'publicaciones'])->name('publicaciones');
 Route::get('/oferta', [App\Http\Controllers\PublicoController::class, 'oferta'])->name('oferta');
 Route::get('/ofertaFacultad/{slug}', [App\Http\Controllers\PublicoController::class, 'ofertaFacultad'])->name('ofertaFacultad');
-Route::get('/reseña', [App\Http\Controllers\PublicoController::class, 'reseña'])->name('reseña');
+Route::get('/historia', [App\Http\Controllers\PublicoController::class, 'historia'])->name('historia');
 Route::get('/enlaces', [App\Http\Controllers\PublicoController::class, 'enlaces'])->name('enlaces');
 Route::get('/preguntasFrecuentes', [App\Http\Controllers\PublicoController::class, 'preguntasFrecuentes'])->name('preguntasFrecuentes');
 

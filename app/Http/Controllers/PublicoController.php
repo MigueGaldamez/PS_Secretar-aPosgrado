@@ -20,7 +20,7 @@ class PublicoController extends Controller
         $informacion = Informacion::first();
         return view('publico.index',compact('informacion','noticias'));
     }
-    public function reseña()
+    public function historia()
     {
         $resenias = ReseniaHistorica::all();
         return view('publico.reseñaHistorica',compact('resenias'));

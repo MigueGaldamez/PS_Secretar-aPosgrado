@@ -40,17 +40,17 @@ class Diplomado extends Model
     }
     public function scopeFacultad($query, $facultad)
     {
-        if( $facultad)
+        if( $facultad != 0)
             return $query->where('facultad_id', '=', $facultad);
     }
     public function scopeOfertado($query, $ofertado)
     {
-        if($ofertado == 1 || $ofertado == 0)
+        if($ofertado == 1 || $ofertado == 0 || $ofertado !="none")
             return $query->where('ofertado', '=', "$ofertado");
     }
     public function scopeModalidad($query, $modalidad)
     {
-        if($modalidad)
+        if($modalidad != 0)
             return $query->where('modalidad_id','=',$modalidad);
     }
 }

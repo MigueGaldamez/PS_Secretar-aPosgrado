@@ -16,8 +16,8 @@ class PerfilPasswordUpdateRequest extends FormRequest
             'ant' => 'password|required',
             'nue' => 'required|confirmed',
             'nue_confirmation'=>['required',Password::min(8)
-            ->letters()
             ->mixedCase()
+            ->letters()
             ->numbers()
             ->symbols()],
             
@@ -26,10 +26,16 @@ class PerfilPasswordUpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'ant.*'=>'No coincide la contraseña actual.',
-            'nue_confirmation.*'=>'La contraseña debe tener almenos una letra mayúscula, una minúscula y un símbolo y debe ser igual a la confirmación.',
+            'ant.required'=>'Debes ingresar la contraseña actual.',
+            'ant.password'=>'No coincide la contraseña actual.',
+            'nue_confirmation.required'=>'Debes confirmar la nueva contraseña',
+            'nue_confirmation.min'=>'La contraseña debe tener ser de 8 caracteres minimo',
+            'nue_confirmation.letters'=>'Debe tener letras',
+            'nue_confirmation.min->mixedCase'=>'Debe tener una letra mayússcula y una minúscula',
+            'nue_confirmation.numbers'=>'Debe tener numeros',
+            'nue_confirmation.symbols'=>'Debe tener simbolos',
             'nue.confirmed'=>'La contraseña debe coincidir',
-            'nue.required'=>'La contraseña debe coincidir',
+            'nue.required'=>'Ingresa una contraseña',
             
         ];
     }

@@ -69,11 +69,11 @@
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Académica</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                    <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('historia','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                         Sobre Nosotros
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
+                                        <a class="dropdown-item" href="{{route('historia')}}">Reseña Historica</a>
                                         <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>
@@ -106,11 +106,11 @@
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta','ofertaFacultad') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Académica</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('historia','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                     Sobre Nosotros
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('reseña')}}">Reseña Histórica</a>
+                                    <a class="dropdown-item" href="{{route('historia')}}">Reseña Histórica</a>
                                     <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>
