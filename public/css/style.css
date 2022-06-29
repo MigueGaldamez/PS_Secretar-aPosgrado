@@ -2681,3 +2681,10 @@ padding: 40px 20px;
 border-radius: 20%;
 color:white;
 }
+
+.organos-min{
+  min-height: 220px;
+}
+.organos-foto{
+  height:215px;
+}

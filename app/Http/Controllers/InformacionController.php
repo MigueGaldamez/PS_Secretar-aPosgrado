@@ -41,6 +41,7 @@ class InformacionController extends Controller
                 $informacion->correo=$request->correo;
                 $informacion->mision=$request->mision;
                 $informacion->vision=$request->vision;
+                $informacion->urlCongreso =$request->urlCongreso;
                 $informacion->quienesSomos=$request->quienesSomos;
                 $informacion->urlLogo=$url;
                 return $informacion->save();
@@ -62,6 +63,7 @@ class InformacionController extends Controller
                 $informacion->mision=$request->mision;
                 $informacion->vision=$request->vision;
                 $informacion->quienesSomos=$request->quienesSomos;
+                $informacion->urlCongreso =$request->urlCongreso;
                 return $informacion->save();
             }
             catch(\Exception $e)

@@ -16,10 +16,16 @@
                                 <span class="text-danger" v-if="errores.urlLogo">{{errores.urlLogo[0]}}</span>
                                 <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>
+                             <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Enlace del congreso</label>
+                                <input class="form-control" type="url" v-model="info.urlCongreso" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
+                                <p class="text-muted">Aqui Puedes probar el enlace: <a :href="info.urlCongreso" class="text-reset" target="_blank">Probar</a>.</p>
+                                <span class="text-danger" v-if="errores.urlCongreso">{{errores.urlCongreso[0]}}</span>
+                            </div>
                             <div class="mb-3">
                                 <label for="exampleFormControlTextarea1" class="form-label">Enlace</label>
                                 <input class="form-control" type="url" v-model="info.urlCatalogo" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
-                                <p class="text-muted">Recuerda que el link de Drive debe estar publico y solo lectura <a :href="info.urlCatalogo" class="text-reset">Probar</a>.</p>
+                                <p class="text-muted">Recuerda que el link de Drive debe estar publico y solo lectura <a :href="info.urlCatalogo" target="_blank" class="text-reset">Probar</a>.</p>
                                 <span class="text-danger" v-if="errores.urlCatalogo">{{errores.urlCatalogo[0]}}</span>
                             </div>
                             <div class="mb-3">
@@ -90,6 +96,10 @@
             <dd class="col-sm-9">
                 {{info.horarioAtencion}}
             </dd>
+            
+             <dt class="col-sm-3">Url Congreso</dt>
+                <dd class="col-sm-9"><a class="text-primary" v-if="info.urlCongreso==''">Aun no ha sido ingresado</a><a :href="info.urlCongreso" target="_blank">{{info.urlCongreso}}</a></dd>
+
             <dt class="col-sm-3">Contacto</dt>
                 <dd class="col-sm-9">{{info.correo}}</dd>
                 
@@ -123,6 +133,7 @@ export default {
                 id:0,
                 urlCatalogo: '',
                 urlLogo: null,
+                urlCongreso:'',
                 horarioAtencion:'',
                 correo:'',
                 mision:'',
@@ -253,6 +264,7 @@ export default {
             this.info.vision = data.vision
             this.info.valores = data.valores;
             this.info.imagen = false;  
+            this.info.urlCongreso = data.urlCongreso;
             this.info.quienesSomos = data.quienesSomos;
         },
         closeModal() {

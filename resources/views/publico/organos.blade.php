@@ -101,10 +101,10 @@
     </div>
     <div class="row col-12 col-md-10 mx-auto"> 
         <div class="col-12 col-md-6">
-            <div class="card mb-3 recuadro">
+            <div class="card mb-3 recuadro organos-min">
                 <div class="row g-0">
                     <div class="col-4">
-                    <img src="{{asset('img/organos/vicerrector académico.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
+                    <img src="{{asset('img/organos/vicerrector académico.jpg')}}" class="img-fluid rounded-start organos-foto" alt="...">
                     </div>
                     <div class="col-8">
                     <div class="card-body">
@@ -117,10 +117,10 @@
             </div>
         </div>
         <div class="col-12 col-md-6">
-            <div class="card mb-3 recuadro">
+            <div class="card mb-3 recuadro organos-min">
                 <div class="row g-0">
                     <div class="col-4">
-                    <img src="{{asset('img/organos/vicerrector administrativo.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
+                    <img src="{{asset('img/organos/vicerrector administrativo.jpg')}}" class="img-fluid rounded-start h-100 organos-foto" alt="...">
                     </div>
                     <div class="col-8">
                     <div class="card-body">

@@ -76,6 +76,15 @@
               
         </div>
     </div>
+    @if($informacion->urlCongreso!="")
+    <div class="container mt-3 px-5">
+    
+    <a href="{{$informacion->urlCongreso}}" target="_blank">
+    <img class="img-fluid" src="{{asset('img/3logos.png')}}">
+   
+    </a>
+    </div>
+    @endif
    
     <div class="container-fluid bg-grisFondo">
         <div class="row p-0 p-md-4">

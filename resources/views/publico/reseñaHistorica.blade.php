@@ -63,12 +63,14 @@ Actualmente, la UES ha logrado ampliar la oferta académica: 79 carreras en moda
                    </p>
                   </div>
             </div>
-            <div class="col ol-12 col-md-6 historia">
+            <div class="col ol-12 col-md-6">
+            <div class="historia">
                 <h3 class="textoDuro  lh-sm"><b>Secretaría de Posgrado</b></h3>
                 {{--<h5 class="lh-sm subtituloHistoria">SubTitulo información</h5>--}}
                 <p class="has-dropcap textoSuavecito2">La Secretaría de Posgrado de la Universidad de El Salvador es una dependencia administrativa de la Vicerrectoría Académica, cuya finalidad principal es contribuir al fortalecimiento del Sistema de Posgrado y atender las necesidades de formación y educación avanzada en la UES.
                 Coordina y promueve las actividades académicas y administrativas del Sistema de Estudios de Posgrados (SEP) encaminadas hacia la excelencia académica, también, ejecuta políticas que rigen los sistemas de Estudio de Posgrado.
                 </p>
+            </div>
             </div>
              
         </div>
