@@ -11,13 +11,13 @@
                     <form v-on:submit.prevent="save" enctype="multipart/form-data">
                         <div class="modal-body">
                             <div class="mb-3">
-                                <label for="formFile" class="form-label">Logo de la Secretaría de Posgrado</label>
+                                <label for="formFile" class="form-label">Imagen de anuncio</label>
                                 <input  ref="urlImg" accept=".svg" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
                                 <span class="text-danger" v-if="errores.urlLogo">{{errores.urlLogo[0]}}</span>
                                 <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>
                              <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Enlace del congreso</label>
+                                <label for="exampleFormControlTextarea1" class="form-label">Enlace para anuncio</label>
                                 <input class="form-control" type="url" v-model="info.urlCongreso" name="link" id="url" placeholder="https://ejemplo.com" pattern="https://.*">
                                 <p class="text-muted">Aqui Puedes probar el enlace: <a :href="info.urlCongreso" class="text-reset" target="_blank">Probar</a>.</p>
                                 <span class="text-danger" v-if="errores.urlCongreso">{{errores.urlCongreso[0]}}</span>

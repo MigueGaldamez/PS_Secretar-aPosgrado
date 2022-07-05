@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Secretaría de Posgrados de la Universidad de El Salvador">
+    <meta name="keywords" content="posgrados,UES, secretaria, posgrado, maestria, maestrias, doctorado, doctorado, El Salvador">
+    <meta name="author" content="Universidad de El Salvador">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{asset('img/favico/favicon.ico')}}">
