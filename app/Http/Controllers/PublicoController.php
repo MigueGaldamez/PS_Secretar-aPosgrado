@@ -23,7 +23,7 @@ class PublicoController extends Controller
     public function historia()
     {
         $resenias = ReseniaHistorica::all();
-        return view('publico.reseñaHistorica',compact('resenias'));
+        return view('publico.reseniaHistorica',compact('resenias'));
     }
     public function publicaciones()
     {

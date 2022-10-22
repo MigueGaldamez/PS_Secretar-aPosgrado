@@ -76,11 +76,11 @@
               
         </div>
     </div>
-    @if($informacion->urlCongreso!="")
+    @if($informacion->urlLogo!="")
     <div class="container mt-3 px-5">
     
     <a href="{{$informacion->urlCongreso}}" target="_blank">
-    <img class="img-fluid" src="{{asset('img/3logos.png')}}">
+    <img class="img-fluid" src="{{$informacion->urlLogo}}">
    
     </a>
     </div>

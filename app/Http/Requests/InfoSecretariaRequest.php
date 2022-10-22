@@ -30,7 +30,7 @@ class InfoSecretariaRequest extends FormRequest
     public function messages()
     {
         return [
-            'urlLogo.*'=>'Ingrese un archivo de tipo imagen, maximo de tamaño de 1 MB',
+            'urlLogo.*'=>'Ingrese un archivo de tipo imagen, maximo de tamaño de 1 MB y de formato svg',
             'quienesSomos.*'=>'Ingresa ¿Quiénes somo?, Máximo 1000 caracteres',
             'mision.*'=>'Ingresa una misión, máximo 1000 caracteres',
             'vision.*'=>'Ingresa una visión, máximo 1000 caracteres',

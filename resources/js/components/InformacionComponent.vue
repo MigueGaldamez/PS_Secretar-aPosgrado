@@ -89,7 +89,7 @@
             </div>
         </div>
         <dl class="row" v-for="info in infos" :key="info.id">
-            <dt class="col-sm-3">Logo Institucion</dt>
+            <dt class="col-sm-3">Imagen anuncio</dt>
            
                 <dd class="col-sm-9"> <img :src="info.urlLogo" class="img-thumbnail" alt="..."></dd>
             <dt class="col-sm-3">Horario de Atención</dt>
