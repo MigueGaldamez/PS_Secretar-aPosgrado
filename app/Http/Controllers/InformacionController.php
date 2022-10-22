@@ -28,27 +28,48 @@ class InformacionController extends Controller
     {
         if($request->hasFile('urlLogo'))
         {
-            $fileImagen=$request->file('urlLogo')->store('public/info');
-            $url = Storage::url($fileImagen);
-            $urlLogo=asset($url);
-            $informacion = Informacion::find($request->id);
-            $informacion->horarioAtencion  =$request->horarioAtencion;
-            $informacion->correo=$request->correo;
-            $informacion->mision=$request->mision;
-            $informacion->vision=$request->vision;
-            $informacion->quienesSomos=$request->quienesSomos;
-            $informacion->urlLogo=$urlLogo;
-            return $informacion->save();
+            try
+            {
+                $fileImagen=$request->file('urlLogo')->store('public/info');
+                $url = Storage::url($fileImagen);
+                $informacion = Informacion::find($request->id);
+                $oldUrlImagen = explode('/',$informacion->urlLogo);
+                Storage::delete('public/info/'.$oldUrlImagen[3]);
+    
+                $informacion->horarioAtencion  =$request->horarioAtencion;
+                $informacion->urlCatalogo=$request->urlCatalogo;
+                $informacion->correo=$request->correo;
+                $informacion->mision=$request->mision;
+                $informacion->vision=$request->vision;
+                $informacion->urlCongreso =$request->urlCongreso;
+                $informacion->quienesSomos=$request->quienesSomos;
+                $informacion->urlLogo=$url;
+                return $informacion->save();
+            }
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+            }
+
         }
         else
         {
-            $informacion = Informacion::find($request->id);
-            $informacion->horarioAtencion  =$request->horarioAtencion;
-            $informacion->correo=$request->correo;
-            $informacion->mision=$request->mision;
-            $informacion->vision=$request->vision;
-            $informacion->quienesSomos=$request->quienesSomos;
-            return $informacion->save();
+            try
+            {
+                $informacion = Informacion::find($request->id);
+                $informacion->horarioAtencion  =$request->horarioAtencion;
+                $informacion->urlCatalogo=$request->urlCatalogo;
+                $informacion->correo=$request->correo;
+                $informacion->mision=$request->mision;
+                $informacion->vision=$request->vision;
+                $informacion->quienesSomos=$request->quienesSomos;
+                $informacion->urlCongreso =$request->urlCongreso;
+                return $informacion->save();
+            }
+            catch(\Exception $e)
+            {
+                return $e->getMessage();
+            }
         }   
     }
 

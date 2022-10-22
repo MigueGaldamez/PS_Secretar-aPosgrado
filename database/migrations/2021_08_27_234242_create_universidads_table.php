@@ -13,12 +13,12 @@ class CreateUniversidadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('universidad', function (Blueprint $table) {
+       Schema::create('universidad', function (Blueprint $table) {
             $table->id();
             $table->string('nombreUniversidad',300);
             $table->string('direccionUniversidad',300);            
             $table->timestamps();
-        });
+        }); 
     }
 
     /**
@@ -28,6 +28,6 @@ class CreateUniversidadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universidads');
+        Schema::dropIfExists('universidads'); 
     }
 }

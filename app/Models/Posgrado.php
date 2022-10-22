@@ -48,7 +48,7 @@ class Posgrado extends Model
     }
     public function scopeOfertado($query, $ofertado)
     {
-        if($ofertado == 1 || $ofertado == 0)
+        if($ofertado == 1 || $ofertado == 0  || $ofertado !="none")
         {
             return $query->where('ofertado', '=', "$ofertado");
         }

@@ -14,7 +14,7 @@
                                 <div :id="'coll-'+facultad.id" class="accordion-collapse collapse" :aria-labelledby="'id_'+facultad.id" :data-bs-parent="'#accordion'+i">
                                     <div class="accordion-body row ">
                                         <div class="col col-12" v-for="posgrado in facultad.posgrados_con_tesis" :key="posgrado.id">
-                                            <a class="btn btn-link text-dark" @click="mostrar=true; mostrarPosgrado(posgrado); mostrarFacultad(facultad);">{{posgrado.nombre}}</a>
+                                            <a href="#informacionPosgrado" class="btn btn-link text-dark" @click="mostrar=true; mostrarPosgrado(posgrado); mostrarFacultad(facultad);">{{posgrado.nombre}}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                 <div v-for="tesis in paginated" :key="tesis.id" class="card-containerR mb-1">
                        <div class=" callout-right callout-right-primary row calloutTesis"  :style="'border-right: 10px solid '+facultad.color+';'">
                             <div class="col">                          
-                            <a :href="tesis.link" class="text-dark" ><h5 class="text-dark"><b>{{tesis.titulo}}</b></h5></a>
+                            <a :href="tesis.link" target="_blank" class="text-dark" ><h5 class="text-dark"><b>{{tesis.titulo}}</b></h5></a>
                             <span class="text-uppercase">{{posgrado.nombre}}</span><br>
                             <span class="card-text lh-sm"><small >Autor: <b>{{tesis.autor}}</b> </small></span><br>
                             <span class="card-text lh-sm"><small >Año de publicación: <b>{{tesis.publicado}}</b> </small></span>  
@@ -87,7 +87,21 @@
          <div class="colorGris mt-4 pb-1 pt-2">
                 <h3 class="text-light text-center"><span class="textoSuavecito">No ha seleccionado ninguna Facultad</span></h3>
         </div>
+    </div>
+    <div class="container">
+    <div class="col-12 md-12 text-center mt-2">
+             <nav>
+                <ul class=" pagination">
+                    <li class="page__numbers page-item"  :class="{deactivado:current==1}"  @click="current=1"><a class="page__link" href="#informacionPosgrado"><span>&laquo;</span></a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:current==1}" @click="current--" ><a class="page__link"  href="#informacionPosgrado">&#60;</a></li>
+                    <li class="page__numbers page-item"  v-for="n in paginas" :key="n" :class="{active:current==n+1}" @click="current=n+1" ><a class="page__link" href="#informacionPosgrado">{{n+1}}</a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:current==paginas.length}" @click="current++" ><a class="page__link"   href="#informacionPosgrado">&#62;</a></li>
+                    <li class="page__numbers page-item"  :class="{deactivado:current==paginas.length}"  @click="current=paginas.length"><a class="page__link"  href="#informacionPosgrado" ><span >&raquo;</span></a></li>
+                </ul>
+            </nav>
+        </div>
     </div>    
+    
 </div>
 </template>
 

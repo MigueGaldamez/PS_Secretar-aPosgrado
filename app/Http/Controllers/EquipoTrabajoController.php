@@ -83,8 +83,16 @@ class EquipoTrabajoController extends Controller
     }
     public function destroy(EquipoTrabajo $equipoTrabajo)
     {
-        $oldUrlImagen = explode('/',$equipoTrabajo->urlImagen);
-        Storage::delete('public/equipo/'.$oldUrlImagen[3]);
-        return $equipoTrabajo->delete();
+        try
+        {
+            $oldUrlImagen = explode('/',$equipoTrabajo->urlImagen);
+            Storage::delete('public/equipo/'.$oldUrlImagen[3]);
+            return $equipoTrabajo->delete();
+        }
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
+
     }
 }

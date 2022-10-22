@@ -3,6 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Secretaría de Posgrados de la Universidad de El Salvador">
+    <meta name="keywords" content="posgrados,UES, secretaria, posgrado, maestria, maestrias, doctorado, doctorado, El Salvador">
+    <meta name="author" content="Universidad de El Salvador">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{asset('img/favico/favicon.ico')}}">
@@ -15,7 +18,8 @@
     <link href="{{ asset('css/swiper-bundle/swiper-bundle.min.css') }}" rel='stylesheet'>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/loader.css') }}" rel="stylesheet">
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'><link rel="stylesheet" href="./style.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+    <link rel="stylesheet" href="./style.css">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -41,7 +45,7 @@
                     @if(request()->routeIs('inicio'))
                         <a class="navbar-brand" href="{{ url('/') }}">
                          
-                            <img class="float-start tamañoLogoLateral" src="{{asset('img/logolateral3.svg')}}">
+                            <img class="float-start tamañoLogoLateral invisible" src="{{asset('img/logolateral3.svg')}}">
                         </a>      
                     @endif      
                     @if (!request()->routeIs('inicio'))               
@@ -68,11 +72,11 @@
                                     <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Académica</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                    <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('historia','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                         Sobre Nosotros
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
+                                        <a class="dropdown-item" href="{{route('historia')}}">Reseña Historica</a>
                                         <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>
@@ -105,11 +109,11 @@
                                 <a class="nav-link text-uppercase text-light elementoNav {{ request()->routeIs('oferta','ofertaFacultad') ? 'activoNav' : '' }}" href="{{ route('oferta') }}">Oferta Académica</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('reseña','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+                                <a class="nav-link  text-uppercase text-light elementoNav  {{ request()->routeIs('historia','organos') ? 'activoNav' : '' }}" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                                     Sobre Nosotros
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{route('reseña')}}">Reseña Historica</a>
+                                    <a class="dropdown-item" href="{{route('historia')}}">Reseña Histórica</a>
                                     <a class="dropdown-item" href="{{route('organos')}}">Órganos de Gobierno</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{route('galeria')}}">Album de fotos</a>

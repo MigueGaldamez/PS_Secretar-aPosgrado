@@ -26,7 +26,9 @@
   margin-top: -30px;
 }
 .cardImagenBanner{
-  
+  width: 100%;
+  margin: 0px;
+
 }
 
 .imgBannerInicio{
@@ -384,9 +386,13 @@
 }
 .botonCardFacu{
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 0px;
+    right: 0px;
+    padding:  5px;
     
+}
+.cardFacu:hover{
+  box-shadow: rgba(0, 0, 0, 0.5);
 }
 .tituloFacu{
     font-weight: 100;
@@ -2629,4 +2635,56 @@
 .imagenNotiPrin{
   height: 200px !important;
   border-radius: 10px;
+}
+.alertaPubli{
+  margin-top: -20px;
+  margin-left: -32px !important;
+  margin-right: -32px !important;
+}
+.noticiaImagen img{
+  margin-left: 18px !important;
+  margin-right: 18px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+.descripcionTitulo{
+  font-size: 22px;
+  color: #52646E;
+}
+.colorDrive{
+  background-color: #1FA463;
+}
+.fotoChiquita{
+  height: 120px;
+  float: left;
+  border-radius: 15px;
+  margin-right: 10px;
+  margin-bottom: 10px !important;
+}
+.cardLinea{
+  height: 350px !important;
+}
+.subtituloCardFacu{
+  background-color: #3a4043;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  position: absolute;
+  bottom: -13px;
+  left: -8px;
+  font-size: 14px;
+}
+.flechitas{
+background-color: rgba(0, 0, 0, 0.7);
+padding: 40px 20px;
+border-radius: 20%;
+color:white;
+}
+
+.organos-min{
+  min-height: 220px;
+}
+.organos-foto{
+  height:215px;
 }

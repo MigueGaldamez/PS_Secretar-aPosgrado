@@ -1,12 +1,12 @@
 <template>  
     <div class="row">
         <!-- Modal -->
-        <div  class="modal fade" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div  class="modal fade" :class="{show:modal, ver:modal}" id="exampleModal" tabindex="-1"  data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content modal-lg">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">{{tituloModal}}</h5>
-                        <button type="button"  @click="cerrarModal();" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button"  @click="cerrarModal();" class="btn-close"  aria-label="Close"></button>
                     </div>
                     <form v-on:submit.prevent="guardar">
                         <div class="modal-body">
@@ -32,8 +32,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button"  @click="cerrarModal();" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button"  @click="guardar();" class="btn btn-primary"  data-bs-dismiss="modal">Guardar Cambios</button>
+                            <button type="button"  @click="cerrarModal();" class="btn btn-secondary" >Cerrar</button>
+                            <button type="button"  @click="guardar();" class="btn btn-primary"  >Guardar Cambios</button>
                         </div>
                     </form>
                 </div>
@@ -52,7 +52,7 @@
             <label for="customRange3" class="form-label">Mostrando: {{reseniaHistoricas.from}} - {{reseniaHistoricas.to }} | Total: {{reseniaHistoricas.total}}</label>
         </div>
         <div class="col-xm-12">
-            <button @click="modificar=false;abrirModal();" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-success ">
+            <button @click="modificar=false;abrirModal();"  type="button" class="btn btn-success ">
                 Nuevo
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -63,7 +63,7 @@
         <div class="row mt-1 mb-1">
             <div class="col-sm-1">
                 <label  class="form-label">Mostrar:</label>
-                <select @change="listar();" v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <select @change="filtros.page=1; listar(); " v-model="filtros.per_page" class="form-select form-select-sm" aria-label=".form-select-sm example">
                     <option selected>Seleccione:</option>
                     <option value="4">4</option>
                     <option value="8">8</option>
@@ -88,7 +88,7 @@
                     </select>
                 </div>
                 <div class="col-sm-1 align-self-end">
-                    <button @click="listar();"  type="submit" class="btn btn-outline-dark">
+                    <button @click="listar(); filtros.page=1;"  type="submit" class="btn btn-outline-dark">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                         </svg>
@@ -117,7 +117,7 @@
                             </td> 
                             <td>{{rese.descripcion}}</td>
                             <td>
-                                <button type="button" @click="modificar=true; abrirModal(rese);" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-outline-info btn-sm">
+                                <button type="button" @click="modificar=true; abrirModal(rese);"  class="btn btn-outline-info btn-sm">
                                     <svg  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
                                         <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
                                     </svg>
@@ -268,7 +268,7 @@
                         }
                         else
                         {
-                            this.$swal({title: 'Error!',text: response.data ,icon: 'error',confirmButtonText: 'Ok'});
+                            this.$swal({title: 'Error!',text: 'Ha ocurrido un error' ,icon: 'error',confirmButtonText: 'Ok'});
                         }
                     });
                 }

@@ -46,7 +46,7 @@ class EnlaceController extends Controller
             return "error";
         } 
     }
-    public function update(EnlaceRequest $request, Enlace $enlace)
+    public function update(EnlaceRequest $request, Enlace $enlaces_api)
     {
         if($request->hasFile('urlImagen'))
         {
@@ -54,13 +54,13 @@ class EnlaceController extends Controller
             {
                 $fileImagen=$request->file('urlImagen')->store('public/enlace');
                 $urlImagen = Storage::url($fileImagen);
-                $enlace = Enlace::find($request->id);
-                $oldUrlImagen = explode('/',$enlace->urlImagen);
+                $oldUrlImagen = explode('/',$enlaces_api->urlImagen);
                 Storage::delete('public/enlace/'.$oldUrlImagen[3]);
-                $enlace->urlImagen = $urlImagen;
-                $enlace->titulo= $request->titulo;
-                $enlace->link = $request->link;
-                return $enlace->save();
+                $enlaces_api->urlImagen = $urlImagen;
+                $enlaces_api->titulo= $request->titulo;
+                $enlaces_api->link = $request->link;
+                
+                return $enlaces_api->save();
             }
             catch (\Exception $e) 
             {
@@ -88,6 +88,16 @@ class EnlaceController extends Controller
 
     public function destroy(Enlace $enlaces_api)
     {
-        return $enlaces_api->delete();
+        try
+        {
+            $oldUrlImagen = explode('/',$enlaces_api->urlImagen);
+            Storage::delete('public/enlace/'.$oldUrlImagen[3]);
+            return $enlaces_api->delete();
+        }
+        catch (\Exception $e) 
+        {
+            return $e->getMessage();
+        }
+
     }
 }

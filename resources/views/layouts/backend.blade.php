@@ -16,6 +16,8 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <link href="{{ asset('css/styleBack.css') }}" rel="stylesheet">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'>
+        
         <!-- include summernote css/js-->
         <script defer type="text/javascript" src="{{ asset('js\summernote\jquery-3.6.0.min.js') }}"></script>
         <link href="{{ asset('css\summernote\summernote-lite.min.css') }}" rel="stylesheet">
@@ -44,7 +46,7 @@
                                     <a href="{{route('Tesis')}}" class="nav-link text-white {{ request()->routeIs('Tesis') ? 'active' : '' }}" >Tesis/investigaciones</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('Galery')}}" class="nav-link text-white {{ request()->routeIs('Galery') ? 'active' : '' }}" >Galery</a>
+                                    <a href="{{route('Galery')}}" class="nav-link text-white {{ request()->routeIs('Galery') ? 'active' : '' }}" >Galería</a>
                                 </li>
                                 <li>
                                     <a href="{{route('NoticiasGestion')}}" class="nav-link text-white {{ request()->routeIs('NoticiasGestion') ? 'active' : '' }}" > Noticias Gestión</a>
@@ -64,7 +66,7 @@
                                 <li>
                                     <a href="{{route('Informacion')}}" class="nav-link text-white {{ request()->routeIs('Informacion') ? 'active' : '' }}" > Información de la Secretaría</a>
                                 </li>
-                                  <li>
+                                <li>
                                     <a href="{{route('Permisos')}}" class="nav-link text-white {{ request()->routeIs('Permisos') ? 'active' : '' }}" >Permisos</a>
                                 </li>
                             </ul>
@@ -82,25 +84,12 @@
                                 </li>
                             </ul>
                             <hr>
-                            <div class="dropdown">
-                                <a href="#" class="text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="https://avatars.githubusercontent.com/u/25284452?v=4" alt="" width="32" height="32" class="rounded-circle me-2">
-                                    <strong>Puede servir</strong>
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Sign out</a></li>
-                                </ul>
-                            </div>
                         </div>
                     </nav>
                     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                         <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm bg mt-2 sticky-top">
                             <div class="container">
-                               <ul class="navbar-nav me-auto">
+                                <ul class="navbar-nav me-auto">
                                         <a class="navbar-brand" href="{{ url('/dashboard/') }}">
                                             Secretaría de Posgrado UES
                                         </a>
@@ -110,7 +99,6 @@
                                 </button>
                                 <div class="collapse navbar-collapse " id="navbarSupportedContent">
                                     <!-- Right Side Of Navbar -->
-                                 
                                     <!-- Left Side Of Navbar -->
                                     <ul class="navbar-nav ms-auto">
                                         <!-- Authentication Links -->
@@ -121,9 +109,8 @@
                                                 </li>
                                             @endif
                                             @else
-                                             <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none" >Inicio</a>
-                                             <a href="{{route('Informacion')}}" class="nav-link text-dark d-md-none" > Información de la Secretaría</a>
-                                          
+                                            <a href="{{route('dashboard')}}" class="nav-link text-dark d-md-none" >Inicio</a>
+                                            <a href="{{route('Informacion')}}" class="nav-link text-dark d-md-none" > Información de la Secretaría</a>
                                             <li class="nav-item dropdown">
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     Posgrados, Diplomados e Investigaciones
@@ -133,16 +120,14 @@
                                                     <a href="{{route('Diplomados')}}" class="dropdown-item text-dark d-md-none" >Diplomados</a>
                                                     <a href="{{route('Tesis')}}" class="dropdown-item text-dark d-md-none" >Tesis/investigaciones</a>
                                                 </div>
-                                               
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                                   Galeria, Noticias y Reseña
+                                                    Galeria, Noticias y Reseña
                                                 </a>
                                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                                    <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galery</a>
+                                                    <a href="{{route('Galery')}}" class="dropdown-item text-dark d-md-none" >Galería</a>
                                                     <a href="{{route('NoticiasGestion')}}" class="dropdown-item text-dark d-md-none" > Noticias Gestión</a>
                                                     <a href="{{route('ReseniaHistorica')}}" class="dropdown-item text-dark d-md-none" >Reseña Historica</a>
                                                 </div>
-                                                
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle d-md-none" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                     Facultades, Enlaces y Equipo de Trabajo
                                                 </a>
@@ -151,7 +136,6 @@
                                                     <a href="{{route('Enlaces')}}" class="dropdown-item text-dark d-md-none" >Enlaces</a>
                                                     <a href="{{route('EquipoTrabajo')}}" class="dropdown-item text-dark d-md-none" >Equipo de Trabajo</a>
                                                 </div>
-                                               
                                                 <a href="{{route('Permisos')}}" class="nav-link text-dark d-md-none" >Permisos</a>
                                                 
                                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -163,10 +147,7 @@
                                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                         @csrf
                                                     </form>
-                                                 
-                                                   
                                                 </div>
-
                                             </li>
                                         @endguest
                                     </ul>
@@ -174,12 +155,13 @@
                             </div>
                         </nav>
                         <div class="my-4">
+                            <a class="btn-sm FABpriv" href="{{route('inicio')}}" target="_blank" role="button">
+                            <i class="fa-solid fa-house-chimney"></i> Visitar el sitio publico</a>
                             @yield('content')
                         </div>
                     </main>
                 </div>
             </div>
         </div>
-
     </body>
 </html>

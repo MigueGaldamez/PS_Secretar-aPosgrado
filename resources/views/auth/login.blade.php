@@ -58,7 +58,7 @@
                 </a>
             @endif
         </div>
-      <button type="submit">Iniciar Sesións</button>
+      <button type="submit">Iniciar Sesión</button>
      
     </form>
   </div>

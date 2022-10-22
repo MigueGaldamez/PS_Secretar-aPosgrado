@@ -20,10 +20,10 @@ class PublicoController extends Controller
         $informacion = Informacion::first();
         return view('publico.index',compact('informacion','noticias'));
     }
-    public function reseña()
+    public function historia()
     {
         $resenias = ReseniaHistorica::all();
-        return view('publico.reseñaHistorica',compact('resenias'));
+        return view('publico.reseniaHistorica',compact('resenias'));
     }
     public function publicaciones()
     {
@@ -34,8 +34,9 @@ class PublicoController extends Controller
     {
         $facultadesF = Facultades::with('posgrados')->where('multidis','=',0)->get();
         $facultadesS = Facultades::with('posgrados')->where('multidis','=',1)->get();
+        $facultadesE = Facultades::with('posgrados')->where('multidis','=',2)->get();
         //$facultades = Facultades::all();
-        return view('publico.ofertaAcademica',compact('facultadesF','facultadesS'));
+        return view('publico.ofertaAcademica',compact('facultadesF','facultadesS','facultadesE'));
     }
     public function ofertaFacultad($slug)
     {
@@ -54,8 +55,9 @@ class PublicoController extends Controller
     }
     public function noticias()//para vista de todas las noticias
     {
+        $galeria = Galery::where('orden','=',4)->get();
         $noticias = Noticia::where('publicado',1)->where('destacado',1)->latest()->take(4)->get();
-        return view('publico.noticias',compact('noticias'));
+        return view('publico.noticias',compact('noticias','galeria'));
     }
     public function noticiasTodas(Request $request)//para api
     {
@@ -93,15 +95,18 @@ class PublicoController extends Controller
         return view('publico.tesisPosgrados');
     }
     public function catalogoC(){
-        return view('publico.catalogo');
+        $informacion = Informacion::first();
+        return view('publico.catalogo',compact('informacion'));
     }
     public function descargarCatalogo()
     {
-        
+        //$informacion = Informacion::first();
+
         $filePath =  public_path('catalogos/Catalogo Posgrados UES - 2022.pdf');
         $headers = ['Content-Type: application/pdf'];
         $fileName ='Catalogo Posgrados UES - 2022.pdf';
         return response()->download($filePath, $fileName, $headers);
+        //return response($informacion->urlCatalogo);
         
     }
 }

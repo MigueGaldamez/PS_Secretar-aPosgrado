@@ -2,15 +2,11 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 class TesisRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
         return true;
@@ -23,8 +19,10 @@ class TesisRequest extends FormRequest
             'publicado'=>'required|numeric|min:1800|max:3000',
             'titulo'=>'required|max:350',
             'autor'=>'required|max:255',
-            'link'=>'required|url|max:255',
-            'estado'=>'required|boolean'
+            'estado'=>'required|boolean',
+            'link'=>'required_if:estado,==,"1"|max:255',
+            'link'=> 'exclude_if:estado,==,"0"|url',
+            
         ];
     }
     public function messages()

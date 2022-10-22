@@ -16,8 +16,8 @@ class CreateGaleriesTable extends Migration
         Schema::create('galeries', function (Blueprint $table) {
             $table->id();
             $table->string('urlImagen');
-            $table->string('titulo',100);
-            $table->string('subtitulo',150);
+            $table->string('titulo',100)->nullable(true);
+            $table->string('subtitulo',150)->nullable(true);
             $table->tinyInteger('orden');
         });
     }

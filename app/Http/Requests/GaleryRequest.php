@@ -24,8 +24,8 @@ class GaleryRequest extends FormRequest
         ];
         return [
             'urlImagen'=>'exclude_if:imagen,false|image|max:10240',
-            'titulo'=>'required|max:100',
-            'subtitulo'=>'required|max:150',
+            'titulo'=>'max:100',
+            'subtitulo'=>'max:150',
             'orden'=>'required|in:1,2,3,4',
         ];
     }

@@ -101,10 +101,10 @@
     </div>
     <div class="row col-12 col-md-10 mx-auto"> 
         <div class="col-12 col-md-6">
-            <div class="card mb-3 recuadro">
+            <div class="card mb-3 recuadro organos-min">
                 <div class="row g-0">
                     <div class="col-4">
-                    <img src="{{asset('img/organos/vicerrector académico.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
+                    <img src="{{asset('img/organos/vicerrector académico.jpg')}}" class="img-fluid rounded-start organos-foto" alt="...">
                     </div>
                     <div class="col-8">
                     <div class="card-body">
@@ -117,10 +117,10 @@
             </div>
         </div>
         <div class="col-12 col-md-6">
-            <div class="card mb-3 recuadro">
+            <div class="card mb-3 recuadro organos-min">
                 <div class="row g-0">
                     <div class="col-4">
-                    <img src="{{asset('img/organos/vicerrector administrativo.jpg')}}" class="img-fluid rounded-start h-100" alt="...">
+                    <img src="{{asset('img/organos/vicerrector administrativo.jpg')}}" class="img-fluid rounded-start h-100 organos-foto" alt="...">
                     </div>
                     <div class="col-8">
                     <div class="card-body">
@@ -144,6 +144,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Ing. Francisco Alarcón</h5>
                         <h6 class="card-title text-muted">Secretario General de la Universidad de El Salvador</h6>
+                          <img src="{{asset('img/organos/Ing. Francisco Alarcón-Secretario General de la Universidad de El Salvador.jpg')}}" class="img-fluid rounded-start fotoChiquita" alt="...">
                         <p class="card-text">Certifica las resoluciones y acuerdos del Consejo Superior Universitario (CSU), vela por la publicidad oficial de acuerdos y resoluciones, autentica con su firma documentos oficiales, presenta al Rector una nómina de asuntos y solicitudes pendientes de resolver por el CSU para el establecimiento de la agenda a tratar y realiza publicaciones de los ordenamientos en el Diario Oficial.</p>
                       
                     </div>
@@ -159,6 +160,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Licdo. Rafael Humberto Peña Marín  </h5>
                         <h6 class="card-title text-muted">Fiscal General</h6>
+                          <img src="{{asset('img/organos/Licdo. Rafael Humberto Peña Marín - Fiscal General.jpg')}}" class="img-fluid rounded-start fotoChiquita" alt="...">
+
                         <p class="card-text">El Fiscal General vela por el estricto cumplimiento de la Ley Orgánica de La Universidad de El Salvador, de los reglamentos y de las normas válidamente emanadas de los órganos competentes que integran el gobierno universitario, así como de las demás leyes que fueren aplicables a las actividades de la Universidad.</p>
                       
                     </div>
@@ -174,6 +177,8 @@
                     <div class="card-body">
                         <h5 class="card-title">Licdo. Luis Antonio Mejía Lipe</h5>
                         <h6 class="card-title text-muted">Defensor de los Derechos Universitarios</h6>
+                          <img src="{{asset('img/organos/Lic. Luis Antonio Mejía Lipe.jpg')}}" class="img-fluid rounded-start fotoChiquita" alt="...">
+
                         <p class="card-text">Son atribuciones y deberes del Defensor de garantizar la defensa de los derechos universitarios a través de asesoría jurídica a los afectados por supuestas violaciones a sus derechos e interposición de peticiones o recursos administrativos en su nombre o representación.</p>
                       
                     </div>
@@ -190,8 +195,6 @@
     <h3 class="text-light text-center"><span class="textoSuavecito2">Equipo de Trabajo de la Secretaría de Posgrado </span></h3>
 </div>
 <div class="container mt-2">
-    <h2 class="textoGris"><span class="textoSuavecito2">Equipo de Trabajo de la Secretaría de Posgrado</span></h2>
-      <div class="titulohr mb-4"></div>
     @php
         $contador = 1;
     @endphp
