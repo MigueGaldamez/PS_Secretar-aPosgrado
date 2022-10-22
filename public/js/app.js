@@ -13665,10 +13665,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
-/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-sweetalert2 */ "./node_modules/vue-sweetalert2/dist/vue-sweetalert.umd.js");
+/* harmony import */ var vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var sweetalert2_dist_sweetalert2_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! sweetalert2/dist/sweetalert2.min.css */ "./node_modules/sweetalert2/dist/sweetalert2.min.css");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -13677,10 +13677,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js")["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].config.devtools = false;
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0___default()));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].use((vue_sweetalert2__WEBPACK_IMPORTED_MODULE_1___default()));
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -13691,32 +13692,32 @@ vue__WEBPACK_IMPORTED_MODULE_2__["default"].use((vue_sweetalert2__WEBPACK_IMPORT
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('informacion-component', (__webpack_require__(/*! ./components/InformacionComponent.vue */ "./resources/js/components/InformacionComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('facultades-component', (__webpack_require__(/*! ./components/FacultadesComponent.vue */ "./resources/js/components/FacultadesComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('enlaces-component', (__webpack_require__(/*! ./components/EnlacesComponent.vue */ "./resources/js/components/EnlacesComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('posgradoFacultad', (__webpack_require__(/*! ./components/publico/PosgradoFacultad.vue */ "./resources/js/components/publico/PosgradoFacultad.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('opcionesFacultades', (__webpack_require__(/*! ./components/publico/OpcionesFacultades.vue */ "./resources/js/components/publico/OpcionesFacultades.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('modalidades-component', (__webpack_require__(/*! ./components/ModalidadesComponent.vue */ "./resources/js/components/ModalidadesComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('tipo-duracions-component', (__webpack_require__(/*! ./components/TipoDuracionsComponent.vue */ "./resources/js/components/TipoDuracionsComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('tipo-programas-component', (__webpack_require__(/*! ./components/TipoProgramasComponent.vue */ "./resources/js/components/TipoProgramasComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('diplomados-component', (__webpack_require__(/*! ./components/DiplomadosComponent.vue */ "./resources/js/components/DiplomadosComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('posgrados-component', (__webpack_require__(/*! ./components/PosgradosComponent.vue */ "./resources/js/components/PosgradosComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('tesis-component', (__webpack_require__(/*! ./components/TesisComponent.vue */ "./resources/js/components/TesisComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('equipo-trabajo-component', (__webpack_require__(/*! ./components/EquipoTrabajoComponent.vue */ "./resources/js/components/EquipoTrabajoComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('galery-component', (__webpack_require__(/*! ./components/GaleryComponent.vue */ "./resources/js/components/GaleryComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('historico-component', (__webpack_require__(/*! ./components/HistoricoComponent.vue */ "./resources/js/components/HistoricoComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('noticias-priv-component', (__webpack_require__(/*! ./components/NoticiasComponent.vue */ "./resources/js/components/NoticiasComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('ofertaFacultad', (__webpack_require__(/*! ./components/publico/OfertaFacultad.vue */ "./resources/js/components/publico/OfertaFacultad.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('perfil-component', (__webpack_require__(/*! ./components/PerfilComponent.vue */ "./resources/js/components/PerfilComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('permisos-component', (__webpack_require__(/*! ./components/PermisosComponent.vue */ "./resources/js/components/PermisosComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].component('noticias-component', (__webpack_require__(/*! ./components/publico/Noticias.vue */ "./resources/js/components/publico/Noticias.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('informacion-component', (__webpack_require__(/*! ./components/InformacionComponent.vue */ "./resources/js/components/InformacionComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('facultades-component', (__webpack_require__(/*! ./components/FacultadesComponent.vue */ "./resources/js/components/FacultadesComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('enlaces-component', (__webpack_require__(/*! ./components/EnlacesComponent.vue */ "./resources/js/components/EnlacesComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('posgradoFacultad', (__webpack_require__(/*! ./components/publico/PosgradoFacultad.vue */ "./resources/js/components/publico/PosgradoFacultad.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('opcionesFacultades', (__webpack_require__(/*! ./components/publico/OpcionesFacultades.vue */ "./resources/js/components/publico/OpcionesFacultades.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('modalidades-component', (__webpack_require__(/*! ./components/ModalidadesComponent.vue */ "./resources/js/components/ModalidadesComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('tipo-duracions-component', (__webpack_require__(/*! ./components/TipoDuracionsComponent.vue */ "./resources/js/components/TipoDuracionsComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('tipo-programas-component', (__webpack_require__(/*! ./components/TipoProgramasComponent.vue */ "./resources/js/components/TipoProgramasComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('diplomados-component', (__webpack_require__(/*! ./components/DiplomadosComponent.vue */ "./resources/js/components/DiplomadosComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('posgrados-component', (__webpack_require__(/*! ./components/PosgradosComponent.vue */ "./resources/js/components/PosgradosComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('tesis-component', (__webpack_require__(/*! ./components/TesisComponent.vue */ "./resources/js/components/TesisComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('equipo-trabajo-component', (__webpack_require__(/*! ./components/EquipoTrabajoComponent.vue */ "./resources/js/components/EquipoTrabajoComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('galery-component', (__webpack_require__(/*! ./components/GaleryComponent.vue */ "./resources/js/components/GaleryComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('historico-component', (__webpack_require__(/*! ./components/HistoricoComponent.vue */ "./resources/js/components/HistoricoComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('noticias-priv-component', (__webpack_require__(/*! ./components/NoticiasComponent.vue */ "./resources/js/components/NoticiasComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('ofertaFacultad', (__webpack_require__(/*! ./components/publico/OfertaFacultad.vue */ "./resources/js/components/publico/OfertaFacultad.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('perfil-component', (__webpack_require__(/*! ./components/PerfilComponent.vue */ "./resources/js/components/PerfilComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('permisos-component', (__webpack_require__(/*! ./components/PermisosComponent.vue */ "./resources/js/components/PermisosComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component('noticias-component', (__webpack_require__(/*! ./components/publico/Noticias.vue */ "./resources/js/components/publico/Noticias.vue")["default"]));
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new vue__WEBPACK_IMPORTED_MODULE_2__["default"]({
+var app = new vue__WEBPACK_IMPORTED_MODULE_0__["default"]({
   el: '#app'
 });
 
