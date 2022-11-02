@@ -70,7 +70,9 @@ class FacultadesController extends Controller
                 $urlImagen =  $url;
                 $facultad = Facultades::find($request->id);
                 $oldUrlImagen = explode('/',$facultad->urlImagen);
-                Storage::delete('public/facultad/'.$oldUrlImagen[3]);
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/facultad/'.$oldUrlImagen[3]);
+                }
                 $facultad->urlImagen = $urlImagen;
                 $facultad->nombre = $request->nombre;
                 $facultad->contactoDiplomado = $request->contactoDiplomado;

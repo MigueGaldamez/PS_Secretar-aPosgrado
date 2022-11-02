@@ -34,8 +34,9 @@ class InformacionController extends Controller
                 $url = Storage::url($fileImagen);
                 $informacion = Informacion::find($request->id);
                 $oldUrlImagen = explode('/',$informacion->urlLogo);
-                Storage::delete('public/info/'.$oldUrlImagen[3]);
-    
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/info/'.$oldUrlImagen[3]);
+                }
                 $informacion->horarioAtencion  =$request->horarioAtencion;
                 $informacion->urlCatalogo=$request->urlCatalogo;
                 $informacion->correo=$request->correo;

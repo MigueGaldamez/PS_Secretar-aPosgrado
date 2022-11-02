@@ -55,7 +55,9 @@ class EnlaceController extends Controller
                 $fileImagen=$request->file('urlImagen')->store('public/enlace');
                 $urlImagen = Storage::url($fileImagen);
                 $oldUrlImagen = explode('/',$enlaces_api->urlImagen);
-                Storage::delete('public/enlace/'.$oldUrlImagen[3]);
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/enlace/'.$oldUrlImagen[3]);
+                }
                 $enlaces_api->urlImagen = $urlImagen;
                 $enlaces_api->titulo= $request->titulo;
                 $enlaces_api->link = $request->link;

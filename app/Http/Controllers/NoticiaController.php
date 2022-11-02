@@ -55,7 +55,10 @@ class NoticiaController extends Controller
                 $urlImagen =  $url;
                 $noticia_api = Noticia::find($request->id);
                 $oldUrlImagen = explode('/',$noticia_api->urlImagen);
-                Storage::delete('public/noticias/'.$oldUrlImagen[3]);
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/noticias/'.$oldUrlImagen[3]);
+                }
+                
                 $noticia_api->urlImagen = $urlImagen;
                 $noticia_api->titulo = $request->titulo;
                 $noticia_api->publicado = $request->publicado;

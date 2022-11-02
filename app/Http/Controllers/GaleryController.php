@@ -49,7 +49,9 @@ class GaleryController extends Controller
                 $urlImagen =  $url;
                 //$galery_api = Galery::find($request->id);
                 $oldUrlImagen = explode('/',$galery_api->urlImagen);
-                Storage::delete('public/galery/'.$oldUrlImagen[3]);
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/galery/'.$oldUrlImagen[3]);
+                }
                 $galery_api->urlImagen = $urlImagen;
                 $galery_api->titulo = $request->titulo;
                 $galery_api->subtitulo = $request->subtitulo;

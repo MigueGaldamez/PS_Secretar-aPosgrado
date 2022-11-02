@@ -12,7 +12,7 @@
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label for="formFile" class="form-label">Imagen de anuncio</label>
-                                <input  ref="urlImg" accept=".svg" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
+                                <input  ref="urlImg" class="form-control" type="file" name="urlLogo" @change="obtenerImagen">
                                 <span class="text-danger" v-if="errores.urlLogo">{{errores.urlLogo[0]}}</span>
                                 <img v-if="selImagen" :src="imagen" class="img-thumbnail" alt="...">
                             </div>

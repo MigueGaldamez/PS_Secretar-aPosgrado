@@ -59,7 +59,9 @@ class PosgradoController extends Controller
                 $fileImagen=$request->file('urlImagen')->store('public/posgrados');
                 $urlImagen = Storage::url($fileImagen);
                 $oldUrlImagen = explode('/',$posgrados_api->urlImagen);
-                Storage::delete('public/posgrados/'.$oldUrlImagen[3]);
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/posgrados/'.$oldUrlImagen[3]);
+                }
                 $posgrados_api->urlImagen = $urlImagen;
                 $posgrados_api->facultad_id = $request->facultad;
                 $posgrados_api->nombre = $request->nombre;

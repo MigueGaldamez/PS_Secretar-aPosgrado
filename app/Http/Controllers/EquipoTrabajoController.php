@@ -52,7 +52,9 @@ class EquipoTrabajoController extends Controller
                 $urlImagen =  $url;
                 $equipoTrabajo = EquipoTrabajo::find($request->id);
                 $oldUrlImagen = explode('/',$equipoTrabajo->urlImagen);
-                Storage::delete('public/equipo/'.$oldUrlImagen[3]);
+                if($oldUrlImagen[3] ?? false){
+                    Storage::delete('public/equipo/'.$oldUrlImagen[3]);
+                }
                 $equipoTrabajo->urlImagen = $urlImagen;
                 $equipoTrabajo->nombre = $request->nombre;
                 $equipoTrabajo->descripcion = $request->descripcion;

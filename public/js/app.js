@@ -57875,11 +57875,7 @@ var render = function() {
                       _c("input", {
                         ref: "urlImg",
                         staticClass: "form-control",
-                        attrs: {
-                          accept: ".svg",
-                          type: "file",
-                          name: "urlLogo"
-                        },
+                        attrs: { type: "file", name: "urlLogo" },
                         on: { change: _vm.obtenerImagen }
                       }),
                       _vm._v(" "),
